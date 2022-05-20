@@ -22,12 +22,22 @@
         {
           "properties": {
             "branch_icon": "",
+            "branch_identical_icon": "",
+            "branch_ahead_icon": "",
+            "branch_behind_icon": "",
+            "branch_gone_icon": "",
+            "commit_icon": "",
+            "tag_icon": "",
+            "rebase_icon": "",
+            "revert_icon": "",
+            "merge_icon": "",
             "fetch_status": true,
             "fetch_stash_count": true,
-            "fetch_worktree_count": true
+            "fetch_worktree_count": true,
+            "fetch_upstream_icon": true
           },
           "style": "plain",
-          "template": "git:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#c678dd>{{ .HEAD }}</>{{ else }}{{ .HEAD }}{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#e06c75>{{ .Working.String }}</>{{ end }})",
+          "template": "git:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#c678dd>{{ .HEAD }}</>{{ else }}<#98c379>{{ .HEAD }}</>{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#e06c75>{{ .Working.String }}</>{{ end }})",
           "type": "git"
         }
       ],
