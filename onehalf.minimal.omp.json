@@ -38,7 +38,7 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#e5c07b",
+          "foreground": "#dcdfe4",
           "properties": {
             "always_enabled": true
           },
