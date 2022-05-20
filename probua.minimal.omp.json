@@ -5,7 +5,7 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#ffdd86",
+          "foreground": "#e1a638",
           "style": "plain",
           "template": "{{ .UserName }}@{{ .HostName }} ",
           "type": "session"
@@ -25,7 +25,7 @@
             "fetch_status": true
           },
           "style": "plain",
-          "template": "git:{{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#ffdd86>{{ .HEAD }}</>{{ else }}{{ .HEAD }}{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#d16971>{{ .Working.String }}</>{{ end }}",
+          "template": "git:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#E5C07B>{{ .HEAD }}</>{{ else }}{{ .HEAD }}{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#d16971>{{ .Working.String }}</>{{ end }})",
           "type": "git"
         }
       ],
@@ -36,10 +36,7 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#ffdd86",
-          "foreground_templates": [
-            "{{ if gt .Code 0 }}#42a9ff{{ end }}"
-          ],
+          "foreground": "#e1a638",
           "properties": {
             "always_enabled": true
           },
