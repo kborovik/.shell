@@ -61,4 +61,4 @@ fi
 eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
-eval "$(oh-my-posh init bash --config ~/.shell/probua.minimal.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.shell/bluecat.minimal.omp.json)"
