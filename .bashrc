@@ -64,3 +64,5 @@ eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
 eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+
+source ~/.shell/onehalfdark.sh
