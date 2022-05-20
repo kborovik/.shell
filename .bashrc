@@ -10,9 +10,11 @@ export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
 
-export GPG_TTY=$(tty)
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-gpg-connect-agent updatestartuptty /bye >/dev/null
+if [ -n "$(command -v gpg)" ]; then
+  export GPG_TTY=$(tty)
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  gpg-connect-agent updatestartuptty /bye >/dev/null
+fi
 
 set -o noclobber
 
@@ -61,4 +63,4 @@ fi
 eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
-eval "$(oh-my-posh init bash --config ~/.shell/bluecat.minimal.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
