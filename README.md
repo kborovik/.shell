@@ -1,12 +1,14 @@
 # Good Shell
 
-# Color Schema `onehalf`
+# Color Schema `OneHalf Dark`
 
-To set Linux terminal
+To add OneHalf Dark theme to Gnome Terminal
 
 ```
 source ~/.shell/onehalfdark.sh
 ```
+
+OneHalf theme colors
 
 ```
                         light     dark
