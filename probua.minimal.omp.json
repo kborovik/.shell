@@ -5,13 +5,13 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#e1a638",
+          "foreground": "#e5c07b",
           "style": "plain",
           "template": "{{ .UserName }}@{{ .HostName }} ",
           "type": "session"
         },
         {
-          "foreground": "#42a9ff",
+          "foreground": "#61afef",
           "style": "plain",
           "properties": {
             "style": "full"
@@ -22,10 +22,22 @@
         {
           "properties": {
             "branch_icon": "",
-            "fetch_status": true
+            "branch_identical_icon": "",
+            "branch_ahead_icon": "",
+            "branch_behind_icon": "",
+            "branch_gone_icon": "",
+            "commit_icon": "",
+            "tag_icon": "",
+            "rebase_icon": "",
+            "revert_icon": "",
+            "merge_icon": "",
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_worktree_count": true,
+            "fetch_upstream_icon": true
           },
           "style": "plain",
-          "template": "git:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#E5C07B>{{ .HEAD }}</>{{ else }}{{ .HEAD }}{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#d16971>{{ .Working.String }}</>{{ end }})",
+          "template": "<#e5c07b>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#c678dd>{{ .HEAD }}</>{{ else }}<#98c379>{{ .HEAD }}</>{{ end }}{{ if (gt .Ahead 0)}}<#56b6c2>{{ .BranchStatus }}\u2191</>{{ end }}{{ if (gt .Behind 0)}}<#56b6c2>{{ .BranchStatus }}\u2193</>{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#e06c75>{{ .Working.String }}</>{{ end }})",
           "type": "git"
         }
       ],
@@ -36,7 +48,7 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#e1a638",
+          "foreground": "#e5c07b",
           "properties": {
             "always_enabled": true
           },
