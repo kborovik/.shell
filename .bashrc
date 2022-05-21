@@ -60,6 +60,8 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
+complete -C /usr/bin/terraform terraform
+
 eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
