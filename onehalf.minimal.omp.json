@@ -1,17 +1,31 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "black": "#282c34",
+    "red": "#e06c75",
+    "green": "#98c379",
+    "yellow": "#e5c07b",
+    "blue": "#61afef",
+    "magenta": "#c678dd",
+    "cyan": "#56b6c2",
+    "white": "#dcdfe4",
+    "foreground": "#dcdfe4",
+    "background": "#282c34"
+  },
+  "terminal_background": "p:background",
+  "console_title_template": "{{ .UserName }}@{{ .HostName }}",
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#e5c07b",
+          "foreground": "p:yellow",
           "style": "plain",
           "template": "{{ .UserName }}@{{ .HostName }} ",
           "type": "session"
         },
         {
-          "foreground": "#61afef",
+          "foreground": "p:blue",
           "style": "plain",
           "properties": {
             "style": "full"
@@ -27,7 +41,7 @@
             "fetch_worktree_count": true
           },
           "style": "plain",
-          "template": "<#e5c07b>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<#c678dd>{{ .HEAD }}</>{{ else }}<#98c379>{{ .HEAD }}</>{{ end }}{{ if (gt .Ahead 0)}}<#56b6c2>{{ .BranchStatus }}\u2191</>{{ end }}{{ if (gt .Behind 0)}}<#56b6c2>{{ .BranchStatus }}\u2193</>{{ end }}{{ if .Staging.Changed }} <#98c379>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#e06c75>{{ .Working.String }}</>{{ end }})",
+          "template": "<p:yellow>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if (gt .Ahead 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if (gt .Behind 0)}}<p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
           "type": "git"
         }
       ],
@@ -38,12 +52,12 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#e5c07b",
+          "foreground": "p:foreground",
           "properties": {
             "always_enabled": true
           },
           "style": "plain",
-          "template": "> ",
+          "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
           "type": "exit"
         }
       ],
