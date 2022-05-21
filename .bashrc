@@ -62,6 +62,7 @@ fi
 
 complete -C /usr/bin/terraform terraform
 
+eval "$(yq shell-completion bash)"
 eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
