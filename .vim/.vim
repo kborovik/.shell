@@ -1,1 +1,0 @@
-/home/kb/.shell/.vim
