@@ -7,7 +7,7 @@
 Clone the repository
 
 ```
-https://github.com/kborovik/.shell.git
+git clone https://github.com/kborovik/.shell.git
 ```
 
 Run installation script
