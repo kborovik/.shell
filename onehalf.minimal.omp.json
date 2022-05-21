@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "terminal_background": "#282c34",
   "blocks": [
     {
       "alignment": "left",
