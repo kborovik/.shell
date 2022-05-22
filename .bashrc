@@ -19,7 +19,6 @@ fi
 set -o noclobber
 
 shopt -s autocd
-shopt -s cdable_vars
 shopt -s cdspell
 shopt -s checkwinsize
 shopt -s cmdhist
