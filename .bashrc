@@ -38,14 +38,14 @@ bind '"\e[D": backward-char'
 bind 'set colored-completion-prefix off'
 bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
+bind 'set completion-ignore-case on'
+bind 'set completion-map-case on'
 bind 'set history-size 5000'
 bind 'set show-all-if-ambiguous on'
-bind 'set completion-map-case on'
-bind 'set completion-ignore-case on'
 
-alias ls='ls --color=auto'
-alias ll='ls -ahlF'
 alias la='ls -A'
+alias ll='ls -hlF'
+alias ls='ls --color=auto'
 
 alias ga='git add'
 alias gaa='git add --all'
@@ -62,8 +62,8 @@ fi
 
 complete -C /usr/bin/terraform terraform
 
-eval "$(yq shell-completion bash)"
-eval "$(gh completion -s bash)"
 eval "$(dircolors)"
+eval "$(gh completion -s bash)"
 eval "$(lesspipe)"
 eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+eval "$(yq shell-completion bash)"
