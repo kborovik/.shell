@@ -36,7 +36,7 @@ bind '"\e[B": history-search-forward'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 bind 'set colored-completion-prefix on'
-bind 'set colored-stats off'
+bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
 bind 'set history-size 5000'
 bind 'set show-all-if-ambiguous on'
@@ -60,6 +60,9 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
+complete -C /usr/bin/terraform terraform
+
+eval "$(yq shell-completion bash)"
 eval "$(gh completion -s bash)"
 eval "$(dircolors)"
 eval "$(lesspipe)"
