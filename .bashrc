@@ -42,10 +42,6 @@ bind 'set completion-map-case on'
 bind 'set history-size 5000'
 bind 'set show-all-if-ambiguous on'
 
-alias la='ls -A'
-alias ll='ls -hlF'
-alias ls='ls --color=auto'
-
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
@@ -54,6 +50,9 @@ alias gl='git pull'
 alias glo='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
+alias la='ls -hld .*'
+alias ll='ls -hlF'
+alias ls='ls --color=auto'
 
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
