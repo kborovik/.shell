@@ -4,16 +4,23 @@
 
 # How to Install
 
-Clone the repository
+Clone the repository into `$HOME` folder
 
 ```
+cd $HOME
 git clone https://github.com/kborovik/.shell.git
 ```
 
 Run installation script
 
 ```
-bash ~/.shell/install-shell.sh
+.shell/install-shell.sh
+```
+
+Restart Bash
+
+```
+exec bash
 ```
 
 # Prompt Theme Engine
