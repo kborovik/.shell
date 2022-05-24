@@ -62,6 +62,7 @@ complete -C /usr/bin/terraform terraform
 
 eval "$(dircolors)"
 eval "$(gh completion -s bash)"
+eval "$(kubectl completion bash)"
 eval "$(lesspipe)"
 eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 eval "$(yq shell-completion bash)"
