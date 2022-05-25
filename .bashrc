@@ -60,9 +60,9 @@ fi
 
 complete -C /usr/bin/terraform terraform
 
-eval "$(dircolors)"
-eval "$(gh completion -s bash)"
-eval "$(kubectl completion bash)"
-eval "$(lesspipe)"
-eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
-eval "$(yq shell-completion bash)"
+[ "$(command -v dircolors)" ] && eval "$(dircolors)"
+[ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
+[ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
+[ "$(command -v lesspipe)" ] && eval "$(lesspipe)"
+[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+[ "$(command -v yq)" ] && eval "$(yq shell-completion bash)"
