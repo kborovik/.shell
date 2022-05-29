@@ -1,8 +1,8 @@
-# Good Shell (Oh-My-Posh + OneHalf)
+# Shell Prompt for DevOps
 
-`Good Shell` is the collection of tools for setting up a development shell on Ubuntu Linux.
+Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment.
 
-# How to Install
+# How to Use
 
 Clone the repository into `$HOME` folder
 
