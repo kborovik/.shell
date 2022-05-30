@@ -2,6 +2,21 @@
 
 Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment.
 
+## Changed Git branch
+
+Left to right description:
+
+- 1 local commit to be pushed
+- 1 staged change
+- 1 new file
+- 17 updated files
+
+![Git branch with change](https://lab5.ca/assets/shell-git-change.png)
+
+## Clean Git branch
+
+![Clean git branch](https://lab5.ca/assets/shell-git-clean.png)
+
 # How to Use
 
 Clone the repository into `$HOME` folder
