@@ -4,8 +4,6 @@
 
 [ -z "$PS1" ] && return
 
-tac "${HISTFILE}" | awk '!x[$0]++' | tac >"${HISTFILE}~" && mv "${HISTFILE}~" "${HISTFILE}"
-
 HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=10000
 HISTFILESIZE=10000
