@@ -1,6 +1,8 @@
 [ -z "$PS1" ] && return
 
 HISTCONTROL="erasedups:ignoreboth"
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin"
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -39,7 +41,6 @@ bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
 bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
-bind 'set history-size 5000'
 bind 'set show-all-if-ambiguous on'
 
 alias ga='git add'
