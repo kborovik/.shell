@@ -1,11 +1,15 @@
+#!/bin/bash
+
+# shellcheck disable=SC2155
+
 [ -z "$PS1" ] && return
 
-tac "$HISTFILE" | awk '!x[$0]++' | tac >"${HISTFILE}~" && mv "${HISTFILE}~" "$HISTFILE"
+tac "${HISTFILE}" | awk '!x[$0]++' | tac >"${HISTFILE}~" && mv "${HISTFILE}~" "${HISTFILE}"
 
-export HISTCONTROL="erasedups:ignoreboth"
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
+HISTCONTROL="erasedups:ignoreboth"
+HISTSIZE=10000
+HISTFILESIZE=10000
+PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin"
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
