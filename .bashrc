@@ -29,16 +29,13 @@ shopt -s histappend
 shopt -s histreedit
 shopt -s histverify
 shopt -s hostcomplete
-shopt -s lithist
 shopt -s nocaseglob
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
-bind 'set colored-completion-prefix off'
 bind 'set colored-stats on'
-bind 'set completion-ignore-case on'
 bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
