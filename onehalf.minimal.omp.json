@@ -22,7 +22,7 @@
         {
           "foreground": "p:yellow",
           "style": "plain",
-          "template": "{{ .UserName }}@{{ .HostName }} ",
+          "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}:(\u03C1) {{ else }}{{ .UserName }}@{{ .HostName }}:(\u03BB) {{ end }}",
           "type": "session"
         },
         {
