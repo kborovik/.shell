@@ -4,12 +4,7 @@
 
 [ -z "$PS1" ] && return
 
-HISTCONTROL="erasedups:ignoreboth"
-HISTSIZE=10000
-HISTFILESIZE=10000
-PROMPT_COMMAND="history -n; history -w; history -c; history -r"
-
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/go/bin:/usr/local/go/bin"
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 export EDITOR="vim"
@@ -67,5 +62,11 @@ complete -C /usr/bin/terraform terraform
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
 [ "$(command -v lesspipe)" ] && eval "$(lesspipe)"
-[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 [ "$(command -v yq)" ] && eval "$(yq shell-completion bash)"
+
+PROMPT_COMMAND="history -n; history -w; history -c; history -r"
+
+[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+
+HISTCONTROL="erasedups:ignoreboth"
+HISTSIZE=2000
