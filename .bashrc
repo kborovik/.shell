@@ -5,8 +5,7 @@
 [ -z "$PS1" ] && return
 
 HISTCONTROL="erasedups:ignoreboth"
-HISTSIZE=10000
-HISTFILESIZE=10000
+HISTSIZE=2000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin"
