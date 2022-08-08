@@ -48,7 +48,8 @@ alias gaa='git add --all'
 alias gc='git commit'
 alias gd='git diff'
 alias gl='git pull'
-alias glo='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
+alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
+alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
 alias la='ls -hld .*'
@@ -66,5 +67,8 @@ complete -C /usr/bin/terraform terraform
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
 [ "$(command -v lesspipe)" ] && eval "$(lesspipe)"
-[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+[ "$(command -v npm)" ] && eval "$(npm completion)"
+[ "$(command -v pip)" ] && eval "$(pip completion --bash)"
 [ "$(command -v yq)" ] && eval "$(yq shell-completion bash)"
+
+[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
