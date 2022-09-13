@@ -3,15 +3,15 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
     "black": "#282c34",
-    "red": "#e06c75",
-    "green": "#98c379",
-    "yellow": "#e5c07b",
     "blue": "#61afef",
-    "magenta": "#c678dd",
     "cyan": "#56b6c2",
+    "green": "#98c379",
+    "magenta": "#c678dd",
+    "red": "#e06c75",
     "white": "#dcdfe4",
-    "foreground": "#dcdfe4",
-    "background": "#282c34"
+    "yellow": "#e5c07b",
+    "background": "#282c34",
+    "foreground": "#dcdfe4"
   },
   "terminal_background": "p:background",
   "console_title_template": "{{ .UserName }}@{{ .HostName }}",
@@ -51,13 +51,23 @@
     },
     {
       "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "gcp",
+          "style": "plain",
+          "template": "<p:magenta>{{ .Project }}</>"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
           "type": "exit",
           "style": "plain",
-          "foreground": "p:foreground",
           "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
           "properties": {
             "always_enabled": true
