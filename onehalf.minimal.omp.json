@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
     "black": "#282c34",
@@ -16,54 +17,53 @@
   "console_title_template": "{{ .UserName }}@{{ .HostName }}",
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "foreground": "p:yellow",
+          "type": "session",
           "style": "plain",
-          "template": "{{ .UserName }}@{{ .HostName }}:{{ if .SSHSession }}(\u03C1) {{ else }}(\u03BB) {{ end }}",
-          "type": "session"
+          "foreground": "p:yellow",
+          "template": "{{ .UserName }}@{{ .HostName }}:{{ if .SSHSession }}(\u03C1) {{ else }}(\u03BB) {{ end }}"
         },
         {
-          "foreground": "p:blue",
+          "type": "path",
           "style": "plain",
+          "foreground": "p:blue",
+          "template": "{{ .Path }} ",
           "properties": {
             "style": "full"
-          },
-          "template": "{{ .Path }} ",
-          "type": "path"
+          }
         },
         {
+          "type": "git",
+          "style": "plain",
+          "template": "<p:yellow>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
           "properties": {
             "branch_icon": "",
             "fetch_status": true,
             "fetch_stash_count": true,
             "fetch_worktree_count": true
-          },
-          "style": "plain",
-          "template": "<p:yellow>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
-          "type": "git"
+          }
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
+          "type": "exit",
+          "style": "plain",
           "foreground": "p:foreground",
+          "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
           "properties": {
             "always_enabled": true
-          },
-          "style": "plain",
-          "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
-          "type": "exit"
+          }
         }
-      ],
-      "type": "prompt"
+      ]
     }
-  ],
-  "version": 2
+  ]
 }
