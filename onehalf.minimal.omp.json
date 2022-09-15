@@ -56,7 +56,7 @@
         {
           "type": "gcp",
           "style": "plain",
-          "template": "<p:magenta>{{ .Project }}</>"
+          "template": "<p:green>{{ .Project }}</>"
         }
       ]
     },
