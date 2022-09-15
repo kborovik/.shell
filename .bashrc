@@ -70,5 +70,6 @@ complete -C /usr/bin/terraform terraform
 [ "$(command -v npm)" ] && eval "$(npm completion)"
 [ "$(command -v pip)" ] && eval "$(pip completion --bash)"
 [ "$(command -v yq)" ] && eval "$(yq shell-completion bash)"
+[ "$(command -v pipx)" ] && eval "$(register-python-argcomplete pipx)"
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
