@@ -8,7 +8,7 @@ HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=2000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:/usr/local/go/bin"
+export PATH="$HOME/go/bin:$PATH"
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 export EDITOR="vim"
