@@ -10,21 +10,21 @@ The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
 
 ### Clean Git branch
 
-![Clean Git branch](https://lab5.ca/assets/onehalf.minimal1.png)
+![Clean Git branch](https://lab5.ca/onehalf.minimal1.png)
 
-![Checkout git branch](https://lab5.ca/assets/onehalf.minimal2.png)
+![Checkout git branch](https://lab5.ca/onehalf.minimal2.png)
 
 ### 6 files changed, 20 files deleted
 
-![Checkout git branch](https://lab5.ca/assets/onehalf.minimal3.png)
+![Checkout git branch](https://lab5.ca/onehalf.minimal3.png)
 
 ### Change staged
 
-![Checkout git branch](https://lab5.ca/assets/onehalf.minimal4.png)
+![Checkout git branch](https://lab5.ca/onehalf.minimal4.png)
 
 ### 1 local commit to push upstream
 
-![Checkout git branch](https://lab5.ca/assets/onehalf.minimal5.png)
+![Checkout git branch](https://lab5.ca/onehalf.minimal5.png)
 
 # How to Use
 
