@@ -1,6 +1,10 @@
 # Shell Prompt for DevOps
 
-Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment.
+Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment (Linux, macOS)
+
+# Prompt Theme Engine
+
+The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
 
 ## Screenshots
 
@@ -42,10 +46,6 @@ Restart Bash
 ```
 exec bash
 ```
-
-# Prompt Theme Engine
-
-The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
 
 # Terminal Color Schema
 
