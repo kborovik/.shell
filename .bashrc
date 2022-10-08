@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # shellcheck disable=SC2155
 
 [ -z "$PS1" ] && return
@@ -8,7 +6,15 @@ HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=2000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
-export PATH="$HOME/go/bin:$PATH"
+case $(uname) in
+Linux)
+  export PATH="${HOME}/go/bin:${PATH}"
+  ;;
+Darwin)
+  export PATH="/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/sbin:${HOME}/go/bin:${PATH}"
+  ;;
+esac
+
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 export EDITOR="vim"
@@ -56,8 +62,12 @@ alias la='ls -hld .*'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
-if [ -f /usr/share/bash-completion/bash_completion ]; then
+if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
+fi
+
+if [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+  source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 fi
 
 complete -C /usr/bin/terraform terraform
