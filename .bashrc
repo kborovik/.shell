@@ -66,8 +66,8 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 fi
 
-if [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
-  source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+if [ -r /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
+  source /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
 complete -C /usr/bin/terraform terraform
