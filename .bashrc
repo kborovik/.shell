@@ -73,7 +73,7 @@ for path in "${completion_path[@]}"; do
   [ -r "${path}" ] && source "${path}"
 done
 
-complete -C /usr/bin/terraform terraform
+complete -C terraform terraform
 
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
