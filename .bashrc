@@ -70,6 +70,10 @@ if [ -r /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
   source /opt/homebrew/etc/profile.d/bash_completion.sh
 fi
 
+if [ -r /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc ]; then
+  source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+fi
+
 complete -C /usr/bin/terraform terraform
 
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
