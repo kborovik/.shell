@@ -1,9 +1,11 @@
+# shellcheck disable=SC2148
 # shellcheck disable=SC2155
+# shellcheck source=/dev/null
 
 [ -z "$PS1" ] && return
 
 HISTCONTROL="erasedups:ignoreboth"
-HISTSIZE=2000
+HISTSIZE=10000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 case $(uname) in
@@ -62,19 +64,16 @@ alias la='ls -hld .*'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
-if [ -r /usr/share/bash-completion/bash_completion ]; then
-  source /usr/share/bash-completion/bash_completion
-fi
+typeset -a completion_path=(
+  /usr/share/bash-completion/bash_completion
+  /opt/homebrew/etc/profile.d/bash_completion.sh
+  /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+)
+for path in "${completion_path[@]}"; do
+  [ -r "${path}" ] && source "${path}"
+done
 
-if [ -r /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
-  source /opt/homebrew/etc/profile.d/bash_completion.sh
-fi
-
-if [ -r /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc ]; then
-  source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-fi
-
-complete -C /usr/bin/terraform terraform
+complete -C terraform terraform
 
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
