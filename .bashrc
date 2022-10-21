@@ -13,7 +13,7 @@ Linux)
   export PATH="${HOME}/go/bin:${PATH}"
   ;;
 Darwin)
-  export PATH="/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/sbin:${HOME}/go/bin:${PATH}"
+  export PATH="/opt/homebrew/opt/make/libexec/gnubin:/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/sbin:${HOME}/go/bin:${PATH}"
   ;;
 esac
 
