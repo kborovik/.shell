@@ -21,5 +21,4 @@ map <F5> :set spell! spell? <CR>
 
 " Set color scheme
 syntax on
-set termguicolors
 colorscheme onehalfdark
