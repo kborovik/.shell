@@ -43,10 +43,15 @@ shopt -s histverify
 shopt -s hostcomplete
 shopt -s nocaseglob
 
+bind '"\e[1;3C": end-of-line'
+bind '"\e[1;3D": beginning-of-line'
+bind '"\e[1;5C": forward-word'
+bind '"\e[1;5D": backward-word'
+bind '"\e[3;3~": kill-word'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
+
+bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
