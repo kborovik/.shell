@@ -48,7 +48,7 @@ bind '"\e[1;3D": beginning-of-line'
 bind '"\e[1;5C": forward-word'
 bind '"\e[1;5D": backward-word'
 bind '"\e[3;3~": kill-word'
-bind '"\e\C-?": unix-word-rubout'
+bind '"\e\C-?": unix-filename-rubout'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
