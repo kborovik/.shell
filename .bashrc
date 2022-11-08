@@ -66,7 +66,7 @@ alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset 
 alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
-alias la='ls -hld .*'
+alias la='ls -hd .*'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
@@ -82,14 +82,9 @@ done
 
 complete -C terraform terraform
 
-[ "$(command -v azcopy)" ] && eval "$(azcopy completion bash)"
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
-[ "$(command -v npm)" ] && eval "$(npm completion)"
-[ "$(command -v pip)" ] && eval "$(pip completion --bash)"
-[ "$(command -v pip3)" ] && eval "$(pip3 completion --bash)"
-[ "$(command -v yq)" ] && eval "$(yq shell-completion bash)"
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
