@@ -48,9 +48,11 @@ bind '"\e[1;3D": beginning-of-line'
 bind '"\e[1;5C": forward-word'
 bind '"\e[1;5D": backward-word'
 bind '"\e[3;3~": kill-word'
-bind '"\e\C-?": unix-filename-rubout'
+bind '"\e[3;5~": kill-word'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+bind '"\e\C-?": unix-filename-rubout'
+bind '"\C-h": backward-kill-word'
 
 bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
@@ -66,9 +68,9 @@ alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset 
 alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
-alias la='ls -hd .*'
-alias ll='ls -hlF'
-alias ls='ls --color=auto'
+alias la='ls -vhd .*'
+alias ll='ls -vhlF'
+alias ls='ls -v --color=auto'
 
 typeset -a completion_path=(
   /usr/share/bash-completion/bash_completion
