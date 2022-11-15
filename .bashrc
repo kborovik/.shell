@@ -13,7 +13,15 @@ Linux)
   export PATH="${HOME}/go/bin:${PATH}"
   ;;
 Darwin)
-  export PATH="/opt/homebrew/opt/make/libexec/gnubin:/opt/homebrew/opt/openssl@3/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/${HOME}/Library/Python/3.10/bin:${HOME}/go/bin:${PATH}"
+  typeset -a brew_paths=(
+    /opt/homebrew/opt/make/libexec/gnubin
+    /opt/homebrew/opt/openssl@3/bin
+    /opt/homebrew/opt/coreutils/libexec/gnubin
+    /opt/homebrew/opt/curl/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+  )
+  export PATH="$(IFS=$':'; echo "${brew_paths[*]}"):$PATH"
   ;;
 esac
 
