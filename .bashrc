@@ -21,7 +21,10 @@ Darwin)
     /opt/homebrew/bin
     /opt/homebrew/sbin
   )
-  export PATH="$(IFS=$':'; echo "${brew_paths[*]}"):$PATH"
+  export PATH="$(
+    IFS=$':'
+    echo "${brew_paths[*]}"
+  ):$PATH"
   ;;
 esac
 
@@ -80,14 +83,14 @@ alias la='ls -vhd .*'
 alias ll='ls -vhlF'
 alias ls='ls -v --color=auto'
 
-typeset -a completion_path=(
+typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
   /opt/homebrew/etc/profile.d/bash_completion.sh
   /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
   ~/.bash_completion.d/python-argcomplete
 )
-for path in "${completion_path[@]}"; do
-  [ -r "${path}" ] && source "${path}"
+for file in "${completion_files[@]}"; do
+  [ -r "${file}" ] && source "${file}"
 done
 
 complete -C terraform terraform
