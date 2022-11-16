@@ -10,20 +10,19 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 case $(uname) in
 Linux)
-  export PATH="${HOME}/go/bin:${PATH}"
+  export PATH="$HOME/go/bin:$PATH"
   ;;
 Darwin)
-  typeset -a brew_paths=(
+  typeset -a macos_path=(
     /opt/homebrew/opt/make/libexec/gnubin
     /opt/homebrew/opt/openssl@3/bin
     /opt/homebrew/opt/coreutils/libexec/gnubin
-    /opt/homebrew/opt/curl/bin
     /opt/homebrew/bin
     /opt/homebrew/sbin
   )
   export PATH="$(
     IFS=$':'
-    echo "${brew_paths[*]}"
+    echo "${macos_path[*]}"
   ):$PATH"
   ;;
 esac
@@ -90,7 +89,7 @@ typeset -a completion_files=(
   ~/.bash_completion.d/python-argcomplete
 )
 for file in "${completion_files[@]}"; do
-  [ -r "${file}" ] && source "${file}"
+  [ -r "$file" ] && source "$file"
 done
 
 complete -C terraform terraform
