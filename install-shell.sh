@@ -23,3 +23,5 @@ ln -b -s "$HOME/.shell/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
 ln -b -s "$HOME/.shell/.gnupg/scdaemon.conf" "$HOME/.gnupg/scdaemon.conf"
 ln -b -s "$HOME/.shell/.vim/colors/onehalfdark.vim" "$HOME/.vim/colors/onehalfdark.vim"
 ln -b -s "$HOME/.shell/.vimrc" "$HOME/.vimrc"
+ln -b -s "$HOME/.shell/config/helix/config.toml" "$HOME/.config/helix/config.toml"
+
