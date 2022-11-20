@@ -9,7 +9,9 @@ HISTSIZE=10000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export_dirs=(
+  ~/.local/bin
   ~/go/bin
+  ~/bin
   /opt/homebrew/opt/make/libexec/gnubin
   /opt/homebrew/opt/openssl@3/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
