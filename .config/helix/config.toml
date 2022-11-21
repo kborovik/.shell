@@ -1,0 +1,30 @@
+theme = "sonokai"
+
+[editor.statusline]
+left = ["mode", "spinner" ,"file-name"]
+right = ["diagnostics", "selections", "position", "file-type"]
+separator = "│"
+
+[editor.file-picker]
+hidden = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
+[editor.indent-guides]
+render = true
+

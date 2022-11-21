@@ -8,27 +8,24 @@ HISTCONTROL="erasedups:ignoreboth"
 HISTSIZE=10000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
-case $(uname) in
-Linux)
-  export PATH="$HOME/go/bin:$PATH"
-  ;;
-Darwin)
-  typeset -a macos_path=(
-    /opt/homebrew/opt/make/libexec/gnubin
-    /opt/homebrew/opt/openssl@3/bin
-    /opt/homebrew/opt/coreutils/libexec/gnubin
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-  )
-  export PATH="$(
-    IFS=$':'
-    echo "${macos_path[*]}"
-  ):$PATH"
-  ;;
-esac
+export_dirs=(
+  ~/.local/bin
+  ~/.cargo/bin
+  ~/go/bin
+  ~/bin
+  /opt/homebrew/opt/make/libexec/gnubin
+  /opt/homebrew/opt/openssl@3/bin
+  /opt/homebrew/opt/coreutils/libexec/gnubin
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
+)
+for dir in "${export_dirs[@]}"; do
+  [ -d "$dir" ] && export PATH="$dir:$PATH"
+done
 
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
+export COLORTERM="truecolor"
 export EDITOR="vim"
 export LESS="-R -F -i"
 export MORE="-s"
@@ -39,6 +36,8 @@ if [ "$(command -v gpg)" ]; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
   gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
+
+[ "$(command -v stty)" ] && stty -ixon
 
 set -o noclobber
 
