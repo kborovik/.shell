@@ -77,9 +77,9 @@ alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset 
 alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
-alias la='ls -vhd .*'
-alias ll='ls -vhlF'
-alias ls='ls -v --color=auto'
+alias la='ls -hd .*'
+alias ll='ls -hlF'
+alias ls='ls --color=auto'
 
 typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
