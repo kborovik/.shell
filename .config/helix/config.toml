@@ -1,5 +1,10 @@
 theme = "sonokai"
 
+[editor.statusline]
+left = ["mode", "spinner" ,"file-name"]
+right = ["diagnostics", "selections", "position", "file-type"]
+separator = "│"
+
 [editor.file-picker]
 hidden = false
 
