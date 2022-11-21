@@ -10,6 +10,7 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export_dirs=(
   ~/.local/bin
+  ~/.cargo/bin
   ~/go/bin
   ~/bin
   /opt/homebrew/opt/make/libexec/gnubin
