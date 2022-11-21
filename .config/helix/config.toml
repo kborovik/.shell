@@ -1,12 +1,25 @@
-theme = "onedark"
+theme = "sonokai"
 
 [editor.file-picker]
 hidden = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
 
 [editor.whitespace.render]
 space = "all"
 tab = "all"
 newline = "none"
 
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
+
 [editor.indent-guides]
 render = true
+
