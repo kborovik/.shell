@@ -12,12 +12,12 @@ mkdir -p "${dirs[@]}"
 
 case $(uname) in
 Linux)
-  posh_binary="posh-linux-amd64"
   cosign_binary="cosign-linux-amd64"
+  posh_binary="posh-linux-amd64"
   ;;
 Darwin)
-  posh_binary="posh-darwin-$(uname -m)"
   cosign_binary="cosign-darwin-$(uname -m)"
+  posh_binary="posh-darwin-$(uname -m)"
   ;;
 esac
 
