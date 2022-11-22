@@ -1,5 +1,8 @@
 theme = "sonokai"
 
+[editor]
+true-color = true
+
 [editor.statusline]
 left = ["mode", "spinner" ,"file-name"]
 right = ["diagnostics", "selections", "position", "file-type"]
