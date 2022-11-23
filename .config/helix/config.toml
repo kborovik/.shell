@@ -2,6 +2,7 @@ theme = "sonokai"
 
 [editor]
 true-color = true
+mouse = false
 
 [editor.statusline]
 left = ["mode", "spinner" ,"file-name"]
