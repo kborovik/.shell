@@ -38,6 +38,10 @@ set wildmenu
 set wildmode=full
 source $VIMRUNTIME/menu.vim
 
+" Set status line
+set laststatus=2
+set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
+
 " Set cursor
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
