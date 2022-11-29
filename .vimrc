@@ -20,7 +20,7 @@ syntax on
 colorscheme onehalfdark
 
 " Show hidden characters
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
 map <F3> :set list! list? <CR>
 
 " Search settings
@@ -37,6 +37,10 @@ map <F5> :set spell! spell? <CR>
 set wildmenu
 set wildmode=full
 source $VIMRUNTIME/menu.vim
+
+" Set status line
+set laststatus=2
+set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
 
 " Set cursor
 let &t_SI = "\e[6 q"
