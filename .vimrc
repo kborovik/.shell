@@ -46,3 +46,9 @@ set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+" Set scroll
+set scrolloff=5
+set sidescrolloff=5
+
+" Set swap dir
+set directory=~/.vim/swaps
