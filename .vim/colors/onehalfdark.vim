@@ -120,7 +120,7 @@ call s:h("Number", s:yellow, "", "")
 call s:h("Boolean", s:yellow, "", "")
 call s:h("Float", s:yellow, "", "")
 
-call s:h("Identifier", s:red, "", "")
+call s:h("Identifier", s:green, "", "")
 call s:h("Function", s:blue, "", "")
 call s:h("Statement", s:purple, "", "")
 
