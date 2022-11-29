@@ -101,7 +101,7 @@ call s:h("FoldColumn", s:fg, "", "")
 call s:h("SignColumn", s:fg, "", "")
 
 call s:h("MatchParen", s:blue, "", "underline")
-call s:h("SpecialKey", s:fg, "", "")
+call s:h("SpecialKey", s:comment_fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
 " }

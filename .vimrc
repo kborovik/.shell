@@ -20,7 +20,7 @@ syntax on
 colorscheme onehalfdark
 
 " Show hidden characters
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:.
+set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
 map <F3> :set list! list? <CR>
 
 " Search settings
