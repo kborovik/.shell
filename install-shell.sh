@@ -6,6 +6,7 @@ dirs=(
   ~/.local/bin/
   ~/.gnupg/
   ~/.vim/colors/
+  ~/.vim/swaps/
   ~/.config/helix/
 )
 mkdir -p "${dirs[@]}"
@@ -26,14 +27,14 @@ wget -q "https://github.com/sigstore/cosign/releases/latest/download/$cosign_bin
 wget -q "https://github.com/sigstore/cosign/releases/latest/download/$cosign_binary" -O "$HOME/.local/bin/cosign" && chmod +x "$HOME/.local/bin/cosign" || exit 1
 
 echo "==> Verify cosign signature"
-cosign verify-blob --key "cosign/cosign.pub" --signature "$HOME/.local/bin/$cosign_binary.sig" "$HOME/.local/bin/cosign" && rm "$HOME/.local/bin/$cosign_binary.sig" || exit 1
+cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/.local/bin/$cosign_binary.sig" "$HOME/.local/bin/cosign" && rm "$HOME/.local/bin/$cosign_binary.sig" || exit 1
 
 echo "==> Download oh-my-posh"
 wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/$posh_binary.sig" -O "$HOME/.local/bin/$posh_binary.sig" || exit 1
 wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/$posh_binary" -O "$HOME/.local/bin/$posh_binary" && chmod +x "$HOME/.local/bin/$posh_binary" || exit 1
 
 echo "==> Verify oh-my-posh signature"
-if cosign verify-blob --key "cosign/oh-my-posh.pub" --signature "$HOME/.local/bin/$posh_binary.sig" "$HOME/.local/bin/$posh_binary"; then
+if cosign verify-blob --key "$HOME/.shell/cosign/oh-my-posh.pub" --signature "$HOME/.local/bin/$posh_binary.sig" "$HOME/.local/bin/$posh_binary"; then
   mv "$HOME/.local/bin/$posh_binary" "$HOME/.local/bin/oh-my-posh"
   rm "$HOME/.local/bin/$posh_binary.sig"
 else
