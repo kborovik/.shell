@@ -2,6 +2,27 @@
 
 Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment (Linux, macOS)
 
+# How to Use
+
+Clone the repository into `$HOME` folder
+
+```
+cd $HOME
+git clone https://github.com/kborovik/.shell.git
+```
+
+Run installation script
+
+```
+.shell/install-shell.sh
+```
+
+Restart Bash
+
+```
+exec bash
+```
+
 # Prompt Theme Engine
 
 The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
@@ -25,27 +46,6 @@ The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
 ### 1 local commit to push upstream
 
 ![Checkout git branch](https://lab5.ca/onehalf.minimal5.png)
-
-# How to Use
-
-Clone the repository into `$HOME` folder
-
-```
-cd $HOME
-git clone https://github.com/kborovik/.shell.git
-```
-
-Run installation script
-
-```
-.shell/install-shell.sh
-```
-
-Restart Bash
-
-```
-exec bash
-```
 
 # Terminal Color Schema
 
