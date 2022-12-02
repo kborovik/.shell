@@ -27,7 +27,7 @@ map <F3> :set list! list? <CR>
 set ignorecase
 set smartcase
 set incsearch
-noremap <F4> :set hlsearch! hlsearch? <CR>
+map <F4> :set hlsearch! hlsearch? <CR>
 
 " Spell settings
 set spelllang=en_us
@@ -47,8 +47,13 @@ let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
 " Set scroll
-set scrolloff=5
-set sidescrolloff=5
+set nowrap
+set scrolloff=7
+set sidescrolloff=10
+set whichwrap=b,s,<,>
 
 " Set swap dir
 set directory=~/.vim/swaps
+
+" Enable backspace
+set backspace=indent,eol,start
