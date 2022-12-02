@@ -55,6 +55,6 @@ files=(
 )
 
 for file in "${files[@]}"; do
-  ln -s "$HOME/.shell/$file" "$HOME/$file"
+  ln -s -r -f "$HOME/.shell/$file" "$HOME/$file"
 done
 
