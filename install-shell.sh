@@ -5,9 +5,7 @@ set -e
 dirs=(
   ~/.local/bin/
   ~/.gnupg/
-  ~/.vim/colors/
-  ~/.vim/swaps/
-  ~/.config/helix/
+  ~/tmp
 )
 mkdir -p "${dirs[@]}"
 
@@ -44,17 +42,16 @@ fi
 echo "==> Link config files"
 files=(
   .bashrc
-  .config/helix/config.toml
   .digrc
   .gnupg/gpg-agent.conf
   .gnupg/gpg.conf
   .gnupg/scdaemon.conf
   .profile
-  .vim/colors/onehalfdark.vim
   .vimrc
 )
-
 for file in "${files[@]}"; do
   ln -s -r -f "$HOME/.shell/$file" "$HOME/$file"
 done
+
+ln -s -r -f "$HOME/.shell/.vim" "$HOME"
 

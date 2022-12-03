@@ -53,7 +53,7 @@ set sidescrolloff=10
 set whichwrap=b,s,<,>
 
 " Set swap dir
-set directory=~/.vim/swaps
+set directory=~/tmp
 
 " Enable backspace
 set backspace=indent,eol,start
