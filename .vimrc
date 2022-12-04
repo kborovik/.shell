@@ -18,6 +18,9 @@ set termguicolors
 set background=dark
 syntax on
 colorscheme onehalfdark
+if &diff
+  syntax off
+endif
 
 " Show hidden characters
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
@@ -57,3 +60,6 @@ set directory=~/tmp
 
 " Enable backspace
 set backspace=indent,eol,start
+
+" Disable netrwhist
+let g:netrw_dirhistmax = 0
