@@ -3,8 +3,8 @@
 set -e
 
 dirs=(
-  ~/.local/bin/
-  ~/.gnupg/
+  ~/.gnupg
+  ~/.local/bin
   ~/tmp
 )
 mkdir -p "${dirs[@]}"
