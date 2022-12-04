@@ -18,6 +18,9 @@ set termguicolors
 set background=dark
 syntax on
 colorscheme onehalfdark
+if &diff
+  syntax off
+endif
 
 " Show hidden characters
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
