@@ -58,5 +58,5 @@ set directory=~/tmp
 " Enable backspace
 set backspace=indent,eol,start
 
-" Disable netrw_dir 
+" Disable netrwhist
 :let g:netrw_dirhistmax = 0
