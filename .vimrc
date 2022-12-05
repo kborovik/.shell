@@ -1,6 +1,7 @@
 " General Settings
 set nocompatible
 set number
+set updatetime=100
 
 " Convert TAB to spaces (2)
 set autoindent
@@ -22,19 +23,25 @@ if &diff
   syntax off
 endif
 
+" Git difftool
+nmap <F2> :! git difftool % <CR>
+
 " Show hidden characters
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
-map <F3> :set list! list? <CR>
+nmap <F3> :set list! list? <CR>
 
 " Search settings
 set ignorecase
 set smartcase
 set incsearch
-map <F4> :set hlsearch! hlsearch? <CR>
+nmap <F4> :set hlsearch! hlsearch? <CR>
 
 " Spell settings
 set spelllang=en_us
-map <F5> :set spell! spell? <CR>
+nmap <F5> :set spell! spell? <CR>
+
+" Quit all windows
+nmap <F9> :silent! quitall! <CR>
 
 " Enable command menu's
 set wildmenu
@@ -42,6 +49,7 @@ set wildmode=full
 source $VIMRUNTIME/menu.vim
 
 " Set status line
+set signcolumn=yes
 set laststatus=2
 set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
 
