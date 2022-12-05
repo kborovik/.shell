@@ -1,7 +1,9 @@
 " General Settings
 set nocompatible
-set number
 set updatetime=100
+
+" Set custom leader key
+map <Space> <Leader>
 
 " Convert TAB to spaces (2)
 set autoindent
@@ -48,7 +50,8 @@ set wildmenu
 set wildmode=full
 source $VIMRUNTIME/menu.vim
 
-" Set status line
+" Configure info settings
+set number
 set signcolumn=yes
 set laststatus=2
 set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
