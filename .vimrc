@@ -51,10 +51,10 @@ set wildmode=full
 source $VIMRUNTIME/menu.vim
 
 " Configure info settings
-set number
+set number relativenumber
 set signcolumn=yes
 set laststatus=2
-set statusline=%<%f%m%r%=%y\ \[%l/%c]\ \[%p%%]
+set statusline=%<%f%m%r\ \[%l/%c]\ \%y%=[%p%%]
 
 " Set cursor
 let &t_SI = "\e[6 q"
@@ -62,7 +62,7 @@ let &t_EI = "\e[2 q"
 
 " Set scroll
 set nowrap
-set scrolloff=7
+set scrolloff=10
 set sidescrolloff=10
 set whichwrap=b,s,<,>
 
