@@ -54,4 +54,3 @@ for file in "${files[@]}"; do
 done
 
 ln -s -r -f "$HOME/.shell/.vim" "$HOME"
-
