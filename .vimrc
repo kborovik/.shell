@@ -7,7 +7,7 @@ map <Space> <Leader>
 
 " Convert TAB to spaces (2)
 set autoindent
-set expandtab
+set noexpandtab
 set shiftwidth=2
 set tabstop=2
 
