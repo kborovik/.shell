@@ -3,6 +3,7 @@
 set -e
 
 dirs=(
+  ~/bin
   ~/.gnupg
   ~/.local/bin
   ~/tmp
