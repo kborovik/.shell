@@ -85,7 +85,6 @@ typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
   /opt/homebrew/etc/profile.d/bash_completion.sh
   /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-  ~/.bash_completion.d/python-argcomplete
 )
 for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
