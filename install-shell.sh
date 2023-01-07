@@ -10,16 +10,14 @@ dirs=(
 )
 mkdir -p "${dirs[@]}"
 
-case $(uname) in
-Linux)
-  cosign_binary="cosign-linux-amd64"
-  posh_binary="posh-linux-amd64"
-  ;;
-Darwin)
-  cosign_binary="cosign-darwin-$(uname -m)"
-  posh_binary="posh-darwin-$(uname -m)"
-  ;;
+arch=""
+case $(uname -m) in
+  x86_64) arch="amd64" ;;
+  arm64) arch="arm64" ;;
 esac
+
+cosign_binary="cosign-$(uname)-$arch"
+posh_binary="posh-$(uname)-$arch"
 
 echo "==> Download cosign"
 wget -q "https://github.com/sigstore/cosign/releases/latest/download/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig" || exit 1
