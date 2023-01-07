@@ -21,6 +21,8 @@ export_dirs=(
   /usr/local/opt/make/libexec/gnubin
   /usr/local/opt/openssl@3/bin
   /usr/local/opt/coreutils/libexec/gnubin
+  /usr/local/bin
+  /usr/local/sbin
 )
 for dir in "${export_dirs[@]}"; do
   [ -d "$dir" ] && export PATH="$dir:$PATH"
