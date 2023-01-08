@@ -2,6 +2,8 @@
 
 set -e
 
+posh_ver="v12.34.1"
+
 dirs=(
   ~/bin
   ~/.gnupg
@@ -27,8 +29,8 @@ echo "==> Verify cosign signature"
 ~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" && rm "$HOME/bin/$cosign_binary.sig" || exit 1
 
 echo "==> Download oh-my-posh"
-wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/$posh_binary.sig" -O "$HOME/bin/$posh_binary.sig" || exit 1
-wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/$posh_binary" -O "$HOME/bin/$posh_binary" && chmod +x "$HOME/bin/$posh_binary" || exit 1
+wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary.sig" -O "$HOME/bin/$posh_binary.sig" || exit 1
+wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary" -O "$HOME/bin/$posh_binary" && chmod +x "$HOME/bin/$posh_binary" || exit 1
 
 echo "==> Verify oh-my-posh signature"
 if ~/bin/cosign verify-blob --key "$HOME/.shell/cosign/oh-my-posh.pub" --signature "$HOME/bin/$posh_binary.sig" "$HOME/bin/$posh_binary"; then
