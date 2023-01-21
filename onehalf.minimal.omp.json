@@ -33,13 +33,14 @@
           "foreground": "p:blue",
           "template": "{{ .Path }} ",
           "properties": {
-            "style": "full"
+            "style": "agnoster_short",
+            "max_depth": 3
           }
         },
         {
           "type": "git",
           "style": "plain",
-          "template": "<p:yellow>git</>:({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
+          "template": "<p:yellow>git</>({{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }})",
           "properties": {
             "branch_icon": "",
             "fetch_status": true,
@@ -56,7 +57,7 @@
         {
           "type": "gcp",
           "style": "plain",
-          "template": "<p:green>{{ .Project }}</>"
+          "template": "<p:yellow>gcp</>(<p:green>{{ .Project }}</>)"
         }
       ]
     },
