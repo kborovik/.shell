@@ -36,12 +36,6 @@ export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
 
-if [ "$(gpg --card-status 2>/dev/null)" ]; then
-  export GPG_TTY=$(tty)
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-  gpg-connect-agent updatestartuptty /bye >/dev/null
-fi
-
 [ "$(command -v stty)" ] && stty -ixon
 
 set -o noclobber
