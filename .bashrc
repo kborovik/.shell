@@ -36,12 +36,6 @@ export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
 
-if [ "$(gpg --card-status 2>/dev/null)" ]; then
-  export GPG_TTY=$(tty)
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-  gpg-connect-agent updatestartuptty /bye >/dev/null
-fi
-
 [ "$(command -v stty)" ] && stty -ixon
 
 set -o noclobber
@@ -82,7 +76,7 @@ alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset 
 alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
-alias la='ls -hd .*'
+alias la='ls -hlda .*'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
