@@ -24,8 +24,18 @@
         {
           "type": "session",
           "style": "plain",
-          "foreground": "p:yellow",
-          "template": "{{ .UserName }}@{{ .HostName }}:{{ if .SSHSession }}(\u03C1) {{ else }}(\u03BB) {{ end }}"
+          "foreground_templates": [
+            "{{ if .SSHSession }}p:cyan{{ else }}p:green{{ end }}"
+          ],
+          "template": " \u25CF "
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if .Root }}p:red{{ else }}p:yellow{{ end }}"
+          ],
+          "template": "{{ .UserName }}@{{ .HostName }} "
         },
         {
           "type": "path",
