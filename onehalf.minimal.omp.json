@@ -25,7 +25,7 @@
           "type": "session",
           "style": "plain",
           "foreground": "p:yellow",
-          "template": "{{ .UserName }}@{{ .HostName }}:{{ if .SSHSession }}(\u03C1) {{ else }}(\u03BB) {{ end }}"
+          "template": "{{ if .SSHSession }}(\u03C1) {{ else }}(\u03BB) {{ end }}{{ .UserName }}@{{ .HostName }}:"
         },
         {
           "type": "path",
@@ -47,6 +47,12 @@
             "fetch_stash_count": true,
             "fetch_worktree_count": true
           }
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "foreground": "p:red",
+          "template": " \u25CF"
         }
       ]
     },
