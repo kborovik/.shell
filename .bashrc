@@ -67,6 +67,11 @@ bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
 
+# Decoding JSON Web Tokens (JWT)
+jwt() {
+  jq -R 'split(".") | .[0],.[1] | @base64d | fromjson'
+}
+
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
