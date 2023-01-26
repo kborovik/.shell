@@ -68,8 +68,12 @@ bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
 
 # Decoding JSON Web Tokens (JWT)
-jwt() {
-  jq -R 'split(".") | .[0],.[1] | @base64d | fromjson'
+jwt-decode() {
+  if [ "$(command -v jq)" ]; then
+    jq -R 'split(".") | .[0],.[1] | @base64d | fromjson'
+  else
+    echo "jq not found"
+  fi
 }
 
 alias ga='git add'
