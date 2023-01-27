@@ -25,7 +25,7 @@
           "type": "session",
           "style": "plain",
           "foreground_templates": [
-            "{{ if .SSHSession }}p:blue{{ else }}p:green{{ end }}"
+            "{{ if .SSHSession }}p:red{{ else }}p:green{{ end }}"
           ],
           "template": " \u25CF "
         },
