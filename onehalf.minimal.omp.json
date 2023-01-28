@@ -25,14 +25,6 @@
           "type": "session",
           "style": "plain",
           "foreground_templates": [
-            "{{ if .SSHSession }}p:blue{{ else }}p:green{{ end }}"
-          ],
-          "template": " \u25CF "
-        },
-        {
-          "type": "session",
-          "style": "plain",
-          "foreground_templates": [
             "{{ if .Root }}p:red{{ else }}p:yellow{{ end }}"
           ],
           "template": "{{ .UserName }}@{{ .HostName }} "
@@ -57,6 +49,15 @@
             "fetch_stash_count": true,
             "fetch_worktree_count": true
           }
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "p:background",
+          "foreground_templates": [
+            "{{ if .SSHSession }}p:yellow{{ end }}"
+          ],
+          "template": " \u24C8"
         }
       ]
     },
