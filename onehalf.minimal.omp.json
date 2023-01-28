@@ -55,7 +55,7 @@
           "style": "plain",
           "foreground": "p:background",
           "foreground_templates": [
-            "{{ if .SSHSession }}p:red{{ end }}"
+            "{{ if .SSHSession }}p:yellow{{ end }}"
           ],
           "template": " \u24C8"
         }
