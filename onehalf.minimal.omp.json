@@ -24,8 +24,9 @@
         {
           "type": "session",
           "style": "plain",
+          "foreground": "p:yellow",
           "foreground_templates": [
-            "{{ if .Root }}p:red{{ else }}p:yellow{{ end }}"
+            "{{ if .Root }}p:red{{ end }}"
           ],
           "template": "{{ .UserName }}@{{ .HostName }} "
         },
