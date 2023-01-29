@@ -5,17 +5,19 @@ set -e
 posh_ver="v12.34.1"
 
 dirs=(
-  ~/bin
+  ~/.config/k9s
   ~/.gnupg
   ~/.local/bin
+  ~/bin
   ~/tmp
 )
 mkdir -p "${dirs[@]}"
 
 arch=""
 case $(uname -m) in
-  x86_64) arch="amd64" ;;
-  arm64) arch="arm64" ;;
+amd64) arch="amd64" ;;
+arm64) arch="arm64" ;;
+x86_64) arch="amd64" ;;
 esac
 
 cosign_binary="cosign-$(uname)-$arch"
@@ -43,6 +45,8 @@ fi
 echo "==> Link config files"
 files=(
   .bashrc
+  .config/k9s/hotkey.yml
+  .config/k9s/skin.yml
   .digrc
   .gnupg/gpg-agent.conf
   .gnupg/gpg.conf

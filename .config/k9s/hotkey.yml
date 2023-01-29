@@ -1,0 +1,41 @@
+hotKey:
+  shift-1:
+    shortCut: Shift-1
+    description: Events
+    command: events
+  shift-2:
+    shortCut: Shift-2
+    description: StatefulSet
+    command: statefulset
+  shift-3:
+    shortCut: Shift-3
+    description: Deployments
+    command: deployments
+  shift-4:
+    shortCut: Shift-4
+    description: Services
+    command: service
+  shift-5:
+    shortCut: Shift-5
+    description: Ingress
+    command: ingress
+  shift-6:
+    shortCut: Shift-6
+    description: PersistentVolumeClaim
+    command: persistentvolumeclaim
+  shift-7:
+    shortCut: Shift-7
+    description: Secret
+    command: secret
+  shift-8:
+    shortCut: Shift-8
+    description: ConfigMap
+    command: configmap
+  shift-9:
+    shortCut: Shift-9
+    description: Pods
+    command: pods
+  shift-0:
+    shortCut: Shift-0
+    description: NameSpace
+    command: namespace
