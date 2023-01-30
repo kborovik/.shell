@@ -2,13 +2,11 @@
   "version": 2,
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "black": "#282c34",
     "blue": "#61afef",
     "cyan": "#56b6c2",
     "green": "#98c379",
     "magenta": "#c678dd",
     "red": "#e06c75",
-    "white": "#dcdfe4",
     "yellow": "#e5c07b",
     "background": "#282c34",
     "foreground": "#dcdfe4"
@@ -26,7 +24,8 @@
           "style": "plain",
           "foreground": "p:yellow",
           "foreground_templates": [
-            "{{ if .Root }}p:red{{ end }}"
+            "{{ if .Root }}p:red{{ end }}",
+            "{{ if .SSHSession }}p:magenta{{ end }}"
           ],
           "template": "{{ .UserName }}@{{ .HostName }} "
         },
@@ -50,15 +49,6 @@
             "fetch_stash_count": true,
             "fetch_worktree_count": true
           }
-        },
-        {
-          "type": "session",
-          "style": "plain",
-          "foreground": "p:background",
-          "foreground_templates": [
-            "{{ if .SSHSession }}p:yellow{{ end }}"
-          ],
-          "template": " \u24C8"
         }
       ]
     },
@@ -69,7 +59,7 @@
         {
           "type": "gcp",
           "style": "plain",
-          "template": "<p:yellow>gcp</>(<p:green>{{ .Project }}</>)"
+          "template": "<p:yellow>gcp</>(<p:cyan>{{ .Project }}</>)"
         }
       ]
     },
