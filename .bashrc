@@ -76,6 +76,17 @@ jwt-decode() {
   fi
 }
 
+gcp-service-account-roles-list() {
+  if [ "${1}" ] && [ "${2}" ] && [ "$(command -v gcloud)" ]; then
+    gcloud projects get-iam-policy "${1}" \
+      --flatten="bindings[].members" \
+      --format="table(bindings.role)" \
+      --filter="bindings.members:${2}"
+  else
+    echo "Usage: gcp-service-account-list-roles project_id service_account_email"
+  fi
+}
+
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
