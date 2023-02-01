@@ -109,12 +109,11 @@ for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
 done
 
-complete -C terraform terraform
-
+[ "$(command -v cosign)" ] && eval "$(cosign completion bash)"
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
-[ "$(command -v cosign)" ] && eval "$(cosign completion bash)"
+[ "$(command -v terraform)" ] && complete -C terraform terraform
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
