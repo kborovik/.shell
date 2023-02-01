@@ -83,7 +83,7 @@ gcp-service-account-roles-list() {
       --format="table(bindings.role)" \
       --filter="bindings.members:${2}"
   else
-    echo "Usage: gcp-service-account-list-roles project_id service_account_email"
+    echo "Usage: gcp-service-account-roles-list project_id service_account_email"
   fi
 }
 
