@@ -75,7 +75,7 @@ alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset 
 alias gloa='git log --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'
 alias gst='git status'
-alias la='ls -hlda .*'
+alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
