@@ -1,5 +1,4 @@
-# shellcheck disable=SC2148
-# shellcheck disable=SC2155
+#!/usr/bin/env bash
 # shellcheck source=/dev/null
 
 [ -z "$PS1" ] && return
@@ -67,26 +66,6 @@ bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
 
-# Decoding JSON Web Tokens (JWT)
-jwt-decode() {
-  if [ "$(command -v jq)" ]; then
-    jq -R 'split(".") | .[0],.[1] | @base64d | fromjson'
-  else
-    echo "jq not found"
-  fi
-}
-
-gcp-service-account-roles-list() {
-  if [ "${1}" ] && [ "${2}" ] && [ "$(command -v gcloud)" ]; then
-    gcloud projects get-iam-policy "${1}" \
-      --flatten="bindings[].members" \
-      --format="table(bindings.role)" \
-      --filter="bindings.members:${2}"
-  else
-    echo "Usage: gcp-service-account-roles-list project_id service_account_email"
-  fi
-}
-
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
@@ -115,5 +94,7 @@ done
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
 [ "$(command -v terraform)" ] && complete -C terraform terraform
+
+source ~/.shell/.bash-functions.sh
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
