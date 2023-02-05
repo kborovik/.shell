@@ -82,8 +82,8 @@ k9s:
       graphicColor: *yellow
       showIcons: false
     yaml:
-      keyColor: *blue
-      colonColor: *green
+      keyColor: *yellow
+      colonColor: *blue
       valueColor: *foreground
     logs:
       fgColor: *foreground
