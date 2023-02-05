@@ -126,7 +126,7 @@ call s:h("Statement", s:purple, "", "")
 
 call s:h("Conditional", s:purple, "", "")
 call s:h("Repeat", s:purple, "", "")
-call s:h("Label", s:purple, "", "")
+call s:h("Label", s:yellow, "", "")
 call s:h("Operator", s:fg, "", "")
 call s:h("Keyword", s:red, "", "")
 call s:h("Exception", s:purple, "", "")
