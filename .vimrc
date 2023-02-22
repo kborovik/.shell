@@ -25,25 +25,29 @@ if &diff
   syntax off
 endif
 
-" Git difftool
-nmap <F2> :! git difftool % <CR>
-
-" Show hidden characters
+" Map show hidden characters
 set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,space:.
 nmap <F3> :set list! list? <CR>
 
-" Search settings
+" Map search settings
 set ignorecase
 set smartcase
 set incsearch
 nmap <F4> :set hlsearch! hlsearch? <CR>
 
-" Spell settings
+" Map spell settings
 set spelllang=en_us
 nmap <F5> :set spell! spell? <CR>
 
-" Quit all windows
+" Map quit all windows
 nmap <F9> :silent! quitall! <CR>
+
+" Map git mergetool
+if &diff
+  nmap <leader>1 :diffget LOCAL<CR>
+  nmap <leader>2 :diffget BASE<CR>
+  nmap <leader>3 :diffget REMOTE<CR>
+endif
 
 " Enable command menu's
 set wildmenu
