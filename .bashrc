@@ -93,6 +93,7 @@ done
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
+[ "$(command -v pip)" ] && eval "$(pip completion --bash)"
 [ "$(command -v terraform)" ] && complete -C terraform terraform
 
 source ~/.shell/.bash-functions.sh
