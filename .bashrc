@@ -50,6 +50,8 @@ shopt -s histverify
 shopt -s hostcomplete
 shopt -s nocaseglob
 
+bind '"\C-d": complete-filename'
+bind '"\C-h": backward-kill-word'
 bind '"\e[1;3C": end-of-line'
 bind '"\e[1;3D": beginning-of-line'
 bind '"\e[1;5C": forward-word'
@@ -59,7 +61,6 @@ bind '"\e[3;5~": kill-word'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\e\C-?": unix-filename-rubout'
-bind '"\C-h": backward-kill-word'
 
 bind 'set colored-stats on'
 bind 'set completion-ignore-case on'
