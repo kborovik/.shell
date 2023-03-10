@@ -91,5 +91,6 @@
   "yaml.customTags": [
     "!encrypted/pkcs1-oaep scalar",
     "!vault scalar"
-  ]
+  ],
+  "redhat.telemetry.enabled": false
 }
