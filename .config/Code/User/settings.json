@@ -48,7 +48,6 @@
   "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "editor.semanticHighlighting.enabled": false,
   "explorer.confirmDelete": false,
   "files.associations": {
     "*.hcl": "terraform",
@@ -63,6 +62,7 @@
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
   "prettier.printWidth": 120,
+  "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
   "shellcheck.customArgs": [
     "external-sources=true"
@@ -80,17 +80,16 @@
   },
   "terraform.languageServer.enable": true,
   "vs-kubernetes": {
-    "vs-kubernetes.ignore-recommendations": true,
     "vs-kubernetes.crd-code-completion": "disabled",
+    "vs-kubernetes.ignore-recommendations": true
   },
   "window.zoomLevel": 2,
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.editor.enablePreview": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
   "yaml.customTags": [
     "!encrypted/pkcs1-oaep scalar",
     "!vault scalar"
-  ],
-  "redhat.telemetry.enabled": false
+  ]
 }
