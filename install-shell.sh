@@ -2,6 +2,7 @@
 
 set -e
 
+cosign_ver="v1.13.1"
 posh_ver="v12.34.1"
 
 dirs=(
@@ -24,8 +25,8 @@ cosign_binary="cosign-$(uname)-$arch"
 posh_binary="posh-$(uname)-$arch"
 
 echo "==> Download cosign"
-wget -q "https://github.com/sigstore/cosign/releases/latest/download/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig" || exit 1
-wget -q "https://github.com/sigstore/cosign/releases/latest/download/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign" || exit 1
+wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig" || exit 1
+wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign" || exit 1
 
 echo "==> Verify cosign signature"
 ~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" && rm "$HOME/bin/$cosign_binary.sig" || exit 1
@@ -45,6 +46,8 @@ fi
 echo "==> Link config files"
 files=(
   .bashrc
+  .config/Code/User/keybindings.json
+  .config/Code/User/settings.json
   .config/k9s/hotkey.yml
   .config/k9s/skin.yml
   .digrc
