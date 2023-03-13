@@ -67,7 +67,6 @@ bind 'set completion-ignore-case on'
 bind 'set completion-map-case on'
 bind 'set show-all-if-ambiguous on'
 
-alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gd='git difftool'
