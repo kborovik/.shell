@@ -84,7 +84,7 @@
     "vs-kubernetes.ignore-recommendations": true
   },
   "window.zoomLevel": 2,
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
