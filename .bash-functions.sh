@@ -9,14 +9,14 @@ jwt-decode() {
   fi
 }
 
-# List GCP Service Account project roles
-gcp-service_account-project-roles() {
+# List ServeAccount, Users, Groups for GCP project
+gcp-iam-project-member-roles() {
   if [ "${1}" ] && [ "${2}" ] && [ "$(command -v gcloud)" ]; then
     gcloud projects get-iam-policy "${1}" \
       --flatten="bindings[].members" \
       --format="table(bindings.role)" \
       --filter="bindings.members:${2}"
   else
-    echo "Usage: ${FUNCNAME[0]} <project_id> <service_account_email>"
+    echo "Usage: ${FUNCNAME[0]} <project_id> <user|group|service_account>"
   fi
 }
