@@ -49,4 +49,4 @@ The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
 
 # Terminal Color Schema
 
-The color schema of `Oh My Posh` profile is based on the OneHalf Dark (https://github.com/sonph/onehalf) color schema.
+The color schema for `ph-my-posh`, `vim` and `k9s` based on Atom "One Dark" color schema.
