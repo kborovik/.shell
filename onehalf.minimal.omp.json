@@ -49,6 +49,14 @@
             "fetch_stash_count": true,
             "fetch_worktree_count": true
           }
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "template": " <p:yellow>python</>(<p:green>{{ .Full }}</>)",
+          "properties": {
+            "display_mode": "files"
+          }
         }
       ]
     },
@@ -59,7 +67,7 @@
         {
           "type": "gcp",
           "style": "plain",
-          "template": "<p:yellow>gcp</>(<p:cyan>{{ .Project }}</>)"
+          "template": "<p:yellow>gcp</>(<p:green>{{ .Project }}</>)"
         }
       ]
     },
