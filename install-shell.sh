@@ -3,7 +3,7 @@
 set -e
 
 cosign_ver="v1.13.1"
-posh_ver="v12.34.1"
+posh_ver="v15.4.0"
 
 dirs=(
   ~/.config/k9s
