@@ -6,6 +6,7 @@ cosign_ver="v1.13.1"
 posh_ver="v15.4.0"
 
 dirs=(
+  ~/.config/Code/User
   ~/.config/k9s
   ~/.gnupg
   ~/.local/bin
@@ -58,7 +59,7 @@ files=(
   .vimrc
 )
 for file in "${files[@]}"; do
-  ln -s -r -f "$HOME/.shell/$file" "$HOME/$file"
+  ln -v -s -r -f "$HOME/.shell/$file" "$HOME/$file"
 done
 
 ln -s -r -f "$HOME/.shell/.vim" "$HOME"
