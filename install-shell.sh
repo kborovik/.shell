@@ -6,6 +6,7 @@ cosign_ver="v1.13.1"
 posh_ver="v15.4.0"
 
 dirs=(
+  ~/.config/Code/User
   ~/.config/k9s
   ~/.gnupg
   ~/.local/bin
@@ -25,15 +26,15 @@ cosign_binary="cosign-$(uname)-$arch"
 posh_binary="posh-$(uname)-$arch"
 
 echo "==> Download cosign"
-wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig" || exit 1
-wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign" || exit 1
+wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig"
+wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign"
 
 echo "==> Verify cosign signature"
-~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" && rm "$HOME/bin/$cosign_binary.sig" || exit 1
+~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" && rm "$HOME/bin/$cosign_binary.sig"
 
 echo "==> Download oh-my-posh"
-wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary.sig" -O "$HOME/bin/$posh_binary.sig" || exit 1
-wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary" -O "$HOME/bin/$posh_binary" && chmod +x "$HOME/bin/$posh_binary" || exit 1
+wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary.sig" -O "$HOME/bin/$posh_binary.sig"
+wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary" -O "$HOME/bin/$posh_binary" && chmod +x "$HOME/bin/$posh_binary"
 
 echo "==> Verify oh-my-posh signature"
 if ~/bin/cosign verify-blob --key "$HOME/.shell/cosign/oh-my-posh.pub" --signature "$HOME/bin/$posh_binary.sig" "$HOME/bin/$posh_binary"; then
@@ -58,7 +59,7 @@ files=(
   .vimrc
 )
 for file in "${files[@]}"; do
-  ln -s -r -f "$HOME/.shell/$file" "$HOME/$file"
+  ln -v -s -r -f "$HOME/.shell/$file" "$HOME/$file"
 done
 
 ln -s -r -f "$HOME/.shell/.vim" "$HOME"
