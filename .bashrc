@@ -51,7 +51,7 @@ shopt -s histverify
 shopt -s hostcomplete
 shopt -s nocaseglob
 
-bind '"\C-d": complete-filename'
+bind '"\C-f": complete-filename'
 bind '"\C-h": backward-kill-word'
 bind '"\e[1;3C": end-of-line'
 bind '"\e[1;3D": beginning-of-line'
