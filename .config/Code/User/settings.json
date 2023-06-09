@@ -21,8 +21,11 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python",
-    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.tabSize": 4
   },
   "[terraform]": {
@@ -36,6 +39,7 @@
     "shellscript",
     "terraform"
   ],
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.defaultFormatter": null,
   "editor.detectIndentation": true,
   "editor.fontFamily": "Fira Code Retina, MesloLGL Nerd Font Mono",
@@ -62,7 +66,12 @@
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
   "prettier.printWidth": 120,
+  "python.analysis.typeCheckingMode": "off",
+  "python.formatting.provider": "none",
   "redhat.telemetry.enabled": false,
+  "ruff.fixAll": true,
+  "ruff.organizeImports": true,
+  "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
   "shellcheck.customArgs": [
     "external-sources=true"
