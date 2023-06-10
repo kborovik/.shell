@@ -49,6 +49,15 @@
             "fetch_stash_count": true,
             "fetch_worktree_count": true
           }
+        },
+        {
+          "type": "command",
+          "style": "plain",
+          "foreground": "p:red",
+          "properties": {
+            "shell": "bash",
+            "command": "pyenv version-name | grep -v system"
+          }
         }
       ]
     },
