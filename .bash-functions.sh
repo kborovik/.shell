@@ -26,7 +26,9 @@ gcp-list-project-members() {
   if [ "${1}" ] && [ "$(command -v gcloud)" ]; then
     gcloud projects get-iam-policy "${1}" \
       --flatten="bindings[].members" \
-      --format='value(bindings.members)' | sort -u | grep -vE 'developer.gserviceaccount.com|cloudservices.gserviceaccount.com|serviceAccount:service-'
+      --format='value(bindings.members)' |
+      sort -u |
+      grep -vE 'developer.gserviceaccount.com|cloudservices.gserviceaccount.com|serviceAccount:service-'
   else
     echo "Usage: ${FUNCNAME[0]} <project_id>"
   fi

@@ -51,11 +51,12 @@
           }
         },
         {
-          "type": "python",
+          "type": "command",
           "style": "plain",
-          "template": " <p:yellow>python</>(<p:green>{{ .Full }}</>)",
+          "foreground": "p:red",
           "properties": {
-            "display_mode": "files"
+            "shell": "bash",
+            "command": "pyenv version-name | grep -v system"
           }
         }
       ]
