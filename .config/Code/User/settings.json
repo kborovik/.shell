@@ -1,7 +1,4 @@
 {
-  "[ansible]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -48,14 +45,15 @@
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
-  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "files.associations": {
     "*.hcl": "terraform",
-    "*.tfvars": "terraform"
+    "*.tfvars": "terraform",
+    "*.toml": "toml",
+    "main.yaml": "ansible"
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
@@ -73,20 +71,7 @@
   "ruff.organizeImports": true,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": [
-    "external-sources=true"
-  ],
   "terminal.integrated.defaultLocation": "editor",
-  "terminal.integrated.defaultProfile.osx": "bash",
-  "terminal.integrated.profiles.osx": {
-    "bash": {
-      "args": [
-        "-l"
-      ],
-      "icon": "terminal-bash",
-      "path": "/opt/homebrew/bin/bash"
-    }
-  },
   "terraform.languageServer.enable": true,
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
@@ -96,9 +81,5 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "yaml.customTags": [
-    "!encrypted/pkcs1-oaep scalar",
-    "!vault scalar"
-  ]
+  "workbench.startupEditor": "none"
 }

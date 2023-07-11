@@ -89,7 +89,6 @@ for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
 done
 
-[ "$(command -v cosign)" ] && eval "$(cosign completion bash)"
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"

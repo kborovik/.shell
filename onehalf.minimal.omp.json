@@ -53,7 +53,7 @@
         {
           "type": "command",
           "style": "plain",
-          "foreground": "p:red",
+          "foreground": "p:blue",
           "properties": {
             "shell": "bash",
             "command": "pyenv version-name | grep -v system"
