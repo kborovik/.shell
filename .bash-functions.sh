@@ -59,6 +59,17 @@ gcp-list-org-members() {
   fi
 }
 
+# Get GCP Project ID
+gcp-project-id() {
+  gcloud config list --format='value(core.project)'
+}
+
+# Get GCP Org ID
+gcp-org-id() {
+  project_id=$(gcloud config list --format='value(core.project)')
+  gcloud projects get-ancestors ${project_id} --format='value(id,type)' | grep organization | cut -f1
+}
+
 generate-password-16() {
   gpg --gen-random --armor 1 32 | tr -d /=+ | cut -c -16
 }

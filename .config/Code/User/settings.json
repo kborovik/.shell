@@ -73,6 +73,16 @@
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultLocation": "editor",
   "terraform.languageServer.enable": true,
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "args": [
+        "-l"
+      ],
+      "icon": "terminal-bash",
+      "path": "/opt/homebrew/bin/bash"
+    }
+  },
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
     "vs-kubernetes.ignore-recommendations": true
