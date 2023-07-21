@@ -1,4 +1,6 @@
 {
+  "CodeGPT.maxTokens": 16000,
+  "CodeGPT.model": "gpt-3.5-turbo-16k",
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -72,7 +74,6 @@
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultLocation": "editor",
-  "terraform.languageServer.enable": true,
   "terminal.integrated.defaultProfile.osx": "bash",
   "terminal.integrated.profiles.osx": {
     "bash": {
@@ -83,10 +84,18 @@
       "path": "/opt/homebrew/bin/bash"
     }
   },
+  "terraform.languageServer.enable": true,
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
     "vs-kubernetes.ignore-recommendations": true
   },
+  "vscode-openai.azureApiVersion": "2023-05-15",
+  "vscode-openai.azureDeployment": "setup-required",
+  "vscode-openai.baseUrl": "https://api.openai.com/v1",
+  "vscode-openai.defaultModel": "gpt-3.5-turbo-16k",
+  "vscode-openai.embeddingModel": "text-embedding-ada-002",
+  "vscode-openai.embeddingsDeployment": "setup-required",
+  "vscode-openai.serviceProvider": "OpenAI",
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
