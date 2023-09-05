@@ -18,17 +18,10 @@ export_dirs=(
   /opt/homebrew/opt/coreutils/libexec/gnubin
   /opt/homebrew/bin
   /opt/homebrew/sbin
-  /usr/local/opt/make/libexec/gnubin
-  /usr/local/opt/openssl@3/bin
-  /usr/local/opt/coreutils/libexec/gnubin
-  /usr/local/bin
-  /usr/local/sbin
 )
 for dir in "${export_dirs[@]}"; do
   [ -d "$dir" ] && export PATH="$dir:$PATH"
 done
-
-export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 export COLORTERM="truecolor"
 export EDITOR="vim"
