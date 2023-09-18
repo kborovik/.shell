@@ -55,7 +55,9 @@
     "*.hcl": "terraform",
     "*.tfvars": "terraform",
     "*.toml": "toml",
-    "main.yaml": "ansible"
+    "main.yaml": "ansible",
+    "*.service": "toml",
+    "Caddyfile": "ini"
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
@@ -69,7 +71,7 @@
   "python.analysis.typeCheckingMode": "off",
   "python.formatting.provider": "none",
   "redhat.telemetry.enabled": false,
-  "ruff.fixAll": true,
+  "ruff.fixAll": false,
   "ruff.organizeImports": true,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
@@ -100,5 +102,11 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "git.openRepositoryInParentFolders": "never",
+  "cSpell.userWords": [
+    "gcloud",
+    "sqlalchemy"
+  ],
+  "gitlab.aiAssistedCodeSuggestions.enabled": false
 }
