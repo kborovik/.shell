@@ -20,7 +20,7 @@
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": true,
-      "source.organizeImports": true,
+      "source.organizeImports": true
     },
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.tabSize": 4
@@ -34,8 +34,10 @@
   "cSpell.enableFiletypes": [
     "helm",
     "shellscript",
-    "terraform"
+    "terraform",
+    "makefile"
   ],
+  "cSpell.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.defaultFormatter": null,
   "editor.detectIndentation": true,
