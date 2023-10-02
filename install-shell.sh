@@ -3,7 +3,7 @@
 set -e
 
 cosign_ver="v1.13.1"
-posh_ver="v17.0.0"
+posh_ver="v18.5.1"
 
 dirs=(
   ~/.config/Code/User
@@ -25,12 +25,14 @@ esac
 cosign_binary="cosign-$(uname)-$arch"
 posh_binary="posh-$(uname)-$arch"
 
-echo "==> Download cosign"
-wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig"
-wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign"
+if [ ! -x "$HOME/bin/cosign" ] || [ ! -f "$HOME/bin/$cosign_binary.sig" ]; then
+  echo "==> Download cosign"
+  wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary.sig" -O "$HOME/bin/$cosign_binary.sig"
+  wget -q "https://github.com/sigstore/cosign/releases/download/$cosign_ver/$cosign_binary" -O "$HOME/bin/cosign" && chmod +x "$HOME/bin/cosign"
+fi
 
 echo "==> Verify cosign signature"
-~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" && rm "$HOME/bin/$cosign_binary.sig"
+~/bin/cosign verify-blob --key "$HOME/.shell/cosign/cosign.pub" --signature "$HOME/bin/$cosign_binary.sig" "$HOME/bin/cosign" || exit 1
 
 echo "==> Download oh-my-posh"
 wget -q "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/$posh_ver/$posh_binary.sig" -O "$HOME/bin/$posh_binary.sig"
@@ -63,3 +65,4 @@ for file in "${files[@]}"; do
 done
 
 ln -s -r -f "$HOME/.shell/.vim" "$HOME"
+ln -s -r -f "$HOME/.shell/make" "$HOME"

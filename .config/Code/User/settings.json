@@ -1,7 +1,4 @@
 {
-  "[ansible]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -23,7 +20,7 @@
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": true,
-      "source.organizeImports": true
+      "source.organizeImports": true,
     },
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.tabSize": 4
@@ -48,34 +45,32 @@
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
-  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "explorer.confirmDelete": false,
   "files.associations": {
     "*.hcl": "terraform",
-    "*.tfvars": "terraform"
+    "*.service": "toml",
+    "*.tfvars": "terraform",
+    "*.toml": "toml",
+    "Caddyfile": "ini",
+    "main.yaml": "ansible"
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "never",
+  "gitlab.aiAssistedCodeSuggestions.enabled": false,
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
-  "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
-  "prettier.printWidth": 120,
-  "python.analysis.typeCheckingMode": "off",
-  "python.formatting.provider": "none",
+  "prettier.printWidth": 88,
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": true,
-  "ruff.organizeImports": true,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": [
-    "external-sources=true"
-  ],
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.osx": "bash",
   "terminal.integrated.profiles.osx": {
@@ -96,9 +91,5 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "yaml.customTags": [
-    "!encrypted/pkcs1-oaep scalar",
-    "!vault scalar"
-  ]
+  "workbench.startupEditor": "none"
 }

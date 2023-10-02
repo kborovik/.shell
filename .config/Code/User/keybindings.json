@@ -1,123 +1,112 @@
 [
   {
-    "key": "alt+f",
-    "command": "search.action.openNewEditor"
+    "command": "search.action.openNewEditor",
+    "key": "alt+f"
   },
   {
-    "key": "ctrl+k c",
-    "command": "-workbench.files.action.compareWithClipboard"
+    "command": "git.openChange",
+    "key": "alt+end"
   },
   {
-    "key": "ctrl+k c",
-    "command": "workbench.files.action.compareFileWith"
-  },
-  {
-    "key": "alt+end",
-    "command": "git.openChange"
-  },
-  {
-    "key": "ctrl+k ctrl+alt+s",
-    "command": "workbench.action.openGlobalKeybindings"
-  },
-  {
-    "key": "ctrl+k ctrl+s",
-    "command": "-workbench.action.openGlobalKeybindings"
-  },
-  {
-    "key": "alt+insert",
     "command": "git.stageSelectedRanges",
+    "key": "alt+insert",
     "when": "isInDiffEditor"
   },
   {
-    "key": "ctrl+k ctrl+alt+s",
     "command": "-git.stageSelectedRanges",
+    "key": "ctrl+k ctrl+alt+s",
     "when": "isInDiffEditor"
   },
   {
-    "key": "alt+pagedown",
     "command": "workbench.action.editor.nextChange",
+    "key": "alt+pagedown",
     "when": "editorTextFocus && !textCompareEditorActive"
   },
   {
-    "key": "alt+f5",
     "command": "-workbench.action.editor.nextChange",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "key": "f7",
-    "command": "-editor.action.diffReview.next",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "alt+pagedown",
-    "command": "-scrollPageDown",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+pageup",
-    "command": "-scrollPageUp",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+pageup",
-    "command": "workbench.action.editor.previousChange",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "key": "shift+alt+f5",
-    "command": "-workbench.action.editor.previousChange",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "key": "shift+f7",
-    "command": "-editor.action.diffReview.prev",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "alt+pagedown",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
     "key": "alt+f5",
-    "command": "-workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
+    "when": "editorTextFocus && !textCompareEditorActive"
   },
   {
+    "command": "-editor.action.diffReview.next",
+    "key": "f7",
+    "when": "isInDiffEditor"
+  },
+  {
+    "command": "-scrollPageDown",
+    "key": "alt+pagedown",
+    "when": "textInputFocus"
+  },
+  {
+    "command": "-scrollPageUp",
     "key": "alt+pageup",
-    "command": "workbench.action.compareEditor.previousChange",
-    "when": "textCompareEditorVisible"
+    "when": "textInputFocus"
   },
   {
+    "command": "workbench.action.editor.previousChange",
+    "key": "alt+pageup",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "command": "-workbench.action.editor.previousChange",
     "key": "shift+alt+f5",
-    "command": "-workbench.action.compareEditor.previousChange",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "command": "-editor.action.diffReview.prev",
+    "key": "shift+f7",
+    "when": "isInDiffEditor"
+  },
+  {
+    "command": "workbench.action.compareEditor.nextChange",
+    "key": "alt+pagedown",
     "when": "textCompareEditorVisible"
   },
   {
-    "key": "alt+home",
-    "command": "git.commit"
+    "command": "-workbench.action.compareEditor.nextChange",
+    "key": "alt+f5",
+    "when": "textCompareEditorVisible"
   },
   {
-    "key": "alt+delete",
+    "command": "workbench.action.compareEditor.previousChange",
+    "key": "alt+pageup",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "command": "-workbench.action.compareEditor.previousChange",
+    "key": "shift+alt+f5",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "command": "git.commit",
+    "key": "alt+home"
+  },
+  {
     "command": "-notebook.cell.clearOutputs",
+    "key": "alt+delete",
     "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused && !inputFocus"
   },
   {
-    "key": "alt+delete",
     "command": "git.revertSelectedRanges",
+    "key": "alt+delete",
     "when": "isInDiffEditor"
   },
   {
-    "key": "ctrl+k ctrl+r",
     "command": "-git.revertSelectedRanges",
+    "key": "ctrl+k ctrl+r",
     "when": "isInDiffEditor"
   },
   {
-    "key": "shift+alt+end",
-    "command": "workbench.view.extension.gitlab-workflow"
+    "command": "workbench.view.extension.gitlab-workflow",
+    "key": "shift+alt+end"
   },
   {
-    "key": "ctrl+alt+end",
-    "command": "git.openAllChanges"
+    "command": "git.openAllChanges",
+    "key": "ctrl+alt+end"
+  },
+  {
+    "command": "cSpell.addWordToWorkspaceDictionary",
+    "key": "shift+alt+insert",
+    "when": "editorTextFocus"
   }
 ]

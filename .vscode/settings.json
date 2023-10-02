@@ -1,0 +1,32 @@
+{
+  "cSpell.words": [
+    "autocd",
+    "cdspell",
+    "checkwinsize",
+    "cmdhist",
+    "COLORTERM",
+    "coreutils",
+    "Creset",
+    "difftool",
+    "dircolors",
+    "dirspell",
+    "erasedups",
+    "gloa",
+    "gnubin",
+    "histappend",
+    "histreedit",
+    "histverify",
+    "hostcomplete",
+    "ignoreboth",
+    "ixon",
+    "libexec",
+    "nocaseglob",
+    "nodenv",
+    "onehalf",
+    "pagedown",
+    "pyenv",
+    "rubout",
+    "stty",
+    "truecolor"
+  ]
+}
