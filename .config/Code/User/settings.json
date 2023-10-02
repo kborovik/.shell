@@ -1,6 +1,4 @@
 {
-  "CodeGPT.maxTokens": 16000,
-  "CodeGPT.model": "gpt-3.5-turbo-16k",
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -22,7 +20,7 @@
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": true,
-      "source.organizeImports": true
+      "source.organizeImports": true,
     },
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.tabSize": 4
@@ -53,26 +51,24 @@
   "explorer.confirmDelete": false,
   "files.associations": {
     "*.hcl": "terraform",
+    "*.service": "toml",
     "*.tfvars": "terraform",
     "*.toml": "toml",
-    "main.yaml": "ansible",
-    "*.service": "toml",
-    "Caddyfile": "ini"
+    "Caddyfile": "ini",
+    "main.yaml": "ansible"
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "never",
+  "gitlab.aiAssistedCodeSuggestions.enabled": false,
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
-  "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
-  "prettier.printWidth": 120,
-  "python.analysis.typeCheckingMode": "off",
-  "python.formatting.provider": "none",
+  "prettier.printWidth": 88,
   "redhat.telemetry.enabled": false,
-  "ruff.fixAll": false,
-  "ruff.organizeImports": true,
+  "ruff.fixAll": true,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultLocation": "editor",
@@ -91,22 +87,9 @@
     "vs-kubernetes.crd-code-completion": "disabled",
     "vs-kubernetes.ignore-recommendations": true
   },
-  "vscode-openai.azureApiVersion": "2023-05-15",
-  "vscode-openai.azureDeployment": "setup-required",
-  "vscode-openai.baseUrl": "https://api.openai.com/v1",
-  "vscode-openai.defaultModel": "gpt-3.5-turbo-16k",
-  "vscode-openai.embeddingModel": "text-embedding-ada-002",
-  "vscode-openai.embeddingsDeployment": "setup-required",
-  "vscode-openai.serviceProvider": "OpenAI",
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "git.openRepositoryInParentFolders": "never",
-  "cSpell.userWords": [
-    "gcloud",
-    "sqlalchemy"
-  ],
-  "gitlab.aiAssistedCodeSuggestions.enabled": false
+  "workbench.startupEditor": "none"
 }

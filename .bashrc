@@ -9,10 +9,12 @@ PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export_dirs=(
   ~/.pyenv/bin
+  ~/.nodenv/bin
   ~/.local/bin
   ~/.cargo/bin
   ~/go/bin
   ~/bin
+  /usr/lib/go-1.20/bin
   /opt/homebrew/opt/make/libexec/gnubin
   /opt/homebrew/opt/openssl@3/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
@@ -88,6 +90,7 @@ done
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
 [ "$(command -v pip)" ] && eval "$(pip completion --bash)"
 [ "$(command -v pyenv)" ] && eval "$(pyenv init -)"
+[ "$(command -v nodenv)" ] && eval "$(nodenv init - bash)"
 [ "$(command -v terraform)" ] && complete -C terraform terraform
 
 source ~/.shell/.bash-functions.sh
