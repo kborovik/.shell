@@ -66,6 +66,7 @@
   "gitlab.aiAssistedCodeSuggestions.enabled": false,
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
+  "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
   "prettier.printWidth": 88,
