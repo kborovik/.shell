@@ -15,6 +15,7 @@ set tabstop=2
 filetype on
 filetype indent on
 filetype plugin on
+autocmd BufRead ~/.kube/config set syntax=yaml
 
 " Set color scheme
 set termguicolors
@@ -78,3 +79,4 @@ set backspace=indent,eol,start
 
 " Disable netrwhist
 let g:netrw_dirhistmax = 0
+
