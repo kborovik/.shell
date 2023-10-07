@@ -78,7 +78,7 @@
       "newline": true,
       "segments": [
         {
-          "type": "exit",
+          "type": "status",
           "style": "plain",
           "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
           "properties": {
