@@ -76,6 +76,7 @@ alias gst='git status'
 alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
+alias view-yaml="view +'setf yaml'"
 
 typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
@@ -98,3 +99,4 @@ done
 source ~/.shell/.bash-functions.sh
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+
