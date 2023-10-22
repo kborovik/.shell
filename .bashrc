@@ -87,13 +87,14 @@ for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
 done
 
+[ "$(command -v brew)" ] && eval "$(brew shellenv bash)"
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 [ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
 [ "$(command -v helm)" ] && eval "$(helm completion bash)"
 [ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
+[ "$(command -v nodenv)" ] && eval "$(nodenv init - bash)"
 [ "$(command -v pip)" ] && eval "$(pip completion --bash)"
 [ "$(command -v pyenv)" ] && eval "$(pyenv init -)"
-[ "$(command -v nodenv)" ] && eval "$(nodenv init - bash)"
 [ "$(command -v terraform)" ] && complete -C terraform terraform
 
 source ~/.shell/.bash-functions.sh
