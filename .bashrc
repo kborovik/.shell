@@ -12,6 +12,7 @@ export_dirs=(
   ~/.nodenv/bin
   ~/.local/bin
   ~/.cargo/bin
+  ~/.krew/bin
   ~/go/bin
   ~/bin
   /usr/lib/go-1.20/bin
