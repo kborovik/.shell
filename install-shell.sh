@@ -65,4 +65,3 @@ for file in "${files[@]}"; do
 done
 
 ln -s -r -f "$HOME/.shell/.vim" "$HOME"
-ln -s -r -f "$HOME/.shell/make" "$HOME"

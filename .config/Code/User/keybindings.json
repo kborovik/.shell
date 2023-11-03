@@ -4,109 +4,40 @@
     "key": "alt+f"
   },
   {
-    "command": "git.openChange",
-    "key": "alt+end"
-  },
-  {
-    "command": "git.stageSelectedRanges",
-    "key": "alt+insert",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "-git.stageSelectedRanges",
-    "key": "ctrl+k ctrl+alt+s",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "workbench.action.editor.nextChange",
-    "key": "alt+pagedown",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "command": "-workbench.action.editor.nextChange",
-    "key": "alt+f5",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "command": "-editor.action.diffReview.next",
-    "key": "f7",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "-scrollPageDown",
-    "key": "alt+pagedown",
-    "when": "textInputFocus"
-  },
-  {
-    "command": "-scrollPageUp",
-    "key": "alt+pageup",
-    "when": "textInputFocus"
-  },
-  {
-    "command": "workbench.action.editor.previousChange",
-    "key": "alt+pageup",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "command": "-workbench.action.editor.previousChange",
-    "key": "shift+alt+f5",
-    "when": "editorTextFocus && !textCompareEditorActive"
-  },
-  {
-    "command": "-editor.action.diffReview.prev",
-    "key": "shift+f7",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "workbench.action.compareEditor.nextChange",
-    "key": "alt+pagedown",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "command": "-workbench.action.compareEditor.nextChange",
-    "key": "alt+f5",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "command": "workbench.action.compareEditor.previousChange",
-    "key": "alt+pageup",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "command": "-workbench.action.compareEditor.previousChange",
-    "key": "shift+alt+f5",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "command": "git.commit",
-    "key": "alt+home"
-  },
-  {
-    "command": "-notebook.cell.clearOutputs",
-    "key": "alt+delete",
-    "when": "notebookCellEditable && notebookCellHasOutputs && notebookEditable && notebookEditorFocused && !inputFocus"
-  },
-  {
-    "command": "git.revertSelectedRanges",
-    "key": "alt+delete",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "-git.revertSelectedRanges",
-    "key": "ctrl+k ctrl+r",
-    "when": "isInDiffEditor"
-  },
-  {
-    "command": "workbench.view.extension.gitlab-workflow",
-    "key": "shift+alt+end"
-  },
-  {
-    "command": "git.openAllChanges",
-    "key": "ctrl+alt+end"
-  },
-  {
     "command": "cSpell.addWordToWorkspaceDictionary",
-    "key": "shift+alt+insert",
+    "key": "meta+i",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+s",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "key": "alt+c",
+    "command": "editor.action.clipboardCopyAction"
+  },
+  {
+    "key": "alt+v",
+    "command": "editor.action.clipboardPasteAction"
+  },
+  {
+    "key": "alt+delete",
+    "command": "deleteWordRight",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+backspace",
+    "command": "deleteWordLeft",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+left",
+    "command": "cursorHome",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
   }
 ]
