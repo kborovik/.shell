@@ -3,7 +3,7 @@
 set -e
 
 cosign_ver="v1.13.1"
-posh_ver="v18.5.1"
+posh_ver="v18.23.3"
 
 dirs=(
   ~/.config/Code/User
