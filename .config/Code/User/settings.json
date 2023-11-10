@@ -71,7 +71,7 @@
   "prettier.insertPragma": false,
   "prettier.printWidth": 88,
   "redhat.telemetry.enabled": false,
-  "ruff.fixAll": true,
+  "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.defaultLocation": "editor",
