@@ -8,8 +8,6 @@ HISTSIZE=10000
 PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 export_dirs=(
-  ~/.pyenv/bin
-  ~/.nodenv/bin
   ~/.local/bin
   ~/.cargo/bin
   ~/.krew/bin
@@ -67,7 +65,6 @@ bind 'set show-all-if-ambiguous on'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gd='git difftool'
-alias gdo='git diff --stat origin/HEAD'
 alias gf='git fetch --all'
 alias gl='git pull'
 alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
@@ -88,17 +85,9 @@ for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
 done
 
-[ "$(command -v brew)" ] && eval "$(brew shellenv bash)"
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
-[ "$(command -v gh)" ] && eval "$(gh completion -s bash)"
-[ "$(command -v helm)" ] && eval "$(helm completion bash)"
-[ "$(command -v kubectl)" ] && eval "$(kubectl completion bash)"
-[ "$(command -v nodenv)" ] && eval "$(nodenv init - bash)"
-[ "$(command -v pip)" ] && eval "$(pip completion --bash)"
-[ "$(command -v pyenv)" ] && eval "$(pyenv init -)"
-[ "$(command -v terraform)" ] && complete -C terraform terraform
 
-source ~/.shell/.bash-functions.sh
+source ~/.shell/bash-functions.sh
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 

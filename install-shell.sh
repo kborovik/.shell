@@ -10,6 +10,7 @@ dirs=(
   ~/.config/k9s
   ~/.gnupg
   ~/.local/bin
+  ~/.local/share/bash-completion
   ~/bin
   ~/tmp
 )
@@ -64,4 +65,6 @@ for file in "${files[@]}"; do
   ln -v -s -r -f "$HOME/.shell/$file" "$HOME/$file"
 done
 
-ln -s -r -f "$HOME/.shell/.vim" "$HOME"
+ln -v -s -r -f "$HOME/.shell/.vim" "$HOME"
+ln -v -s -r -f "$HOME/.shell/bash-completion/completions" "$HOME/.local/share/bash-completion"
+
