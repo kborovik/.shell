@@ -30,8 +30,6 @@ export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
 
-[ "$(command -v stty)" ] && stty -ixon
-
 set -o noclobber
 
 shopt -s autocd
@@ -74,7 +72,6 @@ alias gst='git status'
 alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
-alias view-yaml="view +'setf yaml'"
 
 typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
