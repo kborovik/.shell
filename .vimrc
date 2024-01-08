@@ -41,7 +41,7 @@ set spelllang=en_us
 nmap <F5> :set spell! spell? <CR>
 
 " Map quit all windows
-nmap <F9> :silent! quitall! <CR>
+nmap <F12> :silent! quitall! <CR>
 
 " Map git mergetool
 if &diff

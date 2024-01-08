@@ -19,10 +19,10 @@
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": true
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
     },
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.tabSize": 4
   },
   "[terraform]": {
@@ -63,13 +63,8 @@
   "git.confirmSync": false,
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "never",
-  "gitlab.aiAssistedCodeSuggestions.enabled": false,
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
-  "prettier.bracketSpacing": false,
-  "prettier.ignorePath": ".prettierignore",
-  "prettier.insertPragma": false,
-  "prettier.printWidth": 88,
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
@@ -94,5 +89,23 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "gitlens.graph.minimap.enabled": false,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/usr/bin/bash",
+      "args": [
+        "--norc"
+      ]
+    },
+    "dash": {
+      "path": "/usr/bin/dash"
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.altClickMovesCursor": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
 }
