@@ -1,10 +1,10 @@
-_llmdocs_completion() {
+_llmdoc_completion() {
     local IFS=$'
 '
     COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \
                    COMP_CWORD=$COMP_CWORD \
-                   _LLMDOCS_COMPLETE=complete_bash $1 ) )
+                   _LLMDOC_COMPLETE=complete_bash $1 ) )
     return 0
 }
 
-complete -o default -F _llmdocs_completion llmdocs
+complete -o default -F _llmdoc_completion llmdoc
