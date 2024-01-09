@@ -7,7 +7,7 @@ posh_ver="v19.4.0"
 
 dirs=(
   ~/.config/Code/User
-  ~/.config/k9s
+  ~/.config/k9s/skins
   ~/.gnupg
   ~/.local/bin
   ~/.local/share/bash-completion
@@ -52,8 +52,10 @@ files=(
   .bashrc
   .config/Code/User/keybindings.json
   .config/Code/User/settings.json
-  .config/k9s/hotkey.yml
-  .config/k9s/skin.yml
+  .config/k9s/config.yaml
+  .config/k9s/hotkeys.yaml
+  .config/k9s/aliases.yaml
+  .config/k9s/skins/onedark.yaml
   .digrc
   .gnupg/gpg-agent.conf
   .gnupg/gpg.conf

@@ -108,4 +108,6 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.enableMultiLinePasteWarning": false,
+  "gitlab.aiAssistedCodeSuggestions.enabled": true,
+  "gitlab.aiAssistedCodeSuggestions.preferredAccount": "kborovik2",
 }

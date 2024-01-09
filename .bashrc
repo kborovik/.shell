@@ -13,7 +13,7 @@ export_dirs=(
   ~/.krew/bin
   ~/go/bin
   ~/bin
-  /usr/lib/go-1.20/bin
+  /usr/lib/go-1.21/bin
   /opt/homebrew/opt/make/libexec/gnubin
   /opt/homebrew/opt/openssl@3/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
