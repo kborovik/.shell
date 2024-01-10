@@ -56,27 +56,48 @@
     "*.service": "toml",
     "*.tfvars": "terraform",
     "*.toml": "toml",
-    "Caddyfile": "ini",
     "main.yaml": "ansible"
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "never",
+  "gitlab.aiAssistedCodeSuggestions.enabled": true,
+  "gitlab.aiAssistedCodeSuggestions.preferredAccount": "kborovik2",
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
+  "prettier.bracketSpacing": false,
+  "prettier.ignorePath": ".prettierignore",
+  "prettier.insertPragma": false,
+  "prettier.printWidth": 88,
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.altClickMovesCursor": false,
+  "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "args": [
+        "--norc"
+      ],
+      "path": "/usr/bin/bash"
+    },
+    "dash": {
+      "path": "/usr/bin/dash"
+    }
+  },
   "terminal.integrated.profiles.osx": {
     "bash": {
       "args": [
-        "-l"
+        "--norc"
       ],
-      "icon": "terminal-bash",
       "path": "/opt/homebrew/bin/bash"
     }
   },
@@ -89,25 +110,5 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "gitlens.graph.minimap.enabled": false,
-  "terminal.integrated.profiles.linux": {
-    "bash": {
-      "path": "/usr/bin/bash",
-      "args": [
-        "--norc"
-      ]
-    },
-    "dash": {
-      "path": "/usr/bin/dash"
-    }
-  },
-  "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.integrated.allowChords": false,
-  "terminal.integrated.altClickMovesCursor": false,
-  "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.enablePersistentSessions": false,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
-  "gitlab.aiAssistedCodeSuggestions.enabled": true,
-  "gitlab.aiAssistedCodeSuggestions.preferredAccount": "kborovik2",
+  "workbench.startupEditor": "none"
 }
