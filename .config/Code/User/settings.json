@@ -96,7 +96,7 @@
   "terminal.integrated.profiles.osx": {
     "bash": {
       "args": [
-        "--norc"
+        "-l"
       ],
       "path": "/opt/homebrew/bin/bash"
     }

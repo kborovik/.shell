@@ -9,35 +9,35 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "alt+s",
-    "command": "workbench.action.files.save"
+    "command": "workbench.action.files.save",
+    "key": "alt+s"
   },
   {
-    "key": "alt+c",
-    "command": "editor.action.clipboardCopyAction"
+    "command": "editor.action.clipboardCopyAction",
+    "key": "alt+c"
   },
   {
-    "key": "alt+v",
-    "command": "editor.action.clipboardPasteAction"
+    "command": "editor.action.clipboardPasteAction",
+    "key": "alt+v"
   },
   {
-    "key": "alt+delete",
     "command": "deleteWordRight",
+    "key": "alt+delete",
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "alt+backspace",
     "command": "deleteWordLeft",
+    "key": "alt+backspace",
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "alt+left",
     "command": "cursorHome",
+    "key": "alt+left",
     "when": "textInputFocus"
   },
   {
-    "key": "alt+right",
     "command": "cursorEnd",
+    "key": "alt+right",
     "when": "textInputFocus"
   }
 ]
