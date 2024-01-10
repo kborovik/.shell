@@ -17,6 +17,7 @@ export_dirs=(
   /opt/homebrew/opt/make/libexec/gnubin
   /opt/homebrew/opt/openssl@3/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
+  /opt/homebrew/share/google-cloud-sdk/bin
   /opt/homebrew/bin
   /opt/homebrew/sbin
 )
