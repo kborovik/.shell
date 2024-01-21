@@ -96,7 +96,7 @@
   "terminal.integrated.profiles.osx": {
     "bash": {
       "args": [
-        "-l"
+        "--norc"
       ],
       "path": "/opt/homebrew/bin/bash"
     }
@@ -110,5 +110,13 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "security.promptForLocalFileProtocolHandling": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "tabnine.experimentalAutoImports": true
 }

@@ -4,11 +4,6 @@
     "key": "alt+f"
   },
   {
-    "command": "cSpell.addWordToWorkspaceDictionary",
-    "key": "meta+i",
-    "when": "editorTextFocus"
-  },
-  {
     "command": "workbench.action.files.save",
     "key": "alt+s"
   },
@@ -39,5 +34,24 @@
     "command": "cursorEnd",
     "key": "alt+right",
     "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "-workbench.action.chat.open",
+    "when": "hasChatProvider"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "workbench.action.openChat.copilot"
+  },
+  {
+    "key": "meta+i",
+    "command": "inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && !editorReadonly"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && !editorReadonly"
   }
 ]

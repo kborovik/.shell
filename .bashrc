@@ -12,6 +12,8 @@ export_dirs=(
   ~/.cargo/bin
   ~/.krew/bin
   ~/go/bin
+  ~/.nodenv/bin/
+  ~/.nodenv/shims
   ~/bin
   /usr/lib/go-1.21/bin
   /opt/homebrew/opt/make/libexec/gnubin
