@@ -77,7 +77,7 @@
   "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
-  "prettier.printWidth": 88,
+  "prettier.printWidth": 120,
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
