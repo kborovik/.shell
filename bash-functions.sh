@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-# Decoding JSON Web Tokens (JWT)
-jwt-decode() {
-  if [ "$(command -v jq)" ]; then
-    jq -R 'split(".") | .[0],.[1] | @base64d | fromjson'
-  else
-    echo "jq not found"
-  fi
-}
-
 # List ServeAccount, Users, Groups for GCP project
 gcp-list-project-member-roles() {
   if [ "${1}" ] && [ "${2}" ] && [ "$(command -v gcloud)" ]; then
@@ -70,10 +61,10 @@ gcp-org-id() {
   gcloud projects get-ancestors ${project_id} --format='value(id,type)' | grep organization | cut -f1
 }
 
-generate-password-16() {
-  gpg --gen-random --armor 1 32 | tr -d /=+ | cut -c -16
+gen-pass-16() {
+  gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | tr -d '\n'
 }
 
-generate-password-32() {
-  gpg --gen-random --armor 1 64 | tr -d /=+ | cut -c -32
+gen-pass-32() {
+  gpg --gen-random --armor 1 64 | tr -d '/=+' | cut -c -32 | tr -d '\n'
 }
