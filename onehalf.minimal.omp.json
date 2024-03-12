@@ -55,17 +55,6 @@
     },
     {
       "type": "prompt",
-      "alignment": "right",
-      "segments": [
-        {
-          "type": "gcp",
-          "style": "plain",
-          "template": "<p:yellow>gcp</>(<p:green>{{ .Project }}</>)"
-        }
-      ]
-    },
-    {
-      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
