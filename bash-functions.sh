@@ -61,10 +61,20 @@ gcp-org-id() {
   gcloud projects get-ancestors ${project_id} --format='value(id,type)' | grep organization | cut -f1
 }
 
+# Passwd generator
 gen-pass-16() {
   gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | tr -d '\n'
 }
 
 gen-pass-32() {
   gpg --gen-random --armor 1 64 | tr -d '/=+' | cut -c -32 | tr -d '\n'
+}
+
+# PDF Files
+pdf-optimize() {
+  if [ "${1}" ]; then
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=2.0 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${1%.pdf}-optimized.pdf" "${1}"
+  else
+    echo "Usage: ${FUNCNAME[0]} <input_file.pdf>"
+  fi
 }
