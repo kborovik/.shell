@@ -3,15 +3,12 @@
 
 [ -z "$PS1" ] && return
 
-HISTCONTROL="erasedups:ignoreboth"
-HISTSIZE=10000
-PROMPT_COMMAND="history -n; history -w; history -c; history -r"
-
 export_dirs=(
   ~/.local/bin
   ~/.cargo/bin
   ~/.krew/bin
   ~/go/bin
+  ~/.awscliv2/v2/current/bin
   ~/.nodenv/bin/
   ~/.nodenv/shims
   ~/bin
@@ -29,9 +26,14 @@ done
 
 export COLORTERM="truecolor"
 export EDITOR="vim"
+export HISTCONTROL="erasedups:ignoreboth"
+export HISTFILESIZE=10000
+export HISTSIZE="${HISTFILESIZE}"
+export HSTR_CONFIG="prompt-bottom,help-on-opposite-side"
 export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 
 set -o noclobber
 
@@ -45,6 +47,10 @@ shopt -s histreedit
 shopt -s histverify
 shopt -s hostcomplete
 shopt -s nocaseglob
+
+if [ "$(command -v hstr)" ]; then
+  bind -x '"\C-r":"hstr --"'
+fi
 
 bind '"\C-f": complete-filename'
 bind '"\C-h": backward-kill-word'
