@@ -26,14 +26,14 @@ done
 
 export COLORTERM="truecolor"
 export EDITOR="vim"
-export HISTCONTROL="erasedups:ignoreboth"
+export HISTCONTROL="ignoreboth:erasedups"
 export HISTFILESIZE=10000
 export HISTSIZE="${HISTFILESIZE}"
 export HSTR_CONFIG="prompt-bottom,help-on-opposite-side"
 export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
-export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND}"
 
 set -o noclobber
 
