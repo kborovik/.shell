@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 history-clean() {
-  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history_clean
+  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history_
+  mv ~/.bash_history_ ~/.bash_history
 }
 
 # Passwd generator
