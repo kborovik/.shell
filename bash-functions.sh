@@ -78,3 +78,7 @@ pdf-optimize() {
     echo "Usage: ${FUNCNAME[0]} <input_file.pdf>"
   fi
 }
+
+history-clean() {
+  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history
+}

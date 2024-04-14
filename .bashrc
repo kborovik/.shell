@@ -29,7 +29,6 @@ export EDITOR="vim"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTFILESIZE=10000
 export HISTSIZE="${HISTFILESIZE}"
-export HSTR_CONFIG="prompt-bottom,help-on-opposite-side"
 export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
@@ -47,10 +46,6 @@ shopt -s histreedit
 shopt -s histverify
 shopt -s hostcomplete
 shopt -s nocaseglob
-
-if [ "$(command -v hstr)" ]; then
-  bind -x '"\C-r":"hstr --"'
-fi
 
 bind '"\C-f": complete-filename'
 bind '"\C-h": backward-kill-word'
@@ -95,5 +90,8 @@ done
 
 source ~/.shell/bash-functions.sh
 
-[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+[ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
 
+[ "$(command -v atuin)" ] && eval "$(atuin init --disable-up-arrow bash)"
+
+[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
