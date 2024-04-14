@@ -32,7 +32,7 @@ export HISTSIZE="${HISTFILESIZE}"
 export LESS="-R -F -i"
 export MORE="-s"
 export PAGER="less"
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; ${PROMPT_COMMAND}"
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 
 set -o noclobber
 

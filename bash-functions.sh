@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+history-clean() {
+  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history_clean
+}
+
+# Passwd generator
+gen-pass-16() {
+  gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | tr -d '\n'
+}
+
+gen-pass-32() {
+  gpg --gen-random --armor 1 64 | tr -d '/=+' | cut -c -32 | tr -d '\n'
+}
+
 # List ServeAccount, Users, Groups for GCP project
 gcp-list-project-member-roles() {
   if [ "${1}" ] && [ "${2}" ] && [ "$(command -v gcloud)" ]; then
@@ -61,15 +74,6 @@ gcp-org-id() {
   gcloud projects get-ancestors ${project_id} --format='value(id,type)' | grep organization | cut -f1
 }
 
-# Passwd generator
-gen-pass-16() {
-  gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | tr -d '\n'
-}
-
-gen-pass-32() {
-  gpg --gen-random --armor 1 64 | tr -d '/=+' | cut -c -32 | tr -d '\n'
-}
-
 # PDF Files
 pdf-optimize() {
   if [ "${1}" ]; then
@@ -79,6 +83,3 @@ pdf-optimize() {
   fi
 }
 
-history-clean() {
-  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history
-}
