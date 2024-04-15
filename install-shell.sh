@@ -6,6 +6,7 @@ cosign_ver="v1.13.1"
 posh_ver="v19.13.0"
 
 dirs=(
+  ~/.config/atuin
   ~/.config/Code/User
   ~/.config/k9s/skins
   ~/.gnupg
@@ -50,6 +51,7 @@ fi
 echo "==> Link config files"
 files=(
   .bashrc
+  .config/atuin/config.toml
   .config/Code/User/keybindings.json
   .config/Code/User/settings.json
   .config/k9s/aliases.yaml
