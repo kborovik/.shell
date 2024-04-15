@@ -4,28 +4,15 @@
 ## For details on the supported regular expression syntax, see
 ## https://docs.rs/regex/latest/regex/#syntax
 history_filter = [
+  "^[[:alnum:]]+\\s*$",
   "^$",
-  "^atuin$",
-  "^history",
-  "^gaa",
-  "^gc",
-  "^gd",
-  "^gf",
-  "^gl",
-  "^glo",
-  "^gloa",
-  "^gp",
-  "^gst",
   "^cd",
-  "^ls",
-  "^ll",
-  "^la",
-  "^cd .+",
-  "^ls .+",
-  "^ll .+",
-  "^la .+",
-  "^Error.+",
+  "^code",
 ]
+
+## which search mode to use
+## possible values: prefix, fulltext, fuzzy, skim
+search_mode = "fulltext"
 
 ## where to store your database, default is your system data directory
 ## linux/mac: ~/.local/share/atuin/history.db
@@ -64,10 +51,6 @@ update_check = true
 ## is ran, so sync intervals may well be longer
 ## set it to 0 to sync after every command
 # sync_frequency = "1m"
-
-## which search mode to use
-## possible values: prefix, fulltext, fuzzy, skim
-search_mode = "fuzzy"
 
 ## which filter mode to use
 ## possible values: global, host, session, directory
