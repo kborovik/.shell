@@ -41,7 +41,6 @@ shopt -s cdspell
 shopt -s checkwinsize
 shopt -s cmdhist
 shopt -s dirspell
-shopt -s histappend
 shopt -s histreedit
 shopt -s histverify
 shopt -s hostcomplete
