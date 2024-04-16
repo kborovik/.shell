@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+complete -C '~/.awscliv2/binaries/aws_completer' aws
