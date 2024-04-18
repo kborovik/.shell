@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-# shellcheck source=/dev/null
-
-[ -z "$PS1" ] && return
+[[ $- != *i* ]] && return
 
 export_dirs=(
   ~/.local/bin
