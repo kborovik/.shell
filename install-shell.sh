@@ -3,7 +3,7 @@
 set -e
 
 cosign_ver="v1.13.1"
-posh_ver="v19.13.0"
+posh_ver="v19.24.2"
 
 dirs=(
   ~/.config/atuin
