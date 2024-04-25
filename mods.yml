@@ -22,7 +22,7 @@ format-text:
   json: "Format the response as json without enclosing backticks."
 # List of predefined system messages that can be used as roles.
 roles:
-  "default": []
+  "default": ["You are a helpful AI assistant."]
 # System role to use.
 role: "default"
 # Ask for the response to be formatted as markdown unless otherwise set.

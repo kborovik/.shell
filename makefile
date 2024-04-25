@@ -38,7 +38,7 @@ mods-uninstall:
 
 mods-status:
 	$(info ==> Checking Mods status <==)
-	apt list --verbose mods
+	mods --version
 
 ###############################################################################
 # Glow: Render markdown on the CLI
