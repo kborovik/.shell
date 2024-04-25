@@ -52,3 +52,25 @@ glow-uninstall:
 glow-status:
 	$(info ==> Checking glow status <==)
 	apt list --verbose glow
+
+###############################################################################
+# Ollama: A CLI for the Ollama API
+# https://ollama.com/download/linux
+###############################################################################
+
+ollama-install:
+	$(info ==> Installing Ollama <==)
+	curl -fsSL https://ollama.com/download/linux | sudo bash
+
+ollama-uninstall:
+	$(info ==> Uninstalling Ollama <==)
+	sudo systemctl stop ollama
+	sudo systemctl disable ollama
+	sudo rm /etc/systemd/system/ollama.service
+	sudo rm $(which ollama)
+	sudo userdel ollama
+	sudo groupdel ollama
+
+ollama-status:
+	$(info ==> Checking Ollama status <==)
+	ollama --version
