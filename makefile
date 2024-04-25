@@ -28,6 +28,10 @@ mods-install: $(charm_gpg_key) $(charm_apt_repo)
 	$(info ==> Installing Mods <==) 
 	sudo apt update && sudo apt install mods
 
+mods-configure:
+	$(info ==> Configure Mods <==)
+	cp mods.yml /home/kb/.config/mods/
+
 mods-uninstall:
 	$(info ==> Uninstalling Mods <==)
 	sudo apt remove mods
@@ -61,6 +65,10 @@ glow-status:
 ollama-install:
 	$(info ==> Installing Ollama <==)
 	curl -fsSL https://ollama.com/download/linux | sudo bash
+
+ollama-configure:
+	$(info ==> Configure Ollama <==)
+	ollama pull llama3
 
 ollama-uninstall:
 	$(info ==> Uninstalling Ollama <==)
