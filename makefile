@@ -4,81 +4,34 @@
 MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 
 ###############################################################################
-# TUI Library and Apps
-# https://github.com/charmbracelet
+# Settings
 ###############################################################################
 
-charm_gpg_key := /etc/apt/trusted.gpg.d/charm.gpg
-charm_apt_repo := /etc/apt/sources.list.d/charm.list
+CPU := $(shell uname -m)
+OS := $(shell uname -s)
 
-$(charm_gpg_key):
-	$(info ==> Installing Charm GPG key <==)
-	curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o $@
+make_version := $(shell $(MAKE) --version | grep "GNU Make" | cut -d ' ' -f 3 | cut -d '.' -f 1)
 
-$(charm_apt_repo):
-	$(info ==> Adding Charm APT repository <==)
-	echo "deb [signed-by=$(charm_gpg_key)] https://repo.charm.sh/apt/ * *" | sudo tee $@
+ifeq ($(OS),Linux)
+include Linux.mk
+else ifeq ($(OS),Darwin)
+include Darwin.mk
+else
+$(error ==> Unsupported OS: $(OS) <==)
+endif
 
-###############################################################################
-# Mods: AI for the command line, built for pipelines.
-# https://github.com/charmbracelet/mods
-###############################################################################
-
-mods-install: $(charm_gpg_key) $(charm_apt_repo)
-	$(info ==> Installing Mods <==) 
-	sudo apt update && sudo apt install mods
-
-mods-configure:
-	$(info ==> Configure Mods <==)
-	cp mods.yml /home/kb/.config/mods/
-
-mods-uninstall:
-	$(info ==> Uninstalling Mods <==)
-	sudo apt remove mods
-
-mods-status:
-	$(info ==> Checking Mods status <==)
-	mods --version
+settings:
+	$(info ==> System Settings <==)
+	$(info OS: $(OS))
+	$(info CPU: $(CPU))
+	$(info SHELL: $(SHELL))
+	$(info MAKE: $(make_version))
+	$(info PATH: $(PATH))
 
 ###############################################################################
-# Glow: Render markdown on the CLI
-# https://github.com/charmbracelet/glow
+# Errors check
 ###############################################################################
 
-glow-install: $(charm_gpg_key) $(charm_apt_repo)
-	$(info ==> Installing glow <==) 
-	sudo apt update && sudo apt install glow
-
-glow-uninstall:
-	$(info ==> Uninstalling glow <==)
-	sudo apt remove glow
-
-glow-status:
-	$(info ==> Checking glow status <==)
-	apt list --verbose glow
-
-###############################################################################
-# Ollama: A CLI for the Ollama API
-# https://ollama.com/download/linux
-###############################################################################
-
-ollama-install:
-	$(info ==> Installing Ollama <==)
-	curl -fsSL https://ollama.com/download/linux | sudo bash
-
-ollama-configure:
-	$(info ==> Configure Ollama <==)
-	ollama pull llama3
-
-ollama-uninstall:
-	$(info ==> Uninstalling Ollama <==)
-	sudo systemctl stop ollama
-	sudo systemctl disable ollama
-	sudo rm /etc/systemd/system/ollama.service
-	sudo rm $(which ollama)
-	sudo userdel ollama
-	sudo groupdel ollama
-
-ollama-status:
-	$(info ==> Checking Ollama status <==)
-	ollama --version
+ifneq ($(make_version),4)
+$(error ==> GNU Make 4.x is required <==)
+endif
