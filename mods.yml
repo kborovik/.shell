@@ -1,48 +1,46 @@
-default-model: groq
+temp: 0.5
+topp: 0.5
+default-model: gpt-4-turbo
 apis:
   openai:
-    base-url: http://localhost:11434/v1
-    api-key: ollama
+    base-url: https://api.openai.com/v1
+    api-key:
     api-key-env: OPENAI_API_KEY
     models:
-      "llama3":
-        aliases: ["llama3-q4", "l4"]
-        max-input-chars: 24500
-      "llama3:8b-instruct-q8_0":
-        aliases: ["llama3", "llama3-q8", "l8"]
-        max-input-chars: 24500
+      gpt-4-turbo:
+        aliases: ["gpt4", "4"]
+        max-input-chars: 392000
+        fallback: gpt-3.5-turbo
+      gpt-3.5-turbo:
+        aliases: ["gpt3", "3"]
+        max-input-chars: 49000
   groq:
     base-url: https://api.groq.com/openai/v1
     api-key:
     api-key-env: GROQ_API_KEY
     models:
       llama3-70b-8192:
-        aliases: ["groq", "g"]
+        aliases: ["llama3", "groq"]
         max-input-chars: 24500
-# Text to append when using the -f flag.
+roles:
+  "devops":
+    [
+      "Your name is Sam. You are a helpful DevOps AI assistant. You are DevOps guru. Help the user answer their questions. Provide concise direct answers with examples. Focus only on Linux CLI tools (bash, sed, awk, make), infrastructure as code (Terraform), container orchestration (docker, kubernetes, HELM). Exclude Python and other programming languages from your solutions.",
+    ]
+# System role to use.
+role: "devops"
+# Ask for the response to be formatted as markdown unless otherwise set.
 format-text:
   markdown: "Format the response as markdown without enclosing backticks."
   json: "Format the response as json without enclosing backticks."
 # List of predefined system messages that can be used as roles.
-roles:
-  "default":
-    [
-      "You are a helpful AI assistant. Your name is Sam. You are Linux guru. Help the user answer their questions. Focus only on Linux CLI tools. Exclude Python and other programming languages from your solutions.",
-    ]
-# System role to use.
-role: "default"
-# Ask for the response to be formatted as markdown unless otherwise set.
 format: true
 # Render output as raw text when connected to a TTY.
 raw: false
 # Quiet mode (hide the spinner while loading and stderr messages for success).
 quiet: false
-# Temperature (randomness) of results, from 0.0 to 2.0.
-temp: 0.2
-# TopP, an alternative to temperature that narrows response, from 0.0 to 1.0.
-topp: 0.6
 # Turn off the client-side limit on the size of the input into the model.
-no-limit: true
+no-limit: false
 # Wrap formatted output at specific width (default is 80)
 word-wrap: 100
 # Include the prompt from the arguments in the response.
@@ -56,4 +54,4 @@ fanciness: 10
 # Text to show while generating.
 status-text: Thinking...
 # Default character limit on input to model.
-max-input-chars: 12250
+max-input-chars: 24500
