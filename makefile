@@ -26,7 +26,6 @@ settings:
 	$(info CPU: $(CPU))
 	$(info SHELL: $(SHELL))
 	$(info MAKE: $(make_version))
-	$(info PATH: $(PATH))
 
 ###############################################################################
 # Errors check
