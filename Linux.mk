@@ -12,7 +12,7 @@ help: settings
 	$(call help,make install,Install packages)
 	$(call help,make configure,Configure packages)
 
-install: posh mods gpg
+install: gpg vim posh mods
 
 configure: bash-configure vim-configure gpg-configure mods-configure
 
@@ -22,10 +22,11 @@ configure: bash-configure vim-configure gpg-configure mods-configure
 
 bash: bash-configure
 
-bash_completion := $(HOME)/.local/share/bash-completion
 local_bin := $(HOME)/.local/bin
+bash_completion := $(HOME)/.local/share/bash-completion
 
-bash_dirs := $(bash_completion) $(local_bin)
+bash_dirs := $(local_bin) $(bash_completion)
+bash_files := .bash_logout .bashrc .digrc .profile
 
 $(bash_dirs):
 	$(call header,Creating Bash directories)
@@ -33,11 +34,7 @@ $(bash_dirs):
 
 bash-configure: $(bash_dirs)
 	$(call header,Configure Bash)
-	ln -rfsv .bash_logout $(HOME)/.bash_logout
-	ln -rfsv .bashrc $(HOME)/.bashrc
-	ln -rfsv .digrc $(HOME)/.digrc
-	ln -rfsv .profile $(HOME)/.profile
-	ln -rfsv bash-completion/completions $(bash_completion)
+	$(foreach file,$(bash_files),ln -rfsv $(file) $(HOME)/$(file);)
 
 bash-status:
 	$(call header,Checking Bash status)
@@ -86,6 +83,7 @@ vim-status:
 ###############################################################################
 
 gpg_dir := $(HOME)/.gnupg
+gpg_files := gpg-agent.conf gpg.conf scdaemon.conf
 
 gpg: gpg-install gpg-configure gpg-status
 
@@ -99,9 +97,7 @@ gpg-install:
 
 gpg-configure: $(gpg_dir)
 	$(call header,Configure GPG)
-	ln -rfsv .gnupg/gpg-agent.conf $(gpg_dir)/gpg-agent.conf
-	ln -rfsv .gnupg/gpg.conf $(gpg_dir)/gpg.conf
-	ln -rfsv .gnupg/scdaemon.conf $(gpg_dir)/scdaemon.conf
+	$(foreach file,$(gpg_files),ln -rfsv .gnupg/$(file) $(gpg_dir)/$(file);)
 
 gpg-status:
 	$(call header,Checking GPG status)
