@@ -7,10 +7,10 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-help:
-	$(call header,$(OS) Help)
-	$(call help,make install,Install $(OS) packages)
-	$(call help,make configure,Configure $(OS) packages)
+help: settings
+	$(call header,Help)
+	$(call help,make install,Install packages)
+	$(call help,make configure,Configure packages)
 
 install: posh mods gpg
 
