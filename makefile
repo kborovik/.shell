@@ -33,6 +33,8 @@ settings:
 # Repo Version
 ###############################################################################
 
+.PHONE: version commit tag release
+
 version:
 	echo $$(date +%Y.%m.%d-%H%M) >| VERSION
 	git add VERSION
