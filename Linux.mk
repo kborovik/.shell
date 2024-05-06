@@ -61,7 +61,7 @@ posh-status:
 # vim: Vi IMproved
 ###############################################################################
 
-vim: vim-install vim-configure
+vim: vim-install vim-configure vim-status
 
 vim-install:
 	$(call header,Installing Vim)
@@ -165,7 +165,7 @@ mods-status:
 # https://github.com/charmbracelet/glow
 ###############################################################################
 
-glow: glow-install
+glow: glow-install glow-status
 
 glow-install: $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Installing Glow)
@@ -177,7 +177,7 @@ glow-uninstall:
 
 glow-status:
 	$(call header,Glow Version)
-	apt list --verbose glow
+	glow --version
 
 ###############################################################################
 # Ollama: A CLI for the Ollama API
