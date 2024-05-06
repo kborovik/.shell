@@ -7,7 +7,14 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-default: posh bash vim mods
+help:
+	$(call header,$(OS) Help)
+	$(call help,make install,Install $(OS) packages)
+	$(call help,make configure,Configure $(OS) packages)
+
+install: bash posh mods
+
+configure: bash-configure vim-configure mods-configure
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -25,12 +32,13 @@ bash-install:
 	$(call header,Installing Bash)
 	brew install bash bash-completion@2 coreutils git pass pipx scc tree wget fx jq yq openssl@3
 
-bash-configure: $(bash-dirs)
+bash-configure: $(bash_completion)
 	$(call header,Configure Bash)
-	ln -v -s -r -f .profile $(HOME)/.profile
-	ln -v -s -r -f .bashrc $(HOME)/.bashrc
-	ln -v -s -r -f bash-completion/completions $(bash_completion)
-	ln -v -s -r -f .digrc $(HOME)/.digrc
+	ln -rfsv .bash_logout $(HOME)/.bash_logout
+	ln -rfsv .bashrc $(HOME)/.bashrc
+	ln -rfsv .digrc $(HOME)/.digrc
+	ln -rfsv .profile $(HOME)/.profile
+	ln -rfsv bash-completion/completions $(bash_completion)
 
 bash-status:
 	$(call header,Checking Bash status)
@@ -66,8 +74,8 @@ vim-install:
 
 vim-configure:
 	$(call header,Configure Vim)
-	ln -v -s -r -f .vimrc $(HOME)/.vimrc
-	ln -v -s -r -f .vim $(HOME)
+	ln -rfsv .vimrc $(HOME)/.vimrc
+	ln -rfsv .vim $(HOME)
 
 vim-uninstall:
 	$(call header,Uninstalling Vim)
@@ -114,7 +122,7 @@ mods-install: $(mods-dirs)
 
 mods-configure:
 	$(call header,Configure Mods)
-	ln -v -s -r -f mods.yml $(mods_config)
+	ln -rfsv mods.yml $(mods_config)
 
 mods-uninstall:
 	$(call header,Uninstalling Mods)

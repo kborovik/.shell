@@ -8,7 +8,6 @@ export_dirs=(
   ~/.awscliv2/v2/current/bin
   ~/.nodenv/bin/
   ~/.nodenv/shims
-  ~/bin
   /usr/lib/go-1.21/bin
   /usr/local/bin
   /opt/homebrew/opt/make/libexec/gnubin
