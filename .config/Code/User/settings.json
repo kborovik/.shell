@@ -102,7 +102,6 @@
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
-  "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.allowChords": false,
   "terminal.integrated.altClickMovesCursor": false,
@@ -140,5 +139,17 @@
   "workbench.colorTheme": "One Dark",
   "workbench.editor.enablePreview": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "cSpell.userWords": [
+    "abspath",
+    "gcloud",
+    "gsutil",
+    "ifeq",
+    "ifneq",
+    "lastword",
+    "northamerica",
+    "patsubst",
+    "tflock",
+    "tfvars"
+  ]
 }

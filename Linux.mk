@@ -19,19 +19,19 @@ mods_config := "$(HOME)/.config/mods/mods.yml"
 mods: mods-install mods-configure mods-status
 
 mods-install: $(charm_gpg_key) $(charm_apt_repo)
-	$(info ==> Installing Mods <==) 
+	$(call header,Installing Mods)
 	sudo apt update && sudo apt install mods
 
 mods-configure:
-	$(info ==> Configure Mods <==)
+	$(call header,Configuring Mods)
 	ln -v -s -r -f mods.yml $(mods_config)
 
 mods-uninstall:
-	$(info ==> Uninstalling Mods <==)
+	$(call header,Uninstalling Mods)
 	sudo apt remove mods
 
 mods-status:
-	$(info ==> Checking Mods status <==)
+	$(call header,Mods Version)
 	mods --version
 
 ###############################################################################
@@ -42,25 +42,25 @@ mods-status:
 ollama: ollama-install ollama-configure ollama-status
 
 ollama-install:
-	$(info ==> Installing Ollama <==)
+	$(call header,Installing Ollama)
 	curl -fsSL https://ollama.com/download/linux | sudo bash
 
 ollama-configure:
-	$(info ==> Configure Ollama <==)
+	$(call header,Configure Ollama)
 	ollama pull llama3
 	ollama pull llama3:8b-instruct-q8_0
 
 ollama-uninstall:
-	$(info ==> Uninstalling Ollama <==)
+	$(call header,Uninstalling Ollama)
 	sudo systemctl stop ollama
 	sudo systemctl disable ollama
 	sudo rm /etc/systemd/system/ollama.service
-	sudo rm $(which ollama)
+	sudo rm $$(which ollama)
 	sudo userdel ollama
 	sudo groupdel ollama
 
 ollama-status:
-	$(info ==> Checking Ollama status <==)
+	$(call header,Checking Ollama status)
 	ollama --version
 
 ###############################################################################
@@ -72,11 +72,11 @@ charm_gpg_key := /etc/apt/trusted.gpg.d/charm.gpg
 charm_apt_repo := /etc/apt/sources.list.d/charm.list
 
 $(charm_gpg_key):
-	$(info ==> Installing Charm GPG key <==)
+	$(call header,Installing Charm GPG key)
 	curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o $@
 
 $(charm_apt_repo):
-	$(info ==> Adding Charm APT repository <==)
+	$(call header,Adding Charm APT repository)
 	echo "deb [signed-by=$(charm_gpg_key)] https://repo.charm.sh/apt/ * *" | sudo tee $@
 
 ###############################################################################
@@ -85,13 +85,13 @@ $(charm_apt_repo):
 ###############################################################################
 
 glow-install: $(charm_gpg_key) $(charm_apt_repo)
-	$(info ==> Installing glow <==) 
+	$(call header,Installing Glow)
 	sudo apt update && sudo apt install glow
 
 glow-uninstall:
-	$(info ==> Uninstalling glow <==)
+	$(call header,Uninstalling Glow)
 	sudo apt remove glow
 
 glow-status:
-	$(info ==> Checking glow status <==)
+	$(call header,Glow Version)
 	apt list --verbose glow

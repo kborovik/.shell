@@ -18,22 +18,22 @@ bash: bash-install bash-configure
 bash_completion := $(HOME)/.local/share/bash-completion
 
 $(bash_completion):
-	$(info ==> Creating Bash directories <==)
+	$(call header,Creating Bash directories)
 	mkdir -p $(@)
 
 bash-install:
-	$(info ==> Installing Bash <==)
+	$(call header,Installing Bash)
 	brew install bash bash-completion@2 coreutils git pass pipx scc tree wget fx jq yq openssl@3
 
 bash-configure: $(bash-dirs)
-	$(info ==> Configure Bash <==)
+	$(call header,Configure Bash)
 	ln -v -s -r -f .profile $(HOME)/.profile
 	ln -v -s -r -f .bashrc $(HOME)/.bashrc
 	ln -v -s -r -f bash-completion/completions $(bash_completion)
 	ln -v -s -r -f .digrc $(HOME)/.digrc
 
 bash-status:
-	$(info ==> Checking Bash status <==)
+	$(call header,Checking Bash status)
 	bash --version
 
 ###############################################################################
@@ -43,15 +43,15 @@ bash-status:
 posh: posh-install
 
 posh-install:
-	$(info ==> Installing Oh-My-Posh <==)
+	$(call header,Installing Oh-My-Posh)
 	brew install oh-my-posh
 
 posh-uninstall:
-	$(info ==> Uninstalling Oh-My-Posh <==)
+	$(call header,Uninstalling Oh-My-Posh)
 	brew rm oh-my-posh
 
 posh-status:
-	$(info ==> Checking Oh-My-Posh status <==)
+	$(call header,Checking Oh-My-Posh status)
 	oh-my-posh --version
 
 ###############################################################################
@@ -61,21 +61,21 @@ posh-status:
 vim: vim-install vim-configure
 
 vim-install:
-	$(info ==> Installing Vim <==)
+	$(call header,Installing Vim)
 	brew install vim
 
 vim-configure:
-	$(info ==> Configure Vim <==)
+	$(call header,Configure Vim)
 	ln -v -s -r -f .vimrc $(HOME)/.vimrc
 	ln -v -s -r -f .vim $(HOME)
 
 vim-uninstall:
-	$(info ==> Uninstalling Vim <==)
+	$(call header,Uninstalling Vim)
 	brew rm vim
 	rm -rf $(HOME)/.vim $(HOME)/.vimrc
 
 vim-status:	
-	$(info ==> Checking Vim status <==)
+	$(call header,Checking Vim status)
 	vim --version
 
 ###############################################################################
@@ -105,24 +105,24 @@ mods_config := "$(HOME)/Library/Application Support/mods/mods.yml"
 mods: mods-install mods-configure mods-status
 
 mods-dirs:
-	$(info ==> Creating Mods directories <==)
+	$(call header,Creating Mods directories)
 	mkdir -p $(mods_dir)
 
 mods-install: $(mods-dirs)
-	$(info ==> Installing Mods <==) 
+	$(call header,Installing Mods) 
 	brew install mods
 
 mods-configure:
-	$(info ==> Configure Mods <==)
+	$(call header,Configure Mods)
 	ln -v -s -r -f mods.yml $(mods_config)
 
 mods-uninstall:
-	$(info ==> Uninstalling Mods <==)
+	$(call header,Uninstalling Mods)
 	brew rm mods
 	rm -rf $(mods_dir)
 
 mods-status:
-	$(info ==> Checking Mods status <==)
+	$(call header,Checking Mods status)
 	mods --version
 
 ###############################################################################
@@ -133,17 +133,17 @@ mods-status:
 ollama: ollama-install
 
 ollama-install:
-	$(info ==> Downloading Ollama installation to $(HOME)/Downloads/ <==)
+	$(call header,Downloading Ollama installation to $(HOME)/Downloads/)
 	curl -fsSl https://ollama.com/download/Ollama-darwin.zip -o $(HOME)/Downloads/Ollama-darwin.zip
 
 ollama-configure:
-	$(info ==> Configure Ollama <==)
+	$(call header,Configure Ollama)
 	ollama pull llama3
 	ollama pull llama3:8b-instruct-q8_0
 
 ollama-uninstall:
-	$(info ==> Uninstalling Ollama <==)
+	$(call header,Uninstalling Ollama)
 
 ollama-status:
-	$(info ==> Checking Ollama status <==)
+	$(call header,Checking Ollama status)
 	ollama --version

@@ -12,6 +12,8 @@ OS := $(shell uname -s)
 
 make_version := $(shell $(MAKE) --version | grep "GNU Make" | cut -d ' ' -f 3 | cut -d '.' -f 1)
 
+include functions.mk
+
 ifeq ($(OS),Linux)
 include Linux.mk
 else ifeq ($(OS),Darwin)
@@ -21,11 +23,11 @@ $(error ==> Unsupported OS: $(OS) <==)
 endif
 
 settings:
-	$(info ==> System Settings <==)
-	$(info OS: $(OS))
-	$(info CPU: $(CPU))
-	$(info SHELL: $(SHELL))
-	$(info MAKE: $(make_version))
+	$(call header,System Settings)
+	$(call var,OS,$(OS))
+	$(call var,CPU,$(CPU))
+	$(call var,SHELL,$(SHELL))
+	$(call var,MAKE,$(make_version))
 
 ###############################################################################
 # Errors check
