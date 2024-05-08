@@ -86,8 +86,9 @@ done
 
 source ~/.shell/bash-functions.sh
 
-[ -f ~/.bash-preexec.sh ] && source ~/.bash-preexec.sh
-
-[ "$(command -v atuin)" ] && eval "$(atuin init --disable-up-arrow bash)"
+if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then 
+  source ~/.bash-preexec.sh
+  eval "$(atuin init --disable-up-arrow bash)"
+fi
 
 [ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
