@@ -12,9 +12,9 @@ help: settings
 	$(call help,make install,Install packages)
 	$(call help,make configure,Configure packages)
 
-install: gpg vim posh mods
+install: gpg vim posh mods atuin
 
-configure: bash-configure vim-configure gpg-configure mods-configure
+configure: bash-configure vim-configure gpg-configure mods-configure atuin-configure
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -82,14 +82,14 @@ vim-status:
 # GPG: GNU Privacy Guard
 ###############################################################################
 
-gpg_dir := $(HOME)/.gnupg
-gpg_files := gpg-agent.conf gpg.conf scdaemon.conf
+gpg_config := .gnupg/gpg.conf
 
 gpg: gpg-install gpg-configure gpg-status
 
 $(gpg_dir):
 	$(call header,Creating GPG directories)
 	mkdir -p $(@)
+	chmod 700 $(@)
 
 gpg-install:
 	$(call header,Installing GPG)
@@ -97,7 +97,7 @@ gpg-install:
 
 gpg-configure: $(gpg_dir)
 	$(call header,Configure GPG)
-	$(foreach file,$(gpg_files),ln -rfsv .gnupg/$(file) $(gpg_dir)/$(file);)
+	ln -rfsv $(gpg_config) $(HOME)/$(gpg_config)
 
 gpg-status:
 	$(call header,Checking GPG status)
@@ -106,6 +106,22 @@ gpg-status:
 ###############################################################################
 # atuin: A command-line tool for managing your dotfiles
 ###############################################################################
+
+atuin_config := .config/atuin/config.toml
+
+atuin: atuin-install atuin-configure atuin-status
+
+atuin-install:
+	$(call header,Installing Atuin)
+	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+
+atuin-configure:
+	$(call header,Configure Atuin)
+	ln -rfsv $(atuin_config) $(HOME)/$(atuin_config)
+
+atuin-status:
+	$(call header,Checking Atuin status)
+	atuin status
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
@@ -136,7 +152,7 @@ $(charm_apt_repo):
 # https://github.com/charmbracelet/mods
 ###############################################################################
 
-mods_config := "$(HOME)/.config/mods/mods.yml"
+mods_config := .config/mods/mods.yml
 
 mods: mods-install mods-configure mods-status
 
@@ -146,7 +162,7 @@ mods-install: $(charm_gpg_key) $(charm_apt_repo)
 
 mods-configure:
 	$(call header,Configuring Mods)
-	ln -rfsv mods.yml $(mods_config)
+	ln -rfsv $(mods_config) $(HOME)/$(mods_config)
 
 mods-uninstall:
 	$(call header,Uninstalling Mods)

@@ -122,7 +122,7 @@ mods-install: $(mods-dirs)
 
 mods-configure:
 	$(call header,Configure Mods)
-	ln -rfsv mods.yml $(mods_config)
+	ln -fsv .config/mods/mods.yml $(mods_config)
 
 mods-uninstall:
 	$(call header,Uninstalling Mods)
