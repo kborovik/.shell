@@ -2,15 +2,15 @@
 # Colors and Headers
 ###############################################################################
 
-black := \e[30m
-red := \e[31m
-green := \e[32m
-yellow := \e[33m
-blue := \e[34m
-magenta := \e[35m
-cyan := \e[36m
-white := \e[37m
-reset := \e[0m
+black := \033[30m
+red := \033[31m
+green := \033[32m
+yellow := \033[33m
+blue := \033[34m
+magenta := \033[35m
+cyan := \033[36m
+white := \033[37m
+reset := \033[0m
 
 define header
 echo "$(green)==> $(1) <==$(reset)"
