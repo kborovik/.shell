@@ -12,9 +12,9 @@ help: settings
 	$(call help,make install,Install packages)
 	$(call help,make configure,Configure packages)
 
-install: gpg vim posh mods atuin
+install: bash gpg vim posh atuin mods
 
-configure: bash-configure vim-configure gpg-configure mods-configure atuin-configure
+configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -22,11 +22,10 @@ configure: bash-configure vim-configure gpg-configure mods-configure atuin-confi
 
 bash: bash-configure
 
-local_bin := $(HOME)/.local/bin
-bash_completion := $(HOME)/.local/share/bash-completion
+local_bin := .local/bin
+bash_completion := .local/share/bash-completion
 
-bash_dirs := $(local_bin) $(bash_completion)
-bash_files := .bash_logout .bashrc .digrc .profile
+bash_dirs := $(HOME)/$(local_bin) $(HOME)/$(bash_completion)
 
 $(bash_dirs):
 	$(call header,Creating Bash directories)
@@ -34,7 +33,11 @@ $(bash_dirs):
 
 bash-configure: $(bash_dirs)
 	$(call header,Configure Bash)
-	$(foreach file,$(bash_files),ln -rfsv $(file) $(HOME)/$(file);)
+	ln -rfsv .profile $(HOME)/.profile
+	ln -rfsv .bashrc $(HOME)/.bashrc
+	ln -rfsv .bash_logout $(HOME)/.bash_logout
+	ln -rfsv .digrc $(HOME)/.digrc
+	ln -rfsv $(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-status:
 	$(call header,Checking Bash status)
