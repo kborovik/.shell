@@ -7,38 +7,30 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-help:
-	$(call header,$(OS) Help)
-	$(call help,make install,Install $(OS) packages)
-	$(call help,make configure,Configure $(OS) packages)
-
 install: bash posh mods
-
-configure: bash-configure vim-configure mods-configure
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
 ###############################################################################
 
-bash: bash-install bash-configure
+bash_bin := /opt/homebrew/bin/bash
+bash_config := .bashrc .bash_logout .profile .digrc
+bash_completion := .local/share/bash-completion
 
-bash_completion := $(HOME)/.local/share/bash-completion
+bash: bash-install bash-configure
 
 $(bash_completion):
 	$(call header,Creating Bash directories)
 	mkdir -p $(@)
 
-bash-install:
+$(bash-bin):
 	$(call header,Installing Bash)
-	brew install bash bash-completion@2 coreutils git pass pipx scc tree wget fx jq yq openssl@3
+	brew install bash bash-completion@2
 
 bash-configure: $(bash_completion)
 	$(call header,Configure Bash)
-	ln -rfsv .bash_logout $(HOME)/.bash_logout
-	ln -rfsv .bashrc $(HOME)/.bashrc
-	ln -rfsv .digrc $(HOME)/.digrc
-	ln -rfsv .profile $(HOME)/.profile
-	ln -rfsv bash-completion/completions $(bash_completion)
+	$(foreach file,$(bash_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
+	ln -fsv $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-status:
 	$(call header,Checking Bash status)
@@ -74,8 +66,8 @@ vim-install:
 
 vim-configure:
 	$(call header,Configure Vim)
-	ln -rfsv .vimrc $(HOME)/.vimrc
-	ln -rfsv .vim $(HOME)
+	ln -fsv .vimrc $(HOME)/.vimrc
+	ln -fsv .vim $(HOME)
 
 vim-uninstall:
 	$(call header,Uninstalling Vim)
@@ -89,6 +81,36 @@ vim-status:
 ###############################################################################
 # GPG: GNU Privacy Guard
 ###############################################################################
+
+gpg_bin := $(shell command -v gpg)
+gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf
+
+opensc_bin := /Library/OpenSC/bin/openpgp-tool
+
+gpg: gpg-install gpg-configure gpg-version
+
+$(gpg_dir):
+	$(call header,Creating GPG directories)
+	mkdir -p $(@)
+	chmod 700 $(@)
+
+$(opensc_bin):
+	$(call header,Installing OpenSC)
+	brew install --cask opensc
+
+$(gpg_bin):
+	$(call header,Installing GPG)
+	brew install gnupg
+
+gpg-install: $(gpg_bin) $(opensc_bin)
+
+gpg-configure: $(gpg_dir)
+	$(call header,Configure GPG)
+	$(foreach file,$(gpg_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
+
+gpg-version:
+	$(call header,GPG version)
+	gpg --version
 
 ###############################################################################
 # atuin: A command-line tool for managing your dotfiles
@@ -122,7 +144,7 @@ mods-install: $(mods-dirs)
 
 mods-configure:
 	$(call header,Configure Mods)
-	ln -fsv .config/mods/mods.yml $(mods_config)
+	ln -fsv $(PWD)/.config/mods/mods.yml $(mods_config)
 
 mods-uninstall:
 	$(call header,Uninstalling Mods)

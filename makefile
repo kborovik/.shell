@@ -3,6 +3,8 @@
 .SILENT:
 MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 
+default: settings help
+
 ###############################################################################
 # Settings
 ###############################################################################
@@ -22,6 +24,10 @@ endif
 
 include functions.mk
 
+help:
+	$(call header,Help)
+	$(call help,make install,Install and configure)
+
 settings:
 	$(call header,System)
 	$(call var,OS,$(OS))
@@ -33,6 +39,6 @@ settings:
 # Errors check
 ###############################################################################
 
-ifneq ($(make_version),4)
-$(error ==> GNU Make 4.x is required <==)
-endif
+# ifneq ($(make_version),4)
+# $(error ==> GNU Make 4.x is required <==)
+# endif

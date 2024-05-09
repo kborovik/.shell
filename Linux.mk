@@ -7,11 +7,6 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-help: settings
-	$(call header,Help)
-	$(call help,make install,Install packages)
-	$(call help,make configure,Configure packages)
-
 install: bash posh gpg vim atuin mods code
 
 configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure code-configure
@@ -99,7 +94,7 @@ vim-version:
 ###############################################################################
 
 gpg_bin := $(shell command -v gpg)
-gpg_config := .gnupg/gpg.conf
+gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf
 
 gpg: gpg-install gpg-configure gpg-version
 
@@ -116,7 +111,7 @@ gpg-install: $(gpg_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,Configure GPG)
-	ln -rfsv $(gpg_config) $(HOME)/$(gpg_config)
+	$(foreach file,$(gpg_config),ln -rfsv $(file) $(HOME)/$(file);)
 
 gpg-version:
 	$(call header,GPG version)
