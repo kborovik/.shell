@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-history-prune() {
-  awk '!seen[$0]++' ~/.bash_history >| ~/.bash_history_
-  mv ~/.bash_history_ ~/.bash_history
-}
-
 # Passwd generator
 gen-pass-16() {
   gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | tr -d '\n'
