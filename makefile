@@ -1,6 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 .ONESHELL:
 .SILENT:
+
 MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 
 default: settings help
@@ -63,7 +64,7 @@ endef
 # Repo Version
 ###############################################################################
 
-.PHONE: version commit tag release
+.PHONY: version
 
 version:
 	echo $$(date +%Y.%m.%d-%H%M) >| VERSION
