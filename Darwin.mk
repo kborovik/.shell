@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-install: bash posh git gpg mods
+install: bash posh git gpg vim mods
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -20,22 +20,22 @@ bash_completion := .local/share/bash-completion
 bash: bash-install bash-configure bash-version
 
 $(bash_completion):
-	$(call header,Creating Bash directories)
+	$(call header,Bash - Create directories)
 	mkdir -p $(@)
 
 $(bash-bin):
-	$(call header,Installing Bash)
+	$(call header,Bash - Install)
 	brew install bash bash-completion@2
 
 bash-install: $(bash_bin)
 
 bash-configure: $(bash_completion)
-	$(call header,Configure Bash)
+	$(call header,Bash - Configure)
 	$(foreach file,$(bash_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
 	ln -fsv $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-version:
-	$(call header,Bash version)
+	$(call header,Bash - Version)
 	bash --version
 
 ###############################################################################
@@ -47,59 +47,62 @@ git_bin := /opt/homebrew/bin/git
 git: git-install git-configure git-version
 
 $(git_bin):
-	$(call header,Installing Git)
+	$(call header,Git - Install)
 	brew install git
 
 git-install: $(git_bin)
 
 git-configure:
-	$(call header,Configure Git)
+	$(call header,Git - Configure)
 	ln -fsv $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 git-version:
-	$(call header,Git version)
+	$(call header,Git - Version)
 	git --version
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
 ###############################################################################
 
-posh: posh-install
+posh: posh-install posh-version
 
 posh-install:
-	$(call header,Installing Oh-My-Posh)
+	$(call header,POSH - Install)
 	brew install oh-my-posh
 
 posh-uninstall:
-	$(call header,Uninstalling Oh-My-Posh)
+	$(call header,POSH - Uninstall)
 	brew rm oh-my-posh
 
 posh-version:
-	$(call header,Checking Oh-My-Posh status)
+	$(call header, POSH - Version)
 	oh-my-posh --version
 
 ###############################################################################
 # vim: Vi IMproved
 ###############################################################################
 
+vim_bin := /opt/homebrew/bin/vim
 vim: vim-install vim-configure
 
-vim-install:
-	$(call header,Installing Vim)
+$(vim_bin):
+	$(call header,Vim - Install)
 	brew install vim
 
+vim-install: $(vim_bin)
+
 vim-configure:
-	$(call header,Configure Vim)
-	ln -fsv .vimrc $(HOME)/.vimrc
-	ln -fsv .vim $(HOME)
+	$(call header,Vim - Configure)
+	ln -fsv $(PWD)/.vimrc $(HOME)/.vimrc
+	ln -fsv $(PWD)/.vim $(HOME)
 
 vim-uninstall:
-	$(call header,Uninstalling Vim)
+	$(call header,Vim - Uninstall)
 	brew rm vim
 	rm -rf $(HOME)/.vim $(HOME)/.vimrc
 
 vim-version:	
-	$(call header,Checking Vim status)
+	$(call header,Vim - Version)
 	vim --version
 
 ###############################################################################
@@ -114,31 +117,50 @@ opensc_bin := /Library/OpenSC/bin/openpgp-tool
 gpg: gpg-install gpg-configure gpg-version
 
 $(gpg_dir):
-	$(call header,Creating GPG directories)
+	$(call header,GPG - Create directories)
 	mkdir -p $(@)
 	chmod 700 $(@)
 
 $(opensc_bin):
-	$(call header,Installing OpenSC)
+	$(call header,OpenSC - Install)
 	brew install --cask opensc
 
 $(gpg_bin):
-	$(call header,Installing GPG)
+	$(call header,GPG - Install)
 	brew install gnupg
 
 gpg-install: $(gpg_bin) $(opensc_bin)
 
 gpg-configure: $(gpg_dir)
-	$(call header,Configure GPG)
+	$(call header,GPG - Configure)
 	$(foreach file,$(gpg_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
 
 gpg-version:
-	$(call header,GPG version)
+	$(call header,GPG - Version)
 	gpg --version
 
 ###############################################################################
 # atuin: A command-line tool for managing your dotfiles
 ###############################################################################
+
+atuin_bin := /opt/homebrew/bin/atuin
+atuin_config := .config/atuin/config.toml
+
+atuin: atuin-install atuin-configure atuin-version
+
+atuin-install: $(atuin_bin)
+
+$(atuin_bin):
+	$(call header,Installing Atuin)
+	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+
+atuin-configure:
+	$(call header,Configure Atuin)
+	ln -fsv $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
+
+atuin-version:
+	$(call header,Atuin status)
+	atuin status
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
@@ -153,30 +175,33 @@ gpg-version:
 # https://github.com/charmbracelet/mods
 ###############################################################################
 
-mods_dir := "$(HOME)/Library/Application Support/mods"
-mods_config := "$(HOME)/Library/Application Support/mods/mods.yml"
+mods_bin := /opt/homebrew/bin/mods
+mods_dir := $(HOME)/Library/Application\ Support/mods
+mods_config := $(HOME)/Library/Application\ Support/mods/mods.yml
 
 mods: mods-install mods-configure mods-version
 
-mods-dirs:
-	$(call header,Creating Mods directories)
-	mkdir -p $(mods_dir)
+$(mods_dir):
+	$(call header,Mods - Create directories)
+	mkdir -p $(@)
 
-mods-install: $(mods-dirs)
-	$(call header,Installing Mods) 
+$(mods_bin): $(mods_dir)
+	$(call header,Mods - Install) 
 	brew install mods
 
+mods-install: $(mods_bin)
+
 mods-configure:
-	$(call header,Configure Mods)
+	$(call header,Mods - Configure)
 	ln -fsv $(PWD)/.config/mods/mods.yml $(mods_config)
 
 mods-uninstall:
-	$(call header,Uninstalling Mods)
+	$(call header,Mods - Uninstall)
 	brew rm mods
 	rm -rf $(mods_dir)
 
 mods-version:
-	$(call header,Mods version)
+	$(call header,Mods - Version)
 	mods --version
 
 ###############################################################################

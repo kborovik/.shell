@@ -10,7 +10,7 @@ export_dirs=(
   ~/.nodenv/shims
   /usr/lib/go-1.21/bin
   /usr/local/bin
-  /opt/homebrew/opt/make/libexec/gnubin
+  # /opt/homebrew/opt/make/libexec/gnubin
   /opt/homebrew/opt/openssl@3/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
   /opt/homebrew/share/google-cloud-sdk/bin
