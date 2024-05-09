@@ -13,11 +13,11 @@ white := \033[37m
 reset := \033[0m
 
 define header
-echo "$(green)==> $(1) <==$(reset)"
+echo "$(blue)==> $(1) <==$(reset)"
 endef
 
 define help
-echo "$(blue)$(1)$(reset) - $(white)$(2)$(reset)"
+echo "$(green)$(1)$(reset) - $(white)$(2)$(reset)"
 endef
 
 define var

@@ -39,7 +39,7 @@ bash-configure: $(bash_dir)
 	ln -rfsv .digrc $(HOME)/.digrc
 	ln -rfsv $(bash_completion)/completions $(HOME)/$(bash_completion)
 
-bash-status:
+bash-version:
 	$(call header,Checking Bash status)
 	bash --version
 
@@ -49,7 +49,7 @@ bash-status:
 
 posh_bin := $(shell command -v oh-my-posh)
 
-posh: posh-install posh-status
+posh: posh-install posh-version
 
 $(posh_bin):
 	$(call header,Installing Oh-My-Posh)
@@ -61,7 +61,7 @@ posh-upgrade:
 	$(call header,Installing Oh-My-Posh)
 	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(HOME)/$(local_bin)
 
-posh-status:
+posh-version:
 	$(call header,Oh-My-Posh version)
 	echo $(posh_bin)
 	oh-my-posh version
@@ -72,7 +72,7 @@ posh-status:
 
 vim_bin := $(shell command -v vim)
 
-vim: vim-install vim-configure vim-status
+vim: vim-install vim-configure
 
 $(vim_bin):
 	$(call header,Installing Vim)
@@ -90,7 +90,7 @@ vim-uninstall:
 	sudo apt remove vim
 	rm -rf $(HOME)/.vim $(HOME)/.vimrc
 
-vim-status:	
+vim-version:
 	$(call header,Checking Vim status)
 	vim --version
 
@@ -101,7 +101,7 @@ vim-status:
 gpg_bin := $(shell command -v gpg)
 gpg_config := .gnupg/gpg.conf
 
-gpg: gpg-install gpg-configure gpg-status
+gpg: gpg-install gpg-configure gpg-version
 
 $(gpg_dir):
 	$(call header,Creating GPG directories)
@@ -118,8 +118,8 @@ gpg-configure: $(gpg_dir)
 	$(call header,Configure GPG)
 	ln -rfsv $(gpg_config) $(HOME)/$(gpg_config)
 
-gpg-status:
-	$(call header,Checking GPG status)
+gpg-version:
+	$(call header,GPG version)
 	gpg --version
 
 ###############################################################################
@@ -129,7 +129,7 @@ gpg-status:
 atuin_bin := $(shell command -v atuin)
 atuin_config := .config/atuin/config.toml
 
-atuin: atuin-install atuin-configure atuin-status
+atuin: atuin-install atuin-configure atuin-version
 
 atuin-install: $(atuin_bin)
 
@@ -141,8 +141,8 @@ atuin-configure:
 	$(call header,Configure Atuin)
 	ln -rfsv $(atuin_config) $(HOME)/$(atuin_config)
 
-atuin-status:
-	$(call header,Checking Atuin status)
+atuin-version:
+	$(call header,Atuin status)
 	atuin status
 
 ###############################################################################
@@ -157,7 +157,7 @@ code_dir := .config/Code/User
 code_apt := /etc/apt/sources.list.d/vscode.list
 code_gpg := /etc/apt/trusted.gpg.d/microsoft.gpg
 
-code: code-install code-configure code-status
+code: code-install code-configure code-version
 
 $(code_gpg):
 	$(call header,Installing Code GPG key)
@@ -179,7 +179,7 @@ code-configure:
 	ln -rfsv $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
 	ln -rfsv $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
 
-code-status:
+code-version:
 	$(call header,Code Version)
 	code --version
 
@@ -207,7 +207,7 @@ $(charm_apt_repo):
 mods_bin := $(shell command -v mods)
 mods_config := .config/mods/mods.yml
 
-mods: mods-install mods-configure mods-status
+mods: mods-install mods-configure mods-version
 
 $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Installing Mods)
@@ -224,7 +224,7 @@ mods-uninstall:
 	$(call header,Uninstalling Mods)
 	sudo apt remove mods
 
-mods-status:
+mods-version:
 	$(call header,Mods Version)
 	echo $(mods_bin)
 	mods --version
@@ -234,7 +234,7 @@ mods-status:
 # https://github.com/charmbracelet/glow
 ###############################################################################
 
-glow: glow-install glow-status
+glow: glow-install glow-version
 
 glow-install: $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Installing Glow)
@@ -244,7 +244,7 @@ glow-uninstall:
 	$(call header,Uninstalling Glow)
 	sudo apt remove glow
 
-glow-status:
+glow-version:
 	$(call header,Glow Version)
 	glow --version
 
@@ -253,7 +253,7 @@ glow-status:
 # https://ollama.com/download/linux
 ###############################################################################
 
-ollama: ollama-install ollama-configure ollama-status
+ollama: ollama-install ollama-configure ollama-version
 
 ollama-install:
 	$(call header,Installing Ollama)
@@ -272,6 +272,6 @@ ollama-uninstall:
 	sudo userdel ollama
 	sudo groupdel ollama
 
-ollama-status:
+ollama-version:
 	$(call header,Checking Ollama status)
 	ollama --version
