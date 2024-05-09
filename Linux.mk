@@ -9,8 +9,6 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 
 install: bash posh gpg vim atuin mods code
 
-configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure code-configure
-
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
 ###############################################################################
