@@ -68,8 +68,8 @@ endef
 
 version:
 	echo $$(date +%Y.%m.%d-%H%M) >| VERSION
+	$(call header,Version: $$(cat VERSION))
 	git add VERSION
-	echo "VERSION: $$(cat VERSION)"
 
 commit: version
 	git add --all
