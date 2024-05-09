@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-install: bash posh mods
+install: bash posh git gpg mods
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -17,7 +17,7 @@ bash_bin := /opt/homebrew/bin/bash
 bash_config := .bashrc .bash_logout .profile .digrc
 bash_completion := .local/share/bash-completion
 
-bash: bash-install bash-configure
+bash: bash-install bash-configure bash-version
 
 $(bash_completion):
 	$(call header,Creating Bash directories)
@@ -27,14 +27,38 @@ $(bash-bin):
 	$(call header,Installing Bash)
 	brew install bash bash-completion@2
 
+bash-install: $(bash_bin)
+
 bash-configure: $(bash_completion)
 	$(call header,Configure Bash)
 	$(foreach file,$(bash_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
 	ln -fsv $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
 
-bash-status:
-	$(call header,Checking Bash status)
+bash-version:
+	$(call header,Bash version)
 	bash --version
+
+###############################################################################
+# Git: Distributed version control system
+###############################################################################
+
+git_bin := /opt/homebrew/bin/git
+
+git: git-install git-configure git-version
+
+$(git_bin):
+	$(call header,Installing Git)
+	brew install git
+
+git-install: $(git_bin)
+
+git-configure:
+	$(call header,Configure Git)
+	ln -fsv $(PWD)/.gitconfig $(HOME)/.gitconfig
+
+git-version:
+	$(call header,Git version)
+	git --version
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
@@ -50,7 +74,7 @@ posh-uninstall:
 	$(call header,Uninstalling Oh-My-Posh)
 	brew rm oh-my-posh
 
-posh-status:
+posh-version:
 	$(call header,Checking Oh-My-Posh status)
 	oh-my-posh --version
 
@@ -74,7 +98,7 @@ vim-uninstall:
 	brew rm vim
 	rm -rf $(HOME)/.vim $(HOME)/.vimrc
 
-vim-status:	
+vim-version:	
 	$(call header,Checking Vim status)
 	vim --version
 
@@ -82,7 +106,7 @@ vim-status:
 # GPG: GNU Privacy Guard
 ###############################################################################
 
-gpg_bin := $(shell command -v gpg)
+gpg_bin := /opt/homebrew/bin/gpg
 gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf
 
 opensc_bin := /Library/OpenSC/bin/openpgp-tool
@@ -132,7 +156,7 @@ gpg-version:
 mods_dir := "$(HOME)/Library/Application Support/mods"
 mods_config := "$(HOME)/Library/Application Support/mods/mods.yml"
 
-mods: mods-install mods-configure mods-status
+mods: mods-install mods-configure mods-version
 
 mods-dirs:
 	$(call header,Creating Mods directories)
@@ -151,8 +175,8 @@ mods-uninstall:
 	brew rm mods
 	rm -rf $(mods_dir)
 
-mods-status:
-	$(call header,Checking Mods status)
+mods-version:
+	$(call header,Mods version)
 	mods --version
 
 ###############################################################################
@@ -174,6 +198,6 @@ ollama-configure:
 ollama-uninstall:
 	$(call header,Uninstalling Ollama)
 
-ollama-status:
-	$(call header,Checking Ollama status)
+ollama-version:
+	$(call header,Ollama version)
 	ollama --version

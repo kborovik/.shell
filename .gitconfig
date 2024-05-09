@@ -1,0 +1,7 @@
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = off
+[user]
+	name = Konstantin Borovik
+	email = kb@lab5.ca
