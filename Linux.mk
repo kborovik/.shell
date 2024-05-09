@@ -12,7 +12,7 @@ help: settings
 	$(call help,make install,Install packages)
 	$(call help,make configure,Configure packages)
 
-install: bash gpg vim posh atuin mods code
+install: bash posh gpg vim atuin mods code
 
 configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure code-configure
 
@@ -25,13 +25,13 @@ bash: bash-configure
 local_bin := .local/bin
 bash_completion := .local/share/bash-completion
 
-bash_dirs := $(HOME)/$(local_bin) $(HOME)/$(bash_completion)
+bash_dir := $(HOME)/$(local_bin) $(HOME)/$(bash_completion)
 
-$(bash_dirs):
+$(bash_dir):
 	$(call header,Creating Bash directories)
 	mkdir -p $(@)
 
-bash-configure: $(bash_dirs)
+bash-configure: $(bash_dir)
 	$(call header,Configure Bash)
 	ln -rfsv .profile $(HOME)/.profile
 	ln -rfsv .bashrc $(HOME)/.bashrc
@@ -47,25 +47,38 @@ bash-status:
 # Oh-My-Posh: A prompt theme engine for any shell
 ###############################################################################
 
+posh_bin := $(shell command -v oh-my-posh)
+
 posh: posh-install posh-status
 
-posh-install posh-upgrade:
+$(posh_bin):
 	$(call header,Installing Oh-My-Posh)
-	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
+	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(HOME)/$(local_bin)
+
+posh-install: $(posh_bin)
+
+posh-upgrade:
+	$(call header,Installing Oh-My-Posh)
+	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(HOME)/$(local_bin)
 
 posh-status:
-	$(call header,Checking Oh-My-Posh status)
-	oh-my-posh --version
+	$(call header,Oh-My-Posh version)
+	echo $(posh_bin)
+	oh-my-posh version
 
 ###############################################################################
 # vim: Vi IMproved
 ###############################################################################
 
+vim_bin := $(shell command -v vim)
+
 vim: vim-install vim-configure vim-status
 
-vim-install:
+$(vim_bin):
 	$(call header,Installing Vim)
 	sudo apt install vim
+
+vim-install: $(vim_bin)
 
 vim-configure:
 	$(call header,Configure Vim)
@@ -85,6 +98,7 @@ vim-status:
 # GPG: GNU Privacy Guard
 ###############################################################################
 
+gpg_bin := $(shell command -v gpg)
 gpg_config := .gnupg/gpg.conf
 
 gpg: gpg-install gpg-configure gpg-status
@@ -94,9 +108,11 @@ $(gpg_dir):
 	mkdir -p $(@)
 	chmod 700 $(@)
 
-gpg-install:
+$(gpg_bin):
 	$(call header,Installing GPG)
 	sudo apt install gnupg
+
+gpg-install: $(gpg_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,Configure GPG)
@@ -110,11 +126,14 @@ gpg-status:
 # atuin: A command-line tool for managing your dotfiles
 ###############################################################################
 
+atuin_bin := $(shell command -v atuin)
 atuin_config := .config/atuin/config.toml
 
 atuin: atuin-install atuin-configure atuin-status
 
-atuin-install:
+atuin-install: $(atuin_bin)
+
+$(atuin_bin):
 	$(call header,Installing Atuin)
 	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
 
@@ -133,11 +152,12 @@ atuin-status:
 ###############################################################################
 # Code: Visual Studio Code
 ###############################################################################
+code_bin := $(shell command -v code)
 code_dir := .config/Code/User
 code_apt := /etc/apt/sources.list.d/vscode.list
 code_gpg := /etc/apt/trusted.gpg.d/microsoft.gpg
 
-code: code-install code-configure
+code: code-install code-configure code-status
 
 $(code_gpg):
 	$(call header,Installing Code GPG key)
@@ -147,15 +167,21 @@ $(code_apt):
 	$(call header,Adding Code APT repository)
 	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee@ $@
 
-code-install: $(code_gpg) $(code_apt)
+$(code_bin): $(code_gpg) $(code_apt)
 	$(call header,Installing Code)
 	sudo apt update
 	sudo apt install code
+
+code-install: $(code_bin)
 
 code-configure:
 	$(call header,Configure Code)
 	ln -rfsv $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
 	ln -rfsv $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
+
+code-status:
+	$(call header,Code Version)
+	code --version
 
 ###############################################################################
 # TUI Library and Apps
@@ -178,13 +204,17 @@ $(charm_apt_repo):
 # https://github.com/charmbracelet/mods
 ###############################################################################
 
+mods_bin := $(shell command -v mods)
 mods_config := .config/mods/mods.yml
 
 mods: mods-install mods-configure mods-status
 
-mods-install: $(charm_gpg_key) $(charm_apt_repo)
+$(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Installing Mods)
-	sudo apt update && sudo apt install mods
+	sudo apt update
+	sudo apt install mods
+
+mods-install: $(mods_bin)
 
 mods-configure:
 	$(call header,Configuring Mods)
@@ -196,6 +226,7 @@ mods-uninstall:
 
 mods-status:
 	$(call header,Mods Version)
+	echo $(mods_bin)
 	mods --version
 
 ###############################################################################
