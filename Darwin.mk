@@ -205,6 +205,46 @@ mods-version:
 	mods --version
 
 ###############################################################################
+# Google Cloud SDK
+###############################################################################
+
+gcloud_bin := /opt/homebrew/bin/gcloud
+
+gcloud: gcloud-install gcloud-version
+
+$(gcloud_bin):
+	$(call header,Google Cloud SDK - Install)
+	brew install --cask google-cloud-sdk
+
+gcloud-install: $(gcloud_bin)
+
+# gcloud-configure:
+# $(call header,Google Cloud SDK - Configure)
+# gcloud init
+
+gcloud-version:
+	$(call header,Google Cloud SDK - Version)
+	gcloud --version
+
+###############################################################################
+# Terraform: Infrastructure as Code
+###############################################################################
+
+terraform_bin := /opt/homebrew/bin/terraform
+
+terraform: terraform-install terraform-version
+
+$(terraform_bin):
+	$(call header,Terraform - Install)
+	brew install terraform
+
+terraform-install: $(terraform_bin)
+
+terraform-version:
+	$(call header,Terraform - Version)
+	terraform --version
+
+###############################################################################
 # Ollama: A CLI for the Ollama API
 # https://ollama.com/download/linux
 ###############################################################################

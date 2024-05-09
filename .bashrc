@@ -76,7 +76,7 @@ alias ls='ls --color=auto'
 typeset -a completion_files=(
   /usr/share/bash-completion/bash_completion
   /opt/homebrew/etc/profile.d/bash_completion.sh
-  /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+  /opt/homebrew/share/google-cloud-sdk/path.bash.inc
 )
 for file in "${completion_files[@]}"; do
   [ -r "$file" ] && source "$file"
