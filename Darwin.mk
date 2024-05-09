@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 # Default target
 ###############################################################################
 
-install: bash posh git gpg vim mods
+install: bash posh git gpg vim mods atuin gcloud terraform
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -110,7 +110,7 @@ vim-version:
 ###############################################################################
 
 gpg_bin := /opt/homebrew/bin/gpg
-gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf
+gpg_config := .gnupg/gpg.conf
 
 opensc_bin := /Library/OpenSC/bin/openpgp-tool
 
@@ -185,13 +185,13 @@ $(mods_dir):
 	$(call header,Mods - Create directories)
 	mkdir -p $(@)
 
-$(mods_bin): $(mods_dir)
+$(mods_bin):
 	$(call header,Mods - Install) 
 	brew install mods
 
 mods-install: $(mods_bin)
 
-mods-configure:
+mods-configure: $(mods_dir)
 	$(call header,Mods - Configure)
 	ln -fsv $(PWD)/.config/mods/mods.yml $(mods_config)
 
@@ -218,10 +218,6 @@ $(gcloud_bin):
 
 gcloud-install: $(gcloud_bin)
 
-# gcloud-configure:
-# $(call header,Google Cloud SDK - Configure)
-# gcloud init
-
 gcloud-version:
 	$(call header,Google Cloud SDK - Version)
 	gcloud --version
@@ -236,7 +232,8 @@ terraform: terraform-install terraform-version
 
 $(terraform_bin):
 	$(call header,Terraform - Install)
-	brew install terraform
+	brew tap hashicorp/tap
+	brew install hashicorp/tap/terraform
 
 terraform-install: $(terraform_bin)
 
@@ -252,16 +249,15 @@ terraform-version:
 ollama: ollama-install
 
 ollama-install:
-	$(call header,Downloading Ollama installation to $(HOME)/Downloads/)
-	curl -fsSl https://ollama.com/download/Ollama-darwin.zip -o $(HOME)/Downloads/Ollama-darwin.zip
+	$(call header,Ollama - Install)
+	brew install --cask ollama
 
 ollama-configure:
-	$(call header,Configure Ollama)
+	$(call header,Ollama - Configure)
 	ollama pull llama3
-	ollama pull llama3:8b-instruct-q8_0
 
 ollama-uninstall:
-	$(call header,Uninstalling Ollama)
+	$(call header,Ollama - Uninstall)
 
 ollama-version:
 	$(call header,Ollama version)
