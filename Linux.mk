@@ -12,9 +12,9 @@ help: settings
 	$(call help,make install,Install packages)
 	$(call help,make configure,Configure packages)
 
-install: bash gpg vim posh atuin mods
+install: bash gpg vim posh atuin mods code
 
-configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure
+configure: bash-configure gpg-configure vim-configure atuin-configure mods-configure code-configure
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -133,6 +133,29 @@ atuin-status:
 ###############################################################################
 # Code: Visual Studio Code
 ###############################################################################
+code_dir := .config/Code/User
+code_apt := /etc/apt/sources.list.d/vscode.list
+code_gpg := /etc/apt/trusted.gpg.d/microsoft.gpg
+
+code: code-install code-configure
+
+$(code_gpg):
+	$(call header,Installing Code GPG key)
+	curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o $@
+
+$(code_apt):
+	$(call header,Adding Code APT repository)
+	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee@ $@
+
+code-install: $(code_gpg) $(code_apt)
+	$(call header,Installing Code)
+	sudo apt update
+	sudo apt install code
+
+code-configure:
+	$(call header,Configure Code)
+	ln -rfsv $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
+	ln -rfsv $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
 
 ###############################################################################
 # TUI Library and Apps

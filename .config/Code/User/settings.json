@@ -1,0 +1,156 @@
+{
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[helm]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/",
+    "cSpell.advanced.feature.useReferenceProviderWithRename": true,
+    "cSpell.fixSpellingWithRenameProvider": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "on"
+    },
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.wordWrap": "on"
+  },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.tabSize": 4
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "cSpell.enableFiletypes": [
+    "helm",
+    "shellscript",
+    "terraform",
+    "makefile"
+  ],
+  "cSpell.enabled": true,
+  "chat.editor.fontFamily": "Fira Code Retina, MesloLGL Nerd Font Mono",
+  "chat.editor.fontSize": 16,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.colorDecorators": false,
+  "editor.defaultFormatter": null,
+  "editor.detectIndentation": true,
+  "editor.fontFamily": "Fira Code Retina, IBM Plex Mono, Meslo",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "explorer.confirmDelete": false,
+  "files.associations": {
+    "*.hcl": "terraform",
+    "*.service": "toml",
+    "*.tfvars": "terraform",
+    "*.toml": "toml",
+    "*.yaml": "yaml",
+    "main.yaml": "ansible"
+  },
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.confirmSync": false,
+  "git.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "never",
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
+  "gitlab.aiAssistedCodeSuggestions.enabled": true,
+  "gitlab.aiAssistedCodeSuggestions.preferredAccount": "kborovik2",
+  "html.format.extraLiners": "head, body, footer, /html",
+  "html.format.maxPreserveNewLines": 1,
+  "prettier.bracketSpacing": false,
+  "prettier.ignorePath": ".prettierignore",
+  "prettier.insertPragma": false,
+  "prettier.printWidth": 120,
+  "redhat.telemetry.enabled": false,
+  "ruff.fixAll": false,
+  "ruff.showNotifications": "onWarning",
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.altClickMovesCursor": false,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "args": [
+        "--norc"
+      ],
+      "path": "/usr/bin/bash"
+    },
+    "dash": {
+      "path": "/usr/bin/dash"
+    }
+  },
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "args": [
+        "--norc"
+      ],
+      "path": "/opt/homebrew/bin/bash"
+    }
+  },
+  "terraform.languageServer.enable": true,
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled",
+    "vs-kubernetes.ignore-recommendations": true
+  },
+  "window.zoomLevel": 2,
+  "workbench.colorTheme": "One Dark",
+  "workbench.editor.enablePreview": true,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "cSpell.userWords": [
+    "abspath",
+    "atuin",
+    "gcloud",
+    "gsutil",
+    "ifeq",
+    "ifneq",
+    "lastword",
+    "northamerica",
+    "patsubst",
+    "tflock",
+    "tfvars"
+  ],
+  "editor.fontSize": 16
+}

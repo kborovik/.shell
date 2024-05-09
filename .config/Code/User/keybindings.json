@@ -1,0 +1,61 @@
+[
+  {
+    "command": "search.action.openNewEditor",
+    "key": "alt+f"
+  },
+  {
+    "command": "workbench.action.files.save",
+    "key": "alt+s"
+  },
+  {
+    "command": "editor.action.clipboardCopyAction",
+    "key": "alt+c"
+  },
+  {
+    "command": "editor.action.clipboardPasteAction",
+    "key": "alt+v"
+  },
+  {
+    "command": "deleteWordRight",
+    "key": "alt+delete",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "deleteWordLeft",
+    "key": "alt+backspace",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "command": "cursorHome",
+    "key": "alt+left",
+    "when": "textInputFocus"
+  },
+  {
+    "command": "cursorEnd",
+    "key": "alt+right",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "-workbench.action.chat.open",
+    "when": "hasChatProvider"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "workbench.action.openChat.copilot"
+  },
+  {
+    "key": "meta+i",
+    "command": "inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && !editorReadonly"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "cSpell.addWordToWorkspaceSettings"
+  }
+]
