@@ -5,3 +5,5 @@
 [user]
 	name = Konstantin Borovik
 	email = kb@lab5.ca
+[credential]
+	helper = store --file ~/.git-credentials
