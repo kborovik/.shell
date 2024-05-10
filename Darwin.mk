@@ -78,6 +78,7 @@ posh-version:
 ###############################################################################
 
 vim_bin := /opt/homebrew/bin/vim
+
 vim: vim-install vim-configure
 
 $(vim_bin):
