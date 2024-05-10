@@ -55,11 +55,15 @@ git-configure:
 # Oh-My-Posh: A prompt theme engine for any shell
 ###############################################################################
 
+posh_bin := /opt/homebrew/bin/oh-my-posh
+
 posh: posh-install posh-version
 
-posh-install:
+$(posh_bin):
 	$(call header,POSH - Install)
 	brew install oh-my-posh
+
+posh-install: $(posh_bin)
 
 posh-uninstall:
 	$(call header,POSH - Uninstall)
