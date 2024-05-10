@@ -77,7 +77,7 @@ $(atuin_bin):
 
 atuin-configure:
 	$(call header,Atuin - Configure)
-	ln -fsv $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
+	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
 
 atuin-version:
 	$(call header,Atuin - Version)

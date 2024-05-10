@@ -26,8 +26,8 @@ bash-install: $(bash_bin)
 
 bash-configure: $(bash_completion)
 	$(call header,Bash - Configure)
-	$(foreach file,$(bash_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
-	ln -fsv $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
+	$(foreach file,$(bash_config),ln -fs $(PWD)/$(file) $(HOME)/$(file);)
+	ln -fs $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-version:
 	$(call header,Bash - Version)
@@ -49,7 +49,7 @@ git-install: $(git_bin)
 
 git-configure:
 	$(call header,Git - Configure)
-	ln -fsv $(PWD)/.gitconfig $(HOME)/.gitconfig
+	ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
@@ -84,8 +84,8 @@ vim-install: $(vim_bin)
 
 vim-configure:
 	$(call header,Vim - Configure)
-	ln -fsv $(PWD)/.vimrc $(HOME)/.vimrc
-	ln -fsv $(PWD)/.vim $(HOME)
+	ln -fs $(PWD)/.vimrc $(HOME)/.vimrc
+	ln -fs $(PWD)/.vim $(HOME)
 
 vim-uninstall:
 	$(call header,Vim - Uninstall)
@@ -125,7 +125,7 @@ gpg-install: $(gpg_bin) $(opensc_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,GPG - Configure)
-	$(foreach file,$(gpg_config),ln -fsv $(PWD)/$(file) $(HOME)/$(file);)
+	$(foreach file,$(gpg_config),ln -fs $(PWD)/$(file) $(HOME)/$(file);)
 
 gpg-version:
 	$(call header,GPG - Version)
@@ -162,7 +162,7 @@ mods-install: $(mods_bin)
 
 mods-configure: $(mods_dir)
 	$(call header,Mods - Configure)
-	ln -fsv $(PWD)/.config/mods/mods.yml $(mods_config)
+	ln -fs $(PWD)/.config/mods/mods.yml $(mods_config)
 
 mods-uninstall:
 	$(call header,Mods - Uninstall)

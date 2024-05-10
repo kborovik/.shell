@@ -35,8 +35,8 @@ $(bash_dir):
 
 bash-configure: $(bash_dir)
 	$(call header,Bash - Configure)
-	$(foreach file,$(bash_config),ln -rfsv $(file) $(HOME)/$(file);)
-	ln -rfsv $(bash_completion)/completions $(HOME)/$(bash_completion)
+	$(foreach file,$(bash_config),ln -rfs $(file) $(HOME)/$(file);)
+	ln -rfs $(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-version:
 	$(call header,Bash - Version)
@@ -58,7 +58,7 @@ git-install: $(git_bin)
 
 git-configure:
 	$(call header,Git - Configure)
-	ln -rfsv .gitconfig $(HOME)/.gitconfig
+	ln -rfs .gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
@@ -100,8 +100,8 @@ vim-install: $(vim_bin)
 
 vim-configure:
 	$(call header,Vim - Configure)
-	ln -rfsv .vimrc $(HOME)/.vimrc
-	ln -rfsv .vim $(HOME)
+	ln -rfs .vimrc $(HOME)/.vimrc
+	ln -rfs .vim $(HOME)
 
 vim-uninstall:
 	$(call header,Vim - Uninstall)
@@ -140,7 +140,7 @@ gpg-install: $(gpg_bin) $(scdaemon_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,GPG - Configure)
-	$(foreach file,$(gpg_config),ln -rfsv $(file) $(HOME)/$(file);)
+	$(foreach file,$(gpg_config),ln -rfs $(file) $(HOME)/$(file);)
 
 gpg-version:
 	$(call header,GPG - Version)
@@ -194,8 +194,8 @@ code-install: $(code_bin)
 
 code-configure:
 	$(call header,Code - Configure)
-	ln -rfsv $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
-	ln -rfsv $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
+	ln -rfs $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
+	ln -rfs $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
 
 code-version:
 	$(call header,Code - Version)
@@ -237,7 +237,7 @@ mods-install: $(mods_bin)
 
 mods-configure:
 	$(call header,Mods - Configure)
-	ln -rfsv $(mods_config) $(HOME)/$(mods_config)
+	ln -rfs $(mods_config) $(HOME)/$(mods_config)
 
 mods-uninstall:
 	$(call header,Mods - Uninstall)
