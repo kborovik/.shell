@@ -129,11 +129,11 @@ $(gpg_dir):
 	mkdir -p $(@)
 	chmod 700 $(@)
 
-$(gpg_bin): $(scdaemon_bin)
+$(gpg_bin):
 	$(call header,GPG - Install)
 	sudo apt install gnupg
 
-gpg-install: $(gpg_bin)
+gpg-install: $(gpg_bin) $(scdaemon_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,GPG - Configure)
