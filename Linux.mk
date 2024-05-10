@@ -114,8 +114,9 @@ vim-version:
 ###############################################################################
 
 gpg_bin := /usr/bin/gpg
+scdaemon_bin := /usr/lib/gnupg/scdaemon
 gpg_dir := $(HOME)/.gnupg
-gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf
+gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf .gnupg/gpg-agent.conf
 
 gpg: gpg-install gpg-configure gpg-version
 
@@ -124,7 +125,11 @@ $(gpg_dir):
 	mkdir -p $(@)
 	chmod 700 $(@)
 
-$(gpg_bin):
+$(scdaemon_bin):
+	$(call header,GPG - Install scdaemon)
+	sudo apt install scdaemon
+
+$(gpg_bin): $(scdaemon_bin)
 	$(call header,GPG - Install)
 	sudo apt install gnupg
 
