@@ -35,6 +35,53 @@ settings:
 	$(call var,MAKE,$(make_version))
 
 ###############################################################################
+# Git: Distributed version control system
+###############################################################################
+
+git-version:
+	$(call header,Git - Version)
+	git --version
+
+git-credentials-load:
+	$(call header,Git - Load credentials)
+	pass git pull
+	pass kborovik/git/credentials >| ~/.git-credentials
+
+git-credentials-save:
+	$(call header,Git - Save credentials)
+	pass git pull
+	pass insert -m -f kborovik/git/credentials < ~/.git-credentials
+	pass git push
+
+###############################################################################
+# atuin: A command-line tool for managing your dotfiles
+###############################################################################
+
+ifeq ($(OS),Linux)
+atuin_bin := /usr/bin/atuin
+else ifeq ($(OS),Darwin)
+atuin_bin := /opt/homebrew/bin/atuin
+endif
+
+atuin_config := .config/atuin/config.toml
+
+atuin: atuin-install atuin-configure atuin-version
+
+atuin-install: $(atuin_bin)
+
+$(atuin_bin):
+	$(call header,Atuin - Install)
+	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+
+atuin-configure:
+	$(call header,Atuin - Configure)
+	ln -fsv $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
+
+atuin-version:
+	$(call header,Atuin - Version)
+	atuin status
+
+###############################################################################
 # Colors and Headers
 ###############################################################################
 

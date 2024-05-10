@@ -1,9 +1,22 @@
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = off
 [user]
 	name = Konstantin Borovik
 	email = kb@lab5.ca
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+[remote "origin"]
+	prune = true
 [credential]
 	helper = store --file ~/.git-credentials
+[submodule]
+	recurse = true
+[rerere]
+	enabled = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

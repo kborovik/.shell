@@ -1,13 +1,8 @@
-.EXPORT_ALL_VARIABLES:
-.ONESHELL:
-.SILENT:
-MAKEFLAGS += --no-builtin-rules --no-builtin-variables
-
 ###############################################################################
 # Default target
 ###############################################################################
 
-install: bash posh git gpg vim mods atuin gcloud terraform
+install: bash posh git gpg git vim mods atuin gcloud terraform
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -55,10 +50,6 @@ git-install: $(git_bin)
 git-configure:
 	$(call header,Git - Configure)
 	ln -fsv $(PWD)/.gitconfig $(HOME)/.gitconfig
-
-git-version:
-	$(call header,Git - Version)
-	git --version
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
@@ -110,6 +101,7 @@ vim-version:
 ###############################################################################
 
 gpg_bin := /opt/homebrew/bin/gpg
+gpg_dir := $(HOME)/.gnupg
 gpg_config := .gnupg/gpg.conf
 
 opensc_bin := /Library/OpenSC/bin/openpgp-tool
@@ -138,29 +130,6 @@ gpg-configure: $(gpg_dir)
 gpg-version:
 	$(call header,GPG - Version)
 	gpg --version
-
-###############################################################################
-# atuin: A command-line tool for managing your dotfiles
-###############################################################################
-
-atuin_bin := /opt/homebrew/bin/atuin
-atuin_config := .config/atuin/config.toml
-
-atuin: atuin-install atuin-configure atuin-version
-
-atuin-install: $(atuin_bin)
-
-$(atuin_bin):
-	$(call header,Installing Atuin)
-	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
-
-atuin-configure:
-	$(call header,Configure Atuin)
-	ln -fsv $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
-
-atuin-version:
-	$(call header,Atuin status)
-	atuin status
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
