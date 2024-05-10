@@ -61,6 +61,8 @@ ifeq ($(OS),Linux)
 atuin_bin := /usr/bin/atuin
 else ifeq ($(OS),Darwin)
 atuin_bin := /opt/homebrew/bin/atuin
+else
+$(error ==> Unsupported OS: $(OS) <==)
 endif
 
 atuin_config := .config/atuin/config.toml
@@ -71,7 +73,7 @@ atuin-install: $(atuin_bin)
 
 $(atuin_bin):
 	$(call header,Atuin - Install)
-	curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
+	curl -sSf https://setup.atuin.sh | bash
 
 atuin-configure:
 	$(call header,Atuin - Configure)
