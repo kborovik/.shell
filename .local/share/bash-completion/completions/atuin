@@ -129,6 +129,9 @@ _atuin() {
             atuin__dotfiles__alias,help)
                 cmd="atuin__dotfiles__alias__help"
                 ;;
+            atuin__dotfiles__alias,import)
+                cmd="atuin__dotfiles__alias__import"
+                ;;
             atuin__dotfiles__alias,list)
                 cmd="atuin__dotfiles__alias__list"
                 ;;
@@ -140,6 +143,9 @@ _atuin() {
                 ;;
             atuin__dotfiles__alias__help,help)
                 cmd="atuin__dotfiles__alias__help__help"
+                ;;
+            atuin__dotfiles__alias__help,import)
+                cmd="atuin__dotfiles__alias__help__import"
                 ;;
             atuin__dotfiles__alias__help,list)
                 cmd="atuin__dotfiles__alias__help__list"
@@ -155,6 +161,9 @@ _atuin() {
                 ;;
             atuin__dotfiles__help__alias,delete)
                 cmd="atuin__dotfiles__help__alias__delete"
+                ;;
+            atuin__dotfiles__help__alias,import)
+                cmd="atuin__dotfiles__help__alias__import"
                 ;;
             atuin__dotfiles__help__alias,list)
                 cmd="atuin__dotfiles__help__alias__list"
@@ -251,6 +260,9 @@ _atuin() {
                 ;;
             atuin__help__dotfiles__alias,delete)
                 cmd="atuin__help__dotfiles__alias__delete"
+                ;;
+            atuin__help__dotfiles__alias,import)
+                cmd="atuin__help__dotfiles__alias__import"
                 ;;
             atuin__help__dotfiles__alias,list)
                 cmd="atuin__help__dotfiles__alias__list"
@@ -863,7 +875,7 @@ _atuin() {
             return 0
             ;;
         atuin__dotfiles__alias)
-            opts="-h --help set delete list help"
+            opts="-h --help set delete list import help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -891,7 +903,7 @@ _atuin() {
             return 0
             ;;
         atuin__dotfiles__alias__help)
-            opts="set delete list help"
+            opts="set delete list import help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -932,6 +944,20 @@ _atuin() {
             COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
             return 0
             ;;
+        atuin__dotfiles__alias__help__import)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
         atuin__dotfiles__alias__help__list)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
@@ -949,6 +975,20 @@ _atuin() {
         atuin__dotfiles__alias__help__set)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        atuin__dotfiles__alias__import)
+            opts="-h --help"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
@@ -1003,7 +1043,7 @@ _atuin() {
             return 0
             ;;
         atuin__dotfiles__help__alias)
-            opts="set delete list"
+            opts="set delete list import"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -1017,6 +1057,20 @@ _atuin() {
             return 0
             ;;
         atuin__dotfiles__help__alias__delete)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        atuin__dotfiles__help__alias__import)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
@@ -1257,7 +1311,7 @@ _atuin() {
             return 0
             ;;
         atuin__help__dotfiles__alias)
-            opts="set delete list"
+            opts="set delete list import"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 4 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -1271,6 +1325,20 @@ _atuin() {
             return 0
             ;;
         atuin__help__dotfiles__alias__delete)
+            opts=""
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        atuin__help__dotfiles__alias__import)
             opts=""
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 5 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
