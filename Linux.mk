@@ -2,7 +2,7 @@
 # Default target
 ###############################################################################
 
-install: bash posh git gpg vim atuin mods code
+install: apt-update bash posh git gpg vim atuin mods code
 
 ###############################################################################
 # General functions
@@ -13,6 +13,10 @@ local_bin := $(HOME)/.local/bin
 $(local_bin):
 	$(call header,Local Bin directory)
 	mkdir -p $(@)
+
+apt-update:
+	$(call header,APT - Update)
+	sudo apt update
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -48,7 +52,6 @@ git: git-install git-configure git-version
 
 $(git_bin):
 	$(call header,Git - Install)
-	sudo apt update
 	sudo apt install git
 
 git-install: $(git_bin)
@@ -180,6 +183,7 @@ $(code_gpg):
 $(code_apt):
 	$(call header,Code - APT Repository)
 	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee@ $@
+	sudo apt update
 
 $(code_bin): $(code_gpg) $(code_apt)
 	$(call header,Code - Install)
@@ -212,6 +216,7 @@ $(charm_gpg_key):
 $(charm_apt_repo):
 	$(call header,Charm - APT repository)
 	echo "deb [signed-by=$(charm_gpg_key)] https://repo.charm.sh/apt/ * *" | sudo tee $@
+	sudo apt update
 
 ###############################################################################
 # Mods: AI for the command line, built for pipelines.
