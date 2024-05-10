@@ -113,21 +113,21 @@ vim-version:
 # GPG: GNU Privacy Guard
 ###############################################################################
 
-gpg_bin := /usr/bin/gpg
 scdaemon_bin := /usr/lib/gnupg/scdaemon
+gpg_bin := /usr/bin/gpg
 gpg_dir := $(HOME)/.gnupg
 gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf .gnupg/gpg-agent.conf
 
 gpg: gpg-install gpg-configure gpg-version
 
+$(scdaemon_bin):
+	$(call header,GPG - Install scdaemon)
+	sudo apt install scdaemon
+
 $(gpg_dir):
 	$(call header,GPG - Directories)
 	mkdir -p $(@)
 	chmod 700 $(@)
-
-$(scdaemon_bin):
-	$(call header,GPG - Install scdaemon)
-	sudo apt install scdaemon
 
 $(gpg_bin): $(scdaemon_bin)
 	$(call header,GPG - Install)
