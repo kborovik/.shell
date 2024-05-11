@@ -22,3 +22,5 @@
 	required = true
 [init]
 	defaultBranch = main
+[advice]
+	addIgnoredFile = false
