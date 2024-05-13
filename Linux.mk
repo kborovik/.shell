@@ -151,8 +151,38 @@ gpg-version:
 ###############################################################################
 
 ###############################################################################
+# Hashicorp: APT repository
+###############################################################################
+
+hashicorp_gpg_key := /etc/apt/trusted.gpg.d/hashicorp.gpg
+hashicorp_apt_repo := /etc/apt/sources.list.d/hashicorp.list
+
+$(hashicorp_gpg_key):
+	$(call header,Terraform - GPG Public Key)
+	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o $@
+
+$(hashicorp_apt_repo):
+	$(call header,terraform - APT repository)
+	echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(VERSION_CODENAME) main" | sudo tee $@
+	sudo apt update
+
+###############################################################################
 # terraform: Infrastructure as Code
 ###############################################################################
+
+terraform_bin := /usr/bin/terraform
+
+terraform: terraform-install terraform-version
+
+$(terraform_bin): $(hashicorp_gpg_key) $(hashicorp_apt_repo)
+	$(call header,Terraform - Install)
+	sudo apt install terraform
+
+terraform-install: $(terraform_bin)
+
+terraform-version:
+	$(call header,Terraform - Version)
+	terraform --version
 
 ###############################################################################
 # docker: Container runtime
