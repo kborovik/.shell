@@ -2,7 +2,7 @@
 # Default target
 ###############################################################################
 
-install: apt-update bash posh git gpg vim atuin mods code
+install: apt-update bash posh git gpg vim atuin mods code gcloud terraform
 
 ###############################################################################
 # General functions
@@ -149,6 +149,32 @@ gpg-version:
 ###############################################################################
 # gcloud: Google Cloud SDK
 ###############################################################################
+
+gcloud_bin := /usr/bin/gcloud
+
+gcloud_gpg_key := /etc/apt/trusted.gpg.d/google-cli.gpg
+gcloud_apt_repo := /etc/apt/sources.list.d/google-cloud-sdk.list
+
+$(gcloud_gpg_key):
+	$(call header,Terraform - GPG Public Key)
+	curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o $@
+
+$(gcloud_apt_repo):
+	$(call header,terraform - APT repository)
+	echo "deb [arch=amd64] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $@
+	sudo apt update
+
+gcloud: gcloud-install gcloud-version
+
+$(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
+	$(call header,Google Cloud SDK - Install)
+	sudo apt install google-cloud-sdk
+
+gcloud-install: $(gcloud_bin)
+
+gcloud-version:
+	$(call header,Google Cloud SDK - Version)
+	gcloud --version
 
 ###############################################################################
 # Hashicorp: APT repository
