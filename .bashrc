@@ -1,24 +1,48 @@
 [[ $- != *i* ]] && return
 
-export_dirs=(
-  ~/.local/bin
-  ~/.cargo/bin
-  ~/.krew/bin
-  ~/go/bin
-  ~/.awscliv2/v2/current/bin
+path_dirs=(
+  /usr/lib/go-1.21/bin
   ~/.nodenv/bin/
   ~/.nodenv/shims
-  /usr/lib/go-1.21/bin
-  /usr/local/bin
-  /opt/homebrew/opt/make/libexec/gnubin
-  /opt/homebrew/opt/openssl@3/bin
-  /opt/homebrew/opt/coreutils/libexec/gnubin
-  /opt/homebrew/bin
-  /opt/homebrew/sbin
+  ~/.awscliv2/v2/current/bin
+  ~/.krew/bin
+  ~/.cargo/bin
+  ~/go/bin
+  ~/.local/bin
 )
-for dir in "${export_dirs[@]}"; do
+for dir in "${path_dirs[@]}"; do
   [ -d "$dir" ] && export PATH="$dir:$PATH"
 done
+
+completion_files=(
+  /usr/share/bash-completion/bash_completion
+)
+for file in "${completion_files[@]}"; do
+  [ -r "$file" ] && source "$file"
+done
+
+if [ -x /opt/homebrew/bin/brew ]; then
+
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  path_dirs=(
+    ${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin
+    ${HOMEBREW_PREFIX}/opt/make/libexec/gnubin
+    ${HOMEBREW_PREFIX}/opt/openssl@3/bin
+  )
+  for dir in "${path_dirs[@]}"; do
+    [ -d "$dir" ] && export PATH="$dir:$PATH"
+  done
+
+  completion_files=(
+    ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh
+    ${HOMEBREW_PREFIX}/share/google-cloud-sdk/path.bash.inc
+  )
+  for file in "${completion_files[@]}"; do
+    [ -r "$file" ] && source "$file"
+  done
+
+fi
 
 export COLORTERM="truecolor"
 export EDITOR="vim"
@@ -72,20 +96,11 @@ alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
-typeset -a completion_files=(
-  /usr/share/bash-completion/bash_completion
-  /opt/homebrew/etc/profile.d/bash_completion.sh
-  /opt/homebrew/share/google-cloud-sdk/path.bash.inc
-)
-for file in "${completion_files[@]}"; do
-  [ -r "$file" ] && source "$file"
-done
-
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 
 source ~/.shell/bash-functions.sh
 
-if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then 
+if [ -f ~/.bash-preexec.sh -a "$(command -v atuin)" ]; then
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
 fi
