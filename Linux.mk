@@ -1,4 +1,10 @@
 ###############################################################################
+# Linux specific settings
+###############################################################################
+
+lsb_release := $(shell lsb_release -cs)
+
+###############################################################################
 # Default target
 ###############################################################################
 
@@ -189,7 +195,7 @@ $(hashicorp_gpg_key):
 
 $(hashicorp_apt_repo):
 	$(call header,terraform - APT repository)
-	echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(VERSION_CODENAME) main" | sudo tee $@
+	echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release) main" | sudo tee $@
 	sudo apt update
 
 ###############################################################################

@@ -13,8 +13,6 @@ default: settings help
 CPU := $(shell uname -m)
 OS := $(shell uname -s)
 
-VERSION_CODENAME := $(shell lsb_release -cs)
-
 make_version := $(shell $(MAKE) --version | grep "GNU Make" | cut -d ' ' -f 3 | cut -d '.' -f 1)
 
 ifeq ($(OS),Linux)
