@@ -98,7 +98,7 @@ alias ls='ls --color=auto'
 
 [ "$(command -v dircolors)" ] && eval "$(dircolors)"
 
-source ~/.shell/bash-functions.sh
+[ -f ~/.shell/bash-functions.sh ] && source ~/.shell/bash-functions.sh
 
 if [ -f ~/.bash-preexec.sh -a "$(command -v atuin)" ]; then
   source ~/.bash-preexec.sh
