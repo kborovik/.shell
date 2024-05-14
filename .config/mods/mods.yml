@@ -20,7 +20,7 @@ apis:
     api-key-env: PERPLEXITY_API_KEY
     models:
       llama-3-sonar-large-32k-online:
-        aliases: ["sonar"]
+        aliases: ["online"]
         max-input-chars: 28000
 roles:
   "devops":
