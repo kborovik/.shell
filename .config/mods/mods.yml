@@ -1,27 +1,27 @@
 temp: 0.5
 topp: 0.5
-default-model: gpt-4-turbo
+default-model: gpt-4o
 apis:
   openai:
     base-url: https://api.openai.com/v1
     api-key:
     api-key-env: OPENAI_API_KEY
     models:
+      gpt-4o:
+        aliases: ["gpt4"]
+        max-input-chars: 128000
+        fallback: gpt-4-turbo
       gpt-4-turbo:
-        aliases: ["gpt4", "4"]
-        max-input-chars: 392000
-        fallback: gpt-3.5-turbo
-      gpt-3.5-turbo:
-        aliases: ["gpt3", "3"]
-        max-input-chars: 49000
-  groq:
-    base-url: https://api.groq.com/openai/v1
+        aliases: ["turbo"]
+        max-input-chars: 128000
+  perplexity:
+    base-url: https://api.perplexity.ai
     api-key:
-    api-key-env: GROQ_API_KEY
+    api-key-env: PERPLEXITY_API_KEY
     models:
-      llama3-70b-8192:
-        aliases: ["llama3", "groq"]
-        max-input-chars: 24500
+      llama-3-sonar-large-32k-online:
+        aliases: ["sonar"]
+        max-input-chars: 28000
 roles:
   "devops":
     [
