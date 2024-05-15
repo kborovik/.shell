@@ -2,7 +2,7 @@
 # Default target
 ###############################################################################
 
-install: bash posh git gpg git vim mods atuin gcloud terraform
+install: bash posh git gpg git vim mods atuin gcloud terraform k9s
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -139,6 +139,28 @@ gpg-version:
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
 ###############################################################################
+
+k9s_bin := /opt/homebrew/bin/k9s
+k9s_dir := $(HOME)/Library/Application\ Support/k9s
+k9s_config := aliases.yaml config.yaml hotkeys.yaml
+k9s_skin := skins/onedark.yaml
+
+k9s: k9s-install k9s-version
+
+$(k9s_bin):
+	$(call header,k9s - Install)
+	brew install k9s
+
+k9s-install: $(k9s_bin)
+
+k9s-configure:
+	$(call header,k9s - Configure)
+	$(foreach file,$(k9s_config),ln -fs $(PWD)/.config/k9s/$(file) $(k9s_dir)/$(file);)
+	ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
+
+k9s-version:
+	$(call header,k9s - Version)
+	k9s version
 
 ###############################################################################
 # Code: Visual Studio Code
