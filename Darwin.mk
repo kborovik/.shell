@@ -41,6 +41,7 @@ coreutils_bin := /opt/homebrew/Cellar/coreutils
 jq_bin := /opt/homebrew/bin/jq
 pass_bin := /opt/homebrew/bin/pass
 gh_bin := /opt/homebrew/bin/gh
+mos_bin := /Applications/Mos.app
 
 $(coreutils_bin):
 	$(call header,coreutils - Install)
@@ -58,7 +59,11 @@ $(gh_bin):
 	$(call header,gh - Install)
 	brew install gh
 
-tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin)
+$(mos_bin):
+	$(call header,Mos - Install)
+	brew install --cask mos
+
+tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin) $(mos_bin)
 
 ###############################################################################
 # Git: Distributed version control system
