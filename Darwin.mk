@@ -198,6 +198,20 @@ k9s-version:
 # Code: Visual Studio Code
 ###############################################################################
 
+code_bin := /opt/homebrew/bin/code
+
+$(code_bin):
+	$(call header,Code - Install)
+	brew install --cask visual-studio-code
+
+code: code-install code-version
+
+code-install: $(code_bin)
+
+code-version:
+	$(call header,Code - Version)
+	code --version
+
 ###############################################################################
 # Mods: AI for the command line, built for pipelines.
 # https://github.com/charmbracelet/mods
