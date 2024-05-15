@@ -2,7 +2,7 @@
 # Default target
 ###############################################################################
 
-install: bash posh git gpg git vim mods atuin gcloud terraform k9s
+install: bash posh tools git gpg git vim mods atuin gcloud terraform k9s
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -32,6 +32,33 @@ bash-configure: $(bash_completion)
 bash-version:
 	$(call header,Bash - Version)
 	bash --version
+
+###############################################################################
+# Linux tools
+###############################################################################
+
+coreutils_bin := /opt/homebrew/Cellar/coreutils
+jq_bin := /opt/homebrew/bin/jq
+pass_bin := /opt/homebrew/bin/pass
+gh_bin := /opt/homebrew/bin/gh
+
+$(coreutils_bin):
+	$(call header,coreutils - Install)
+	brew install coreutils
+
+$(jq_bin):
+	$(call header,jq - Install)
+	brew install jq
+
+$(pass_bin):
+	$(call header,pass - Install)
+	brew install pass
+
+$(gh_bin):
+	$(call header,gh - Install)
+	brew install gh
+
+tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin)
 
 ###############################################################################
 # Git: Distributed version control system
