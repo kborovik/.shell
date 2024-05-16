@@ -53,13 +53,18 @@ bash-version:
 # Linux tools
 ###############################################################################
 
+tree_bin := /usr/bin/tree
 unzip_bin := /usr/bin/unzip
+
+tools: $(tree_bin) $(unzip_bin)
+
+$(tree_bin):
+	$(call header,Tree - Install)
+	sudo apt install tree
 
 $(unzip_bin):
 	$(call header,Unzip - Install)
 	sudo apt install unzip
-
-tools: $(unzip_bin)
 
 ###############################################################################
 # Git: Distributed version control system

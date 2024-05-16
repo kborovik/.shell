@@ -1,5 +1,5 @@
 temp: 0.5
-topp: 0.5
+topp: 0.8
 default-model: gpt-4o
 apis:
   openai:
