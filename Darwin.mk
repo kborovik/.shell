@@ -1,8 +1,14 @@
 ###############################################################################
+# macOS specific settings
+###############################################################################
+
+PATH := /opt/homebrew/bin:$(PATH)
+
+###############################################################################
 # Default target
 ###############################################################################
 
-install: bash posh tools git gpg git vim mods atuin gcloud kubectl k9s terraform
+install: tools posh git gpg git vim bash mods atuin gcloud kubectl k9s terraform
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -103,7 +109,7 @@ posh-uninstall:
 
 posh-version:
 	$(call header, POSH - Version)
-	oh-my-posh --version
+	$(posh_bin) --version
 
 ###############################################################################
 # vim: Vi IMproved

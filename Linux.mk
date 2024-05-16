@@ -2,7 +2,10 @@
 # Linux specific settings
 ###############################################################################
 
+PATH := $(local_bin):$(PATH)
+
 lsb_release := $(shell lsb_release -cs)
+local_bin := $(HOME)/.local/bin
 
 ###############################################################################
 # Default target
@@ -13,8 +16,6 @@ install: apt-update tools posh bash git gpg vim gcloud terraform
 ###############################################################################
 # General functions
 ###############################################################################
-
-local_bin := $(HOME)/.local/bin
 
 $(local_bin):
 	$(call header,Local Bin directory)
