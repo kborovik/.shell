@@ -8,7 +8,7 @@ lsb_release := $(shell lsb_release -cs)
 # Default target
 ###############################################################################
 
-install: apt-update bash posh git gpg vim gcloud terraform
+install: apt-update tools bash posh git gpg vim gcloud terraform
 
 ###############################################################################
 # General functions
@@ -49,6 +49,18 @@ bash-version:
 	bash --version
 
 ###############################################################################
+# Linux tools
+###############################################################################
+
+unzip_bin := /usr/bin/unzip
+
+$(unzip_bin):
+	$(call header,Unzip - Install)
+	sudo apt install unzip
+
+tools: $(unzip_bin)
+
+###############################################################################
 # Git: Distributed version control system
 ###############################################################################
 
@@ -74,7 +86,7 @@ posh_bin := /home/kb/.local/bin/oh-my-posh
 
 posh: $(local_bin) posh-install posh-version
 
-$(posh_bin):
+$(posh_bin): $(unzip_bin)
 	$(call header,POSH - Install)
 	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
 
