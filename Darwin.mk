@@ -2,7 +2,7 @@
 # Default target
 ###############################################################################
 
-install: bash posh tools git gpg git vim mods atuin gcloud terraform k9s
+install: bash posh tools git gpg git vim mods atuin gcloud kubectl k9s terraform
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell
@@ -263,6 +263,24 @@ gcloud-install: $(gcloud_bin)
 gcloud-version:
 	$(call header,Google Cloud SDK - Version)
 	gcloud --version
+
+###############################################################################
+# kubectl: The Kubernetes command-line tool
+###############################################################################
+
+kubectl_bin := /opt/homebrew/share/google-cloud-sdk/bin/kubectl
+
+$(kubectl_bin): $(gcloud_bin)
+	$(call header,kubectl - Install)
+	gcloud components install kubectl --quiet
+
+kubectl: kubectl-install kubectl-version
+
+kubectl-install: $(kubectl_bin)
+
+kubectl-version:
+	$(call header,kubectl - Version)
+	kubectl version --client --output=yaml
 
 ###############################################################################
 # Terraform: Infrastructure as Code
