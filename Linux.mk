@@ -8,7 +8,7 @@ lsb_release := $(shell lsb_release -cs)
 # Default target
 ###############################################################################
 
-install: apt-update bash posh git gpg vim atuin mods code gcloud terraform
+install: apt-update bash posh git gpg vim gcloud terraform
 
 ###############################################################################
 # General functions
