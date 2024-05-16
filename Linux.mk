@@ -82,14 +82,13 @@ git-configure:
 # Oh-My-Posh: A prompt theme engine for any shell
 ###############################################################################
 
-posh_bin := /home/kb/.local/bin/oh-my-posh
+posh_bin := $(HOME)/.local/bin/oh-my-posh
 
 posh: $(local_bin) posh-install posh-version
 
 $(posh_bin): $(unzip_bin)
 	$(call header,POSH - Install)
 	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
-	sudo ln -rfs $(local_bin)/oh-my-posh /usr/bin/oh-my-posh
 
 posh-install: $(posh_bin)
 
@@ -101,7 +100,7 @@ posh-upgrade:
 
 posh-version:
 	$(call header,POSH - Version)
-	oh-my-posh version
+	$(posh_bin) version
 
 ###############################################################################
 # vim: Vi IMproved
