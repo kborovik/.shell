@@ -89,7 +89,7 @@ posh: $(local_bin) posh-install posh-version
 $(posh_bin): $(unzip_bin)
 	$(call header,POSH - Install)
 	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
-	ln -rfs $(local_bin)/oh-my-posh /usr/bin/oh-my-posh
+	sudo ln -rfs $(local_bin)/oh-my-posh /usr/bin/oh-my-posh
 
 posh-install: $(posh_bin)
 
