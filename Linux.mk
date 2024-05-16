@@ -172,7 +172,7 @@ gpg-version:
 gcloud_bin := /usr/bin/gcloud
 
 gcloud_gpg_key := /etc/apt/trusted.gpg.d/google-cli.gpg
-gcloud_apt_repo := /etc/apt/sources.list.d/google-cloud-sdk.list
+gcloud_apt_repo := /etc/apt/sources.list.d/google-packages.list
 
 $(gcloud_gpg_key):
 	$(call header,Terraform - GPG Public Key)
