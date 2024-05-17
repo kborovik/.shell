@@ -53,10 +53,15 @@ bash-version:
 # Linux tools
 ###############################################################################
 
+pass_bin := /usr/bin/pass
 tree_bin := /usr/bin/tree
 unzip_bin := /usr/bin/unzip
 
 tools: $(tree_bin) $(unzip_bin)
+
+$(pass_bin):
+	$(call header,Pass - Install)
+	sudo apt install pass
 
 $(tree_bin):
 	$(call header,Tree - Install)
