@@ -109,6 +109,10 @@ define var
 echo "$(magenta)$(1)$(reset): $(yellow)$(2)$(reset)"
 endef
 
+prompt:
+	echo -n "$(blue)Continue?$(reset) $(yellow)(yes/no)$(reset)"
+	read -p ": " answer && [ "$$answer" = "yes" ] || exit 1
+
 ###############################################################################
 # Repo Version
 ###############################################################################
@@ -116,7 +120,8 @@ endef
 .PHONY: version
 
 version:
-	echo $$(date +%Y.%m.%d-%H%M) >| VERSION
+	version=$$(date +%Y.%m.%d-%H%M)
+	echo "$$version" >| VERSION
 	$(call header,Version: $$(cat VERSION))
 	git add VERSION
 
@@ -124,11 +129,12 @@ commit: version
 	git add --all
 	git commit -m "$$(cat VERSION)"
 
-tag:
-	release_ver=$$(date +%Y.%m.%d)
-	git tag $${release_ver} -m "$${release_ver}"
+tag: commit
+	version=$$(date +%Y.%m.%d)
+	git tag "$$version" -m "Version: $$version"
 
 release: tag
+	git push --tags --force
 
 ###############################################################################
 # Errors check
