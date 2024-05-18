@@ -32,8 +32,8 @@ bash-install: $(bash_bin)
 
 bash-configure: $(bash_completion)
 	$(call header,Bash - Configure)
-	$(foreach file,$(bash_config),ln -fs $(PWD)/$(file) $(HOME)/$(file);)
-	ln -fs $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
+	$(foreach file,$(bash_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
+	/bin/ln -fs $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
 
 bash-version:
 	$(call header,Bash - Version)
@@ -47,7 +47,7 @@ coreutils_bin := /opt/homebrew/Cellar/coreutils
 jq_bin := /opt/homebrew/bin/jq
 pass_bin := /opt/homebrew/bin/pass
 gh_bin := /opt/homebrew/bin/gh
-mos_bin := /Applications/Mos.app
+mmf_bin := /Applications/Mac\ Mouse\ Fix.app
 
 $(coreutils_bin):
 	$(call header,coreutils - Install)
@@ -65,11 +65,11 @@ $(gh_bin):
 	$(call header,gh - Install)
 	brew install gh
 
-$(mos_bin):
+$(mmf_bin):
 	$(call header,Mos - Install)
-	brew install --cask mos
+	brew install --cask mac-mouse-fix
 
-tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin) $(mos_bin)
+tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin) $(mmf_bin)
 
 ###############################################################################
 # Git: Distributed version control system
@@ -87,7 +87,7 @@ git-install: $(git_bin)
 
 git-configure:
 	$(call header,Git - Configure)
-	ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
+	/bin/ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
 # Oh-My-Posh: A prompt theme engine for any shell
@@ -127,8 +127,8 @@ vim-install: $(vim_bin)
 
 vim-configure:
 	$(call header,Vim - Configure)
-	ln -fs $(PWD)/.vimrc $(HOME)/.vimrc
-	ln -fs $(PWD)/.vim $(HOME)
+	/bin/ln -fs $(PWD)/.vimrc $(HOME)/.vimrc
+	/bin/ln -fs $(PWD)/.vim $(HOME)
 
 vim-uninstall:
 	$(call header,Vim - Uninstall)
@@ -168,7 +168,7 @@ gpg-install: $(gpg_bin) $(opensc_bin)
 
 gpg-configure: $(gpg_dir)
 	$(call header,GPG - Configure)
-	$(foreach file,$(gpg_config),ln -fs $(PWD)/$(file) $(HOME)/$(file);)
+	$(foreach file,$(gpg_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
 
 gpg-version:
 	$(call header,GPG - Version)
@@ -193,8 +193,8 @@ k9s-install: $(k9s_bin)
 
 k9s-configure:
 	$(call header,k9s - Configure)
-	$(foreach file,$(k9s_config),ln -fs $(PWD)/.config/k9s/$(file) $(k9s_dir)/$(file);)
-	ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
+	$(foreach file,$(k9s_config),/bin/ln -fs $(PWD)/.config/k9s/$(file) $(k9s_dir)/$(file);)
+	/bin/ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
 
 k9s-version:
 	$(call header,k9s - Version)
@@ -241,7 +241,7 @@ mods-install: $(mods_bin)
 
 mods-configure: $(mods_dir)
 	$(call header,Mods - Configure)
-	ln -fs $(PWD)/.config/mods/mods.yml $(mods_config)
+	/bin/ln -fs $(PWD)/.config/mods/mods.yml $(mods_config)
 
 mods-uninstall:
 	$(call header,Mods - Uninstall)
