@@ -47,7 +47,8 @@ coreutils_bin := /opt/homebrew/Cellar/coreutils
 jq_bin := /opt/homebrew/bin/jq
 pass_bin := /opt/homebrew/bin/pass
 gh_bin := /opt/homebrew/bin/gh
-mmf_bin := /Applications/Mac\ Mouse\ Fix.app
+
+tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin)
 
 $(coreutils_bin):
 	$(call header,coreutils - Install)
@@ -65,11 +66,17 @@ $(gh_bin):
 	$(call header,gh - Install)
 	brew install gh
 
-$(mmf_bin):
-	$(call header,Mos - Install)
-	brew install --cask mac-mouse-fix
+###############################################################################
+# Mouse tools
+###############################################################################
 
-tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin) $(mmf_bin)
+mouse_bin :=
+
+mouse: $(mouse_bin)
+
+$(mouse_bin):
+	$(call header,Mouse Tools - Install)
+	brew install --cask bettermouse
 
 ###############################################################################
 # Git: Distributed version control system
