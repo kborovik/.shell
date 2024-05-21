@@ -333,6 +333,43 @@ mods-version:
 	mods --version
 
 ###############################################################################
+# VHS: Write terminal GIFs as code
+# https://github.com/charmbracelet/vhs
+###############################################################################
+
+vhs_bin := /usr/bin/vhs
+ttyd_bin := $(HOME)/.local/bin/ttyd
+
+vhs: vhs-install vhs-version
+
+$(vhs_bin): $(charm_gpg_key) $(charm_apt_repo)
+	$(call header,VHS - Install)
+	sudo apt install vhs ffmpeg
+
+$(ttyd_bin):
+	$(call header,VHS - Install ttyd)
+	set -e
+	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -o ttyd.x86_64
+	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/SHA256SUMS -o SHA256SUM
+	sha256sum SHA256SUM && rm SHA256SUM
+	mv ttyd.x86_64 $@ && chmod +x $@
+
+ttyd-install: $(ttyd_bin)
+
+vhs-install: $(vhs_bin) $(ttyd_bin)
+
+vhs-uninstall:
+	$(call header,VHS - Uninstall)
+	sudo apt remove vhs ffmpeg
+	sudo apt autoremove
+	rm $(ttyd_bin)
+
+vhs-version:
+	$(call header,VHS - Version)
+	vhs --version
+	ttyd --version
+
+###############################################################################
 # Glow: Render markdown on the CLI
 # https://github.com/charmbracelet/glow
 ###############################################################################
