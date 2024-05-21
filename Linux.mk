@@ -338,13 +338,18 @@ mods-version:
 ###############################################################################
 
 vhs_bin := /usr/bin/vhs
+ffmpeg_bin := /usr/bin/ffmpeg
 ttyd_bin := $(HOME)/.local/bin/ttyd
 
 vhs: vhs-install vhs-version
 
 $(vhs_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,VHS - Install)
-	sudo apt install vhs ffmpeg
+	sudo apt -y install vhs
+
+$(ffmpeg_bin):
+	$(call header,VHS - Install ffmpeg)
+	sudo apt -y install ffmpeg
 
 $(ttyd_bin):
 	$(call header,VHS - Install ttyd)
@@ -354,14 +359,12 @@ $(ttyd_bin):
 	sha256sum SHA256SUM && rm SHA256SUM
 	mv ttyd.x86_64 $@ && chmod +x $@
 
-ttyd-install: $(ttyd_bin)
-
-vhs-install: $(vhs_bin) $(ttyd_bin)
+vhs-install: $(ffmpeg_bin) $(ttyd_bin) $(vhs_bin)
 
 vhs-uninstall:
 	$(call header,VHS - Uninstall)
 	sudo apt remove vhs ffmpeg
-	sudo apt autoremove
+	sudo apt -y autoremove
 	rm $(ttyd_bin)
 
 vhs-version:
