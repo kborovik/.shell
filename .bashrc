@@ -27,6 +27,7 @@ if [ -x /opt/homebrew/bin/brew ]; then
 
   path_dirs=(
     ${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin
+    ${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin
     ${HOMEBREW_PREFIX}/opt/make/libexec/gnubin
     ${HOMEBREW_PREFIX}/opt/openssl@3/bin
   )
@@ -87,8 +88,8 @@ alias gaa='git add --all'
 alias gc='git commit'
 alias gd='git difftool'
 alias gj='git difftool HEAD..origin/HEAD'
+alias gl='git fetch --all --prune --tags --force'
 alias gk='git pull --all --prune --tags --force'
-alias gl='git fetch --all --prune --tags --prune-tags --force'
 alias glo='git log --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gloa='git log --graph --all --pretty=format:'\''%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s'\'''
 alias gp='git push'

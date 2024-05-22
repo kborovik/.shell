@@ -44,6 +44,8 @@ bash-version:
 ###############################################################################
 
 coreutils_bin := /opt/homebrew/Cellar/coreutils
+sed_bin := /opt/homebrew/opt/gnu-sed/libexec/gnubin/sed
+make_bin := /opt/homebrew/opt/make/libexec/gnubin/make
 jq_bin := /opt/homebrew/bin/jq
 pass_bin := /opt/homebrew/bin/pass
 gh_bin := /opt/homebrew/bin/gh
@@ -53,6 +55,14 @@ tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin)
 $(coreutils_bin):
 	$(call header,coreutils - Install)
 	brew install coreutils
+
+$(sed_bin):
+	$(call header,sed - Install)
+	brew install gnu-sed
+
+$(make_bin):
+	$(call header,make - Install)
+	brew install make
 
 $(jq_bin):
 	$(call header,jq - Install)
