@@ -152,5 +152,6 @@
     "tflock",
     "tfvars"
   ],
-  "editor.fontSize": 17
+  "editor.fontSize": 17,
+  "github.copilot.editor.enableAutoCompletions": true
 }
