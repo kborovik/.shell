@@ -87,6 +87,8 @@ atuin-version:
 # Colors and Headers
 ###############################################################################
 
+TERM := xterm-256color
+
 black := $$(tput setaf 0)
 red := $$(tput setaf 1)
 green := $$(tput setaf 2)
