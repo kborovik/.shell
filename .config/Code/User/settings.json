@@ -77,7 +77,7 @@
     "*.tfvars": "terraform",
     "*.toml": "toml",
     "*.yaml": "yaml",
-    "main.yaml": "ansible"
+    "main.yaml": "ansible",
   },
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,

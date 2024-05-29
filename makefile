@@ -87,30 +87,30 @@ atuin-version:
 # Colors and Headers
 ###############################################################################
 
-black := \033[30m
-red := \033[31m
-green := \033[32m
-yellow := \033[33m
-blue := \033[34m
-magenta := \033[35m
-cyan := \033[36m
-white := \033[37m
-reset := \033[0m
+black := $$(tput setaf 0)
+red := $$(tput setaf 1)
+green := $$(tput setaf 2)
+yellow := $$(tput setaf 3)
+blue := $$(tput setaf 4)
+magenta := $$(tput setaf 5)
+cyan := $$(tput setaf 6)
+white := $$(tput setaf 7)
+reset := $$(tput sgr0)
 
 define header
 echo "$(blue)==> $(1) <==$(reset)"
 endef
 
 define help
-echo "$(green)$(1)$(reset) - $(white)$(2)$(reset)"
+echo "$(green)$(1)$(yellow) - $(white)$(2)$(reset)"
 endef
 
 define var
-echo "$(magenta)$(1)$(reset): $(yellow)$(2)$(reset)"
+echo "$(magenta)$(1)$(white): $(yellow)$(2)$(reset)"
 endef
 
 prompt:
-	echo -n "$(blue)Continue?$(reset) $(yellow)(yes/no)$(reset)"
+	echo -n "$(magenta)Continue? $(cyan)(yes/no)$(reset)"
 	read -p ": " answer && [ "$$answer" = "yes" ] || exit 1
 
 ###############################################################################
