@@ -53,23 +53,28 @@ bash-version:
 # Linux tools
 ###############################################################################
 
+curl_bin := /usr/bin/curl
 pass_bin := /usr/bin/pass
 tree_bin := /usr/bin/tree
 unzip_bin := /usr/bin/unzip
 
-tools: $(tree_bin) $(unzip_bin)
+tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin)
+
+$(curl_bin):
+	$(call header,Curl - Install)
+	sudo apt-get --yes install curl
 
 $(pass_bin):
 	$(call header,Pass - Install)
-	sudo apt install pass
+	sudo apt-get --yes install pass
 
 $(tree_bin):
 	$(call header,Tree - Install)
-	sudo apt install tree
+	sudo apt-get --yes install tree
 
 $(unzip_bin):
 	$(call header,Unzip - Install)
-	sudo apt install unzip
+	sudo apt-get --yes install unzip
 
 ###############################################################################
 # Git: Distributed version control system
@@ -81,7 +86,7 @@ git: git-install git-configure git-version
 
 $(git_bin):
 	$(call header,Git - Install)
-	sudo apt install git
+	sudo apt-get --yes install git
 
 git-install: $(git_bin)
 
@@ -123,7 +128,7 @@ vim: vim-install vim-configure
 
 $(vim_bin):
 	$(call header,Vim - Install)
-	sudo apt install vim
+	sudo apt-get --yes install vim
 
 vim-install: $(vim_bin)
 
@@ -154,7 +159,7 @@ gpg: gpg-install gpg-configure gpg-version
 
 $(scdaemon_bin):
 	$(call header,GPG - Install scdaemon)
-	sudo apt install scdaemon
+	sudo apt-get --yes install scdaemon
 
 $(gpg_dir):
 	$(call header,GPG - Directories)
@@ -163,7 +168,7 @@ $(gpg_dir):
 
 $(gpg_bin):
 	$(call header,GPG - Install)
-	sudo apt install gnupg
+	sudo apt-get --yes install gnupg
 
 gpg-install: $(gpg_bin) $(scdaemon_bin)
 
@@ -197,7 +202,7 @@ gcloud: gcloud-install gcloud-version
 
 $(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 	$(call header,Google Cloud SDK - Install)
-	sudo apt install google-cloud-sdk
+	sudo apt-get --yes install google-cloud-sdk
 
 gcloud-install: $(gcloud_bin)
 
@@ -231,7 +236,7 @@ terraform: terraform-install terraform-version
 
 $(terraform_bin): $(hashicorp_gpg_key) $(hashicorp_apt_repo)
 	$(call header,Terraform - Install)
-	sudo apt install terraform
+	sudo apt-get --yes install terraform
 
 terraform-install: $(terraform_bin)
 
@@ -259,7 +264,7 @@ code: code-install code-configure code-version
 
 $(code_dir):
 	$(call header,Code - Directories)
-	mkdir -p $(@)
+	mkdir -p $@
 
 $(code_gpg):
 	$(call header,Code - Microsoft GPG Public Key)
@@ -267,13 +272,13 @@ $(code_gpg):
 
 $(code_apt):
 	$(call header,Code - APT Repository)
-	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee@ $@
+	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee $@
 	sudo apt update
 
 $(code_bin): $(code_gpg) $(code_apt)
 	$(call header,Code - Install)
 	sudo apt update
-	sudo apt install code
+	sudo apt-get --yes install code
 
 code-install: $(code_bin)
 
@@ -316,7 +321,7 @@ mods: mods-install mods-configure mods-version
 $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Mods - Install)
 	sudo apt update
-	sudo apt install mods
+	sudo apt-get --yes install mods
 
 mods-install: $(mods_bin)
 
@@ -384,7 +389,7 @@ glow: glow-install glow-version
 $(glow_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Glow - Install)
 	sudo apt update
-	sudo apt install glow
+	sudo apt-get --yes install glow
 
 glow-install: $(glow_bin)
 

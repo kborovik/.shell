@@ -125,23 +125,7 @@ version:
 	version=$$(date +%Y.%m.%d-%H%M)
 	echo "$$version" >| VERSION
 	$(call header,Version: $$(cat VERSION))
-	git add VERSION
+	git add --all
 
 commit: version
-	git add --all
 	git commit -m "$$(cat VERSION)"
-
-tag: commit
-	version=$$(date +%Y.%m.%d)
-	git tag "$$version" -m "Version: $$version"
-
-release: tag
-	git push --tags --force
-
-###############################################################################
-# Errors check
-###############################################################################
-
-# ifneq ($(make_version),4)
-# $(error ==> GNU Make 4.x is required <==)
-# endif
