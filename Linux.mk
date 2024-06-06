@@ -19,7 +19,7 @@ install: apt-update tools posh bash git gpg vim gcloud terraform
 
 $(local_bin):
 	$(call header,Local Bin directory)
-	mkdir -p $(@)
+	mkdir -p $@
 
 apt-update:
 	$(call header,APT - Update)
@@ -247,6 +247,31 @@ terraform-version:
 ###############################################################################
 # docker: Container runtime
 ###############################################################################
+
+docker_bin := /usr/bin/docker
+docker_gpg := /etc/apt/trusted.gpg.d/docker.gpg
+docker_apt := /etc/apt/sources.list.d/docker.list
+
+docker: docker-install docker-config
+
+$(docker_gpg):
+	$(call header,Docker - GPG Public Key)
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o $@
+
+$(docker_apt):
+	$(call header,Docker - APT Repository)
+	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release) stable" | sudo tee $@
+	sudo apt update
+
+$(docker_bin): $(docker_gpg) $(docker_apt)
+	$(call header,Docker - Install)
+	sudo apt update
+	sudo apt-get --yes install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+docker-install: $(docker_bin)
+
+docker-config:
+	sudo usermod -aG docker $(USER)
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
