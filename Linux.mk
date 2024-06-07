@@ -61,19 +61,19 @@ unzip_bin := /usr/bin/unzip
 tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin)
 
 $(curl_bin):
-	$(call header,Curl - Install)
+	$(call header,curl - Install)
 	sudo apt-get --yes install curl
 
 $(pass_bin):
-	$(call header,Pass - Install)
+	$(call header,pass - Install)
 	sudo apt-get --yes install pass
 
 $(tree_bin):
-	$(call header,Tree - Install)
+	$(call header,tree - Install)
 	sudo apt-get --yes install tree
 
 $(unzip_bin):
-	$(call header,Unzip - Install)
+	$(call header,unzip - Install)
 	sudo apt-get --yes install unzip
 
 ###############################################################################
@@ -272,6 +272,20 @@ docker-install: $(docker_bin)
 
 docker-config:
 	sudo usermod -aG docker $(USER)
+
+###############################################################################
+# Python tools
+###############################################################################
+
+pipx_bin := /usr/bin/pipx
+
+pipx: pipx-install
+
+$(pipx_bin):
+	$(call header,pipx - Install)
+	sudo apt-get --yes install pipx
+
+pipx-install: $(pipx_bin)
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
