@@ -12,10 +12,14 @@ default: settings help
 
 CPU := $(shell uname -m)
 OS := $(shell uname -s)
+OS_ID := $(shell lsb_release -si)
 
 make_version := $(shell $(MAKE) --version | grep "GNU Make" | cut -d ' ' -f 3 | cut -d '.' -f 1)
 
 ifeq ($(OS),Linux)
+ifneq ($(OS_ID),Ubuntu)
+$(error ==> Unsupported OS_ID: $(OS_ID) <==)
+endif
 include Linux.mk
 else ifeq ($(OS),Darwin)
 include Darwin.mk
