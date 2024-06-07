@@ -287,6 +287,10 @@ $(pipx_bin):
 
 pipx-install: $(pipx_bin)
 
+pipx-tools: $(pipx_bin)
+	pipx install ansible
+	pipx install zfs-autobackup
+
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
 ###############################################################################

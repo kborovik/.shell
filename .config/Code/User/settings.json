@@ -62,7 +62,7 @@
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
   "editor.detectIndentation": true,
-  "editor.fontFamily": "Fira Code Retina, IBM Plex Mono, Meslo",
+  "editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
