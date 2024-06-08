@@ -82,16 +82,11 @@ $(gh_bin):
 
 git_bin := /opt/homebrew/bin/git
 
-git: git-install git-configure git-version
-
 $(git_bin):
 	$(call header,Git - Install)
 	brew install git
 
-git-install: $(git_bin)
-
-git-configure:
-	$(call header,Git - Configure)
+git: $(git_bin) git-configure
 	/bin/ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 ###############################################################################

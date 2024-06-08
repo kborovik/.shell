@@ -38,10 +38,6 @@ settings:
 # Git: Distributed version control system
 ###############################################################################
 
-git-version:
-	$(call header,Git - Version)
-	git --version
-
 git-credentials-load:
 	$(call header,Git - Load credentials)
 	pass git pull
@@ -67,21 +63,12 @@ endif
 
 atuin_config := .config/atuin/config.toml
 
-atuin: atuin-install atuin-configure atuin-version
-
-atuin-install: $(atuin_bin)
-
 $(atuin_bin):
 	$(call header,Atuin - Install)
 	curl -sSf https://setup.atuin.sh | bash
 
-atuin-configure:
-	$(call header,Atuin - Configure)
+atuin: $(atuin_bin)
 	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
-
-atuin-version:
-	$(call header,Atuin - Version)
-	atuin status
 
 ###############################################################################
 # Colors and Headers
