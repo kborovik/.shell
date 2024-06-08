@@ -5,13 +5,18 @@
 PATH := $(local_bin):$(PATH)
 
 lsb_release := $(shell lsb_release -cs)
+lsb_id := $(shell lsb_release -is)
 local_bin := $(HOME)/.local/bin
+
+ifneq ($(lsb_id),Ubuntu)
+$(error ==> Only Ubuntu supported <==)
+endif
 
 ###############################################################################
 # Default target
 ###############################################################################
 
-install: apt-update tools posh bash git gpg vim gcloud terraform
+install: apt-update tools posh bash git gpg vim
 
 ###############################################################################
 # General functions

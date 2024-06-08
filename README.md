@@ -27,7 +27,6 @@ Run installation script
 
 ```
 cd .shell
-make
 make install
 ```
 
