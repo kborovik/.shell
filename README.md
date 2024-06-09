@@ -2,6 +2,10 @@
 
 Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment (Linux, macOS)
 
+# Screenshots
+
+![DevOps Shell](https://lab5.ca/_static/github/devops-shell.png)
+
 # Software
 
 The `makefile` installs the following software packages
@@ -39,8 +43,6 @@ exec bash
 # Prompt Theme Engine
 
 The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
-
-## Screenshots
 
 # Terminal Color Schema
 
