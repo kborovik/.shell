@@ -176,6 +176,19 @@ $(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 gcloud: $(gcloud_bin)
 
 ###############################################################################
+# kubectl: Kubernetes CLI
+###############################################################################
+
+kubectl_bin := /usr/bin/kubectl
+
+$(kubectl_bin):
+	$(call header,kubectl - Install)
+	sudo apt-get --yes install kubectl
+	sudo touch $@
+
+kubectl: $(kubectl_bin)
+
+###############################################################################
 # Hashicorp: APT repository
 ###############################################################################
 

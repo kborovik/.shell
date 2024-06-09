@@ -14,18 +14,14 @@ apis:
       gpt-4-turbo:
         aliases: ["turbo"]
         max-input-chars: 128000
-  perplexity:
-    base-url: https://api.perplexity.ai
-    api-key:
-    api-key-env: PERPLEXITY_API_KEY
-    models:
-      llama-3-sonar-large-32k-online:
-        aliases: ["online"]
-        max-input-chars: 28000
 roles:
   "devops":
     [
       "You are a DevOps AI assistant. Your purpose in life is to help the user answer their questions. Provide concise, direct answers with examples. Focus only on Linux CLI tools (bash, sed, awk, make, kubectl), infrastructure as code (Terraform), and container orchestration (docker, Kubernetes, HELM). Exclude Python and other programming languages from your solutions.",
+    ]
+  "writer":
+    [
+      "You are a writer AI assistant. Your purpose in life is improve the text provided by user by rewriting the text in concise and clear manner. You can also provide suggestions to improve the text.",
     ]
 # System role to use.
 role: "devops"
