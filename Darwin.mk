@@ -18,8 +18,6 @@ bash_bin := /opt/homebrew/bin/bash
 bash_config := .bashrc .bash_logout .profile .digrc
 bash_completion := .local/share/bash-completion
 
-bash: bash-install bash-configure bash-version
-
 $(bash_completion):
 	$(call header,Bash - Create directories)
 	mkdir -p $(@)
@@ -28,16 +26,9 @@ $(bash-bin):
 	$(call header,Bash - Install)
 	brew install bash bash-completion@2
 
-bash-install: $(bash_bin)
-
-bash-configure: $(bash_completion)
-	$(call header,Bash - Configure)
+bash: $(bash_bin)
 	$(foreach file,$(bash_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
 	/bin/ln -fs $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
-
-bash-version:
-	$(call header,Bash - Version)
-	bash --version
 
 ###############################################################################
 # Linux tools
@@ -50,7 +41,7 @@ jq_bin := /opt/homebrew/bin/jq
 pass_bin := /opt/homebrew/bin/pass
 gh_bin := /opt/homebrew/bin/gh
 
-tools: $(coreutils_bin) $(jq_bin) $(pass_bin) $(gh_bin)
+tools: $(coreutils_bin) $(sed_bin) $(make_bin) $(jq_bin) $(pass_bin) $(gh_bin)
 
 $(coreutils_bin):
 	$(call header,coreutils - Install)
@@ -86,7 +77,7 @@ $(git_bin):
 	$(call header,Git - Install)
 	brew install git
 
-git: $(git_bin) git-configure
+git: $(git_bin)
 	/bin/ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
@@ -95,21 +86,11 @@ git: $(git_bin) git-configure
 
 posh_bin := /opt/homebrew/bin/oh-my-posh
 
-posh: posh-install posh-version
-
 $(posh_bin):
 	$(call header,POSH - Install)
 	brew install oh-my-posh
 
-posh-install: $(posh_bin)
-
-posh-uninstall:
-	$(call header,POSH - Uninstall)
-	brew rm oh-my-posh
-
-posh-version:
-	$(call header, POSH - Version)
-	$(posh_bin) --version
+posh: $(posh_bin)
 
 ###############################################################################
 # vim: Vi IMproved
@@ -117,27 +98,13 @@ posh-version:
 
 vim_bin := /opt/homebrew/bin/vim
 
-vim: vim-install vim-configure
-
 $(vim_bin):
 	$(call header,Vim - Install)
 	brew install vim
 
-vim-install: $(vim_bin)
-
-vim-configure:
-	$(call header,Vim - Configure)
+vim: $(vim_bin)
 	/bin/ln -fs $(PWD)/.vimrc $(HOME)/.vimrc
 	/bin/ln -fs $(PWD)/.vim $(HOME)
-
-vim-uninstall:
-	$(call header,Vim - Uninstall)
-	brew rm vim
-	rm -rf $(HOME)/.vim $(HOME)/.vimrc
-
-vim-version:	
-	$(call header,Vim - Version)
-	vim --version
 
 ###############################################################################
 # GPG: GNU Privacy Guard
@@ -148,8 +115,6 @@ gpg_dir := $(HOME)/.gnupg
 gpg_config := .gnupg/gpg.conf
 
 opensc_bin := /Library/OpenSC/bin/openpgp-tool
-
-gpg: gpg-install gpg-configure gpg-version
 
 $(gpg_dir):
 	$(call header,GPG - Create directories)
@@ -164,15 +129,8 @@ $(gpg_bin):
 	$(call header,GPG - Install)
 	brew install gnupg
 
-gpg-install: $(gpg_bin) $(opensc_bin)
-
-gpg-configure: $(gpg_dir)
-	$(call header,GPG - Configure)
+gpg: $(gpg_bin) $(opensc_bin)
 	$(foreach file,$(gpg_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
-
-gpg-version:
-	$(call header,GPG - Version)
-	gpg --version
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
@@ -183,22 +141,13 @@ k9s_dir := $(HOME)/Library/Application\ Support/k9s
 k9s_config := aliases.yaml config.yaml hotkeys.yaml
 k9s_skin := skins/onedark.yaml
 
-k9s: k9s-install k9s-version
-
 $(k9s_bin):
 	$(call header,k9s - Install)
 	brew install k9s
 
-k9s-install: $(k9s_bin)
-
-k9s-configure:
-	$(call header,k9s - Configure)
+k9s: $(k9s_bin)
 	$(foreach file,$(k9s_config),/bin/ln -fs $(PWD)/.config/k9s/$(file) $(k9s_dir)/$(file);)
 	/bin/ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
-
-k9s-version:
-	$(call header,k9s - Version)
-	k9s version
 
 ###############################################################################
 # Code: Visual Studio Code
@@ -210,13 +159,7 @@ $(code_bin):
 	$(call header,Code - Install)
 	brew install --cask visual-studio-code
 
-code: code-install code-version
-
-code-install: $(code_bin)
-
-code-version:
-	$(call header,Code - Version)
-	code --version
+code: $(code_bin)
 
 ###############################################################################
 # Mods: AI for the command line, built for pipelines.
@@ -227,8 +170,6 @@ mods_bin := /opt/homebrew/bin/mods
 mods_dir := $(HOME)/Library/Application\ Support/mods
 mods_config := $(HOME)/Library/Application\ Support/mods/mods.yml
 
-mods: mods-install mods-configure mods-version
-
 $(mods_dir):
 	$(call header,Mods - Create directories)
 	mkdir -p $(@)
@@ -237,20 +178,8 @@ $(mods_bin):
 	$(call header,Mods - Install) 
 	brew install mods
 
-mods-install: $(mods_bin)
-
-mods-configure: $(mods_dir)
-	$(call header,Mods - Configure)
+mods: $(mods_bin)
 	/bin/ln -fs $(PWD)/.config/mods/mods.yml $(mods_config)
-
-mods-uninstall:
-	$(call header,Mods - Uninstall)
-	brew rm mods
-	rm -rf $(mods_dir)
-
-mods-version:
-	$(call header,Mods - Version)
-	mods --version
 
 ###############################################################################
 # Google Cloud SDK
@@ -258,17 +187,11 @@ mods-version:
 
 gcloud_bin := /opt/homebrew/bin/gcloud
 
-gcloud: gcloud-install gcloud-version
-
 $(gcloud_bin):
 	$(call header,Google Cloud SDK - Install)
 	brew install --cask google-cloud-sdk
 
-gcloud-install: $(gcloud_bin)
-
-gcloud-version:
-	$(call header,Google Cloud SDK - Version)
-	gcloud --version
+gcloud: $(gcloud_bin)
 
 ###############################################################################
 # kubectl: The Kubernetes command-line tool
@@ -280,13 +203,7 @@ $(kubectl_bin): $(gcloud_bin)
 	$(call header,kubectl - Install)
 	gcloud components install kubectl --quiet
 
-kubectl: kubectl-install kubectl-version
-
-kubectl-install: $(kubectl_bin)
-
-kubectl-version:
-	$(call header,kubectl - Version)
-	kubectl version --client --output=yaml
+kubectl: $(kubectl_bin)
 
 ###############################################################################
 # Terraform: Infrastructure as Code
@@ -294,37 +211,9 @@ kubectl-version:
 
 terraform_bin := /opt/homebrew/bin/terraform
 
-terraform: terraform-install terraform-version
-
 $(terraform_bin):
 	$(call header,Terraform - Install)
 	brew tap hashicorp/tap
 	brew install hashicorp/tap/terraform
 
-terraform-install: $(terraform_bin)
-
-terraform-version:
-	$(call header,Terraform - Version)
-	terraform --version
-
-###############################################################################
-# Ollama: A CLI for the Ollama API
-# https://ollama.com/download/linux
-###############################################################################
-
-ollama: ollama-install
-
-ollama-install:
-	$(call header,Ollama - Install)
-	brew install --cask ollama
-
-ollama-configure:
-	$(call header,Ollama - Configure)
-	ollama pull llama3
-
-ollama-uninstall:
-	$(call header,Ollama - Uninstall)
-
-ollama-version:
-	$(call header,Ollama version)
-	ollama --version
+terraform: $(terraform_bin)
