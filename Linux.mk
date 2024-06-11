@@ -189,6 +189,18 @@ $(kubectl_bin):
 kubectl: $(kubectl_bin)
 
 ###############################################################################
+# HELM: The package manager for Kubernetes
+###############################################################################
+
+helm_bin := /usr/local/bin/helm
+
+$(helm_bin):
+	$(call header,helm - Install)
+	curl -sSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+helm: $(helm_bin)
+
+###############################################################################
 # Hashicorp: APT repository
 ###############################################################################
 
