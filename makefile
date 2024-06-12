@@ -51,6 +51,9 @@ git-credentials-save:
 
 ###############################################################################
 # atuin: A command-line tool for managing your dotfiles
+# Ubuntu: ZFS work around
+# vim /etc/fstab
+# /dev/zd0 /home/kb/.local/share/atuin ext4 x-systemd.after=systemd-user-sessions.service 0 2
 ###############################################################################
 
 ifeq ($(OS),Linux)
