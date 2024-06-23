@@ -57,4 +57,3 @@ The color scheme for `oh-my-posh`, `vim`, and `k9s` is based on Atom's "One Dark
 ## License
 
 [MIT License](LICENSE)
-```
