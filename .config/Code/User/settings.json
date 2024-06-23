@@ -71,6 +71,7 @@
   ],
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
+  "cody.autocomplete.advanced.provider": "anthropic",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
@@ -79,6 +80,8 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 17,
   "editor.formatOnSave": true,
+  "editor.inlineSuggest.showToolbar": "onHover",
+  "editor.inlineSuggest.suppressSuggestions": true,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
@@ -97,19 +100,10 @@
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
-  "git.openRepositoryInParentFolders": "never",
-  "github.copilot.chat.localeOverride": "en",
-  "github.copilot.editor.enableAutoCompletions": true,
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": false,
-    "plaintext": false,
-    "scminput": false
-  },
-  "gitlab.aiAssistedCodeSuggestions.enabled": true,
-  "gitlab.aiAssistedCodeSuggestions.preferredAccount": "kborovik2",
+  "git.openRepositoryInParentFolders": "prompt",
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
+  "openctx.providers": {},
   "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
@@ -151,8 +145,8 @@
     "vs-kubernetes.ignore-recommendations": true
   },
   "window.zoomLevel": 2,
-  "workbench.editor.enablePreview": true,
+  "workbench.colorTheme": "One Dark",
+  "workbench.editor.enablePreview": false,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "workbench.colorTheme": "One Dark"
+  "workbench.startupEditor": "none"
 }

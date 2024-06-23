@@ -1,49 +1,60 @@
-# Shell Prompt for DevOps
+# DevOps Shell Environment
 
-Shell Prompt for DevOps is the collection of tools for managing the Bash shell environment (Linux, macOS)
+A curated set of tools and configurations designed to enhance your Bash shell environment on Ubuntu and macOS, specifically tailored for DevOps workflows and productivity.
 
-# Screenshots
+## Screenshots
+
+### Shell
 
 ![DevOps Shell](https://lab5.ca/_static/github/devops-shell.png)
 
-# Software
+### Vim
 
-The `makefile` installs the following software packages
+![Vim](https://lab5.ca/_static/github/devops-vim.png)
 
-- `bash` dot files
-- `vim` configuration
-- `gpg` configuration
-- `oh-my-posh` prompt theme engine https://ohmyposh.dev/
-- `atuin` shell history https://atuin.sh/
-- `mods` AI for the command line https://github.com/charmbracelet/mods
-- `code` Visual Studio Code https://code.visualstudio.com/
+## Features
 
-# How to Use
+This project includes configurations and installations for:
 
-Clone the repository into `$HOME` folder
+- Customized `bash` dot files
+- Optimized `vim` setup
+- Secure `gpg` configuration
+- [Oh My Posh](https://ohmyposh.dev/) - A prompt theme engine
+- [Atuin](https://atuin.sh/) - Magical shell history
+- [Mods](https://github.com/charmbracelet/mods) - AI-powered command line tool
+- [Visual Studio Code](https://code.visualstudio.com/) - Powerful code editor
 
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   cd $HOME
+   git clone https://github.com/kborovik/.shell.git
+   ```
+
+2. Run the installation script:
+
+   ```bash
+   cd .shell
+   make install
+   ```
+
+3. Restart your Bash session:
+
+   ```bash
+   exec bash
+   ```
+
+## Prompt Theme Engine
+
+We use [Oh My Posh](https://ohmyposh.dev/) as the prompt theme engine, providing a customizable and informative command line experience.
+
+## Color Scheme
+
+The color scheme for `oh-my-posh`, `vim`, and `k9s` is based on Atom's "One Dark" theme, offering a consistent and pleasing visual experience across different tools.
+
+## License
+
+[MIT License](LICENSE)
 ```
-cd $HOME
-git clone https://github.com/kborovik/.shell.git
-```
-
-Run installation script
-
-```
-cd .shell
-make install
-```
-
-Restart Bash
-
-```
-exec bash
-```
-
-# Prompt Theme Engine
-
-The prompt theme engine is `Oh-My-Posh` (https://ohmyposh.dev/)
-
-# Terminal Color Schema
-
-The color schema for `oh-my-posh`, `vim` and `k9s` is based on Atom "One Dark".

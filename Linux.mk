@@ -124,7 +124,7 @@ vim: $(vim_bin)
 	ln -rfs .vimrc $(HOME)/.vimrc
 	ln -rfs .vim $(HOME)
 
-##############################################################################
+###############################################################################
 # GPG: GNU Privacy Guard
 ###############################################################################
 
@@ -285,12 +285,19 @@ pipx: $(pipx_bin)
 ###############################################################################
 
 ansible_bin := /home/kb/.local/bin/ansible
+ansible_lint := /home/kb/.local/bin/ansible-lint
 
 $(ansible_bin): $(pipx_bin)
 	$(call header,Ansible - Install)
 	pipx install ansible-core
+	touch $@
 
-ansible: $(ansible_bin)
+$(ansible_lint): $(pipx_bin)
+	$(call header,Ansible-Lint - Install)
+	pipx install ansible-lint
+	touch $@
+
+ansible: $(ansible_bin) $(ansible_lint)
 
 ###############################################################################
 # zfs-autobackup: ZFS snapshot and backup automation

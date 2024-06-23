@@ -1,48 +1,61 @@
 [[ $- != *i* ]] && return
 
 path_dirs=(
-  /usr/lib/go-1.21/bin
-  ~/.nodenv/bin/
-  ~/.nodenv/shims
-  ~/.awscliv2/v2/current/bin
-  ~/.krew/bin
-  ~/.cargo/bin
-  ~/go/bin
   ~/.local/bin
+  ~/go/bin
+  ~/.cargo/bin
+  ~/.krew/bin
+  ~/.awscliv2/v2/current/bin
+  ~/.nodenv/shims
+  ~/.nodenv/bin
 )
+
 for dir in "${path_dirs[@]}"; do
-  [ -d "$dir" ] && export PATH="$dir:$PATH"
+  if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+    PATH="$dir:$PATH"
+  fi
 done
+export PATH
 
 completion_files=(
   /usr/share/bash-completion/bash_completion
+  /etc/bash_completion
+  ~/.bash_completion
 )
 for file in "${completion_files[@]}"; do
-  [ -r "$file" ] && source "$file"
+  if [ -r "$file" ]; then
+    source "$file"
+    break
+  fi
 done
 
 if [ -x /opt/homebrew/bin/brew ]; then
-
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   path_dirs=(
-    ${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin
-    ${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin
-    ${HOMEBREW_PREFIX}/opt/make/libexec/gnubin
-    ${HOMEBREW_PREFIX}/opt/openssl@3/bin
+    "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
+    "${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin"
+    "${HOMEBREW_PREFIX}/opt/make/libexec/gnubin"
+    "${HOMEBREW_PREFIX}/opt/openssl@3/bin"
   )
   for dir in "${path_dirs[@]}"; do
-    [ -d "$dir" ] && export PATH="$dir:$PATH"
+    [[ -d "$dir" ]] && PATH="${PATH:+$PATH:}$dir"
   done
+  export PATH
 
   completion_files=(
-    ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh
-    ${HOMEBREW_PREFIX}/share/google-cloud-sdk/path.bash.inc
+    "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+    "${HOMEBREW_PREFIX}/share/google-cloud-sdk/path.bash.inc"
+    "/usr/local/etc/bash_completion"
+    "/etc/bash_completion"
   )
-  for file in "${completion_files[@]}"; do
-    [ -r "$file" ] && source "$file"
-  done
 
+  for file in "${completion_files[@]}"; do
+    if [[ -r "$file" ]]; then
+      source "$file"
+      break
+    fi
+  done
 fi
 
 export COLORTERM="truecolor"
@@ -99,13 +112,13 @@ alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
-[ "$(command -v dircolors)" ] && eval "$(dircolors)"
+[[ "$(command -v dircolors)" ]] && eval "$(dircolors)"
 
-[ -f ~/.shell/bash-functions.sh ] && source ~/.shell/bash-functions.sh
+[[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
-if [ -f ~/.bash-preexec.sh -a "$(command -v atuin)" ]; then
+if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
 fi
 
-[ "$(command -v oh-my-posh)" ] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
