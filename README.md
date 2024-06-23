@@ -1,6 +1,6 @@
 # DevOps Shell Environment
 
-A curated set of tools and configurations designed to enhance your Bash shell environment on Ubuntu and macOS, specifically tailored for DevOps workflows and productivity.
+A curated set of tools and configurations designed to enhance your Bash shell environment on **Ubuntu** and **macOS**, specifically tailored for DevOps workflows and productivity.
 
 ## Screenshots
 
@@ -12,17 +12,34 @@ A curated set of tools and configurations designed to enhance your Bash shell en
 
 ![Vim](https://lab5.ca/_static/github/devops-vim.png)
 
-## Features
+## Tools Installed
 
-This project includes configurations and installations for:
+This project installs and configures the following tools:
 
-- Customized `bash` dot files
-- Optimized `vim` setup
-- Secure `gpg` configuration
-- [Oh My Posh](https://ohmyposh.dev/) - A prompt theme engine
-- [Atuin](https://atuin.sh/) - Magical shell history
-- [Mods](https://github.com/charmbracelet/mods) - AI-powered command line tool
-- [Visual Studio Code](https://code.visualstudio.com/) - Powerful code editor
+- [Ansible-lint](https://ansible-lint.readthedocs.io/)
+- [Ansible](https://www.ansible.com/) (automation tool)
+- [Bash](https://www.gnu.org/software/bash/) (GNU Bourne Again SHell)
+- [curl](https://curl.se/)
+- [Docker](https://www.docker.com/) (container runtime)
+- [Git](https://git-scm.com/) (distributed version control system)
+- [GitHub CLI](https://cli.github.com/) (gh)
+- [Glow](https://github.com/charmbracelet/glow) (markdown renderer for CLI)
+- [Google Cloud SDK](https://cloud.google.com/sdk) (gcloud)
+- [GPG](https://gnupg.org/) (GNU Privacy Guard)
+- [Helm](https://helm.sh/) (package manager for Kubernetes)
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/) (Kubernetes CLI)
+- [Mods](https://github.com/charmbracelet/mods) (AI for the command line)
+- [Oh My Posh](https://ohmyposh.dev/) (prompt theme engine)
+- [Ollama](https://ollama.ai/) (CLI for Ollama API)
+- [pass](https://www.passwordstore.org/) (Unix password manager)
+- [pipx](https://pypa.github.io/pipx/) (Python package installer)
+- [Terraform](https://www.terraform.io/) (Infrastructure as Code)
+- [tree](http://mama.indstate.edu/users/ice/tree/) (directory listing)
+- [unzip](https://infozip.sourceforge.net/UnZip.html)
+- [VHS](https://github.com/charmbracelet/vhs) (terminal GIF creator)
+- [Vim](https://www.vim.org/) (Vi IMproved text editor)
+- [Visual Studio Code](https://code.visualstudio.com/) (code editor)
+- [zfs-autobackup](https://github.com/psy0rz/zfs_autobackup)
 
 ## Installation
 
