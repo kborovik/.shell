@@ -72,6 +72,8 @@
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
   "cody.autocomplete.advanced.provider": "anthropic",
+  "cody.commandCodeLenses": false,
+  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
