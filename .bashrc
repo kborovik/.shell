@@ -39,9 +39,9 @@ if [ -x /opt/homebrew/bin/brew ]; then
     "${HOMEBREW_PREFIX}/opt/openssl@3/bin"
   )
   for dir in "${path_dirs[@]}"; do
-    [[ -d "$dir" ]] && PATH="${PATH:+$PATH:}$dir"
+    [[ -d "$dir" ]] && HOMEBREW_PATH+="${dir}:"
   done
-  export PATH
+  export PATH="$HOMEBREW_PATH:$PATH"
 
   completion_files=(
     "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
