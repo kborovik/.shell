@@ -33,15 +33,17 @@ if [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   path_dirs=(
-    "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
-    "${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin"
-    "${HOMEBREW_PREFIX}/opt/make/libexec/gnubin"
     "${HOMEBREW_PREFIX}/opt/openssl@3/bin"
+    "${HOMEBREW_PREFIX}/opt/make/libexec/gnubin"
+    "${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin"
+    "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin"
   )
   for dir in "${path_dirs[@]}"; do
-    [[ -d "$dir" ]] && HOMEBREW_PATH+="${dir}:"
+    if [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]]; then
+      PATH="$dir:$PATH"
+    fi
   done
-  export PATH="$HOMEBREW_PATH:$PATH"
+  export PATH
 
   completion_files=(
     "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
