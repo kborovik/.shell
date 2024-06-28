@@ -73,7 +73,6 @@
   "chat.editor.fontSize": 16,
   "cody.autocomplete.advanced.provider": "anthropic",
   "cody.commandCodeLenses": false,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
@@ -148,7 +147,6 @@
   },
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
-  "workbench.editor.enablePreview": false,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none"
 }
