@@ -4,6 +4,8 @@
 
 PATH := $(local_bin):$(PATH)
 
+ARCH := $(shell dpkg --print-architecture)
+
 lsb_release := $(shell lsb_release -cs)
 lsb_id := $(shell lsb_release -is)
 local_bin := $(HOME)/.local/bin
@@ -259,6 +261,35 @@ $(docker_bin): $(docker_gpg) $(docker_apt)
 
 docker: $(docker_bin)
 	sudo usermod -aG docker $(USER)
+
+###############################################################################
+# NVIDIA Container Toolkit
+###############################################################################
+
+nvidia_gpg := /etc/apt/trusted.gpg.d/nvidia-container-toolkit.gpg
+nvidia_apt := /etc/apt/sources.list.d/nvidia-container-toolkit.list
+nvidia_hook := /usr/bin/nvidia-container-runtime-hook
+
+$(nvidia_gpg):
+	$(call header,NVIDIA - GPG Public Key)
+	curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o $@
+
+$(nvidia_apt):
+	$(call header,NVIDIA - APT repository)
+	echo "deb [signed-by=$(nvidia_gpg)] https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH) /" | sudo tee $@
+
+$(nvidia_hook): $(nvidia_gpg) $(nvidia_apt)
+	$(call header,NVIDIA - Install)
+	sudo apt-get --yes install nvidia-container-toolkit
+	sudo touch $@
+
+nvidia-config: $(docker)
+	if ! jq -e '.runtimes.nvidia.path' /etc/docker/daemon.json > /dev/null 2>&1; then
+		sudo nvidia-ctk runtime configure --runtime=docker
+		sudo systemctl restart docker
+	fi
+
+nvidia: $(nvidia_hook) nvidia-config
 
 ###############################################################################
 # github: GitHub CLI
