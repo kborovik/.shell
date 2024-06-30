@@ -156,6 +156,7 @@ gpg: $(gpg_bin) $(scdaemon_bin) $(gpg_dir)
 ###############################################################################
 
 gcloud_bin := /usr/bin/gcloud
+gke_auth_plugin := /usr/lib/google-cloud-sdk/bin/gke-gcloud-auth-plugin
 gcloud_gpg_key := /etc/apt/trusted.gpg.d/google-packages.gpg
 gcloud_apt_repo := /etc/apt/sources.list.d/google-packages.list
 
@@ -173,7 +174,12 @@ $(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 	sudo apt-get --yes install google-cloud-sdk
 	sudo touch $@
 
-gcloud: $(gcloud_bin)
+$(gke_auth_plugin): $(gcloud_bin)
+	$(call header,Google GKE Auth Plugin - Install)
+	sudo apt-get --yes install google-cloud-cli-gke-gcloud-auth-plugin
+	sudo touch $@
+
+gcloud: $(gcloud_bin) $(gke_auth_plugin)
 
 ###############################################################################
 # kubectl: Kubernetes CLI
