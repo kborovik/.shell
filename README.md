@@ -16,10 +16,10 @@ A curated set of tools and configurations designed to enhance your Bash shell en
 
 This project installs and configures the following tools:
 
-- [Ansible-lint](https://ansible-lint.readthedocs.io/)
-- [Ansible](https://www.ansible.com/) (automation tool)
+- [Ansible-lint](https://ansible-lint.readthedocs.io/) (linter for Ansible playbooks)
+- [Ansible](https://www.ansible.com/) (automation platform for IT operations)
 - [Bash](https://www.gnu.org/software/bash/) (GNU Bourne Again SHell)
-- [curl](https://curl.se/)
+- [curl](https://curl.se/) (command-line tool for transferring data using various protocols)
 - [Docker](https://www.docker.com/) (container runtime)
 - [Git](https://git-scm.com/) (distributed version control system)
 - [GitHub CLI](https://cli.github.com/) (gh)
@@ -36,11 +36,11 @@ This project installs and configures the following tools:
 - [pipx](https://pypa.github.io/pipx/) (Python package installer)
 - [Terraform](https://www.terraform.io/) (Infrastructure as Code)
 - [tree](http://mama.indstate.edu/users/ice/tree/) (directory listing)
-- [unzip](https://infozip.sourceforge.net/UnZip.html)
-- [VHS](https://github.com/charmbracelet/vhs) (terminal GIF creator)
+- [unzip](https://infozip.sourceforge.net/UnZip.html) (extraction utility for ZIP archives)
+- [VHS](https://github.com/charmbracelet/vhs) (CLI tool for recording terminal GIFs)
 - [Vim](https://www.vim.org/) (Vi IMproved text editor)
 - [Visual Studio Code](https://code.visualstudio.com/) (code editor)
-- [zfs-autobackup](https://github.com/psy0rz/zfs_autobackup)
+- [zfs-autobackup](https://github.com/psy0rz/zfs_autobackup) (A tool for automatically creating, rotating, and replicating ZFS snapshots)
 
 ## Installation
 
