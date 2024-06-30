@@ -39,7 +39,7 @@ This project installs and configures the following tools:
 - [unzip](https://infozip.sourceforge.net/UnZip.html) (extraction utility for ZIP archives)
 - [VHS](https://github.com/charmbracelet/vhs) (CLI tool for recording terminal GIFs)
 - [Vim](https://www.vim.org/) (Vi IMproved text editor)
-- [Visual Studio Code](https://code.visualstudio.com/) (code editor)
+- [Visual Studio Code](https://code.visualstudio.com/) (A free, open-source code editor with built-in debugging support, Git integration, and extensive customization options)
 - [zfs-autobackup](https://github.com/psy0rz/zfs_autobackup) (A tool for automatically creating, rotating, and replicating ZFS snapshots)
 
 ## Installation
