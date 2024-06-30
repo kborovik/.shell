@@ -29,6 +29,7 @@ This project installs and configures the following tools:
 - [Helm](https://helm.sh/) (package manager for Kubernetes)
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/) (Kubernetes CLI)
 - [Mods](https://github.com/charmbracelet/mods) (AI for the command line)
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/) (NVIDIA GPU-accelerated containers)
 - [Oh My Posh](https://ohmyposh.dev/) (prompt theme engine)
 - [Ollama](https://ollama.ai/) (CLI for Ollama API)
 - [pass](https://www.passwordstore.org/) (Unix password manager)
