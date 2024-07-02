@@ -50,10 +50,11 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "cSpell.enableFiletypes": [
+    "dockercompose",
     "helm",
+    "makefile",
     "shellscript",
-    "terraform",
-    "makefile"
+    "terraform"
   ],
   "cSpell.enabled": true,
   "cSpell.userWords": [
