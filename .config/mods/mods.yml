@@ -13,7 +13,6 @@ roles:
     - Focus only on Linux CLI tools bash sed awk make
     - Infrastructure as code Terraform
     - Container orchestration docker Kubernetes HELM kubectl
-    - Exclude Python and other programming languages from your solutions
 # Set true/false for the response to be formatted as markdown.
 format: false
 # System role to use.

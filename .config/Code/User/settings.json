@@ -149,5 +149,6 @@
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "diffEditor.hideUnchangedRegions.enabled": true
 }
