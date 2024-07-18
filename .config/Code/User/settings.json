@@ -50,6 +50,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "cSpell.enableFiletypes": [
+    "ansible",
     "dockercompose",
     "helm",
     "makefile",
