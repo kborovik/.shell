@@ -8,7 +8,7 @@ PATH := /opt/homebrew/bin:$(PATH)
 # Default target
 ###############################################################################
 
-install: tools posh git gpg git vim bash mods atuin gcloud kubectl k9s terraform
+core-tools: tools posh git gpg git vim bash mods atuin gcloud kubectl k9s terraform
 
 ###############################################################################
 # Bash: The GNU Bourne Again SHell

@@ -25,7 +25,7 @@ endif
 
 help:
 	$(call header,Help)
-	$(call help,make install,Install and configure)
+	$(call help,make core-tools,Install and configure OS Core Tools)
 
 settings:
 	$(call header,System)

@@ -18,7 +18,7 @@ endif
 # Default target
 ###############################################################################
 
-install: apt-update tools posh bash git gpg vim
+core-tools: apt-update tools posh bash git gpg vim
 
 ###############################################################################
 # General functions
@@ -209,6 +209,30 @@ $(helm_bin):
 helm: $(helm_bin)
 
 ###############################################################################
+# Brave Browser: Chromium-based browser focused on privacy
+###############################################################################
+
+brave_gpg_key := /etc/apt/trusted.gpg.d/brave-browser-archive-keyring.gpg
+brave_apt_repo := /etc/apt/sources.list.d/brave-browser-release.list
+brave_bin := /usr/bin/brave-browser
+
+$(brave_gpg_key):
+	$(call header,Brave Browser - GPG Public Key)
+	curl -fsSL https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg | sudo gpg --dearmor -o $@
+
+$(brave_apt_repo):
+	$(call header,Brave Browser - APT repository)
+	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com stable main" | sudo tee $@
+	sudo apt update
+
+$(brave_bin): $(brave_gpg_key) $(brave_apt_repo)
+	$(call header,Brave Browser - Install)
+	sudo apt-get --yes install brave-browser
+	sudo touch $@
+
+brave: $(brave_bin)
+
+###############################################################################
 # Hashicorp: APT repository
 ###############################################################################
 
@@ -216,11 +240,11 @@ hashicorp_gpg_key := /etc/apt/trusted.gpg.d/hashicorp.gpg
 hashicorp_apt_repo := /etc/apt/sources.list.d/hashicorp.list
 
 $(hashicorp_gpg_key):
-	$(call header,Terraform - GPG Public Key)
+	$(call header,Hashicorp - GPG Public Key)
 	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o $@
 
 $(hashicorp_apt_repo):
-	$(call header,terraform - APT repository)
+	$(call header,Hashicorp - APT repository)
 	echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release) main" | sudo tee $@
 	sudo apt update
 
@@ -486,7 +510,7 @@ ollama: $(ollama_bin)
 
 ollama-pull-llama3:
 	$(call header,Ollama - Configure)
-	ollama pull llama3
+	ollama pull llama3.1
 
 ollama-uninstall:
 	$(call header,Ollama - Uninstall)
