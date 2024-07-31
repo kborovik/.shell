@@ -43,6 +43,9 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.tabSize": 4
   },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+  },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
   },
@@ -75,6 +78,7 @@
   "chat.editor.fontSize": 16,
   "cody.autocomplete.advanced.provider": "anthropic",
   "cody.commandCodeLenses": false,
+  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
@@ -150,6 +154,5 @@
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "diffEditor.hideUnchangedRegions.enabled": true
+  "workbench.startupEditor": "none"
 }

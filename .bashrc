@@ -1,6 +1,7 @@
 [[ $- != *i* ]] && return
 
 path_dirs=(
+  ~/.atuin/bin
   ~/.local/bin
   ~/go/bin
   ~/.cargo/bin
