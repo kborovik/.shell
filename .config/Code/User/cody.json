@@ -5,7 +5,7 @@
     "context": {
       "currentFile": true
     },
-    "mode": "insert"
+    "mode": "edit"
   },
   "CommitMessage": {
     "description": "Create commit message",
