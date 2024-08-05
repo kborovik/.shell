@@ -1,0 +1,19 @@
+{
+  "DocsEditor": {
+    "description": "Improve documentation",
+    "prompt": "You are a technical writer. Your objective is to write technical documentation. Analyze the selected text and suggest clarity, readability, and proper grammar improvements. Focus on the simplicity and readability of the text. Do not change any Markdown, Markup, or reStructuredText formatting. Only provide natural language suggestions.",
+    "context": {
+      "currentFile": true
+    },
+    "mode": "insert"
+  },
+  "CommitMessage": {
+    "description": "Create commit message",
+    "prompt": "Analyze the git diff output and generate a commit message using the conventional commit format to provide meaningful context for the changes.",
+    "context": {
+      "selection": false,
+      "command": "git diff --cached"
+    },
+    "mode": "ask"
+  }
+}

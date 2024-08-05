@@ -406,6 +406,7 @@ $(code_bin): $(code_gpg) $(code_apt)
 code: $(code_bin)
 	ln -rfs $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
 	ln -rfs $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
+	ln -rfs $(code_dir)/cody.json $(HOME)/.vscode/cody.json
 
 ###############################################################################
 # TUI Library and Apps
