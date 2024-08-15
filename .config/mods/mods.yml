@@ -1,5 +1,5 @@
 # Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
-default-model: claude
+default-model: anthropic
 # Text to append when using the -f flag.
 format-text:
   markdown: "Format the response as markdown without enclosing backticks."
@@ -61,124 +61,29 @@ apis:
     api-key-env: OPENAI_API_KEY
     models:
       gpt-4o:
-        aliases: ["4o", "openai"]
+        aliases: ["openai"]
         max-input-chars: 392000
-        fallback: gpt-4
-      gpt-4:
-        aliases: ["4"]
-        max-input-chars: 24500
-        fallback: gpt-3.5-turbo
-      gpt-4-1106-preview:
-        aliases: ["128k"]
-        max-input-chars: 392000
-        fallback: gpt-4
-      gpt-4-32k:
-        aliases: ["32k"]
-        max-input-chars: 98000
-        fallback: gpt-4
-      gpt-3.5-turbo:
-        aliases: ["35t"]
-        max-input-chars: 12250
-        fallback: gpt-3.5
-      gpt-3.5-turbo-1106:
-        aliases: ["35t-1106"]
-        max-input-chars: 12250
-        fallback: gpt-3.5-turbo
-      gpt-3.5-turbo-16k:
-        aliases: ["35t16k"]
-        max-input-chars: 44500
-        fallback: gpt-3.5
-      gpt-3.5:
-        aliases: ["35"]
-        max-input-chars: 12250
-        fallback:
   anthropic:
     base-url: https://api.anthropic.com/v1
     api-key:
     api-key-env: ANTHROPIC_API_KEY
     models:
       claude-3-5-sonnet-20240620:
-        aliases: ["anthropic", "sonnet", "claude"]
+        aliases: ["anthropic"]
         max-input-chars: 680000
-  ollama:
-    base-url: http://localhost:11434/api
-    models:
-      "llama3:70b":
-        aliases: ["llama3"]
-        max-input-chars: 650000
   perplexity:
     base-url: https://api.perplexity.ai
     api-key:
     api-key-env: PERPLEXITY_API_KEY
-    models:
-      llama-3-sonar-small-32k-chat:
-        aliases: ["llama3-ss"]
-        max-input-chars: 32768
-      llama-3-sonar-small-32k-online:
-        aliases: ["llam3-sso"]
-        max-input-chars: 28000
-      llama-3-sonar-large-32k-chat:
-        aliases: ["llam3-sl"]
-        max-input-chars: 32768
-      llama-3-sonar-large-32k-online:
-        aliases: ["llam3-slo"]
-        max-input-chars: 28000
-      llama-3-8b-instruct:
-        aliases: ["llam3-8bi"]
-        max-input-chars: 8192
-      llama-3-70b-instruct:
-        aliases: ["llam3-70bi"]
-        max-input-chars: 8192
+    models: # https://docs.perplexity.ai/docs/model-cards
+      llama-3.1-sonar-huge-128k-online:
+        aliases: ["perplexity"]
+        max-input-chars: 127072
   groq:
     base-url: https://api.groq.com/openai/v1
+    api-key:
     api-key-env: GROQ_API_KEY
     models: # https://console.groq.com/docs/models
-      gemma-7b-it:
-        aliases: ["gemma"]
-        max-input-chars: 24500
-      llama3-70b-8192:
-        aliases: ["llama3", "llama3-70b"]
-        max-input-chars: 24500
-        fallback: llama3-8b-8192
-      llama3-8b-8192:
-        aliases: ["llama3-8b"]
-        max-input-chars: 24500
-      mixtral-8x7b-32768:
-        aliases: ["mixtral"]
-        max-input-chars: 98000
-  localai:
-    # LocalAI setup instructions: https://github.com/go-skynet/LocalAI#example-use-gpt4all-j-model
-    base-url: http://localhost:8080
-    models:
-      ggml-gpt4all-j:
-        aliases: ["local", "4all"]
-        max-input-chars: 12250
-        fallback:
-  azure:
-    # Set to 'azure-ad' to use Active Directory
-    # Azure OpenAI setup: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource
-    base-url: https://YOUR_RESOURCE_NAME.openai.azure.com
-    api-key:
-    api-key-env: AZURE_OPENAI_KEY
-    models:
-      gpt-4:
-        aliases: ["az4"]
-        max-input-chars: 24500
-        fallback: gpt-35-turbo
-      gpt-35-turbo:
-        aliases: ["az35t"]
-        max-input-chars: 12250
-        fallback: gpt-35
-      gpt-35:
-        aliases: ["az35"]
-        max-input-chars: 12250
-        fallback:
-  runpod:
-    # https://docs.runpod.io/serverless/workers/vllm/openai-compatibility
-    base-url: https://api.runpod.ai/v2/${YOUR_ENDPOINT}/openai/v1
-    api-key:
-    api-key-env: RUNPOD_API_KEY
-    models:
-      openchat/openchat-3.5-1210:
-        aliases: ["openchat"]
-        max-input-chars: 8192
+      llama-3.1-405b-reasoning:
+        aliases: ["groq"]
+        max-input-chars: 127072
