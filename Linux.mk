@@ -440,6 +440,7 @@ $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	sudo touch $@
 
 mods: $(mods_bin)
+	$(call header,Mods - Configure)
 	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
 	$(eval PERPLEXITY_API_KEY := $(shell pass perplexity/PERPLEXITY_API_KEY))
