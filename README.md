@@ -55,7 +55,7 @@ This project installs and configures the following tools:
 
    ```bash
    cd .shell
-   make install
+   make core-tools
    ```
 
 3. Restart your Bash session:

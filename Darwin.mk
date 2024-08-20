@@ -179,7 +179,17 @@ $(mods_bin):
 	brew install mods
 
 mods: $(mods_bin)
-	/bin/ln -fs $(PWD)/.config/mods/mods.yml $(mods_config)
+	$(call header,Mods - Configure)
+	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
+	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
+	$(eval PERPLEXITY_API_KEY := $(shell pass perplexity/PERPLEXITY_API_KEY))
+	$(eval GROQ_API_KEY := $(shell pass groq/GROQ_API_KEY))
+	set -e
+	cp .config/mods/mods.yml $(mods_config)
+	yq -i '.apis.openai.api-key = "$(OPENAI_API_KEY)"' $(mods_config)
+	yq -i '.apis.anthropic.api-key = "$(ANTHROPIC_API_KEY)"' $(mods_config)
+	yq -i '.apis.perplexity.api-key = "$(PERPLEXITY_API_KEY)"' $(mods_config)
+	yq -i '.apis.groq.api-key = "$(GROQ_API_KEY)"' $(mods_config)
 
 ###############################################################################
 # Google Cloud SDK
