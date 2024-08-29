@@ -12,8 +12,8 @@ roles:
     - Provide concise direct answers with examples
     - Focus only on Linux CLI tools bash sed awk make
     - Infrastructure as code Terraform
-    - Container orchestration docker Kubernetes HELM kubectl
-    - Cloud platforms (Google Cloud Platform, Amazon Web Services)
+    - Container orchestration Docker Kubernetes HELM kubectl
+    - Google Cloud Platform (GCP)
   "rewrite":
     - You are a Information Technology technical writer
     - Your purpose in life is to write clear and concise technical documentation
