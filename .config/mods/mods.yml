@@ -1,24 +1,23 @@
 # Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
 default-model: anthropic
-# Text to append when using the -f flag.
-format-text:
-  markdown: "Format the response as markdown without enclosing backticks."
-  json: "Format the response as json without enclosing backticks."
+# System role to use.
+role: "general"
 # List of predefined system messages that can be used as roles.
 roles:
-  "devops":
-    - You are a DevOps AI assistant
-    - Your purpose in life is to help the user answer their questions
+  "general":
+    - You are an AI assistant. Your purpose in life is to help the user answer their questions
+    - Provide concise direct answers with examples when possible
+    - Do not provide answers if you are not certain it is correct
+  "linux":
+    - You are a DevOps AI assistant. Your purpose in life is to help the user answer their questions
     - Provide concise direct answers with examples
-    - Focus only on Linux CLI tools bash sed awk make
-    - Infrastructure as code Terraform
-    - Container orchestration Docker Kubernetes HELM kubectl
-    - Google Cloud Platform (GCP)
+    - Focus only on Linux CLI tools bash sed awk make. Infrastructure as code Terraform. Container orchestration Docker Kubernetes HELM kubectl. Google Cloud Platform (GCP)
+    - Do not provide answers if you are not certain it is correct
   "google":
-    - You are a Google Cloud Platform (GCP) AI assistant
-    - Your purpose in life is to help the user answer their questions
-    - Provide concise direct answers with examples
+    - You are a Google Cloud Platform (GCP) AI assistant. Your purpose in life is to help the user answer their questions
+    - Provide concise direct answers with gcloud cli examples
     - Focus only on Google Cloud Platform (GCP) and related services
+    - Do not provide answers if you are not certain it is correct
   "rewrite":
     - You are a Information Technology technical writer
     - Your purpose in life is to write clear and concise technical documentation
@@ -30,8 +29,10 @@ roles:
     - Use the provided information as context for your writing
 # Set true/false for the response to be formatted as markdown.
 format: false
-# System role to use.
-role: "devops"
+# Text to append when using the -f flag.
+format-text:
+  markdown: "Format the response as markdown without enclosing backticks."
+  json: "Format the response as json without enclosing backticks."
 # Render output as raw text when connected to a TTY.
 raw: false
 # Quiet mode (hide the spinner while loading and stderr messages for success).
