@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 gen-pass() {
-  gpg --gen-random --armor 1 64 | tr -d '/=+' | cut -c -32 | tr -d '\n'
+  gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | awk '{gsub(/(.{4})/, "&-"); sub(/-$/, ""); print}'
 }
 
 # Get GCP Project ID
