@@ -209,6 +209,24 @@ $(helm_bin):
 helm: $(helm_bin)
 
 ###############################################################################
+# yq: YAML processor
+###############################################################################
+
+yq_bin := $(HOME)/.local/bin/yq
+
+$(yq_bin):
+	$(call header,yq - Install)
+	set -e
+	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq_linux_amd64
+	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/checksums-bsd -o checksums-bsd
+	sha256sum --status --ignore-missing --check checksums-bsd
+	rm checksums-bsd
+	mv yq_linux_amd64 $(@)
+	chmod +x $(@)
+
+yq: $(yq_bin)
+
+###############################################################################
 # Brave Browser: Chromium-based browser focused on privacy
 ###############################################################################
 
@@ -439,7 +457,7 @@ $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	sudo apt-get --yes install mods
 	sudo touch $@
 
-mods: $(mods_bin)
+mods: $(mods_bin) $(yq_bin)
 	$(call header,Mods - Configure)
 	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
@@ -471,7 +489,7 @@ $(ttyd_bin):
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -o ttyd.x86_64
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/SHA256SUMS -o SHA256SUM
 	sha256sum SHA256SUM && rm SHA256SUM
-	mv ttyd.x86_64 $@ && chmod +x $@
+	mv ttyd.x86_64 $(@) && chmod +x $(@)
 
 $(vhs_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,VHS - Install)
