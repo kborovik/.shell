@@ -149,7 +149,10 @@
   "terraform.languageServer.enable": true,
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
-    "vs-kubernetes.ignore-recommendations": true
+    "vs-kubernetes.ignore-recommendations": true,
+    "vscode-kubernetes.kubectl-path-mac": "/Users/kborovik/.vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.helm-path-mac": "/Users/kborovik/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.minikube-path-mac": "/Users/kborovik/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
   },
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
