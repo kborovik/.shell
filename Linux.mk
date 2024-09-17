@@ -219,7 +219,7 @@ $(yq_bin):
 	set -e
 	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq_linux_amd64
 	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/checksums-bsd -o checksums-bsd
-	sha256sum --status --ignore-missing --check checksums-bsd
+	sha256sum --check --status --ignore-missing checksums-bsd
 	rm checksums-bsd
 	mv yq_linux_amd64 $(@)
 	chmod +x $(@)
@@ -395,6 +395,30 @@ zfs-autobackup: $(zfs_autobackup)
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
 ###############################################################################
 
+k9s_bin := ~/.local/bin/k9s
+k9s_dir := ~/.config/k9s ~/.config/k9s/skins
+k9s_config := ~/.config/k9s/config.yaml ~/.config/k9s/hotkeys.yaml ~/.config/k9s/aliases.yaml ~/.config/k9s/skins/onedark.yaml
+
+$(k9s_dir):
+	mkdir -p $(@)
+
+$(k9s_config):
+	ln -rfs $(subst $(HOME),$(CURDIR),$(@)) $(@)
+
+$(k9s_bin):
+	$(call header,k9s - Install)
+	set -e
+	cd /tmp
+	curl -sSL https://github.com/derailed/k9s/releases/latest/download/checksums.sha256 -o checksums.sha256
+	curl -sSL https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz -o k9s_Linux_amd64.tar.gz
+	sha256sum --check --status --ignore-missing checksums.sha256
+	tar -xzf k9s_Linux_amd64.tar.gz
+	mv k9s $(@)
+	touch $(@)
+	rm -rf k9s_Linux_amd64.tar.gz checksums.sha256
+
+k9s: $(k9s_bin) $(k9s_dir) $(k9s_config)
+
 ###############################################################################
 # Code: Visual Studio Code
 ###############################################################################
@@ -488,7 +512,8 @@ $(ttyd_bin):
 	set -e
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -o ttyd.x86_64
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/SHA256SUMS -o SHA256SUM
-	sha256sum SHA256SUM && rm SHA256SUM
+	sha256sum --check --status --ignore-missing SHA256SUM 
+	rm SHA256SUM
 	mv ttyd.x86_64 $(@) && chmod +x $(@)
 
 $(vhs_bin): $(charm_gpg_key) $(charm_apt_repo)
