@@ -207,13 +207,25 @@ gcloud: $(gcloud_bin)
 # kubectl: The Kubernetes command-line tool
 ###############################################################################
 
-kubectl_bin := /opt/homebrew/share/google-cloud-sdk/bin/kubectl
+kubectl_bin := /opt/homebrew/bin/kubectl
 
-$(kubectl_bin): $(gcloud_bin)
+$(kubectl_bin):
 	$(call header,kubectl - Install)
-	gcloud components install kubectl --quiet
+	brew install kubernetes-cli
 
 kubectl: $(kubectl_bin)
+
+###############################################################################
+# helm: The Kubernetes Package Manager
+###############################################################################
+
+helm_bin := /opt/homebrew/bin/helm
+
+$(helm_bin):
+	$(call header,helm - Install)
+	brew install helm
+
+helm: $(helm_bin)
 
 ###############################################################################
 # Terraform: Infrastructure as Code
