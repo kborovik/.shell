@@ -479,7 +479,11 @@ $(charm_apt_repo):
 ###############################################################################
 
 mods_bin := /usr/bin/mods
+mods_dir := $(HOME)/.config/mods
 mods_config := .config/mods/mods.yml
+
+$(mods_dir):
+	mkdir -p $(@)
 
 $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Mods - Install)
@@ -487,7 +491,7 @@ $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	sudo apt-get --yes install mods
 	sudo touch $(@)
 
-mods: $(mods_bin) $(yq_bin)
+mods: $(mods_dir) $(mods_bin) $(yq_bin)
 	$(call header,Mods - Configure)
 	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
