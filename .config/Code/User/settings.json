@@ -44,7 +44,7 @@
     "editor.tabSize": 4
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode"
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
@@ -150,8 +150,8 @@
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
     "vs-kubernetes.ignore-recommendations": true,
-    "vscode-kubernetes.kubectl-path-mac": "/Users/kborovik/.vs-kubernetes/tools/kubectl/kubectl",
     "vscode-kubernetes.helm-path-mac": "/Users/kborovik/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.kubectl-path-mac": "/Users/kborovik/.vs-kubernetes/tools/kubectl/kubectl",
     "vscode-kubernetes.minikube-path-mac": "/Users/kborovik/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
   },
   "window.zoomLevel": 2,

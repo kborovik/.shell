@@ -17,11 +17,11 @@ gcp-org-id() {
 # List GCP project members and filter out GCP service_accounts
 gcp-list-project-members() {
   local google_project="$1"
-  
-  if [[ -z "$google_project" ]]; then 
+
+  if [[ -z "$google_project" ]]; then
     google_project=$(gcloud config list --format='value(core.project)')
   fi
-  
+
   if [[ "$google_project" && "$(command -v gcloud)" ]]; then
     echo "PROJECT: $google_project"
     gcloud projects get-iam-policy "$google_project" \
@@ -41,11 +41,11 @@ gcp-list-project-member-roles() {
     echo echo "Usage: ${FUNCNAME[0]} <user|group|service_account> <project_id>"
     return 1
   fi
-  
+
   if [[ -z "$google_project" ]]; then
     google_project=$(gcloud config list --format='value(core.project)')
   fi
-  
+
   if [[ "$google_member" && "$google_project" && "$(command -v gcloud)" ]]; then
     echo "PROJECT: $google_project"
     echo "MEMBER: $google_member"
@@ -62,10 +62,10 @@ gcp-list-project-member-roles() {
 gcp-list-org-members() {
   local google_org="$1"
 
-  if [[ -z "$google_org" ]]; then 
+  if [[ -z "$google_org" ]]; then
     google_org=$(gcloud organizations list --format='value(name)')
   fi
-  
+
   if [[ "$google_org" && "$(command -v gcloud)" ]]; then
     echo "ORG: ${google_org}"
     gcloud organizations get-iam-policy "$google_org" \
@@ -81,7 +81,7 @@ gcp-list-org-member-roles() {
   local google_member="${1}"
   local google_org="${2}"
 
-  if [[ -z $google_member ]]; then 
+  if [[ -z "$google_member" ]]; then
     echo "Usage: ${FUNCNAME[0]} <user|group|service_account> <organization_id>"
     return 1
   fi
@@ -100,4 +100,12 @@ gcp-list-org-member-roles() {
   else
     echo "Usage: ${FUNCNAME[0]} <user|group|service_account> <organization_id>"
   fi
+}
+
+ssl-show-server-crt() {
+  if [[ -z "$1" ]]; then
+    echo -e "Usage: ${FUNCNAME[0]} <server_name:server_port>"
+    return 1
+  fi
+  openssl s_client -connect "$1" | openssl x509 -noout -text
 }
