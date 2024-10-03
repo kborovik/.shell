@@ -233,6 +233,21 @@ $(yq_bin):
 yq: $(yq_bin)
 
 ###############################################################################
+# Atlas: database schema as code
+# https://github.com/ariga/atlas
+###############################################################################
+
+atlas_bin := $(HOME)/.local/bin/atlas
+atlas_url := https://release.ariga.io/atlas/atlas-community-linux-amd64-latest
+
+$(atlas_bin):
+	$(header, Atlas - Install)
+	curl -sSL $(atlas_url) -o $(@)
+	chmod +x $(@)
+
+atlas: $(atlas_bin)
+
+###############################################################################
 # Brave Browser: Chromium-based browser focused on privacy
 ###############################################################################
 
