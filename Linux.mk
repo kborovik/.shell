@@ -200,6 +200,7 @@ $(bat_bin):
 	$(call header,bat - Install)
 	curl -sSL https://github.com/sharkdp/bat/releases/download/v$(bat_version)/bat_$(bat_version)_amd64.deb -o /tmp/bat_amd64.deb
 	sudo dpkg --install /tmp/bat_amd64.deb && rm /tmp/bat_amd64.deb
+	sudo apt-mark hold bat
 
 bat: $(bat_bin)
 	$(call header,bat - Config)
