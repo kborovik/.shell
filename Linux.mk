@@ -81,7 +81,7 @@ $(unzip_bin):
 $(jq_bin):
 	$(call header,jq - Install)
 	sudo apt-get --yes install jq
-	sudo touch 
+	sudo touch
 
 tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin) $(jq_bin)
 
@@ -188,6 +188,23 @@ $(gke_auth_plugin): $(gcloud_bin)
 	sudo touch $(@)
 
 gcloud: $(gcloud_bin) $(gke_auth_plugin)
+
+###############################################################################
+# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
+###############################################################################
+
+bat_version := 0.24.0
+bat_bin := /usr/bin/bat
+
+$(bat_bin):
+	$(call header,bat - Install)
+	curl -sSL https://github.com/sharkdp/bat/releases/download/v$(bat_version)/bat_$(bat_version)_amd64.deb -o /tmp/bat_amd64.deb
+	sudo dpkg --install /tmp/bat_amd64.deb && rm /tmp/bat_amd64.deb
+
+bat: $(bat_bin)
+	$(call header,bat - Config)
+	mkdir -p $(HOME)/.config/bat
+	ln -rfs .config/bat/config $(HOME)/.config/bat/config
 
 ###############################################################################
 # kubectl: Kubernetes CLI

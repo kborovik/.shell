@@ -76,7 +76,6 @@
   ],
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
-  "cody.autocomplete.advanced.provider": "anthropic",
   "cody.commandCodeLenses": false,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -119,19 +118,15 @@
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
   "security.workspace.trust.untrustedFiles": "open",
-  "terminal.integrated.allowChords": false,
-  "terminal.integrated.altClickMovesCursor": false,
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.linux": "bash",
   "terminal.integrated.defaultProfile.osx": "bash",
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.fontSize": 16,
   "terminal.integrated.profiles.linux": {
     "bash": {
-      "args": [
-        "--norc"
-      ],
       "path": "/usr/bin/bash"
     },
     "dash": {
@@ -140,13 +135,9 @@
   },
   "terminal.integrated.profiles.osx": {
     "bash": {
-      "args": [
-        "--norc"
-      ],
       "path": "/opt/homebrew/bin/bash"
     }
   },
-  "terraform.languageServer.enable": true,
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "disabled",
     "vs-kubernetes.ignore-recommendations": true,
