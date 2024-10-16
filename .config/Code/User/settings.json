@@ -1,4 +1,7 @@
 {
+  "SQL-Formatter-VSCode.dialect": "bigquery",
+  "SQL-Formatter-VSCode.functionCase": "upper",
+  "SQL-Formatter-VSCode.logicalOperatorNewline": "after",
   "[dockercompose]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
@@ -72,10 +75,12 @@
     "northamerica",
     "patsubst",
     "tflock",
-    "tfvars"
+    "tfvars",
+    "toset"
   ],
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
+  "cody.chat.defaultLocation": "editor",
   "cody.commandCodeLenses": false,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -93,10 +98,49 @@
   "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "One Dark italic",
+        "scope": [
+          "comment",
+          "entity.other.attribute-name",
+          "keyword",
+          "markup.underline.link",
+          "storage.modifier",
+          "storage.type",
+          "string.url",
+          "variable.language.super",
+          "variable.language.this"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "One Dark italic reset",
+        "scope": [
+          "keyword.operator",
+          "keyword.other.type",
+          "storage.modifier.import",
+          "storage.modifier.package",
+          "storage.type.built-in",
+          "storage.type.function.arrow",
+          "storage.type.generic",
+          "storage.type.java",
+          "storage.type.primitive"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
   "explorer.confirmDelete": false,
   "files.associations": {
     "**/templates/*.yaml": "helm",
     "**/templates/*.yml": "helm",
+    "*.bqsql": "sql",
     "*.hcl": "terraform",
     "*.service": "toml",
     "*.tfvars": "terraform",
@@ -109,7 +153,6 @@
   "git.openRepositoryInParentFolders": "prompt",
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
-  "openctx.providers": {},
   "prettier.bracketSpacing": false,
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,

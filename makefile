@@ -119,3 +119,4 @@ version:
 
 commit: version
 	git commit -m "$$(cat VERSION)"
+

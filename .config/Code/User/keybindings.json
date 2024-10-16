@@ -27,5 +27,10 @@
     "command": "cSpell.addWordToWorkspaceSettings",
     "key": "ctrl+alt+s",
     "when": "textInputFocus"
-  }
+  },
+  {
+    "command": "bigqueryRunner.run",
+    "key": "f5",
+    "when": "resourceExtname in 'bigqueryRunner.extensions' || resourceLangId in 'bigqueryRunner.languageIds'"
+  },
 ]
