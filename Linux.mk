@@ -160,6 +160,16 @@ gpg: $(gpg_bin) $(scdaemon_bin) $(gpg_dir)
 	$(foreach file,$(gpg_config),ln -rfs $(file) $(HOME)/$(file);)
 
 ###############################################################################
+# Ubuntu Desktop GNOME
+###############################################################################
+
+gnome:
+	$(call header,GNOME - Configure)
+	sudo apt install fonts-ibm-plex
+	gsettings set org.gnome.desktop.interface text-scaling-factor '1.5'
+	dconf load '/org/gnome/terminal/legacy/' < gnome.dconf
+
+###############################################################################
 # gcloud: Google Cloud SDK
 ###############################################################################
 

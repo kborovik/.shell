@@ -1,0 +1,17 @@
+[profiles:]
+list=['06a26d14-ec50-4b81-bbfb-2345c898c41a']
+
+[profiles:/:06a26d14-ec50-4b81-bbfb-2345c898c41a]
+background-color='#282c34'
+bold-color='#dcdfe4'
+bold-color-same-as-fg=true
+default-size-columns=120
+default-size-rows=30
+font='IBM Plex Mono 18'
+foreground-color='#dcdfe4'
+palette=['#282c34', '#e06c75', '#98c379', '#e5c07b', '#61afef', '#c678dd', '#56b6c2', '#dcdfe4', '#282c34', '#e06c75', '#98c379', '#e5c07b', '#61afef', '#c678dd', '#56b6c2', '#dcdfe4']
+use-system-font=false
+use-theme-background=false
+use-theme-colors=false
+use-theme-transparency=false
+visible-name='One Half Dark'
