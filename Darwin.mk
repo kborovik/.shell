@@ -162,6 +162,20 @@ $(code_bin):
 code: $(code_bin)
 
 ###############################################################################
+# atuin: A command-line tool for managing your dotfiles
+###############################################################################
+
+atuin_bin := /opt/homebrew/bin/atuin
+atuin_config := .config/atuin/config.toml
+
+$(atuin_bin):
+	$(call header,Atuin - Install)
+	curl -sSf https://setup.atuin.sh | bash
+
+atuin: $(atuin_bin)
+	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
+
+###############################################################################
 # Mods: AI for the command line, built for pipelines.
 # https://github.com/charmbracelet/mods
 ###############################################################################

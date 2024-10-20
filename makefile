@@ -50,30 +50,6 @@ git-credentials-save:
 	pass git push
 
 ###############################################################################
-# atuin: A command-line tool for managing your dotfiles
-# Ubuntu: ZFS work around
-# vim /etc/fstab
-# /dev/zd0 /home/kb/.local/share/atuin ext4 x-systemd.after=systemd-user-sessions.service 0 2
-###############################################################################
-
-ifeq ($(OS),Linux)
-atuin_bin := /usr/bin/atuin
-else ifeq ($(OS),Darwin)
-atuin_bin := /opt/homebrew/bin/atuin
-else
-$(error ==> Unsupported OS: $(OS) <==)
-endif
-
-atuin_config := .config/atuin/config.toml
-
-$(atuin_bin):
-	$(call header,Atuin - Install)
-	curl -sSf https://setup.atuin.sh | bash
-
-atuin: $(atuin_bin)
-	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
-
-###############################################################################
 # Colors and Headers
 ###############################################################################
 

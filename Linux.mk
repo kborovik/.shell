@@ -482,6 +482,28 @@ code: $(code_bin)
 	ln -rfs $(code_dir)/cody.json $(HOME)/.vscode/cody.json
 
 ###############################################################################
+# atuin: A command-line tool for managing your dotfiles
+###############################################################################
+
+atuin_bin := /home/$(USER)/.atuin/bin/atuin
+atuin_config := .config/atuin/config.toml
+atuin_data := .local/share/atuin
+atuin_dir := /opt/atuin
+
+$(atuin_dir):
+	sudo mkdir -p $(@)
+	sudo chown -R $(USER):$(GROUP) $(@)
+
+$(atuin_bin):
+	$(call header,Atuin - Install)
+	curl -sSf https://setup.atuin.sh | bash
+
+atuin: $(atuin_dir) $(atuin_bin)
+	$(call header,Atuin - Config)
+	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
+	ln -fs $(atuin_dir) $(HOME)/$(atuin_data)
+
+###############################################################################
 # TUI Library and Apps
 # https://github.com/charmbracelet
 ###############################################################################
