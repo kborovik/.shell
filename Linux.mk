@@ -6,7 +6,8 @@ PATH := $(local_bin):$(PATH)
 
 ARCH := $(shell dpkg --print-architecture)
 
-lsb_release := $(shell lsb_release -cs)
+# lsb_release := $(shell lsb_release -cs)
+lsb_release := noble
 lsb_id := $(shell lsb_release -is)
 local_bin := $(HOME)/.local/bin
 
@@ -60,28 +61,23 @@ jq_bin := /usr/bin/jq
 
 $(curl_bin):
 	$(call header,curl - Install)
-	sudo apt-get --yes install curl
-	sudo touch $(@)
+	sudo apt-get --yes install curl && sudo touch $(@)
 
 $(pass_bin):
 	$(call header,pass - Install)
-	sudo apt-get --yes install pass
-	sudo touch $(@)
+	sudo apt-get --yes install pass && sudo touch $(@)
 
 $(tree_bin):
 	$(call header,tree - Install)
-	sudo apt-get --yes install tree
-	sudo touch $(@)
+	sudo apt-get --yes install tree && sudo touch $(@)
 
 $(unzip_bin):
 	$(call header,unzip - Install)
-	sudo apt-get --yes install unzip
-	sudo touch 
+	sudo apt-get --yes install unzip && sudo touch $(@)
 
 $(jq_bin):
 	$(call header,jq - Install)
-	sudo apt-get --yes install jq
-	sudo touch
+	sudo apt-get --yes install jq && sudo touch $(@)
 
 tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin) $(jq_bin)
 
@@ -93,8 +89,7 @@ git_bin := /usr/bin/git
 
 $(git_bin):
 	$(call header,Git - Install)
-	sudo apt-get --yes install git
-	sudo touch $(@)
+	sudo apt-get --yes install git && sudo touch $(@)
 
 git: $(git_bin)
 	ln -rfs .gitconfig $(HOME)/.gitconfig
@@ -125,8 +120,7 @@ vim_bin := /usr/bin/vim
 
 $(vim_bin):
 	$(call header,Vim - Install)
-	sudo apt-get --yes install vim
-	sudo touch $(@)
+	sudo apt-get --yes install vim && sudo touch $(@)
 
 vim: $(vim_bin)
 	ln -rfs .vimrc $(HOME)/.vimrc
@@ -143,8 +137,7 @@ gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf .gnupg/gpg-agent.conf
 
 $(scdaemon_bin):
 	$(call header,GPG - Install scdaemon)
-	sudo apt-get --yes install scdaemon
-	sudo touch $(@)
+	sudo apt-get --yes install scdaemon && sudo touch $(@)
 
 $(gpg_dir):
 	$(call header,GPG - Directories)
@@ -153,8 +146,7 @@ $(gpg_dir):
 
 $(gpg_bin):
 	$(call header,GPG - Install)
-	sudo apt-get --yes install gnupg
-	sudo touch $(@)
+	sudo apt-get --yes install gnupg && sudo touch $(@)
 
 gpg: $(gpg_bin) $(scdaemon_bin) $(gpg_dir)
 	$(foreach file,$(gpg_config),ln -rfs $(file) $(HOME)/$(file);)
@@ -179,25 +171,35 @@ gcloud_gpg_key := /etc/apt/trusted.gpg.d/google-packages.gpg
 gcloud_apt_repo := /etc/apt/sources.list.d/google-packages.list
 
 $(gcloud_gpg_key):
-	$(call header,Terraform - GPG Public Key)
+	$(call header,Google - GPG Public Key)
 	curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o $(@)
 
 $(gcloud_apt_repo):
-	$(call header,terraform - APT repository)
+	$(call header,Google - APT repository)
 	echo "deb [arch=amd64] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $(@)
 	sudo apt update
 
 $(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 	$(call header,Google Cloud SDK - Install)
-	sudo apt-get --yes install google-cloud-sdk
-	sudo touch $(@)
+	sudo apt-get --yes install google-cloud-sdk && sudo touch $(@)
 
 $(gke_auth_plugin): $(gcloud_bin)
 	$(call header,Google GKE Auth Plugin - Install)
-	sudo apt-get --yes install google-cloud-cli-gke-gcloud-auth-plugin
-	sudo touch $(@)
+	sudo apt-get --yes install google-cloud-cli-gke-gcloud-auth-plugin && sudo touch $(@)
 
 gcloud: $(gcloud_bin) $(gke_auth_plugin)
+
+###############################################################################
+# kubectl: Kubernetes CLI
+###############################################################################
+
+kubectl_bin := /usr/bin/kubectl
+
+$(kubectl_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
+	$(call header,kubectl - Install)
+	sudo apt-get --yes install kubectl && sudo touch $(@)
+
+kubectl: $(kubectl_bin)
 
 ###############################################################################
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
@@ -216,19 +218,6 @@ bat: $(bat_bin)
 	$(call header,bat - Config)
 	mkdir -p $(HOME)/.config/bat
 	ln -rfs .config/bat/config $(HOME)/.config/bat/config
-
-###############################################################################
-# kubectl: Kubernetes CLI
-###############################################################################
-
-kubectl_bin := /usr/bin/kubectl
-
-$(kubectl_bin):
-	$(call header,kubectl - Install)
-	sudo apt-get --yes install kubectl
-	sudo touch $(@)
-
-kubectl: $(kubectl_bin)
 
 ###############################################################################
 # HELM: The package manager for Kubernetes
@@ -270,8 +259,7 @@ atlas_url := https://release.ariga.io/atlas/atlas-community-linux-amd64-latest
 
 $(atlas_bin):
 	$(header, Atlas - Install)
-	curl -sSL $(atlas_url) -o $(@)
-	chmod +x $(@)
+	curl -sSL $(atlas_url) -o $(@) && chmod +x $(@)
 
 atlas: $(atlas_bin)
 
@@ -294,8 +282,7 @@ $(brave_apt_repo):
 
 $(brave_bin): $(brave_gpg_key) $(brave_apt_repo)
 	$(call header,Brave Browser - Install)
-	sudo apt-get --yes install brave-browser
-	sudo touch $(@)
+	sudo apt-get --yes install brave-browser && sudo touch $(@)
 
 brave: $(brave_bin)
 
@@ -323,8 +310,7 @@ terraform_bin := /usr/bin/terraform
 
 $(terraform_bin): $(hashicorp_gpg_key) $(hashicorp_apt_repo)
 	$(call header,Terraform - Install)
-	sudo apt-get --yes install terraform
-	sudo touch $(@)
+	sudo apt-get --yes install terraform && sudo touch $(@)
 
 terraform: $(terraform_bin)
 
@@ -403,8 +389,7 @@ pipx_bin := /usr/bin/pipx
 
 $(pipx_bin):
 	$(call header,pipx - Install)
-	sudo apt-get --yes install pipx
-	sudo touch $(@)
+	sudo apt-get --yes install pipx && sudo touch $(@)
 
 pipx: $(pipx_bin)
 
@@ -417,13 +402,11 @@ ansible_lint := /home/kb/.local/bin/ansible-lint
 
 $(ansible_bin): $(pipx_bin)
 	$(call header,Ansible - Install)
-	pipx install ansible-core
-	touch $(@)
+	pipx install ansible-core && touch $(@)
 
 $(ansible_lint): $(pipx_bin)
 	$(call header,Ansible-Lint - Install)
-	pipx install ansible-lint
-	touch $(@)
+	pipx install ansible-lint && touch $(@)
 
 ansible: $(ansible_bin) $(ansible_lint)
 
@@ -491,8 +474,7 @@ $(code_apt):
 
 $(code_bin): $(code_gpg) $(code_apt)
 	$(call header,Code - Install)
-	sudo apt-get --yes install code
-	sudo touch $(@)
+	sudo apt-get --yes install code && sudo touch $(@)
 
 code: $(code_bin)
 	ln -rfs $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
@@ -530,9 +512,7 @@ $(mods_dir):
 
 $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Mods - Install)
-	sudo apt update
-	sudo apt-get --yes install mods
-	sudo touch $(@)
+	sudo apt-get --yes install mods && sudo touch $(@)
 
 mods: $(mods_dir) $(mods_bin) $(yq_bin)
 	$(call header,Mods - Configure)
@@ -557,8 +537,7 @@ ttyd_bin := $(HOME)/.local/bin/ttyd
 
 $(ffmpeg_bin):
 	$(call header,VHS - Install ffmpeg)
-	sudo apt-get --yes install ffmpeg
-	sudo touch $(@)
+	sudo apt-get --yes install ffmpeg && sudo touch $(@)
 
 $(ttyd_bin):
 	$(call header,VHS - Install ttyd)
@@ -571,8 +550,7 @@ $(ttyd_bin):
 
 $(vhs_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,VHS - Install)
-	sudo apt-get --yes install vhs
-	sudo touch $(@)
+	sudo apt-get --yes install vhs && sudo touch $(@)
 
 vhs: $(ffmpeg_bin) $(ttyd_bin) $(vhs_bin)
 
@@ -596,8 +574,7 @@ glow_bin := /usr/bin/glow
 
 $(glow_bin): $(charm_gpg_key) $(charm_apt_repo)
 	$(call header,Glow - Install)
-	sudo apt-get --yes install glow
-	sudo touch $(@)
+	sudo apt-get --yes install glow && sudo touch $(@)
 
 glow: $(glow_bin)
 
