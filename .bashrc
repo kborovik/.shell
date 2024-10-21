@@ -119,6 +119,10 @@ alias ls='ls --color=auto'
 
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
+if [[ ! $(findmnt -n /home/kb/.local/share/atuin) ]]; then
+  mount /home/kb/.local/share/atuin
+fi
+
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
