@@ -487,7 +487,7 @@ code: $(code_bin)
 # /dev/zd0 /home/kb/.local/share/atuin ext4 defaults,noauto,user 0 0
 ###############################################################################
 
-atuin_bin := /home/$(USER)/.atuin/bin/atuin
+atuin_bin := $(HOME)/.atuin/bin/atuin
 atuin_config := .config/atuin/config.toml
 atuin_data := .local/share/atuin
 
