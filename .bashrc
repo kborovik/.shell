@@ -119,13 +119,12 @@ alias ls='ls --color=auto'
 
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
-if [[ ! $(findmnt -n /home/${USER}/.local/share/atuin) ]]; then
-  mount /home/${USER}/.local/share/atuin
-fi
+[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
+  atuin_dir="${HOME}/.local/share/atuin"
+  [[ ! -d ${atuin_dir} ]] && mkdir -p ${atuin_dir}
+  [[ ! $(findmnt -n ${atuin_dir}) ]] && mount ${atuin_dir}
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
 fi
-
-[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
