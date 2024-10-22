@@ -181,13 +181,13 @@ $(gcloud_apt_repo):
 
 $(gcloud_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 	$(call header,Google Cloud SDK - Install)
-	sudo apt-get --yes install google-cloud-sdk && sudo touch $(@)
+	sudo apt-get --yes install google-cloud-cli && sudo touch $(@)
 
 $(gke_auth_plugin): $(gcloud_bin)
 	$(call header,Google GKE Auth Plugin - Install)
 	sudo apt-get --yes install google-cloud-cli-gke-gcloud-auth-plugin && sudo touch $(@)
 
-gcloud: $(gcloud_bin) $(gke_auth_plugin)
+google: $(gcloud_bin) $(gke_auth_plugin)
 
 ###############################################################################
 # kubectl: Kubernetes CLI
@@ -418,7 +418,7 @@ zfs_autobackup := /home/kb/.local/bin/zfs-autobackup
 
 $(zfs_autobackup): $(pipx_bin)
 	$(call header,zfs-autobackup - Install)
-	pipx install zfs-autobackup
+	pipx install --global zfs-autobackup
 
 zfs-autobackup: $(zfs_autobackup)
 	sudo ln -rfs /usr/local/bin/zfs-autobackup $(zfs_autobackup)
