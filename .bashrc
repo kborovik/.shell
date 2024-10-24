@@ -61,6 +61,8 @@ if [ -x /opt/homebrew/bin/brew ]; then
   done
 fi
 
+[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+
 export COLORTERM="truecolor"
 export EDITOR="vim"
 export HISTCONTROL="ignoreboth:erasedups"
@@ -115,11 +117,7 @@ alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
 
-[[ "$(command -v dircolors)" ]] && eval "$(dircolors)"
-
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
-
-[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
   atuin_dir="${HOME}/.local/share/atuin"
