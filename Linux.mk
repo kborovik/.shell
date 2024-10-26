@@ -382,7 +382,7 @@ $(gh_bin):
 gh: $(gh_bin)
 
 ###############################################################################
-# Python tools
+# Python tools: pipx
 ###############################################################################
 
 pipx_bin := /usr/bin/pipx
@@ -392,6 +392,19 @@ $(pipx_bin):
 	sudo apt-get --yes install pipx && sudo touch $(@)
 
 pipx: $(pipx_bin)
+
+###############################################################################
+# Python tools: uv - Python Virtual Environment
+###############################################################################
+
+uv_bin := $(HOME)/.cargo/bin/uv
+
+$(uv_bin):
+	$(call header,uv - Install)
+	mkdir -p $(@D)
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv: $(uv_bin)
 
 ###############################################################################
 # Ansible: Automation for everyone
