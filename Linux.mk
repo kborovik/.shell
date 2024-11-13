@@ -159,7 +159,7 @@ gnome-terminal:
 	$(call header,GNOME Terminal - Configure)
 	sudo apt install fonts-ibm-plex
 	gsettings set org.gnome.desktop.interface text-scaling-factor '1.5'
-	dconf load '/org/gnome/terminal/legacy/' < gnome.dconf
+	dconf load '/org/gnome/terminal/legacy/' < Linux/gnome.dconf
 
 ###############################################################################
 # gcloud: Google Cloud SDK
