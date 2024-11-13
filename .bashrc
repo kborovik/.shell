@@ -21,7 +21,6 @@ export PATH
 completion_files=(
   /usr/share/bash-completion/bash_completion
   /etc/bash_completion
-  ~/.bash_completion
 )
 for file in "${completion_files[@]}"; do
   if [ -r "$file" ]; then
@@ -120,9 +119,11 @@ alias ls='ls --color=auto'
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
-  atuin_dir="${HOME}/.local/share/atuin"
-  [[ ! -d ${atuin_dir} ]] && mkdir -p ${atuin_dir}
-  [[ ! $(findmnt -n ${atuin_dir}) ]] && mount ${atuin_dir}
+  if [[ "$(uname)" == "Linux" ]]; then
+    atuin_dir="${HOME}/.local/share/atuin"
+    [[ ! -d ${atuin_dir} ]] && mkdir -p ${atuin_dir}
+    [[ ! $(findmnt -n ${atuin_dir}) ]] && mount ${atuin_dir}
+  fi
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
 fi
