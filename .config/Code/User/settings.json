@@ -80,7 +80,6 @@
   ],
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
-  "cody.chat.defaultLocation": "editor",
   "cody.commandCodeLenses": false,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -193,5 +192,6 @@
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "cody.chat.defaultLocation": "sidebar"
 }
