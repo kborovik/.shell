@@ -129,7 +129,7 @@ $(gpg_bin):
 	$(call header,GPG - Install)
 	brew install gnupg
 
-gpg: $(gpg_bin) $(opensc_bin)
+gpg: $(gpg_dir) $(gpg_bin) $(opensc_bin)
 	$(foreach file,$(gpg_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
 
 ###############################################################################
@@ -176,6 +176,18 @@ atuin: $(atuin_bin)
 	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
 
 ###############################################################################
+# yq: A portable command-line YAML processor
+###############################################################################
+
+yq_bin := /opt/homebrew/bin/yq
+
+$(yq_bin):
+	$(call header,yq - Install)
+	brew install yq
+
+yq: $(yq_bin)
+
+###############################################################################
 # Mods: AI for the command line, built for pipelines.
 # https://github.com/charmbracelet/mods
 ###############################################################################
@@ -190,9 +202,9 @@ $(mods_dir):
 
 $(mods_bin):
 	$(call header,Mods - Install) 
-	brew install mods
+	brew install charmbracelet/tap/mods
 
-mods: $(mods_bin)
+mods: $(yq_bin) $(mods_dir) $(mods_bin) 
 	$(call header,Mods - Configure)
 	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
