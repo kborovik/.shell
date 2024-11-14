@@ -265,3 +265,18 @@ $(terraform_bin):
 	brew install hashicorp/tap/terraform
 
 terraform: $(terraform_bin)
+
+###############################################################################
+# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
+###############################################################################
+
+bat_bin := /opt/homebrew/bin/bat
+
+$(bat_bin):
+	$(call header,bat - Install)
+	brew install bat
+
+bat: $(bat_bin)
+	$(call header,bat - Config)
+	mkdir -p $(HOME)/.config/bat
+	ln -rfs .config/bat/config $(HOME)/.config/bat/config
