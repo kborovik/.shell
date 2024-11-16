@@ -4,6 +4,7 @@
 	signingKey = 79A09C51CF531E16444D6871B59466C2C0CCF0BF
 [diff]
 	tool = vimdiff
+	algorithm = histogram
 [difftool]
 	prompt = false
 [merge]
