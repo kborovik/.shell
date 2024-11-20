@@ -1,5 +1,69 @@
 {
+  "version": 3,
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{ .UserName }}@{{ .HostName }}",
+  "terminal_background": "p:background",
+  "blocks": [
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "segments": [
+        {
+          "foreground": "p:yellow",
+          "style": "plain",
+          "template": "{{ .UserName }}@{{ .HostName }} ",
+          "type": "session",
+          "foreground_templates": [
+            "{{ if .Root }}p:red{{ end }}",
+            "{{ if .SSHSession }}p:orange{{ end }}"
+          ],
+          "properties": {
+            "cache_duration": "none"
+          }
+        },
+        {
+          "foreground": "p:blue",
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "type": "path",
+          "properties": {
+            "max_depth": 3,
+            "cache_duration": "none",
+            "style": "agnoster_short"
+          }
+        },
+        {
+          "style": "plain",
+          "template": "<p:yellow>git</>({{ if or (.Working.Changed) (.Staging.Changed) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }}){{ if gt .StashCount 0 }}<p:magenta> +{{ .StashCount }}</>{{ end }}",
+          "type": "git",
+          "properties": {
+            "branch_icon": "",
+            "cache_duration": "none",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_worktree_count": true
+          }
+        }
+      ],
+      "newline": true
+    },
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "segments": [
+        {
+          "style": "plain",
+          "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
+          "type": "status",
+          "properties": {
+            "cache_duration": "none",
+            "always_enabled": true
+          }
+        }
+      ],
+      "newline": true
+    }
+  ],
   "palette": {
     "background": "#282c34",
     "blue": "#61afef",
@@ -10,69 +74,5 @@
     "orange": "#e58b7b",
     "red": "#e06c75",
     "yellow": "#e5c07b"
-  },
-  "console_title_template": "{{ .UserName }}@{{ .HostName }}",
-  "terminal_background": "p:background",
-  "blocks": [
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "{{ .UserName }}@{{ .HostName }} ",
-          "foreground": "p:yellow",
-          "type": "session",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if .Root }}p:red{{ end }}",
-            "{{ if .SSHSession }}p:orange{{ end }}"
-          ]
-        },
-        {
-          "properties": {
-            "cache_duration": "none",
-            "max_depth": 3,
-            "style": "agnoster_short"
-          },
-          "template": "{{ .Path }} ",
-          "foreground": "p:blue",
-          "type": "path",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "branch_icon": "",
-            "cache_duration": "none",
-            "fetch_stash_count": true,
-            "fetch_status": true,
-            "fetch_worktree_count": true
-          },
-          "template": "<p:yellow>git</>({{ if or (.Working.Changed) (.Staging.Changed) }}<p:magenta>{{ .HEAD }}</>{{ else }}<p:green>{{ .HEAD }}</>{{ end }}{{ if or (gt .Behind 0) (gt .Ahead 0)}} <p:cyan>{{ .BranchStatus }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:red>{{ .Working.String }}</>{{ end }}){{ if gt .StashCount 0 }}<p:magenta> +{{ .StashCount }}</>{{ end }}",
-          "type": "git",
-          "style": "plain"
-        }
-      ],
-      "newline": true
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
-        {
-          "properties": {
-            "always_enabled": true,
-            "cache_duration": "none"
-          },
-          "template": "{{ if gt .Code 0 }}<p:red>({{ .Code }}) </>{{ else }}<p:green>({{ .Code }}) </>{{ end }}> ",
-          "type": "status",
-          "style": "plain"
-        }
-      ],
-      "newline": true
-    }
-  ],
-  "version": 3
+  }
 }
