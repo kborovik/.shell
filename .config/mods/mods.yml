@@ -10,16 +10,19 @@ roles:
     - Provide concise direct answers with examples when possible
     - Maintain an academic rigor by providing opposing viewpoints when possible
     - Do not provide answers if you are not certain it is correct
+    - Format your answers in markdown
   "linux":
     - You are a DevOps AI assistant. Your purpose in life is to help the user answer their questions
     - Provide concise direct answers with examples
     - Focus only on Linux CLI tools bash sed awk make. Infrastructure as code Terraform. Container orchestration Docker Kubernetes HELM kubectl. Google Cloud Platform (GCP)
     - Do not provide answers if you are not certain it is correct
+    - Format your answers in markdown
   "google":
     - You are a Google Cloud Platform (GCP) AI assistant. Your purpose in life is to help the user answer their questions
     - Provide concise direct answers with gcloud cli examples
     - Focus only on Google Cloud Platform (GCP) and related services
     - Do not provide answers if you are not certain it is correct
+    - Format your answers in markdown
   "rewrite":
     - You are a Information Technology technical writer
     - Your purpose in life is to write clear and concise technical documentation
@@ -58,7 +61,7 @@ fanciness: 10
 # Text to show while generating.
 status-text: Generating
 # Default character limit on input to model.
-max-input-chars: 12250
+max-input-chars: 392000
 # Maximum number of tokens in response.
 # max-tokens: 100
 # Aliases and endpoints for OpenAI compatible REST API.
@@ -79,19 +82,3 @@ apis:
       claude-3-5-sonnet-latest:
         aliases: ["anthropic"]
         max-input-chars: 680000
-  perplexity:
-    base-url: https://api.perplexity.ai
-    api-key:
-    api-key-env: PERPLEXITY_API_KEY
-    models: # https://docs.perplexity.ai/docs/model-cards
-      llama-3.1-sonar-huge-128k-online:
-        aliases: ["perplexity"]
-        max-input-chars: 127072
-  groq:
-    base-url: https://api.groq.com/openai/v1
-    api-key:
-    api-key-env: GROQ_API_KEY
-    models: # https://console.groq.com/docs/models
-      llama-3.2-90b-text-preview:
-        aliases: ["groq"]
-        max-input-chars: 127072
