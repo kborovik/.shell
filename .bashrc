@@ -116,6 +116,8 @@ alias ls='ls --color=auto'
 
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
+[[ "$(command -v nodenv)" ]] && eval "$(nodenv init - bash)"
+
 [[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
