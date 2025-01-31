@@ -61,6 +61,7 @@
   "cSpell.userWords": [
     "varchar"
   ],
+  "chat.commandCenter.enabled": false,
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
   "cody.commandCodeLenses": false,
@@ -163,7 +164,6 @@
   "prettier.ignorePath": ".prettierignore",
   "prettier.insertPragma": false,
   "prettier.printWidth": 120,
-  "python.defaultInterpreterPath": "",
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
   "ruff.showNotifications": "onWarning",
@@ -198,6 +198,9 @@
   "window.newWindowProfile": "Default",
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark",
+  "workbench.editorAssociations": {
+    "*.pdf": "pdf.preview"
+  },
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none"
 }

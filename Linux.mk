@@ -427,14 +427,9 @@ ansible: $(ansible_bin) $(ansible_lint)
 # zfs-autobackup: ZFS snapshot and backup automation
 ###############################################################################
 
-zfs_autobackup := /home/kb/.local/bin/zfs-autobackup
-
-$(zfs_autobackup): $(pipx_bin)
+zfs-autobackup: $(pipx_bin)
 	$(call header,zfs-autobackup - Install)
-	pipx install --global zfs-autobackup
-
-zfs-autobackup: $(zfs_autobackup)
-	sudo ln -rfs /usr/local/bin/zfs-autobackup $(zfs_autobackup)
+	sudo pipx install --global zfs-autobackup
 
 ###############################################################################
 # k9s: A terminal-based UI to interact with your Kubernetes clusters
