@@ -109,3 +109,11 @@ ssl-show-server-crt() {
   fi
   openssl s_client -connect "$1" | openssl x509 -noout -text
 }
+
+atuin-clear-failed() {
+  if [[ "$(command -v atuin)" ]]; then
+    atuin search --exclude-exit 0 --delete-it-all
+  else
+    echo "'atuin' binary is not installed"
+  fi
+}
