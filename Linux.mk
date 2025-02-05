@@ -205,17 +205,15 @@ kubectl: $(kubectl_bin)
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
 ###############################################################################
 
-bat_version := 0.24.0
 bat_bin := /usr/bin/bat
 
 $(bat_bin):
 	$(call header,bat - Install)
-	curl -sSL https://github.com/sharkdp/bat/releases/download/v$(bat_version)/bat_$(bat_version)_amd64.deb -o /tmp/bat_amd64.deb
-	sudo dpkg --install /tmp/bat_amd64.deb && rm /tmp/bat_amd64.deb
-	sudo apt-mark hold bat
+	sudo apt install bat
 
 bat: $(bat_bin)
 	$(call header,bat - Config)
+	sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 	mkdir -p $(HOME)/.config/bat
 	ln -rfs .config/bat/config $(HOME)/.config/bat/config
 
@@ -613,13 +611,9 @@ ollama_bin := /usr/local/bin/ollama
 
 $(ollama_bin):
 	$(call header,Ollama - Install)
-	curl -fsSL https://ollama.com/download/linux | sudo bash
+	curl -fsSL https://ollama.com/install.sh | sh
 
 ollama: $(ollama_bin)
-
-ollama-pull-llama3:
-	$(call header,Ollama - Configure)
-	ollama pull llama3.1
 
 ollama-uninstall:
 	$(call header,Ollama - Uninstall)

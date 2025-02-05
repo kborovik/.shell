@@ -72,7 +72,7 @@
   "editor.detectIndentation": true,
   "editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "editor.fontLigatures": true,
-  "editor.fontSize": 17,
+  "editor.fontSize": 18,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.showToolbar": "onHover",
   "editor.inlineSuggest.suppressSuggestions": true,
@@ -202,5 +202,6 @@
     "*.pdf": "pdf.preview"
   },
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "svelte.enable-ts-plugin": true
 }
