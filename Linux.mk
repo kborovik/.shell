@@ -458,6 +458,34 @@ $(k9s_bin):
 k9s: $(k9s_bin) $(k9s_dir) $(k9s_config)
 
 ###############################################################################
+# Windsurf: An AI driven Code editor
+###############################################################################
+windsurf_bin := /usr/bin/windsurf
+windsurf_dir := $(HOME)/.config/Windsurf/User/
+windsurf_gpg := /etc/apt/trusted.gpg.d/windsurf.gpg
+windsurf_apt := /etc/apt/sources.list.d/windsurf.list
+
+$(windsurf_dir):
+	$(call header,Windsurf - Directories)
+	mkdir -p $(@)
+
+$(windsurf_gpg):
+	$(call header,Windsurf - Codeium GPG Public Key)
+	curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o $(@)
+
+$(windsurf_apt):
+	$(call header,Windsurf - APT Repository)
+	echo "deb [signed-by=/usr/share/keyrings/windsurf-stable-archive-keyring.gpg arch=amd64] https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt stable main" | sudo tee $(@)
+	sudo apt update
+
+$(windsurf_bin): $(windsurf_gpg) $(windsurf_apt)
+	$(call header,Windsurf - Install)
+	sudo apt-get --yes install windsurf && sudo touch $(@)
+
+windsurf: $(windsurf_bin)
+	ln -rfs Linux/windsurf.json $(windsurf_dir)/settings.json
+
+###############################################################################
 # Code: Visual Studio Code
 ###############################################################################
 code_bin := /usr/bin/code
