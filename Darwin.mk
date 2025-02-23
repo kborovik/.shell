@@ -150,6 +150,20 @@ k9s: $(k9s_bin)
 	/bin/ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
 
 ###############################################################################
+# Windsurf: An AI Drivent Code Editor by https://codeium.com
+###############################################################################
+
+windsurf_bin := /opt/homebrew/bin/windsurf
+windsurf_config := '$(HOME)/Library/Application Support/Windsurf/User/settings.json'
+
+$(windsurf_bin):
+	$(call header,Windsurf - Install)
+	brew install windsurf
+
+windsurf: $(windsurf_bin)
+	/bin/ln -fs $(PWD)/Darwin/windsurf.json $(windsurf_config)
+
+###############################################################################
 # Code: Visual Studio Code
 ###############################################################################
 
