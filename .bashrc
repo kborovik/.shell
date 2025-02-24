@@ -20,13 +20,23 @@ export PATH
 
 completion_files=(
   /usr/share/bash-completion/bash_completion
-  /etc/bash_completion
 )
 for file in "${completion_files[@]}"; do
   if [ -r "$file" ]; then
     source "$file"
     break
   fi
+done
+
+completion_dirs=(
+  ${HOME}/.bash_completion.d/
+)
+for dir in "${completion_dirs[@]}"; do
+  for file in ${dir}/*; do
+    if [ -r "$file" ]; then
+      source "$file"
+    fi
+  done
 done
 
 if [ -x /opt/homebrew/bin/brew ]; then

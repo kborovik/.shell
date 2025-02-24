@@ -461,7 +461,7 @@ k9s: $(k9s_bin) $(k9s_dir) $(k9s_config)
 # Windsurf: An AI driven Code editor
 ###############################################################################
 windsurf_bin := /usr/bin/windsurf
-windsurf_dir := $(HOME)/.config/Windsurf/User/
+windsurf_dir := $(HOME)/.config/Windsurf/User
 windsurf_gpg := /etc/apt/trusted.gpg.d/windsurf.gpg
 windsurf_apt := /etc/apt/sources.list.d/windsurf.list
 
@@ -483,7 +483,8 @@ $(windsurf_bin): $(windsurf_gpg) $(windsurf_apt)
 	sudo apt-get --yes install windsurf && sudo touch $(@)
 
 windsurf: $(windsurf_bin)
-	ln -rfs Linux/windsurf.json $(windsurf_dir)/settings.json
+	ln -rfs .config/Windsurf/settings.json $(windsurf_dir)/settings.json
+	ln -rfs .config/Windsurf/keybindings.json $(windsurf_dir)/keybindings.json
 
 ###############################################################################
 # Code: Visual Studio Code

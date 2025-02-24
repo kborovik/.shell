@@ -1,4 +1,11 @@
 {
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
     "debug.closeReadonlyTabsOnEnd": true,
     "debug.console.closeOnEnd": true,
     "debug.console.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
@@ -8,6 +15,7 @@
     "debug.terminal.clearBeforeReusing": true,
     "debugpy.debugJustMyCode": true,
     "debugpy.showPythonInlineValues": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
     "editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo, monospace",
     "editor.fontSize": 16,
     "editor.formatOnSave": true,
@@ -15,10 +23,10 @@
     "extensions.ignoreRecommendations": true,
     "terminal.integrated.defaultLocation": "editor",
     "terminal.integrated.defaultProfile.osx": "bash",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 16,
     "window.zoomLevel": 2,
     "windsurf.autoExecutionPolicy": "off",
-    "windsurf.autocompleteSpeed": "default",
+    "windsurf.autocompleteSpeed": "slow",
     "windsurf.chatFontSize": "default",
     "windsurf.enableSupercomplete": false,
     "windsurf.enableTabToJump": false,
