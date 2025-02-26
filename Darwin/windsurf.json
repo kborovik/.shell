@@ -13,6 +13,7 @@
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
     "extensions.ignoreRecommendations": true,
+    "redhat.telemetry.enabled": false,
     "terminal.integrated.defaultLocation": "editor",
     "terminal.integrated.defaultProfile.osx": "bash",
     "terminal.integrated.fontSize": 14,
