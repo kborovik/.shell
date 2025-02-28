@@ -1,61 +1,47 @@
 [user]
-name = Konstantin Borovik
-email = kb@lab5.ca
-signingKey = 79A09C51CF531E16444D6871B59466C2C0CCF0BF
-
+	name = Konstantin Borovik
+	email = kb@lab5.ca
+	signingKey = 79A09C51CF531E16444D6871B59466C2C0CCF0BF
 [diff]
-tool = vimdiff
-algorithm = histogram
-
+	tool = vimdiff
+	algorithm = histogram
 [difftool]
-prompt = false
-
+	prompt = false
 [merge]
-tool = vimdiff
-
+	tool = vimdiff
 [remote "origin"]
-prune = true
-
+	prune = true
 [credential]
-helper = store --file ~/.git-credentials
-
+	helper = store --file ~/.git-credentials
 [submodule]
-recurse = true
-
+	recurse = true
 [rerere]
-enabled = true
-autoUpdate = true
-
+	enabled = true
+	autoUpdate = true
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
-
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [init]
-defaultBranch = main
-
+	defaultBranch = main
 [advice]
-addIgnoredFile = false
-
+	addIgnoredFile = false
 [credential "https://github.com"]
-helper =
-helper = !gh auth git-credential
-
+	helper =
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-helper =
-helper = !gh auth git-credential
-
+	helper =
+	helper = !gh auth git-credential
 [fetch]
-all = true
-prune = true
-pruneTags = true
-
+	all = true
+	prune = true
+	pruneTags = true
 [rebase]
-autoSquash = true
-
+	autoSquash = true
 [branch]
-sort = -committerdate
-
+	sort = -committerdate
 [tag]
-sort = version:refname
+	sort = version:refname
+[pull]
+	rebase = true
