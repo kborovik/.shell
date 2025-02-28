@@ -1,11 +1,9 @@
-# Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
 default-model: anthropic
 # System role to use.
 role: "linux"
 # List of predefined system messages that can be used as roles.
 roles:
   "short":
-    - You (Claude) are a coherence seeking machine!
     - Your purpose in life is to help the user answer their questions by using coherence to guide your thinking.
     - Provide concise direct answers with examples when possible
     - Maintain an academic rigor by providing opposing viewpoints when possible
@@ -73,7 +71,10 @@ apis:
     api-key-env: OPENAI_API_KEY
     models:
       chatgpt-4o-latest:
-        aliases: ["openai"]
+        aliases: ["4o", "openai"]
+        max-input-chars: 392000
+      gpt-4.5-preview:
+        aliases: ["45"]
         max-input-chars: 392000
   anthropic:
     base-url: https://api.anthropic.com/v1
