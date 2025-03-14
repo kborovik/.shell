@@ -1,19 +1,9 @@
 {
-  "CommitMessage": {
+  "Rewrite": {
+    "prompt": "Rewrite the selected text to improve clarity, flow and readability while maintaining the original meaning",
     "context": {
-      "command": "git diff --cached",
-      "selection": false
+      "selection": true
     },
-    "description": "Create commit message",
-    "mode": "ask",
-    "prompt": "Analyze the git diff output and generate a commit message using the conventional commit format to provide meaningful context for the changes."
-  },
-  "PythonDocs": {
-    "context": {
-      "currentFile": true
-    },
-    "description": "Document Python code",
-    "mode": "edit",
-    "prompt": "You are an expert Python developer. You are given a Python function and you need to document it using Google doc style. You need to provide a detailed description of the function, its parameters, return value, and any exceptions that may be raised."
+    "mode": "edit"
   }
 }

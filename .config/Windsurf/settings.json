@@ -27,7 +27,7 @@
     "terminal.integrated.fontSize": 16,
     "window.zoomLevel": 2,
     "windsurf.autoExecutionPolicy": "off",
-    "windsurf.autocompleteSpeed": "default",
+    "windsurf.autocompleteSpeed": "fast",
     "windsurf.chatFontSize": "default",
     "windsurf.enableSupercomplete": false,
     "windsurf.enableTabToJump": false,

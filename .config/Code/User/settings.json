@@ -48,9 +48,7 @@
   "chat.commandCenter.enabled": false,
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
-  "cody.commandCodeLenses": false,
   "diffEditor.codeLens": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
@@ -114,5 +112,10 @@
   "workbench.colorTheme": "One Dark Pro Mix",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
-  "cody.chat.defaultLocation": "editor"
+  "debugpy.debugJustMyCode": false,
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled"
+  },
+  "cody.suggestions.mode": "autocomplete",
+  "cody.autocomplete.formatOnAccept": true
 }
