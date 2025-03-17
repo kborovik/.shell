@@ -75,9 +75,7 @@ export EDITOR="vim"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTFILESIZE=10000
 export HISTSIZE="${HISTFILESIZE}"
-export LESS="-R -F -i"
-export MORE="-s"
-export PAGER="less"
+export PAGER="less -R -F -i"
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 
 set -o noclobber

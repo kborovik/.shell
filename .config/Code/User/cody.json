@@ -5,5 +5,12 @@
       "selection": true
     },
     "mode": "edit"
+  },
+  "Rename": {
+    "prompt": "Suggest a clearer and more descriptive name for the selected code identifier",
+    "context": {
+      "selection": true
+    },
+    "mode": "ask"
   }
 }

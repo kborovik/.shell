@@ -12,6 +12,7 @@
     "cSpell.advanced.feature.useReferenceProviderWithRename": true,
     "cSpell.fixSpellingWithRenameProvider": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",
@@ -27,6 +28,7 @@
       "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
   "[shellscript]": {
@@ -48,6 +50,9 @@
   "chat.commandCenter.enabled": false,
   "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
   "chat.editor.fontSize": 16,
+  "cody.autocomplete.formatOnAccept": true,
+  "cody.suggestions.mode": "autocomplete",
+  "debugpy.debugJustMyCode": false,
   "diffEditor.codeLens": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.colorDecorators": false,
@@ -81,9 +86,10 @@
   "git.openRepositoryInParentFolders": "prompt",
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
-  "markdownlint.run": "onSave",
   "redhat.telemetry.enabled": false,
   "ruff.fixAll": false,
+  "ruff.lineLength": 120,
+  "ruff.nativeServer": "on",
   "security.workspace.trust.untrustedFiles": "open",
   "sortJSON.contextMenu": {
     "sortJSONAlphaNum": false,
@@ -107,15 +113,12 @@
       "path": "/usr/bin/bash"
     }
   },
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled"
+  },
   "window.newWindowProfile": "Default",
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark Pro Mix",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
-  "debugpy.debugJustMyCode": false,
-  "vs-kubernetes": {
-    "vs-kubernetes.crd-code-completion": "disabled"
-  },
-  "cody.suggestions.mode": "autocomplete",
-  "cody.autocomplete.formatOnAccept": true
+  "workbench.startupEditor": "none"
 }

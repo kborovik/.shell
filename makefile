@@ -85,14 +85,7 @@ prompt:
 # Repo Version
 ###############################################################################
 
-.PHONY: version
-
-version:
-	version=$$(date +%Y.%m.%d-%H%M)
-	echo "$$version" >| VERSION
-	$(call header,Version: $$(cat VERSION))
+commit:
 	git add --all
-
-commit: version
-	git commit -m "$$(cat VERSION)"
+	git commit -m "$(shell date +%Y.%m.%d-%H%M)"
 
