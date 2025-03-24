@@ -1,6 +1,6 @@
 {
-  "Rewrite": {
-    "prompt": "Rewrite the selected text to improve clarity, flow and readability while maintaining the original meaning",
+  "Rephrase": {
+    "prompt": "Rephrase the selected text to improve clarity, flow and readability while maintaining the original meaning. Use current file as a context.",
     "context": {
       "selection": true
     },

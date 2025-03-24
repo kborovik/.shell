@@ -1,6 +1,6 @@
 default-model: anthropic
 # System role to use.
-role: "linux"
+role: "short"
 # List of predefined system messages that can be used as roles.
 roles:
   "short":
@@ -79,8 +79,5 @@ apis:
     api-key-env: OPENAI_API_KEY
     models:
       chatgpt-4o-latest:
-        aliases: ["4o", "openai"]
-        max-input-chars: 392000
-      gpt-4.5-preview:
-        aliases: ["45"]
+        aliases: ["openai"]
         max-input-chars: 392000
