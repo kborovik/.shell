@@ -1,4 +1,4 @@
-default-model: anthropic
+default-model: google
 # System role to use.
 role: "short"
 # List of predefined system messages that can be used as roles.
@@ -73,6 +73,13 @@ apis:
       claude-3-7-sonnet-latest:
         aliases: ["anthropic"]
         max-input-chars: 680000
+  google:
+    api-key:
+    api-key-env: GEMINI_API_KEY
+    models: # https://ai.google.dev/gemini-api/docs/models/gemini
+      gemini-2.5-pro-exp-03-25:
+        aliases: ["google"]
+        max-input-chars: 4194304
   openai:
     base-url: https://api.openai.com/v1
     api-key:

@@ -569,15 +569,13 @@ $(mods_bin): $(charm_gpg_key) $(charm_apt_repo)
 
 mods: $(mods_dir) $(mods_bin) $(yq_bin)
 	$(call header,Mods - Configure)
-	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
-	$(eval PERPLEXITY_API_KEY := $(shell pass perplexity/PERPLEXITY_API_KEY))
-	$(eval GROQ_API_KEY := $(shell pass groq/GROQ_API_KEY))
+	$(eval GEMINI_API_KEY := $(shell pass google/GEMINI_API_KEY))
+	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
 	cp --remove-destination $(mods_config) $(HOME)/$(mods_config)
-	yq -i '.apis.openai.api-key = "$(OPENAI_API_KEY)"' $(HOME)/$(mods_config)
 	yq -i '.apis.anthropic.api-key = "$(ANTHROPIC_API_KEY)"' $(HOME)/$(mods_config)
-	yq -i '.apis.perplexity.api-key = "$(PERPLEXITY_API_KEY)"' $(HOME)/$(mods_config)
-	yq -i '.apis.groq.api-key = "$(GROQ_API_KEY)"' $(HOME)/$(mods_config)
+	yq -i '.apis.google.api-key = "$(GEMINI_API_KEY)"' $(HOME)/$(mods_config)
+	yq -i '.apis.openai.api-key = "$(OPENAI_API_KEY)"' $(HOME)/$(mods_config)
 
 ###############################################################################
 # VHS: Write terminal GIFs as code
