@@ -128,6 +128,8 @@ alias ls='ls --color=auto'
 
 [[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 
+[[ -f ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh && source ~/.nvm/bash_completion
+
 if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
   if [[ "$(uname)" == "Linux" ]]; then
     atuin_dir="${HOME}/.local/share/atuin"
@@ -137,3 +139,4 @@ if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
   source ~/.bash-preexec.sh
   eval "$(atuin init --disable-up-arrow bash)"
 fi
+
