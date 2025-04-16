@@ -48,8 +48,8 @@
     "varchar"
   ],
   "chat.commandCenter.enabled": false,
-  "chat.editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
-  "chat.editor.fontSize": 16,
+  "chat.editor.fontFamily": "IBM Plex Mono, Fira Code",
+  "chat.editor.fontSize": 17,
   "cody.autocomplete.formatOnAccept": true,
   "cody.suggestions.mode": "autocomplete",
   "debugpy.debugJustMyCode": false,
@@ -58,7 +58,7 @@
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
   "editor.detectIndentation": true,
-  "editor.fontFamily": "IBM Plex Mono, Fira Code Retina, Meslo",
+  "editor.fontFamily": "IBM Plex Mono, Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 17,
   "editor.formatOnSave": true,
@@ -120,5 +120,11 @@
   "window.zoomLevel": 2,
   "workbench.colorTheme": "One Dark Pro Mix",
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "[dynamic csv]": {
+    "editor.inlayHints.maximumLength": 0
+  },
+  "[csv]": {
+    "editor.inlayHints.maximumLength": 0
+  }
 }
