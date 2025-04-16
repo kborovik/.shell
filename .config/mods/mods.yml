@@ -64,6 +64,6 @@ apis:
     api-key:
     api-key-env: OPENAI_API_KEY
     models:
-      chatgpt-4o-latest:
+      gpt-4.1:
         aliases: ["openai"]
-        max-input-chars: 392000
+        max-input-chars: 4194304
