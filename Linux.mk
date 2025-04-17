@@ -338,35 +338,6 @@ docker: $(docker_bin)
 	sudo usermod -aG docker $(USER)
 
 ###############################################################################
-# NVIDIA Container Toolkit
-###############################################################################
-
-nvidia_gpg := /etc/apt/trusted.gpg.d/nvidia-container-toolkit.gpg
-nvidia_apt := /etc/apt/sources.list.d/nvidia-container-toolkit.list
-nvidia_hook := /usr/bin/nvidia-container-runtime-hook
-
-$(nvidia_gpg):
-	$(call header,NVIDIA - GPG Public Key)
-	curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o $(@)
-
-$(nvidia_apt):
-	$(call header,NVIDIA - APT repository)
-	echo "deb [signed-by=$(nvidia_gpg)] https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH) /" | sudo tee $(@)
-
-$(nvidia_hook): $(nvidia_gpg) $(nvidia_apt)
-	$(call header,NVIDIA - Install)
-	sudo apt-get --yes install nvidia-container-toolkit
-	sudo touch $(@)
-
-nvidia-config: $(docker)
-	if ! jq -e '.runtimes.nvidia.path' /etc/docker/daemon.json > /dev/null 2>&1; then
-		sudo nvidia-ctk runtime configure --runtime=docker
-		sudo systemctl restart docker
-	fi
-
-nvidia: $(nvidia_hook) nvidia-config
-
-###############################################################################
 # github: GitHub CLI
 ###############################################################################
 
@@ -390,19 +361,6 @@ $(pipx_bin):
 	sudo apt-get --yes install pipx && sudo touch $(@)
 
 pipx: $(pipx_bin)
-
-###############################################################################
-# Python tools: uv - Python Virtual Environment
-###############################################################################
-
-uv_bin := $(HOME)/.cargo/bin/uv
-
-$(uv_bin):
-	$(call header,uv - Install)
-	mkdir -p $(@D)
-	curl -LsSf https://astral.sh/uv/install.sh | sh
-
-uv: $(uv_bin)
 
 ###############################################################################
 # Ansible: Automation for everyone

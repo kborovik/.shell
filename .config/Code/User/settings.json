@@ -48,7 +48,7 @@
     "varchar"
   ],
   "chat.commandCenter.enabled": false,
-  "chat.editor.fontFamily": "IBM Plex Mono, Fira Code",
+  "chat.editor.fontFamily": "BlexMono Nerd Font Mono, IBM Plex Mono, Fira Code",
   "chat.editor.fontSize": 17,
   "cody.autocomplete.formatOnAccept": true,
   "cody.suggestions.mode": "autocomplete",
@@ -58,7 +58,7 @@
   "editor.colorDecorators": false,
   "editor.defaultFormatter": null,
   "editor.detectIndentation": true,
-  "editor.fontFamily": "IBM Plex Mono, Fira Code",
+  "editor.fontFamily": "BlexMono Nerd Font Mono, IBM Plex Mono, Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 17,
   "editor.formatOnSave": true,
