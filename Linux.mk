@@ -465,7 +465,7 @@ $(code_apt):
 	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee $(@)
 	sudo apt update
 
-$(code_bin): $(code_gpg) $(code_apt)
+$(code_bin): $(code_dir) $(code_gpg) $(code_apt)
 	$(call header,Code - Install)
 	sudo apt-get --yes install code && sudo touch $(@)
 

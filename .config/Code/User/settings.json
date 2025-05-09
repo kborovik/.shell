@@ -51,7 +51,6 @@
   "chat.editor.fontFamily": "BlexMono Nerd Font Mono, IBM Plex Mono, Fira Code",
   "chat.editor.fontSize": 17,
   "cody.autocomplete.formatOnAccept": true,
-  "cody.suggestions.mode": "autocomplete",
   "debugpy.debugJustMyCode": false,
   "diffEditor.codeLens": true,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -83,7 +82,7 @@
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.confirmSync": false,
   "git.mergeEditor": true,
-  "git.openRepositoryInParentFolders": "prompt",
+  "git.openRepositoryInParentFolders": "always",
   "html.format.extraLiners": "head, body, footer, /html",
   "html.format.maxPreserveNewLines": 1,
   "redhat.telemetry.enabled": false,
@@ -118,7 +117,7 @@
   },
   "window.newWindowProfile": "Default",
   "window.zoomLevel": 2,
-  "workbench.colorTheme": "One Dark Pro Mix",
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
   "[dynamic csv]": {
@@ -126,5 +125,10 @@
   },
   "[csv]": {
     "editor.inlayHints.maximumLength": 0
-  }
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "terraform.languageServer.enable": true,
+  "extensions.ignoreRecommendations": true,
+  "cody.autocomplete.triggerDelay": 5,
+  "cody.chat.defaultLocation": "editor"
 }

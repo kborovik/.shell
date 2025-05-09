@@ -121,6 +121,7 @@ alias gst='git status'
 alias la='ls -ha'
 alias ll='ls -hlF'
 alias ls='ls --color=auto'
+alias tree='tree -C'
 
 [[ -f ~/.shell/bash-functions.sh ]] && source ~/.shell/bash-functions.sh
 
