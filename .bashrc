@@ -127,17 +127,16 @@ alias tree='tree -C'
 
 [[ "$(command -v nodenv)" ]] && eval "$(nodenv init - bash)"
 
-[[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
+# [[ "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init bash --config ~/.shell/onehalf.minimal.omp.json)"
 
 [[ -f ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh && source ~/.nvm/bash_completion
 
-if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
-  if [[ "$(uname)" == "Linux" ]]; then
-    atuin_dir="${HOME}/.local/share/atuin"
-    [[ ! -d ${atuin_dir} ]] && mkdir -p ${atuin_dir}
-    [[ ! $(findmnt -n ${atuin_dir}) ]] && mount ${atuin_dir}
-  fi
-  source ~/.bash-preexec.sh
-  eval "$(atuin init --disable-up-arrow bash)"
-fi
-
+# if [[ -f ~/.bash-preexec.sh && "$(command -v atuin)" ]]; then
+#   if [[ "$(uname)" == "Linux" ]]; then
+#     atuin_dir="${HOME}/.local/share/atuin"
+#     [[ ! -d ${atuin_dir} ]] && mkdir -p ${atuin_dir}
+#     [[ ! $(findmnt -n ${atuin_dir}) ]] && mount ${atuin_dir}
+#   fi
+#   source ~/.bash-preexec.sh
+#   eval "$(atuin init --disable-up-arrow bash)"
+# fi

@@ -21,7 +21,7 @@ autocmd BufRead ~/.kube/config set syntax=yaml
 set termguicolors
 set background=dark
 syntax on
-colorscheme onehalfdark
+colorscheme catppuccin_macchiato
 if &diff
   syntax off
 endif
@@ -79,4 +79,3 @@ set backspace=indent,eol,start
 
 " Disable netrwhist
 let g:netrw_dirhistmax = 0
-
