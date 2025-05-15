@@ -8,27 +8,25 @@ PATH := /opt/homebrew/bin:$(PATH)
 # Default target
 ###############################################################################
 
-core-tools: tools posh git gpg git vim bash 
+core-tools: tools fish git gpg git vim bash
 
 ###############################################################################
-# Bash: The GNU Bourne Again SHell
+# Fish: The Friendly Interactive SHell
 ###############################################################################
 
-bash_bin := /opt/homebrew/bin/bash
-bash_config := .bashrc .bash_logout .profile .digrc
-bash_completion := .local/share/bash-completion
+fish_bin := /opt/homebrew/bin/fish
+fish_dir := .config/fish/
 
-$(bash_completion):
-	$(call header,Bash - Create directories)
-	mkdir -p $(@)
+$(fish_bin):
+	$(call header,Fish - Install)
+	brew install fish
 
-$(bash-bin):
-	$(call header,Bash - Install)
-	brew install bash bash-completion@2
+$(fish_bin):
+	mkdir -p $(fish_dir)
 
-bash: $(bash_bin)
-	$(foreach file,$(bash_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
-	/bin/ln -fs $(PWD)/$(bash_completion)/completions $(HOME)/$(bash_completion)
+fish: $(fish_bin)
+	$(call header,Fish - Configure)
+	/bin/ln -fs $(PWD)/$(fish_dir) $(HOME)/$(fish_dir)
 
 ###############################################################################
 # Linux tools
@@ -79,18 +77,6 @@ $(git_bin):
 
 git: $(git_bin)
 	/bin/ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
-
-###############################################################################
-# Oh-My-Posh: A prompt theme engine for any shell
-###############################################################################
-
-posh_bin := /opt/homebrew/bin/oh-my-posh
-
-$(posh_bin):
-	$(call header,POSH - Install)
-	brew install oh-my-posh
-
-posh: $(posh_bin)
 
 ###############################################################################
 # vim: Vi IMproved
@@ -150,46 +136,6 @@ k9s: $(k9s_bin)
 	/bin/ln -fs $(PWD)/.config/k9s/$(k9s_skin) $(k9s_dir)/$(k9s_skin)
 
 ###############################################################################
-# Windsurf: An AI Drivent Code Editor by https://codeium.com
-###############################################################################
-
-windsurf_bin := /opt/homebrew/bin/windsurf
-windsurf_config := '$(HOME)/Library/Application Support/Windsurf/User/settings.json'
-
-$(windsurf_bin):
-	$(call header,Windsurf - Install)
-	brew install windsurf
-
-windsurf: $(windsurf_bin)
-	/bin/ln -fs $(PWD)/Darwin/windsurf.json $(windsurf_config)
-
-###############################################################################
-# Code: Visual Studio Code
-###############################################################################
-
-code_bin := /opt/homebrew/bin/code
-
-$(code_bin):
-	$(call header,Code - Install)
-	brew install --cask visual-studio-code
-
-code: $(code_bin)
-
-###############################################################################
-# atuin: A command-line tool for managing your dotfiles
-###############################################################################
-
-atuin_bin := /opt/homebrew/bin/atuin
-atuin_config := .config/atuin/config.toml
-
-$(atuin_bin):
-	$(call header,Atuin - Install)
-	curl -sSf https://setup.atuin.sh | bash
-
-atuin: $(atuin_bin)
-	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
-
-###############################################################################
 # yq: A portable command-line YAML processor
 ###############################################################################
 
@@ -215,10 +161,10 @@ $(mods_dir):
 	mkdir -p $(@)
 
 $(mods_bin):
-	$(call header,Mods - Install) 
+	$(call header,Mods - Install)
 	brew install charmbracelet/tap/mods
 
-mods: $(yq_bin) $(mods_dir) $(mods_bin) 
+mods: $(yq_bin) $(mods_dir) $(mods_bin)
 	$(call header,Mods - Configure)
 	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
 	$(eval GEMINI_API_KEY := $(shell pass google/GEMINI_API_KEY))

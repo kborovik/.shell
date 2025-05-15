@@ -19,7 +19,7 @@ endif
 # Default target
 ###############################################################################
 
-core-tools: apt-update tools posh bash git gpg vim
+core-tools: apt-update tools fish git gpg vim
 
 ###############################################################################
 # General functions
@@ -32,22 +32,6 @@ $(local_bin):
 apt-update:
 	$(call header,APT - Update)
 	sudo apt update
-
-###############################################################################
-# Bash: The GNU Bourne Again SHell
-###############################################################################
-
-bash_config := .bashrc .bash_logout .profile .digrc
-bash_completion := .local/share/bash-completion
-bash_dir := $(HOME)/$(bash_completion)
-
-$(bash_dir):
-	$(call header,Bash - Create directories)
-	mkdir -p $(@)
-
-bash: $(bash_dir)
-	$(foreach file,$(bash_config),ln -rfs $(file) $(HOME)/$(file);)
-	ln -rfs $(bash_completion)/completions $(HOME)/$(bash_completion)
 
 ###############################################################################
 # Linux tools
@@ -82,6 +66,24 @@ $(jq_bin):
 tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin) $(jq_bin)
 
 ###############################################################################
+# Fish: The Friendly Interactive SHell
+###############################################################################
+
+fish_bin := /usr/bin/fish
+fish_dir := .config/fish
+
+$(fish_bin):
+	$(call header,Fish - Install)
+	sudo apt install fish
+
+$(fish_dir):
+	$(call header,Fish - Create directories)
+	mkdir -p $(@)
+
+fish: $(fish_bin) $(fish_dir)
+	ln -rfs $(PWD)/$(fish_dir) $(HOME)/.config/fish
+
+###############################################################################
 # Git: Distributed version control system
 ###############################################################################
 
@@ -93,24 +95,6 @@ $(git_bin):
 
 git: $(git_bin)
 	ln -rfs .gitconfig $(HOME)/.gitconfig
-
-###############################################################################
-# Oh-My-Posh: A prompt theme engine for any shell
-###############################################################################
-
-posh_bin := $(HOME)/.local/bin/oh-my-posh
-
-$(posh_bin): $(unzip_bin)
-	$(call header,POSH - Install)
-	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
-
-posh: $(local_bin) $(posh_bin)
-
-posh-upgrade:
-	$(call header,POSH - Upgrade)
-	oh-my-posh version
-	curl -s https://ohmyposh.dev/install.sh | bash -s -- -d $(local_bin)
-	oh-my-posh version
 
 ###############################################################################
 # vim: Vi IMproved
@@ -133,7 +117,7 @@ vim: $(vim_bin)
 scdaemon_bin := /usr/lib/gnupg/scdaemon
 gpg_bin := /usr/bin/gpg
 gpg_dir := $(HOME)/.gnupg
-gpg_config := .gnupg/gpg.conf .gnupg/scdaemon.conf .gnupg/gpg-agent.conf
+gpg_config := .gnupg/gpg.conf
 
 $(scdaemon_bin):
 	$(call header,GPG - Install scdaemon)
@@ -149,7 +133,7 @@ $(gpg_bin):
 	sudo apt-get --yes install gnupg && sudo touch $(@)
 
 gpg: $(gpg_bin) $(scdaemon_bin) $(gpg_dir)
-	$(foreach file,$(gpg_config),ln -rfs $(file) $(HOME)/$(file);)
+	ln -rfs $(PWD)/$(gpg_config) $(HOME)/$(gpg_config)
 
 ###############################################################################
 # Ubuntu Desktop GNOME Terminal
@@ -246,20 +230,6 @@ $(yq_bin):
 	chmod +x $(@)
 
 yq: $(yq_bin)
-
-###############################################################################
-# Atlas: database schema as code
-# https://github.com/ariga/atlas
-###############################################################################
-
-atlas_bin := $(HOME)/.local/bin/atlas
-atlas_url := https://release.ariga.io/atlas/atlas-community-linux-amd64-latest
-
-$(atlas_bin):
-	$(header, Atlas - Install)
-	curl -sSL $(atlas_url) -o $(@) && chmod +x $(@)
-
-atlas: $(atlas_bin)
 
 ###############################################################################
 # Brave Browser: Chromium-based browser focused on privacy
@@ -416,83 +386,6 @@ $(k9s_bin):
 k9s: $(k9s_bin) $(k9s_dir) $(k9s_config)
 
 ###############################################################################
-# Windsurf: An AI driven Code editor
-###############################################################################
-windsurf_bin := /usr/bin/windsurf
-windsurf_dir := $(HOME)/.config/Windsurf/User
-windsurf_gpg := /etc/apt/trusted.gpg.d/windsurf.gpg
-windsurf_apt := /etc/apt/sources.list.d/windsurf.list
-
-$(windsurf_dir):
-	$(call header,Windsurf - Directories)
-	mkdir -p $(@)
-
-$(windsurf_gpg):
-	$(call header,Windsurf - Codeium GPG Public Key)
-	curl -fsSL "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/windsurf.gpg" | sudo gpg --dearmor -o $(@)
-
-$(windsurf_apt):
-	$(call header,Windsurf - APT Repository)
-	echo "deb [signed-by=/usr/share/keyrings/windsurf-stable-archive-keyring.gpg arch=amd64] https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt stable main" | sudo tee $(@)
-	sudo apt update
-
-$(windsurf_bin): $(windsurf_gpg) $(windsurf_apt)
-	$(call header,Windsurf - Install)
-	sudo apt-get --yes install windsurf && sudo touch $(@)
-
-windsurf: $(windsurf_bin)
-	ln -rfs .config/Windsurf/settings.json $(windsurf_dir)/settings.json
-	ln -rfs .config/Windsurf/keybindings.json $(windsurf_dir)/keybindings.json
-
-###############################################################################
-# Code: Visual Studio Code
-###############################################################################
-code_bin := /usr/bin/code
-code_dir := .config/Code/User
-code_gpg := /etc/apt/trusted.gpg.d/microsoft.gpg
-code_apt := /etc/apt/sources.list.d/vscode.list
-
-$(code_dir):
-	$(call header,Code - Directories)
-	mkdir -p $(@)
-
-$(code_gpg):
-	$(call header,Code - Microsoft GPG Public Key)
-	curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o $(@)
-
-$(code_apt):
-	$(call header,Code - APT Repository)
-	echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" | sudo tee $(@)
-	sudo apt update
-
-$(code_bin): $(code_dir) $(code_gpg) $(code_apt)
-	$(call header,Code - Install)
-	sudo apt-get --yes install code && sudo touch $(@)
-
-code: $(code_bin)
-	ln -rfs $(code_dir)/settings.json $(HOME)/$(code_dir)/settings.json
-	ln -rfs $(code_dir)/keybindings.json $(HOME)/$(code_dir)/keybindings.json
-	ln -rfs $(code_dir)/cody.json $(HOME)/.vscode/cody.json
-
-###############################################################################
-# atuin: A command-line tool for managing your dotfiles
-# /etc/fstab:
-# /dev/zd0 /home/kb/.local/share/atuin ext4 defaults,noauto,user 0 0
-###############################################################################
-
-atuin_bin := $(HOME)/.atuin/bin/atuin
-atuin_config := .config/atuin/config.toml
-atuin_data := .local/share/atuin
-
-$(atuin_bin):
-	$(call header,Atuin - Install)
-	curl -sSf https://setup.atuin.sh | bash
-
-atuin: $(atuin_dir) $(atuin_bin)
-	$(call header,Atuin - Config)
-	ln -fs $(PWD)/$(atuin_config) $(HOME)/$(atuin_config)
-
-###############################################################################
 # TUI Library and Apps
 # https://github.com/charmbracelet
 ###############################################################################
@@ -553,7 +446,7 @@ $(ttyd_bin):
 	set -e
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64 -o ttyd.x86_64
 	curl -sSL https://github.com/tsl0922/ttyd/releases/latest/download/SHA256SUMS -o SHA256SUM
-	sha256sum --check --status --ignore-missing SHA256SUM 
+	sha256sum --check --status --ignore-missing SHA256SUM
 	rm SHA256SUM
 	mv ttyd.x86_64 $(@) && chmod +x $(@)
 
@@ -573,38 +466,3 @@ vhs-version:
 	$(call header,VHS - Version)
 	vhs --version
 	ttyd --version
-
-###############################################################################
-# Glow: Render markdown on the CLI
-# https://github.com/charmbracelet/glow
-###############################################################################
-
-glow_bin := /usr/bin/glow
-
-$(glow_bin): $(charm_gpg_key) $(charm_apt_repo)
-	$(call header,Glow - Install)
-	sudo apt-get --yes install glow && sudo touch $(@)
-
-glow: $(glow_bin)
-
-###############################################################################
-# Ollama: A CLI for the Ollama API
-# https://ollama.com/download/linux
-###############################################################################
-
-ollama_bin := /usr/local/bin/ollama
-
-$(ollama_bin):
-	$(call header,Ollama - Install)
-	curl -fsSL https://ollama.com/install.sh | sh
-
-ollama: $(ollama_bin)
-
-ollama-uninstall:
-	$(call header,Ollama - Uninstall)
-	sudo systemctl stop ollama
-	sudo systemctl disable ollama
-	sudo rm /etc/systemd/system/ollama.service
-	sudo rm $$(which ollama)
-	sudo userdel ollama
-	sudo groupdel ollama
