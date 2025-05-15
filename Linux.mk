@@ -77,7 +77,7 @@ $(fish_bin):
 	sudo apt install fish
 
 fish: $(fish_bin)
-	ln -rfs $(fish_dir) $(HOME)/.config/fish
+	ln -rfs $(fish_dir) $(HOME)/.config/
 
 ###############################################################################
 # Git: Distributed version control system
