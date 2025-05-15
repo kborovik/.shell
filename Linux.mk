@@ -76,12 +76,8 @@ $(fish_bin):
 	$(call header,Fish - Install)
 	sudo apt install fish
 
-$(fish_dir):
-	$(call header,Fish - Create directories)
-	mkdir -p $(@)
-
-fish: $(fish_bin) $(fish_dir)
-	ln -rfs $(PWD)/$(fish_dir) $(HOME)/.config/fish
+fish: $(fish_bin)
+	ln -rfs $(fish_dir) $(HOME)/.config/fish
 
 ###############################################################################
 # Git: Distributed version control system
@@ -97,6 +93,24 @@ git: $(git_bin)
 	ln -rfs .gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
+# Zed Editor
+###############################################################################
+
+zed_bin := $(HOME)/.local/zed.app/bin/zed
+zed_dir := .config/zed
+
+$(zed_bin):
+	$(call header,Zed - Install)
+	curl -f https://zed.dev/install.sh | sh
+
+$(zed_dir):
+	mkdir -p $(@)
+
+zed: $(zed_dir) $(zed_bin)
+	ln -rfs $(zed_dir)/keymap.json $(HOME)/$(zed_dir)/keymap.json
+	ln -rfs $(zed_dir)/settings.json $(HOME)/$(zed_dir)/settings.json
+
+###############################################################################
 # vim: Vi IMproved
 ###############################################################################
 
@@ -109,6 +123,27 @@ $(vim_bin):
 vim: $(vim_bin)
 	ln -rfs .vimrc $(HOME)/.vimrc
 	ln -rfs .vim $(HOME)
+
+###############################################################################
+# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
+###############################################################################
+
+bat_bin := /usr/bin/batcat
+bat_link := /usr/bin/bat
+bat_dir := .config/bat
+
+$(bat_bin):
+	$(call header,bat - Install)
+	sudo apt install bat
+
+$(bat_link):
+	$(call header,bat - Link)
+	sudo update-alternatives --install $(bat_link) bat $(bat_bin) 0
+
+bat: $(bat_bin) $(bat_link)
+	$(call header,bat - Config)
+	ln -rfs .config/bat $(HOME)/.config/bat
+
 
 ###############################################################################
 # GPG: GNU Privacy Guard
@@ -134,6 +169,24 @@ $(gpg_bin):
 
 gpg: $(gpg_bin) $(scdaemon_bin) $(gpg_dir)
 	ln -rfs $(PWD)/$(gpg_config) $(HOME)/$(gpg_config)
+
+###############################################################################
+# yq: YAML processor
+###############################################################################
+
+yq_bin := $(HOME)/.local/bin/yq
+
+$(yq_bin):
+	$(call header,yq - Install)
+	set -e
+	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq_linux_amd64
+	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/checksums-bsd -o checksums-bsd
+	sha256sum --check --status --ignore-missing checksums-bsd
+	rm checksums-bsd
+	mv yq_linux_amd64 $(@)
+	chmod +x $(@)
+
+yq: $(yq_bin)
 
 ###############################################################################
 # Ubuntu Desktop GNOME Terminal
@@ -186,22 +239,6 @@ $(kubectl_bin): $(gcloud_gpg_key) $(gcloud_apt_repo)
 kubectl: $(kubectl_bin)
 
 ###############################################################################
-# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
-###############################################################################
-
-bat_bin := /usr/bin/bat
-
-$(bat_bin):
-	$(call header,bat - Install)
-	sudo apt install bat
-
-bat: $(bat_bin)
-	$(call header,bat - Config)
-	sudo ln -s /usr/bin/batcat /usr/local/bin/bat
-	mkdir -p $(HOME)/.config/bat
-	ln -rfs .config/bat/config $(HOME)/.config/bat/config
-
-###############################################################################
 # HELM: The package manager for Kubernetes
 ###############################################################################
 
@@ -212,24 +249,6 @@ $(helm_bin):
 	curl -sSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 helm: $(helm_bin)
-
-###############################################################################
-# yq: YAML processor
-###############################################################################
-
-yq_bin := $(HOME)/.local/bin/yq
-
-$(yq_bin):
-	$(call header,yq - Install)
-	set -e
-	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq_linux_amd64
-	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/checksums-bsd -o checksums-bsd
-	sha256sum --check --status --ignore-missing checksums-bsd
-	rm checksums-bsd
-	mv yq_linux_amd64 $(@)
-	chmod +x $(@)
-
-yq: $(yq_bin)
 
 ###############################################################################
 # Brave Browser: Chromium-based browser focused on privacy
