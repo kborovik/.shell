@@ -1,20 +1,11 @@
-#!/usr/bin/env bash
-
-gen-pass() {
-  gpg --gen-random --armor 1 32 | tr -d '/=+' | cut -c -16 | awk '{gsub(/(.{4})/, "&-"); sub(/-$/, ""); print}'
-}
-
-# Get GCP Project ID
 gcp-project-id() {
   gcloud config list --format='value(core.project)'
 }
 
-# Get GCP Org ID
 gcp-org-id() {
   gcloud organizations list --format='value(name)'
 }
 
-# List GCP project members and filter out GCP service_accounts
 gcp-list-project-members() {
   local google_project="$1"
 
@@ -32,7 +23,6 @@ gcp-list-project-members() {
   fi
 }
 
-# List ServeAccount, Users, Groups for GCP project
 gcp-list-project-member-roles() {
   local google_member="$1"
   local google_project="$2"
@@ -58,7 +48,6 @@ gcp-list-project-member-roles() {
   fi
 }
 
-# List GCP Organization members and filter out GCP service_accounts
 gcp-list-org-members() {
   local google_org="$1"
 
@@ -76,7 +65,6 @@ gcp-list-org-members() {
   fi
 }
 
-# List Organization ServeAccount, Users, Groups roles
 gcp-list-org-member-roles() {
   local google_member="${1}"
   local google_org="${2}"
@@ -99,21 +87,5 @@ gcp-list-org-member-roles() {
       --filter="bindings.members:$google_member"
   else
     echo "Usage: ${FUNCNAME[0]} <user|group|service_account> <organization_id>"
-  fi
-}
-
-ssl-show-server-crt() {
-  if [[ -z "$1" ]]; then
-    echo -e "Usage: ${FUNCNAME[0]} <server_name:server_port>"
-    return 1
-  fi
-  openssl s_client -connect "$1" | openssl x509 -noout -text
-}
-
-atuin-clear-failed() {
-  if [[ "$(command -v atuin)" ]]; then
-    atuin search --exclude-exit 0 --delete-it-all
-  else
-    echo "'atuin' binary is not installed"
   fi
 }
