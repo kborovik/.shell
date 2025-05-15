@@ -1,4 +1,4 @@
-default-model: g
+default-model: default
 # System role to use.
 role: "default"
 # List of predefined system messages that can be used as roles.

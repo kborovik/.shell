@@ -3,7 +3,7 @@
     "always_allow_tool_actions": true,
     "version": "2",
     "default_profile": "ask",
-    "default_width": 990,
+    "default_width": 900,
     "default_height": 400,
     "default_model": {
       "provider": "anthropic",
@@ -35,6 +35,8 @@
     "light": "Catppuccin Macchiato - No Italics",
     "dark": "Catppuccin Macchiato - No Italics"
   },
+
+  "cursor_blink": false,
 
   "drop_target_size": 1.0,
   "show_whitespaces": "selection",
@@ -105,21 +107,29 @@
       "format_on_save": "on",
       "formatter": [
         {
-          "code_actions": {
-            "source.fixAll.ruff": true,
-            "source.organizeImports.ruff": true
+          "language_server": {
+            "name": "ruff"
           }
         },
         {
-          "language_server": {
-            "name": "ruff"
+          "code_actions": {
+            "source.fixAll.ruff": true,
+            "source.organizeImports.ruff": true
           }
         }
       ]
     },
     "Markdown": {
-      "language_servers": ["..."],
       "format_on_save": "on"
+    },
+    "Fish": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "/usr/bin/fish",
+          "arguments": ["-c", "fish_indent", "{buffer_path}"]
+        }
+      }
     }
   }
 }
