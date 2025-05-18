@@ -2,11 +2,11 @@
   "agent": {
     "always_allow_tool_actions": true,
     "version": "2",
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_width": 900,
     "default_height": 400,
     "default_model": {
-      "provider": "anthropic",
+      "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
     },
     "editor_model": {
@@ -103,7 +103,7 @@
 
   "languages": {
     "Python": {
-      "language_servers": ["pyright", "ruff", "..."],
+      "language_servers": ["ruff", "pyright", "..."],
       "format_on_save": "on",
       "formatter": [
         {
@@ -113,7 +113,7 @@
         },
         {
           "code_actions": {
-            "source.fixAll.ruff": true,
+            "source.fixAll.ruff": false,
             "source.organizeImports.ruff": true
           }
         }
