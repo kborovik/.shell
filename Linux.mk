@@ -38,7 +38,6 @@ apt-update:
 ###############################################################################
 
 curl_bin := /usr/bin/curl
-pass_bin := /usr/bin/pass
 tree_bin := /usr/bin/tree
 unzip_bin := /usr/bin/unzip
 jq_bin := /usr/bin/jq
@@ -46,10 +45,6 @@ jq_bin := /usr/bin/jq
 $(curl_bin):
 	$(call header,curl - Install)
 	sudo apt-get --yes install curl && sudo touch $(@)
-
-$(pass_bin):
-	$(call header,pass - Install)
-	sudo apt-get --yes install pass && sudo touch $(@)
 
 $(tree_bin):
 	$(call header,tree - Install)
@@ -63,7 +58,7 @@ $(jq_bin):
 	$(call header,jq - Install)
 	sudo apt-get --yes install jq && sudo touch $(@)
 
-tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin) $(jq_bin)
+tools: $(tree_bin) $(unzip_bin) $(curl_bin) $(jq_bin)
 
 ###############################################################################
 # Fish: The Friendly Interactive SHell
@@ -91,6 +86,18 @@ $(git_bin):
 
 git: $(git_bin)
 	ln -rfs .gitconfig $(HOME)/.gitconfig
+
+###############################################################################
+# Pass: Password manager
+###############################################################################
+
+pass_bin := /usr/bin/pass
+
+$(pass_bin):
+	$(call header,Pass - Install)
+	sudo apt-get --yes install pass && sudo touch $(@)
+
+pass: $(pass_bin)
 
 ###############################################################################
 # Zed Editor

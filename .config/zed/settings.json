@@ -2,7 +2,7 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking-latest"
+      "model": "claude-sonnet-4-latest"
     },
     "always_allow_tool_actions": true,
     "version": "2",
