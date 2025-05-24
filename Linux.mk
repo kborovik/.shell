@@ -228,6 +228,31 @@ gnome-terminal:
 	dconf load '/org/gnome/terminal/legacy/' < Linux/gnome.dconf
 
 ###############################################################################
+# Tailscale:
+###############################################################################
+
+tailscale_bin := /usr/bin/tailscale
+tailscale_gpg_key := /etc/apt/trusted.gpg.d/tailscale.gpg
+tailscale_apt_repo := /etc/apt/sources.list.d/tailscale.list
+
+$(tailscale_gpg_key):
+	$(call header,Tailscale - GPG Public Key)
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo gpg --dearmor -o $(@)
+
+$(tailscale_apt_repo):
+	$(call header,Tailscale - APT repository)
+	echo "deb [arch=amd64, signed-by=$(tailscale_gpg_key)] https://pkgs.tailscale.com/stable/ubuntu noble main" | sudo tee $(@)
+	sudo apt update
+
+$(tailscale_bin): $(tailscale_gpg_key) $(tailscale_apt_repo)
+	$(call header,Tailscale - Install)
+	sudo apt-get --yes install tailscale && sudo touch $(@)
+
+tailscale: $(tailscale_bin)
+	$(call header,Tailscale - Start)
+	sudo tailscale up
+
+###############################################################################
 # gcloud: Google Cloud SDK
 ###############################################################################
 
