@@ -12,10 +12,6 @@
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4-latest"
-    },
-    "editor_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
     }
   },
 
@@ -43,7 +39,7 @@
   "cursor_blink": false,
 
   "drop_target_size": 1.0,
-  "show_whitespaces": "selection",
+  "show_whitespaces": "boundary",
   "scroll_beyond_last_line": "off",
 
   "use_smartcase_search": true,
