@@ -8,21 +8,21 @@ PATH := /opt/homebrew/bin:$(PATH)
 # Default target
 ###############################################################################
 
-core-tools: tools fish git gpg git vim bash
+core-tools: tools fish git gpg vim
 
 ###############################################################################
 # Fish: The Friendly Interactive SHell
 ###############################################################################
 
 fish_bin := /opt/homebrew/bin/fish
-fish_dir := .config/fish/
+fish_dir := .config/fish
 
 $(fish_bin):
 	$(call header,Fish - Install)
 	brew install fish
 
-$(fish_bin):
-	mkdir -p $(fish_dir)
+$(fish_dir):
+	mkdir -p $(HOME)/$(fish_dir)
 
 fish: $(fish_bin)
 	$(call header,Fish - Configure)

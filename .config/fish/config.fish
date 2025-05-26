@@ -1,6 +1,6 @@
 if status is-interactive
 
-    fish_add_path --global ~/.local/bin
+    fish_add_path --global ~/.local/bin /opt/homebrew/bin /Applications/Zed.app/Contents/MacOS
 
     set --global --export EDITOR vim
     set --global --export VISUAL vim
