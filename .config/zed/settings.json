@@ -1,13 +1,17 @@
 {
   "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
+    },
     "always_allow_tool_actions": true,
     "version": "2",
     "default_profile": "ask",
     "default_width": 900,
     "default_height": 400,
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
     },
     "editor_model": {
       "provider": "zed.dev",
@@ -103,7 +107,7 @@
 
   "languages": {
     "Python": {
-      "language_servers": ["pyright", "ruff", "..."],
+      "language_servers": ["ruff", "pyright", "..."],
       "format_on_save": "on",
       "formatter": [
         {
@@ -113,7 +117,7 @@
         },
         {
           "code_actions": {
-            "source.fixAll.ruff": true,
+            "source.fixAll.ruff": false,
             "source.organizeImports.ruff": true
           }
         }
@@ -131,5 +135,26 @@
         }
       }
     }
+  },
+
+  "file_types": {
+    "Ansible": [
+      "**.ansible.yml",
+      "**.ansible.yaml",
+      "**/defaults/*.yml",
+      "**/defaults/*.yaml",
+      "**/meta/*.yml",
+      "**/meta/*.yaml",
+      "**/tasks/*.yml",
+      "**/tasks/*.yaml",
+      "**/handlers/*.yml",
+      "**/handlers/*.yaml",
+      "**/group_vars/*.yml",
+      "**/group_vars/*.yaml",
+      "**/playbooks/*.yaml",
+      "**/playbooks/*.yml",
+      "**playbook*.yaml",
+      "**playbook*.yml"
+    ]
   }
 }

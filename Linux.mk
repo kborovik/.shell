@@ -38,7 +38,6 @@ apt-update:
 ###############################################################################
 
 curl_bin := /usr/bin/curl
-pass_bin := /usr/bin/pass
 tree_bin := /usr/bin/tree
 unzip_bin := /usr/bin/unzip
 jq_bin := /usr/bin/jq
@@ -46,10 +45,6 @@ jq_bin := /usr/bin/jq
 $(curl_bin):
 	$(call header,curl - Install)
 	sudo apt-get --yes install curl && sudo touch $(@)
-
-$(pass_bin):
-	$(call header,pass - Install)
-	sudo apt-get --yes install pass && sudo touch $(@)
 
 $(tree_bin):
 	$(call header,tree - Install)
@@ -63,7 +58,7 @@ $(jq_bin):
 	$(call header,jq - Install)
 	sudo apt-get --yes install jq && sudo touch $(@)
 
-tools: $(tree_bin) $(unzip_bin) $(pass_bin) $(curl_bin) $(jq_bin)
+tools: $(tree_bin) $(unzip_bin) $(curl_bin) $(jq_bin)
 
 ###############################################################################
 # Fish: The Friendly Interactive SHell
@@ -91,6 +86,18 @@ $(git_bin):
 
 git: $(git_bin)
 	ln -rfs .gitconfig $(HOME)/.gitconfig
+
+###############################################################################
+# Pass: Password manager
+###############################################################################
+
+pass_bin := /usr/bin/pass
+
+$(pass_bin):
+	$(call header,Pass - Install)
+	sudo apt-get --yes install pass && sudo touch $(@)
+
+pass: $(pass_bin)
 
 ###############################################################################
 # Zed Editor
@@ -123,6 +130,28 @@ $(vim_bin):
 vim: $(vim_bin)
 	ln -rfs .vimrc $(HOME)/.vimrc
 	ln -rfs .vim $(HOME)
+
+###############################################################################
+# uv: Python Virtual Environment Manager
+###############################################################################
+
+uv_bin := $(HOME)/.local/bin/uv
+
+$(uv_bin):
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv: $(uv_bin)
+
+###############################################################################
+# ruff: Python linter
+###############################################################################
+
+ruff_bin := $(HOME)/.local/bin/ruff
+
+$(ruff_bin):
+	curl -LsSf https://astral.sh/ruff/install.sh | sh
+
+ruff: $(ruff_bin)
 
 ###############################################################################
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
@@ -197,6 +226,31 @@ gnome-terminal:
 	sudo apt install fonts-ibm-plex
 	gsettings set org.gnome.desktop.interface text-scaling-factor '1.5'
 	dconf load '/org/gnome/terminal/legacy/' < Linux/gnome.dconf
+
+###############################################################################
+# Tailscale:
+###############################################################################
+
+tailscale_bin := /usr/bin/tailscale
+tailscale_gpg_key := /etc/apt/trusted.gpg.d/tailscale.gpg
+tailscale_apt_repo := /etc/apt/sources.list.d/tailscale.list
+
+$(tailscale_gpg_key):
+	$(call header,Tailscale - GPG Public Key)
+	curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo gpg --dearmor -o $(@)
+
+$(tailscale_apt_repo):
+	$(call header,Tailscale - APT repository)
+	echo "deb [arch=amd64, signed-by=$(tailscale_gpg_key)] https://pkgs.tailscale.com/stable/ubuntu noble main" | sudo tee $(@)
+	sudo apt update
+
+$(tailscale_bin): $(tailscale_gpg_key) $(tailscale_apt_repo)
+	$(call header,Tailscale - Install)
+	sudo apt-get --yes install tailscale && sudo touch $(@)
+
+tailscale: $(tailscale_bin)
+	$(call header,Tailscale - Start)
+	sudo tailscale up
 
 ###############################################################################
 # gcloud: Google Cloud SDK

@@ -3,7 +3,7 @@
 # ($XDG_CONFIG_HOME is usually set to ~/.config)
 
 # `bat` is `batcat` on Debian and Ubuntu
-set bat batcat
+set bat bat
 
 # Helper functions:
 
@@ -242,4 +242,3 @@ complete -c $bat -s h -d "Print a concise overview of $bat-cache help" -n __bat_
 complete -c $bat -l help -f -d "Print all $bat-cache help" -n __bat_cache_no_excl
 
 # vim:ft=fish
-
