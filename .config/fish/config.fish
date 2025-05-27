@@ -5,7 +5,6 @@ if status is-interactive
     set --global --export EDITOR vim
     set --global --export VISUAL vim
     set --global --export PAGER "less -R -F -i"
-    set --global --export BUN_INSTALL ~/.bun
 
     set --global __fish_git_prompt_show_informative_status true
     set --global __fish_git_prompt_showcolorhints true
