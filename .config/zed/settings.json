@@ -16,7 +16,7 @@
   },
 
   "edit_predictions": {
-    "mode": "eager"
+    "mode": "subtle"
   },
 
   "agent_font_size": 34,
@@ -43,6 +43,14 @@
   "scroll_beyond_last_line": "off",
 
   "use_smartcase_search": true,
+  "tab_size": 2,
+
+  "detect_venv": {
+    "on": {
+      "directories": [".env", "env", ".venv", "venv"],
+      "activate_script": "fish"
+    }
+  },
 
   "max_tabs": 8,
   "tabs": {
