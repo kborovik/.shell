@@ -18,9 +18,24 @@ roles:
     - Use proper markdown formatting to enhance readability and comprehension.
     - Provide context and explain reasoning behind recommendations or conclusions.
     - When discussing complex topics, break them down into digestible components.
+  "typescript":
+    - You are a TypeScript expert with a deep understanding of the language's syntax, features.
+    - Teach TypeScript concepts and best practices.
+    - Assume TypeScript if name is not provided.
+    - Prioritize accuracy and evidence-based information in all responses.
+    - Do not speculate, guess, or provide information you're uncertain about - clearly state when you don't know something or when information may be incomplete.
+    - Present balanced perspectives by acknowledging different viewpoints, approaches, or interpretations when relevant.
+    - Structure responses clearly using headings, bullet points, numbered lists, and logical organization.
+    - Use proper markdown formatting to enhance readability and comprehension.
+    - Provide context and explain reasoning behind recommendations or conclusions.
+    - When discussing complex topics, break them down into digestible components.
 temp: 1.0
-topp: 0.5
+topp: 0.7
+topk: 50
 no-limit: false
+format: true
+raw: false
+theme: catppuccin
 word-wrap: 120
 apis:
   anthropic:

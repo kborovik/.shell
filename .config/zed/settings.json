@@ -36,6 +36,9 @@
   "scroll_beyond_last_line": "off",
   "use_smartcase_search": true,
   "tab_size": 2,
+  "prettier": {
+    "singleQuote": true
+  },
   "detect_venv": {
     "on": {
       "directories": [".env", "env", ".venv", "venv"],
