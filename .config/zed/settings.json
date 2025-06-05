@@ -2,7 +2,7 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4"
     },
     "always_allow_tool_actions": true,
     "version": "2",
@@ -11,7 +11,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4"
     }
   },
   "edit_predictions": {
@@ -20,10 +20,16 @@
   "agent_font_size": 34,
   "buffer_font_size": 34,
   "buffer_font_family": "BlexMono Nerd Font Mono",
-  "buffer_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "IBM Plex Mono",
+    "Zed Plex Mono"
+  ],
   "ui_font_size": 32,
   "ui_font_family": "BlexMono Nerd Font",
-  "ui_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "ui_font_fallbacks": [
+    "IBM Plex Mono",
+    "Zed Plex Mono"
+  ],
   "icon_theme": "Catppuccin Macchiato",
   "theme": {
     "mode": "system",
@@ -41,7 +47,12 @@
   },
   "detect_venv": {
     "on": {
-      "directories": [".env", "env", ".venv", "venv"],
+      "directories": [
+        ".env",
+        "env",
+        ".venv",
+        "venv"
+      ],
       "activate_script": "fish"
     }
   },
@@ -95,7 +106,11 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["ruff", "pyright", "..."],
+      "language_servers": [
+        "ruff",
+        "pyright",
+        "..."
+      ],
       "format_on_save": "on",
       "formatter": [
         {
@@ -112,14 +127,26 @@
       ]
     },
     "Markdown": {
-      "format_on_save": "on"
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": true,
+        "proseWrap": "preserve",
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "singleQuote": true
+      }
     },
     "Fish": {
       "format_on_save": "on",
       "formatter": {
         "external": {
           "command": "/usr/bin/fish",
-          "arguments": ["-c", "fish_indent", "{buffer_path}"]
+          "arguments": [
+            "-c",
+            "fish_indent",
+            "{buffer_path}"
+          ]
         }
       }
     }
