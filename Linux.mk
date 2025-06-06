@@ -106,14 +106,14 @@ pass: $(pass_bin)
 zed_bin := $(HOME)/.local/zed.app/bin/zed
 zed_dir := .config/zed
 
-$(zed_bin):
-	$(call header,Zed - Install)
-	curl -f https://zed.dev/install.sh | sh
-
 $(zed_dir):
 	mkdir -p $(@)
 
-zed: $(zed_dir) $(zed_bin)
+$(zed_bin): $(zed_dir)
+	$(call header,Zed - Install)
+	curl -f https://zed.dev/install.sh | sh
+
+zed: $(zed_bin)
 	ln -rfs $(zed_dir)/keymap.json $(HOME)/$(zed_dir)/keymap.json
 	ln -rfs $(zed_dir)/settings.json $(HOME)/$(zed_dir)/settings.json
 

@@ -1,0 +1,147 @@
+{
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
+    },
+    "always_allow_tool_actions": true,
+    "version": "2",
+    "default_profile": "ask",
+    "default_width": 900,
+    "default_height": 400,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "agent_font_size": 20,
+  "buffer_font_size": 20,
+  "buffer_font_family": "IBM Plex Mono",
+  "buffer_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "ui_font_size": 20,
+  "ui_font_family": "IBM Plex Mono",
+  "ui_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "icon_theme": "Catppuccin Macchiato",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato - No Italics",
+    "dark": "Catppuccin Macchiato - No Italics"
+  },
+  "cursor_blink": false,
+  "drop_target_size": 1.0,
+  "show_whitespaces": "boundary",
+  "scroll_beyond_last_line": "off",
+  "use_smartcase_search": true,
+  "tab_size": 2,
+  "prettier": {
+    "singleQuote": true
+  },
+  "detect_venv": {
+    "on": {
+      "directories": [".env", "env", ".venv", "venv"],
+      "activate_script": "fish"
+    }
+  },
+  "max_tabs": 8,
+  "tabs": {
+    "git_status": true,
+    "file_icons": true
+  },
+  "project_panel": {
+    "default_width": 500,
+    "dock": "right"
+  },
+  "outline_panel": {
+    "default_width": 500,
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "default_width": 500,
+    "dock": "right"
+  },
+  "git_panel": {
+    "default_width": 500,
+    "dock": "right"
+  },
+  "notification_panel": {
+    "default_width": 500,
+    "dock": "right"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "terminal": {
+    "shell": {
+      "program": "/usr/bin/fish"
+    }
+  },
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "off"
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    }
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "pyright", "..."],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        },
+        {
+          "code_actions": {
+            "source.fixAll.ruff": false,
+            "source.organizeImports.ruff": true
+          }
+        }
+      ]
+    },
+    "Markdown": {
+      "format_on_save": "on"
+    },
+    "Fish": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "/opt/homebrew/bin/fish",
+          "arguments": ["-c", "fish_indent", "{buffer_path}"]
+        }
+      }
+    }
+  },
+  "file_types": {
+    "Ansible": [
+      "**.ansible.yml",
+      "**.ansible.yaml",
+      "**/defaults/*.yml",
+      "**/defaults/*.yaml",
+      "**/meta/*.yml",
+      "**/meta/*.yaml",
+      "**/tasks/*.yml",
+      "**/tasks/*.yaml",
+      "**/handlers/*.yml",
+      "**/handlers/*.yaml",
+      "**/group_vars/*.yml",
+      "**/group_vars/*.yaml",
+      "**/playbooks/*.yaml",
+      "**/playbooks/*.yml",
+      "**playbook*.yaml",
+      "**playbook*.yml"
+    ]
+  }
+}

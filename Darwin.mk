@@ -17,12 +17,12 @@ core-tools: tools fish git gpg git vim bash
 fish_bin := /opt/homebrew/bin/fish
 fish_dir := .config/fish/
 
-$(fish_bin):
+$(fish_dir):
+	mkdir -p $(@)
+
+$(fish_bin): $(fish_dir)
 	$(call header,Fish - Install)
 	brew install fish
-
-$(fish_bin):
-	mkdir -p $(fish_dir)
 
 fish: $(fish_bin)
 	$(call header,Fish - Configure)
@@ -91,6 +91,37 @@ $(vim_bin):
 vim: $(vim_bin)
 	/bin/ln -fs $(PWD)/.vimrc $(HOME)/.vimrc
 	/bin/ln -fs $(PWD)/.vim $(HOME)
+
+###############################################################################
+# Zed Editor
+###############################################################################
+
+zed_bin := /opt/homebrew/bin/zed
+zed_dir := $(HOME)/.config/zed
+
+$(zed_dir):
+	mkdir -p $(@)
+
+$(zed_bin): $(zed_dir)
+	$(call header,Zed - Install)
+	brew install --cask zed
+
+zed: $(zed_bin)
+	/bin/ln -fs $(PWD)/Darwin/zed/settings.json $(zed_dir)/settings.json
+
+###############################################################################
+# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
+###############################################################################
+
+bat_bin := /opt/homebrew/bin/bat
+
+$(bat_bin):
+	$(call header,Bat - Install)
+	brew install bat
+
+bat: $(bat_bin)
+	$(bat_bin) cache --build
+	/bin/ln -fs $(PWD)/.config/bat $(HOME)/.config
 
 ###############################################################################
 # GPG: GNU Privacy Guard
@@ -223,18 +254,3 @@ $(terraform_bin):
 	brew install hashicorp/tap/terraform
 
 terraform: $(terraform_bin)
-
-###############################################################################
-# bat: A cat(1) clone with wings https://github.com/sharkdp/bat
-###############################################################################
-
-bat_bin := /opt/homebrew/bin/bat
-
-$(bat_bin):
-	$(call header,bat - Install)
-	brew install bat
-
-bat: $(bat_bin)
-	$(call header,bat - Config)
-	mkdir -p $(HOME)/.config/bat
-	ln -rfs .config/bat/config $(HOME)/.config/bat/config
