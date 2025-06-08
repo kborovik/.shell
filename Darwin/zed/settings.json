@@ -1,8 +1,10 @@
 {
   "agent": {
+    "play_sound_when_agent_done": true,
+    "single_file_review": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4"
     },
     "always_allow_tool_actions": true,
     "version": "2",
@@ -11,7 +13,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4"
     }
   },
   "edit_predictions": {
@@ -20,10 +22,16 @@
   "agent_font_size": 20,
   "buffer_font_size": 20,
   "buffer_font_family": "IBM Plex Mono",
-  "buffer_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "IBM Plex Mono",
+    "Zed Plex Mono"
+  ],
   "ui_font_size": 20,
   "ui_font_family": "IBM Plex Mono",
-  "ui_font_fallbacks": ["IBM Plex Mono", "Zed Plex Mono"],
+  "ui_font_fallbacks": [
+    "IBM Plex Mono",
+    "Zed Plex Mono"
+  ],
   "icon_theme": "Catppuccin Macchiato",
   "theme": {
     "mode": "system",
@@ -41,7 +49,12 @@
   },
   "detect_venv": {
     "on": {
-      "directories": [".env", "env", ".venv", "venv"],
+      "directories": [
+        ".env",
+        "env",
+        ".venv",
+        "venv"
+      ],
       "activate_script": "fish"
     }
   },
@@ -95,7 +108,11 @@
   },
   "languages": {
     "Python": {
-      "language_servers": ["ruff", "pyright", "..."],
+      "language_servers": [
+        "ruff",
+        "pyright",
+        "..."
+      ],
       "format_on_save": "on",
       "formatter": [
         {
@@ -119,7 +136,11 @@
       "formatter": {
         "external": {
           "command": "/opt/homebrew/bin/fish",
-          "arguments": ["-c", "fish_indent", "{buffer_path}"]
+          "arguments": [
+            "-c",
+            "fish_indent",
+            "{buffer_path}"
+          ]
         }
       }
     }
