@@ -1,4 +1,11 @@
 {
+  "context_servers": {
+    "mcp-server-context7": {
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
