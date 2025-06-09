@@ -5,24 +5,24 @@
 complete -c bun -f
 
 # Subcommands
-complete -c bun -n "__fish_use_subcommand" -a "run" -d "Run a script or package.json script"
-complete -c bun -n "__fish_use_subcommand" -a "install" -d "Install dependencies"
-complete -c bun -n "__fish_use_subcommand" -a "add" -d "Add a dependency"
-complete -c bun -n "__fish_use_subcommand" -a "remove" -d "Remove a dependency"
-complete -c bun -n "__fish_use_subcommand" -a "update" -d "Update dependencies"
-complete -c bun -n "__fish_use_subcommand" -a "link" -d "Link a local package"
-complete -c bun -n "__fish_use_subcommand" -a "unlink" -d "Unlink a local package"
-complete -c bun -n "__fish_use_subcommand" -a "pm" -d "Package manager commands"
-complete -c bun -n "__fish_use_subcommand" -a "build" -d "Bundle TypeScript/JavaScript"
-complete -c bun -n "__fish_use_subcommand" -a "test" -d "Run tests"
-complete -c bun -n "__fish_use_subcommand" -a "create" -d "Create a new project from template"
-complete -c bun -n "__fish_use_subcommand" -a "init" -d "Initialize a new project"
-complete -c bun -n "__fish_use_subcommand" -a "dev" -d "Start development server"
-complete -c bun -n "__fish_use_subcommand" -a "start" -d "Start production server"
-complete -c bun -n "__fish_use_subcommand" -a "upgrade" -d "Upgrade bun to latest version"
-complete -c bun -n "__fish_use_subcommand" -a "outdated" -d "Check for outdated dependencies"
-complete -c bun -n "__fish_use_subcommand" -a "publish" -d "Publish package to registry"
-complete -c bun -n "__fish_use_subcommand" -a "x" -d "Execute a package (alias for bunx)"
+complete -c bun -n __fish_use_subcommand -a run -d "Run a script or package.json script"
+complete -c bun -n __fish_use_subcommand -a install -d "Install dependencies"
+complete -c bun -n __fish_use_subcommand -a add -d "Add a dependency"
+complete -c bun -n __fish_use_subcommand -a remove -d "Remove a dependency"
+complete -c bun -n __fish_use_subcommand -a update -d "Update dependencies"
+complete -c bun -n __fish_use_subcommand -a link -d "Link a local package"
+complete -c bun -n __fish_use_subcommand -a unlink -d "Unlink a local package"
+complete -c bun -n __fish_use_subcommand -a pm -d "Package manager commands"
+complete -c bun -n __fish_use_subcommand -a build -d "Bundle TypeScript/JavaScript"
+complete -c bun -n __fish_use_subcommand -a test -d "Run tests"
+complete -c bun -n __fish_use_subcommand -a create -d "Create a new project from template"
+complete -c bun -n __fish_use_subcommand -a init -d "Initialize a new project"
+complete -c bun -n __fish_use_subcommand -a dev -d "Start development server"
+complete -c bun -n __fish_use_subcommand -a start -d "Start production server"
+complete -c bun -n __fish_use_subcommand -a upgrade -d "Upgrade bun to latest version"
+complete -c bun -n __fish_use_subcommand -a outdated -d "Check for outdated dependencies"
+complete -c bun -n __fish_use_subcommand -a publish -d "Publish package to registry"
+complete -c bun -n __fish_use_subcommand -a x -d "Execute a package (alias for bunx)"
 
 # Global flags for bun command
 complete -c bun -l version -d "Show version"
@@ -46,6 +46,7 @@ complete -c bun -n "__fish_seen_subcommand_from run" -l bun -d "Force usage of B
 complete -c bun -n "__fish_seen_subcommand_from run" -l if-present -d "Don't error if script doesn't exist"
 complete -c bun -n "__fish_seen_subcommand_from run" -l watch -d "Restart on file changes"
 complete -c bun -n "__fish_seen_subcommand_from run" -l hot -d "Enable hot reloading"
+complete -c bun -n "__fish_seen_subcommand_from run" -x -a "(__fish_complete_suffix .ts .js .tsx .jsx .mjs .cjs)" -d "TypeScript/JavaScript file"
 
 # bun install completions
 complete -c bun -n "__fish_seen_subcommand_from install" -l help -d "Show help for install command"
@@ -147,31 +148,12 @@ complete -c bun -n "__fish_seen_subcommand_from publish" -l dry-run -d "Don't pu
 complete -c bun -n "__fish_seen_subcommand_from publish" -l auth-type -d "Authentication type for 2FA" -r -a "web legacy"
 
 # bun pm completions
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "cache" -d "Print the path to the cache folder"
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "bin" -d "Print the path to the bin folder"
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "ls" -d "List installed packages"
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "hash" -d "Generate a hash of the lockfile"
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "hash-string" -d "Print the hash stored in bun.lockb"
-complete -c bun -n "__fish_seen_subcommand_from pm" -n "__fish_use_subcommand" -a "hash-print" -d "Print the hash stored in bun.lockb"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a cache -d "Print the path to the cache folder"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a bin -d "Print the path to the bin folder"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a ls -d "List installed packages"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a hash -d "Generate a hash of the lockfile"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a hash-string -d "Print the hash stored in bun.lockb"
+complete -c bun -n "__fish_seen_subcommand_from pm; and not __fish_seen_subcommand_from cache bin ls hash hash-string hash-print" -a hash-print -d "Print the hash stored in bun.lockb"
 
 # bunx command (separate from bun x)
 complete -c bunx -f -a "(__fish_complete_path)"
-
-# File completions for specific contexts
-function __bun_complete_scripts
-    if test -f package.json
-        node -pe "try { Object.keys(JSON.parse(require('fs').readFileSync('package.json')).scripts || {}).join('\n') } catch(e) { '' }" 2>/dev/null
-    end
-end
-
-# Complete package.json scripts for bun run
-complete -c bun -n "__fish_seen_subcommand_from run" -a "(__bun_complete_scripts)" -d "Package.json script"
-
-# Complete TypeScript/JavaScript files for direct execution
-complete -c bun -n "__fish_use_subcommand" -a "(__fish_complete_suffix .ts .js .tsx .jsx .mjs .cjs)" -d "TypeScript/JavaScript file"
-
-# Complete directories for bun build outdir
-complete -c bun -n "__fish_seen_subcommand_from build; and __fish_prev_arg_in -o --outdir" -a "(__fish_complete_directories)" -d "Output directory"
-
-# Complete files for bun build entrypoints
-complete -c bun -n "__fish_seen_subcommand_from build" -a "(__fish_complete_suffix .ts .js .tsx .jsx .mjs .cjs .html)" -d "Entry file"
