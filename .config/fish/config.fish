@@ -82,4 +82,10 @@ if status is-interactive
         command tree -C $argv
     end
 
+    if test (uname) = Darwin; and test -x /opt/homebrew/bin/gln
+        function ln --description 'GNU ln replacement'
+            /opt/homebrew/bin/gln $argv
+        end
+    end
+
 end

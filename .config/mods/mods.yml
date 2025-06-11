@@ -46,11 +46,8 @@ apis:
     api-key:
     api-key-env: GEMINI_API_KEY
     models: # https://ai.google.dev/gemini-api/docs/models/gemini
-      gemini-2.5-flash-preview-04-17:
-        aliases: ["f", "google-flash"]
-        max-input-chars: 4194304
-      gemini-2.5-pro-exp-03-25:
-        aliases: ["g", "google-pro"]
+      gemini-2.5-flash-preview-05-20:
+        aliases: ["g", "google"]
         max-input-chars: 4194304
   openai:
     base-url: https://api.openai.com/v1
@@ -58,5 +55,5 @@ apis:
     api-key-env: OPENAI_API_KEY
     models:
       gpt-4.1:
-        aliases: ["o", "gpt41", gpt-4.1]
+        aliases: ["o", "openai"]
         max-input-chars: 4194304
