@@ -146,12 +146,8 @@ uv: $(uv_bin)
 # ruff: Python linter
 ###############################################################################
 
-ruff_bin := $(HOME)/.local/bin/ruff
-
-$(ruff_bin):
+ruff:
 	curl -LsSf https://astral.sh/ruff/install.sh | sh
-
-ruff: $(ruff_bin)
 
 ###############################################################################
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
