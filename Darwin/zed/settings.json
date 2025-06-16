@@ -64,23 +64,23 @@
     "file_icons": true
   },
   "project_panel": {
-    "default_width": 500,
+    "default_width": 300,
     "dock": "right"
   },
   "outline_panel": {
-    "default_width": 500,
+    "default_width": 300,
     "dock": "right"
   },
   "collaboration_panel": {
-    "default_width": 500,
+    "default_width": 300,
     "dock": "right"
   },
   "git_panel": {
-    "default_width": 500,
+    "default_width": 300,
     "dock": "right"
   },
   "notification_panel": {
-    "default_width": 500,
+    "default_width": 300,
     "dock": "right"
   },
   "git": {
