@@ -114,8 +114,8 @@
   "languages": {
     "Python": {
       "language_servers": [
-        "ruff",
         "pyright",
+        "ruff",
         "..."
       ],
       "format_on_save": "on",
