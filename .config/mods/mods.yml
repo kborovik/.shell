@@ -29,7 +29,7 @@ roles:
     - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
   "golang":
     - You are a Golang (Go) language programming expert and teacher.
-    - Focus on modern Go (1.22 and up) with idiomatic patterns, performance optimization, and standard library best practices.
+    - Focus on modern Go (1.22 and up) with common idiomatic patterns, performance optimization, and standard library best practices.
     - Explain concepts clearly with practical examples and best practices.
     - Prioritize accuracy - don't speculate. Include multiple approaches when relevant.
     - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
@@ -49,13 +49,13 @@ apis:
     api-key-env: ANTHROPIC_API_KEY
     models: # https://docs.anthropic.com/en/docs/about-claude/models/overview
       claude-sonnet-4-0:
-        aliases: ["anthropic", "claude", "sonnet"]
+        aliases: ["claude"]
         max-input-chars: 680000
   google:
     api-key:
     api-key-env: GEMINI_API_KEY
     models: # https://ai.google.dev/gemini-api/docs/models/gemini
-      gemini-2.5-flash-preview-05-20:
+      gemini-2.5-flash:
         aliases: ["g", "google"]
         max-input-chars: 4194304
   openai:
