@@ -11,6 +11,7 @@
 	tool = vimdiff
 [remote "origin"]
 	prune = true
+	tagOpt = --tags
 [credential]
 	helper = store --file ~/.git-credentials
 [submodule]

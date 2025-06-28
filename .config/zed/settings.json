@@ -13,7 +13,7 @@
     },
     "always_allow_tool_actions": true,
     "version": "2",
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_width": 900,
     "default_height": 400,
     "default_model": {
@@ -69,23 +69,23 @@
     "file_icons": true
   },
   "project_panel": {
-    "default_width": 500,
+    "default_width": 700,
     "dock": "right"
   },
   "outline_panel": {
-    "default_width": 500,
+    "default_width": 700,
     "dock": "right"
   },
   "collaboration_panel": {
-    "default_width": 500,
+    "default_width": 700,
     "dock": "right"
   },
   "git_panel": {
-    "default_width": 500,
+    "default_width": 700,
     "dock": "right"
   },
   "notification_panel": {
-    "default_width": 500,
+    "default_width": 700,
     "dock": "right"
   },
   "git": {
