@@ -13,7 +13,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-opus-4-thinking"
     }
   },
   "edit_predictions": {
