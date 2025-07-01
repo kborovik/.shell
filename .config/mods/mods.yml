@@ -1,4 +1,4 @@
-default-model: claude-sonnet-4-0
+default-model: claude
 role: "general"
 roles:
   "general":
@@ -48,7 +48,7 @@ apis:
     api-key:
     api-key-env: ANTHROPIC_API_KEY
     models: # https://docs.anthropic.com/en/docs/about-claude/models/overview
-      claude-sonnet-4-0:
+      claude-sonet-4-0:
         aliases: ["claude"]
         max-input-chars: 680000
   google:

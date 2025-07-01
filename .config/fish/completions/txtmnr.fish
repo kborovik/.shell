@@ -31,7 +31,7 @@ complete -c txtmnr -a process -d "Process a PDF document and extract structured 
 complete -c txtmnr -a query -d "Query processed documents from database"
 complete -c txtmnr -a delete -d "Delete a document from the database"
 complete -c txtmnr -a stats -d "Show processing statistics"
-complete -c txtmnr -a server -d "Start MCP server"
+complete -c txtmnr -a mcp -d "Start Model Context Protocol (MCP) server"
 
 # Process command arguments - PDF file completion for fish 4.0+
 complete -c txtmnr -n "__txtmnr_has_command process" -F -a "*.pdf"
@@ -46,3 +46,7 @@ complete -c txtmnr -n "__txtmnr_has_command query" -l limit -d "Maximum number o
 # Delete command flags
 complete -c txtmnr -n "__txtmnr_has_command delete" -l id -d "Delete document by ID"
 complete -c txtmnr -n "__txtmnr_has_command delete" -l sha256 -d "Delete document by SHA256 checksum"
+
+# MCP command flags
+complete -c txtmnr -n "__txtmnr_has_command mcp" -l name -d "MCP server name"
+complete -c txtmnr -n "__txtmnr_has_command mcp" -l version -d "MCP server version"

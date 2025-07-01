@@ -1,11 +1,4 @@
 {
-  "context_servers": {
-    "mcp-server-context7": {
-      "settings": {
-        "default_minimum_tokens": "10000"
-      }
-    }
-  },
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
@@ -18,7 +11,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-opus-4"
     }
   },
   "edit_predictions": {
@@ -42,6 +35,9 @@
     "mode": "system",
     "light": "Catppuccin Macchiato - No Italics",
     "dark": "Catppuccin Macchiato - No Italics"
+  },
+  "minimap": {
+    "show": "auto"
   },
   "cursor_blink": false,
   "drop_target_size": 1.0,
