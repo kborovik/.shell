@@ -108,6 +108,7 @@ $(zed_bin): $(zed_dir)
 
 zed: $(zed_bin)
 	/bin/ln -fs $(PWD)/Darwin/zed/settings.json $(zed_dir)/settings.json
+	/bin/ln -fs $(PWD)/Darwin/zed/keymap.json $(zed_dir)/keymap.json
 
 ###############################################################################
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
