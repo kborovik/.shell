@@ -1,6 +1,6 @@
 if status is-interactive
 
-    fish_add_path --global ~/.local/bin ~/go/bin ~/.cargo/bin ~/.claude/local /opt/homebrew/bin
+    fish_add_path --global ~/.claude/local ~/go/bin ~/.cargo/bin ~/.local/bin /opt/homebrew/bin
 
     set --global --export EDITOR vim
     set --global --export VISUAL vim
