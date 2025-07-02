@@ -12,6 +12,8 @@
 [remote "origin"]
 	prune = true
 	tagOpt = --tags
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	fetch = +refs/tags/*:refs/tags/*
 [credential]
 	helper = store --file ~/.git-credentials
 [submodule]
@@ -38,11 +40,11 @@
 	all = true
 	prune = true
 	pruneTags = true
+[pull]
+	rebase = true
 [rebase]
 	autoSquash = true
 [branch]
 	sort = -committerdate
 [tag]
 	sort = version:refname
-[pull]
-	rebase = true
