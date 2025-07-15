@@ -35,8 +35,8 @@ roles:
     - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
     - Suggest additional questions for users to explore.
 temp: 1.0
-topp: 0.7
-topk: 50
+topp: 0.8
+topk: 80
 no-limit: false
 format: true
 raw: false
