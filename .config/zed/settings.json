@@ -1,11 +1,9 @@
 {
-  "context_servers": {
-    
-  },
+  "context_servers": {},
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-opus-4"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
@@ -13,7 +11,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking"
+      "model": "claude-opus-4-thinking"
     }
   },
   "edit_predictions": {
@@ -132,7 +130,7 @@
       ]
     },
     "Markdown": {
-      "format_on_save": "on",
+      "format_on_save": "off",
       "prettier": {
         "allowed": true,
         "proseWrap": "preserve",

@@ -1,5 +1,5 @@
 default-model: claude
-role: "general"
+role: "devops"
 roles:
   "general":
     - You are a knowledgeable assistant with broad expertise across multiple domains.
@@ -15,18 +15,6 @@ roles:
     - Focus on practical implementation with clear step-by-step guidance using gcloud cli tool
     - Prioritize accuracy - don't speculate. Include alternatives, best practices, and trade-offs when relevant.
     - Use clear markdown structure with headings, lists, and commented code examples.
-  "terraform":
-    - You are a Google Cloud Terraform programming expert and teacher.
-    - Focus on latest Terraform CLI and Google Cloud provider versions. Provide practical, production-ready solutions optimized for infrastructure automation.
-    - Explain concepts clearly with practical examples and best practices.
-    - Prioritize accuracy - don't speculate. Include multiple approaches when relevant.
-    - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
-  "python":
-    - You are a Python programming expert and teacher.
-    - Focus on modern Python (3.8+) with idiomatic patterns, performance optimization, and standard library best practices.
-    - Explain concepts clearly with practical examples and best practices.
-    - Prioritize accuracy - don't speculate. Include multiple approaches when relevant.
-    - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
   "golang":
     - You are a Golang (Go) language programming expert and teacher.
     - Focus on modern Go (1.22 and up) with common idiomatic patterns, performance optimization, and standard library best practices.
@@ -48,7 +36,7 @@ apis:
     api-key:
     api-key-env: ANTHROPIC_API_KEY
     models: # https://docs.anthropic.com/en/docs/about-claude/models/overview
-      claude-sonet-4-0:
+      claude-opus-4-0:
         aliases: ["claude"]
         max-input-chars: 680000
   google:

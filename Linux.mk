@@ -204,12 +204,7 @@ yq_bin := $(HOME)/.local/bin/yq
 $(yq_bin):
 	$(call header,yq - Install)
 	set -e
-	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq_linux_amd64
-	curl -sSL https://github.com/mikefarah/yq/releases/latest/download/checksums-bsd -o checksums-bsd
-	sha256sum --check --status --ignore-missing checksums-bsd
-	rm checksums-bsd
-	mv yq_linux_amd64 $(@)
-	chmod +x $(@)
+	go install github.com/mikefarah/yq/v4@latest
 
 yq: $(yq_bin)
 
@@ -388,6 +383,29 @@ $(gh_bin):
 	sudo touch $(@)
 
 gh: $(gh_bin)
+
+###############################################################################
+# gitui: Git User Interface
+###############################################################################
+
+gitui_bin := ~/.cargo/bin/gitui
+gitui_theme := ~/.config/gitui/theme.ron
+cmake_bin := /snap/bin/cmake
+
+$(cmake_bin):
+	$(call header,cmake - Install)
+	sudo snap install cmake --classic
+
+$(gitui_bin): $(cmake_bin)
+	$(call header,gitui - Install)
+	cargo install gitui --locked
+
+$(gitui_theme):
+	$(call header,gitui - Theme)
+	mkdir -p ~/.config/gitui
+	ln -rfs .config/gitui/theme.ron $(gitui_theme)
+
+gitui: $(gitui_bin) $(gitui_theme)
 
 ###############################################################################
 # Python tools: pipx
