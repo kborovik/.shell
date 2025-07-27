@@ -51,11 +51,11 @@ if status is-interactive
     end
 
     function glo --description 'git log with pretty format'
-        git log --pretty=format:'%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s' $argv
+        git log --pretty=format:'%C(#b7bdf8)%h %C(#eed49f)%d%Creset %C(#b8c0e0)(%cr)%Creset %C(#7dc4e4)%cn %Creset %C(#cad3f5)%s' $argv
     end
 
     function gloa --description 'git log graph with pretty format'
-        git log --graph --all --pretty=format:'%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn %Creset %s' $argv
+        git log --graph --all --pretty=format:'%C(#b7bdf8)%h %C(#eed49f)%d%Creset %C(#b8c0e0)(%cr)%Creset %C(#7dc4e4)%cn %Creset %C(#cad3f5)%s' $argv
     end
 
     function gp --description 'git push'

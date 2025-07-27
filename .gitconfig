@@ -12,8 +12,6 @@
 [remote "origin"]
 	prune = true
 	tagOpt = --tags
-	fetch = +refs/heads/*:refs/remotes/origin/*
-	fetch = +refs/tags/*:refs/tags/*
 [credential]
 	helper = store --file ~/.git-credentials
 [submodule]
