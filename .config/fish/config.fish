@@ -26,6 +26,23 @@ if status is-interactive
     set --global __fish_git_prompt_color_merging c6a0f6
 
     # Define Aliases
+
+    function tokens-calc --description 'Calculate approximate number of LLM tokens in a file'
+        if test (count $argv) -eq 0
+            echo "Usage: tokens <filename>"
+            return 1
+        end
+        set -l file $argv[1]
+        if not test -f $file
+            echo "Error: File '$file' not found"
+            return 1
+        end
+        set -l chars (wc -m < $file | string trim)
+        set -l words (wc -w < $file | string trim)
+        set -l avg_tokens (math "round(($chars / 4 + $words / 0.75) / 2)")
+        printf "Approximate tokens: %'d\n" $avg_tokens
+    end
+
     function gaa --description 'git add --all'
         git add --all $argv
     end
