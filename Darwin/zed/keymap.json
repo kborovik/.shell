@@ -10,6 +10,7 @@
     "use_key_equivalents": true,
     "bindings": {
       "f1": "command_palette::Toggle",
+      "cmd-e": "file_finder::Toggle",
       "cmd-o": [
         "projects::OpenRecent",
         {
@@ -27,47 +28,16 @@
           "create_new_window": false
         }
       ],
-      "ctrl-1": [
-        "workspace::ActivatePane",
-        0
-      ],
-      "ctrl-2": [
-        "workspace::ActivatePane",
-        1
-      ],
-      "ctrl-3": [
-        "workspace::ActivatePane",
-        2
-      ],
-      "ctrl-4": [
-        "workspace::ActivatePane",
-        3
-      ],
-      "ctrl-5": [
-        "workspace::ActivatePane",
-        4
-      ],
-      "ctrl-6": [
-        "workspace::ActivatePane",
-        5
-      ],
-      "ctrl-7": [
-        "workspace::ActivatePane",
-        6
-      ],
-      "ctrl-8": [
-        "workspace::ActivatePane",
-        7
-      ],
-      "ctrl-9": [
-        "workspace::ActivatePane",
-        8
-      ]
+      "ctrl-1": null,
+      "ctrl-2": null,
+      "ctrl-3": null,
+      "ctrl-4": null,
+      "ctrl-5": null,
+      "ctrl-6": null,
+      "ctrl-7": null,
+      "ctrl-8": null,
+      "ctrl-9": null
     }
-  },
-  {
-    "context": "Editor",
-    "bindings": {}
   },
   {
     "context": "Pane",
@@ -110,6 +80,12 @@
         8
       ],
       "cmd-0": "pane::ActivateLastItem"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-e": "project_panel::ToggleFocus"
     }
   }
 ]
