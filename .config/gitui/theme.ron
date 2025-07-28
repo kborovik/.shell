@@ -11,7 +11,7 @@
     diff_file_added: Some("#a6da95"),
     diff_file_removed: Some("#ee99a0"),
     diff_file_moved: Some("#c6a0f6"),
-    diff_file_modified: Some("#f5a97f"),
+    diff_file_modified: Some("#eed49f"),
     commit_hash: Some("#b7bdf8"),
     commit_time: Some("#b8c0e0"),
     commit_author: Some("#7dc4e4"),
