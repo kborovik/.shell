@@ -79,6 +79,24 @@ git: $(git_bin)
 	/bin/ln -fs $(PWD)/.gitconfig $(HOME)/.gitconfig
 
 ###############################################################################
+# gitui: Git User Interface
+###############################################################################
+
+gitui_bin := /opt/homebrew/bin/gitui
+gitui_theme := ~/.config/gitui/theme.ron
+
+$(gitui_bin):
+	$(call header,gitui - Install)
+	brew install gitui
+
+$(gitui_theme):
+	$(call header,gitui - Theme)
+	mkdir -p ~/.config/gitui
+	ln -fs $(PWD)/.config/gitui/theme.ron $(gitui_theme)
+
+gitui: $(gitui_bin) $(gitui_theme)
+
+###############################################################################
 # vim: Vi IMproved
 ###############################################################################
 
