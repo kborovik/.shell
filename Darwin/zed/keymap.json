@@ -9,6 +9,8 @@
   {
     "use_key_equivalents": true,
     "bindings": {
+      "cmd-shift-e": "project_panel::ToggleFocus",
+      "cmd-shift-g": "git_panel::ToggleFocus",
       "f1": "command_palette::Toggle",
       "cmd-e": "file_finder::Toggle",
       "cmd-o": [
@@ -84,8 +86,6 @@
   },
   {
     "context": "Editor",
-    "bindings": {
-      "cmd-shift-e": "project_panel::ToggleFocus"
-    }
+    "bindings": {}
   }
 ]

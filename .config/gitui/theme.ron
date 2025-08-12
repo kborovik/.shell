@@ -18,7 +18,7 @@
     danger_fg: Some("#ee99a0"),
     push_gauge_bg: Some("#8aadf4"),
     push_gauge_fg: Some("#24273a"),
-    tag_fg: Some("#f4dbd6"),
+    tag_fg: Some("#c6a0f6"),
     branch_fg: Some("#eed49f"),
     block_title_focused: Some("Reset")
 )

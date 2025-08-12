@@ -22,9 +22,6 @@ roles:
     - Prioritize accuracy - don't speculate. Include multiple approaches when relevant.
     - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
     - Suggest additional questions for users to explore.
-temp: 1.0
-topp: 0.8
-topk: 80
 no-limit: false
 format: true
 raw: false
@@ -36,7 +33,7 @@ apis:
     api-key:
     api-key-env: ANTHROPIC_API_KEY
     models: # https://docs.anthropic.com/en/docs/about-claude/models/overview
-      claude-opus-4-0:
+      claude-sonnet-4-20250514:
         aliases: ["claude"]
         max-input-chars: 680000
   google:

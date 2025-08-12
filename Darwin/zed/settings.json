@@ -1,19 +1,21 @@
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "agent": {
     "play_sound_when_agent_done": true,
     "single_file_review": true,
     "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "anthropic",
+      "model": "claude-opus-4-1-thinking-latest"
     },
     "always_allow_tool_actions": true,
-    "version": "2",
     "default_profile": "write",
-    "default_width": 900,
+    "default_width": 300,
     "default_height": 400,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-opus-4-thinking"
+      "provider": "anthropic",
+      "model": "claude-opus-4-1-thinking-latest"
     }
   },
   "edit_predictions": {
@@ -46,17 +48,6 @@
   "tab_size": 2,
   "prettier": {
     "singleQuote": true
-  },
-  "detect_venv": {
-    "on": {
-      "directories": [
-        ".env",
-        "env",
-        ".venv",
-        "venv"
-      ],
-      "activate_script": "fish"
-    }
   },
   "max_tabs": 8,
   "tabs": {
