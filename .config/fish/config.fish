@@ -25,7 +25,9 @@ if status is-interactive
     set --global __fish_git_prompt_color_cleanstate a6da95
     set --global __fish_git_prompt_color_merging c6a0f6
 
-    # Define Aliases
+    if test (uname) = Darwin
+        bind ctrl-h backward-kill-word
+    end
 
     function tokens-calc --description 'Calculate approximate number of LLM tokens in a file'
         if test (count $argv) -eq 0
@@ -42,6 +44,8 @@ if status is-interactive
         set -l avg_tokens (math "round(($chars / 4 + $words / 0.75) / 2)")
         printf "Approximate tokens: %'d\n" $avg_tokens
     end
+
+    # Define Aliases
 
     function gaa --description 'git add --all'
         git add --all $argv

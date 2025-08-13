@@ -11,7 +11,7 @@
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
-    "default_width": 300,
+    "default_width": 600,
     "default_height": 400,
     "default_model": {
       "provider": "anthropic",
@@ -55,23 +55,23 @@
     "file_icons": true
   },
   "project_panel": {
-    "default_width": 300,
+    "default_width": 600,
     "dock": "right"
   },
   "outline_panel": {
-    "default_width": 300,
+    "default_width": 600,
     "dock": "right"
   },
   "collaboration_panel": {
-    "default_width": 300,
+    "default_width": 600,
     "dock": "right"
   },
   "git_panel": {
-    "default_width": 300,
+    "default_width": 600,
     "dock": "right"
   },
   "notification_panel": {
-    "default_width": 300,
+    "default_width": 600,
     "dock": "right"
   },
   "git": {

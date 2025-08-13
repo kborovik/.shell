@@ -48,17 +48,6 @@
   "prettier": {
     "singleQuote": true
   },
-  "detect_venv": {
-    "on": {
-      "directories": [
-        ".env",
-        "env",
-        ".venv",
-        "venv"
-      ],
-      "activate_script": "fish"
-    }
-  },
   "max_tabs": 8,
   "tabs": {
     "git_status": true,
