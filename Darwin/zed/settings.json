@@ -7,7 +7,7 @@
     "single_file_review": true,
     "inline_assistant_model": {
       "provider": "anthropic",
-      "model": "claude-opus-4-1-thinking-latest"
+      "model": "claude-sonnet-4-latest"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
@@ -15,7 +15,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-opus-4-1-thinking-latest"
+      "model": "claude-sonnet-4-latest"
     }
   },
   "edit_predictions": {
