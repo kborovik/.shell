@@ -1,39 +1,25 @@
 {
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "agent": {
-    "play_sound_when_agent_done": true,
-    "single_file_review": true,
     "inline_assistant_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
+      "provider": "zed.dev",
+      "model": "claude-opus-4-1"
     },
-    "always_allow_tool_actions": true,
     "default_profile": "write",
     "default_width": 600,
     "default_height": 400,
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
+      "provider": "zed.dev",
+      "model": "claude-opus-4-1"
     }
   },
   "edit_predictions": {
     "mode": "subtle"
   },
-  "agent_font_size": 20,
-  "buffer_font_size": 20,
+  "agent_font_size": 24,
+  "buffer_font_size": 21,
   "buffer_font_family": "IBM Plex Mono",
-  "buffer_font_fallbacks": [
-    "IBM Plex Mono",
-    "Zed Plex Mono"
-  ],
   "ui_font_size": 20,
   "ui_font_family": "IBM Plex Mono",
-  "ui_font_fallbacks": [
-    "IBM Plex Mono",
-    "Zed Plex Mono"
-  ],
   "icon_theme": "Catppuccin Macchiato",
   "theme": {
     "mode": "system",
