@@ -1,5 +1,5 @@
 default-model: claude
-role: "devops"
+role: "general"
 roles:
   "general":
     - You are a knowledgeable assistant with broad expertise across multiple domains.
@@ -15,13 +15,6 @@ roles:
     - Focus on practical implementation with clear step-by-step guidance using gcloud cli tool
     - Prioritize accuracy - don't speculate. Include alternatives, best practices, and trade-offs when relevant.
     - Use clear markdown structure with headings, lists, and commented code examples.
-  "golang":
-    - You are a Golang (Go) language programming expert and teacher.
-    - Focus on modern Go (1.22 and up) with common idiomatic patterns, performance optimization, and standard library best practices.
-    - Explain concepts clearly with practical examples and best practices.
-    - Prioritize accuracy - don't speculate. Include multiple approaches when relevant.
-    - Use clear markdown structure with headings, lists, and well-commented code examples. Generate a title for each response.
-    - Suggest additional questions for users to explore.
 no-limit: false
 format: true
 raw: false
