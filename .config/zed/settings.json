@@ -1,9 +1,8 @@
 {
-  "context_servers": {},
   "agent": {
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4"
+      "model": "claude-opus-4-1"
     },
     "always_allow_tool_actions": true,
     "default_profile": "write",
@@ -11,7 +10,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4-thinking"
+      "model": "claude-opus-4-1"
     }
   },
   "edit_predictions": {
@@ -20,16 +19,8 @@
   "agent_font_size": 34,
   "buffer_font_size": 34,
   "buffer_font_family": "BlexMono Nerd Font Mono",
-  "buffer_font_fallbacks": [
-    "IBM Plex Mono",
-    "Zed Plex Mono"
-  ],
   "ui_font_size": 32,
   "ui_font_family": "BlexMono Nerd Font",
-  "ui_font_fallbacks": [
-    "IBM Plex Mono",
-    "Zed Plex Mono"
-  ],
   "icon_theme": "Catppuccin Macchiato",
   "theme": {
     "mode": "system",

@@ -9,7 +9,7 @@
     "default_height": 400,
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4-1"
+      "model": "claude-sonnet-4"
     }
   },
   "edit_predictions": {
@@ -106,7 +106,15 @@
       ]
     },
     "Markdown": {
-      "format_on_save": "on"
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": true,
+        "proseWrap": "preserve",
+        "printWidth": 120,
+        "tabWidth": 2,
+        "useTabs": false,
+        "singleQuote": true
+      }
     },
     "Fish": {
       "format_on_save": "on",
