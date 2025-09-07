@@ -109,4 +109,9 @@ if status is-interactive
         end
     end
 
+    function clai --description 'Pydantic AI CLI'
+        set -x ANTHROPIC_API_KEY $(pass anthropic/ANTHROPIC_API_KEY)
+        uvx clai -m anthropic:claude-opus-4-1-20250805
+    end
+
 end
