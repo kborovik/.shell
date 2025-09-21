@@ -15,7 +15,7 @@ core-tools: tools fish git gpg git vim bash
 ###############################################################################
 
 fish_bin := /opt/homebrew/bin/fish
-fish_dir := .config/fish/
+fish_dir := .config/fish
 
 $(fish_dir):
 	mkdir -p $(@)

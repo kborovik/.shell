@@ -1,21 +1,25 @@
 {
   "agent": {
+    "single_file_review": true,
+    "use_modifier_to_send": true,
+    "play_sound_when_agent_done": true,
+    "always_allow_tool_actions": false,
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-opus-4-1"
     },
-    "default_profile": "write",
+    "default_profile": "ask",
     "default_width": 600,
     "default_height": 400,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
     }
   },
   "edit_predictions": {
     "mode": "subtle"
   },
-  "agent_font_size": 24,
+  "agent_font_size": 21,
   "buffer_font_size": 21,
   "buffer_font_family": "IBM Plex Mono",
   "ui_font_size": 20,
@@ -75,7 +79,7 @@
       "settings": {
         "python.analysis": {
           "diagnosticMode": "workspace",
-          "typeCheckingMode": "off"
+          "typeCheckingMode": "basic"
         },
         "python": {
           "pythonPath": ".venv/bin/python"
@@ -87,7 +91,6 @@
     "Python": {
       "language_servers": [
         "ruff",
-        "pyright",
         "..."
       ],
       "format_on_save": "on",
