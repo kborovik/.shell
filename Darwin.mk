@@ -11,7 +11,7 @@ PATH := /opt/homebrew/bin:$(PATH)
 core-tools: tools fish git gpg git vim bash
 
 ###############################################################################
-# Fish: The Friendly Interactive SHell
+# Fish: The Friendly Interactive Shell
 ###############################################################################
 
 fish_bin := /opt/homebrew/bin/fish
@@ -150,22 +150,16 @@ gpg_bin := /opt/homebrew/bin/gpg
 gpg_dir := $(HOME)/.gnupg
 gpg_config := .gnupg/gpg.conf
 
-opensc_bin := /Library/OpenSC/bin/openpgp-tool
-
 $(gpg_dir):
 	$(call header,GPG - Create directories)
 	mkdir -p $(@)
 	chmod 700 $(@)
 
-$(opensc_bin):
-	$(call header,OpenSC - Install)
-	brew install --cask opensc
-
 $(gpg_bin):
 	$(call header,GPG - Install)
 	brew install gnupg
 
-gpg: $(gpg_dir) $(gpg_bin) $(opensc_bin)
+gpg: $(gpg_dir) $(gpg_bin)
 	$(foreach file,$(gpg_config),/bin/ln -fs $(PWD)/$(file) $(HOME)/$(file);)
 
 ###############################################################################

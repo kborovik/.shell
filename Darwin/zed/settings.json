@@ -5,8 +5,8 @@
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": false,
     "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "claude-opus-4-1"
+      "provider": "openai",
+      "model": "gpt-5-nano"
     },
     "default_profile": "ask",
     "default_width": 600,
