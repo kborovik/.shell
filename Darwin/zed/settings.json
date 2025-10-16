@@ -5,15 +5,15 @@
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": false,
     "inline_assistant_model": {
-      "provider": "openai",
-      "model": "gpt-5-nano"
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-latest"
     },
     "default_profile": "ask",
     "default_width": 600,
     "default_height": 400,
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
+      "model": "claude-sonnet-4-5-latest"
     }
   },
   "edit_predictions": {
@@ -74,39 +74,15 @@
       "program": "/usr/bin/fish"
     }
   },
-  "lsp": {
-    "pyright": {
-      "settings": {
-        "python.analysis": {
-          "diagnosticMode": "workspace",
-          "typeCheckingMode": "basic"
-        },
-        "python": {
-          "pythonPath": ".venv/bin/python"
-        }
-      }
-    }
-  },
   "languages": {
     "Python": {
-      "language_servers": [
-        "ruff",
-        "..."
-      ],
       "format_on_save": "on",
-      "formatter": [
-        {
-          "language_server": {
-            "name": "ruff"
-          }
-        },
-        {
-          "code_actions": {
-            "source.fixAll.ruff": false,
-            "source.organizeImports.ruff": true
-          }
+      "formatter": {
+        "code_actions": {
+          "source.fixAll.ruff": false,
+          "source.organizeImports.ruff": true
         }
-      ]
+      }
     },
     "Markdown": {
       "format_on_save": "on",
@@ -124,11 +100,7 @@
       "formatter": {
         "external": {
           "command": "/opt/homebrew/bin/fish",
-          "arguments": [
-            "-c",
-            "fish_indent",
-            "{buffer_path}"
-          ]
+          "arguments": ["-c", "fish_indent", "{buffer_path}"]
         }
       }
     }
