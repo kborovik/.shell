@@ -29,15 +29,16 @@
 [advice]
 	addIgnoredFile = false
 [credential "https://github.com"]
-	helper =
+helper =
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper =
+  helper =
 	helper = !gh auth git-credential
 [fetch]
 	all = true
 	prune = true
 	pruneTags = true
+	force = true
 [pull]
 	rebase = true
 [rebase]

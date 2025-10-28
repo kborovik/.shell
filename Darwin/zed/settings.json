@@ -19,8 +19,8 @@
   "edit_predictions": {
     "mode": "subtle"
   },
-  "agent_font_size": 21,
-  "buffer_font_size": 21,
+  "agent_ui_font_size": 20,
+  "buffer_font_size": 20,
   "buffer_font_family": "IBM Plex Mono",
   "ui_font_size": 20,
   "ui_font_family": "IBM Plex Mono",
@@ -76,13 +76,10 @@
   },
   "languages": {
     "Python": {
-      "format_on_save": "on",
-      "formatter": {
-        "code_actions": {
-          "source.fixAll.ruff": false,
-          "source.organizeImports.ruff": true
-        }
-      }
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": true
+      },
+      "format_on_save": "on"
     },
     "Markdown": {
       "format_on_save": "on",
