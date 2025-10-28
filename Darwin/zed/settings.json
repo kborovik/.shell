@@ -9,7 +9,7 @@
       "model": "claude-sonnet-4-5-latest"
     },
     "default_profile": "ask",
-    "default_width": 600,
+    "default_width": 400,
     "default_height": 400,
     "default_model": {
       "provider": "anthropic",
@@ -19,6 +19,7 @@
   "edit_predictions": {
     "mode": "subtle"
   },
+  "agent_buffer_font_size": 20.0,
   "agent_ui_font_size": 20,
   "buffer_font_size": 20,
   "buffer_font_family": "IBM Plex Mono",
@@ -45,23 +46,18 @@
     "file_icons": true
   },
   "project_panel": {
-    "default_width": 600,
     "dock": "right"
   },
   "outline_panel": {
-    "default_width": 600,
     "dock": "right"
   },
   "collaboration_panel": {
-    "default_width": 600,
     "dock": "right"
   },
   "git_panel": {
-    "default_width": 600,
     "dock": "right"
   },
   "notification_panel": {
-    "default_width": 600,
     "dock": "right"
   },
   "git": {
