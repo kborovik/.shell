@@ -26,7 +26,7 @@ $(fish_bin): $(fish_dir)
 
 fish: $(fish_bin)
 	$(call header,Fish - Configure)
-	/bin/ln -fs $(PWD)/$(fish_dir) $(HOME)/$(fish_dir)
+	/bin/ln -fs $(PWD)/$(fish_dir) $(HOME)/.config
 
 ###############################################################################
 # Linux tools
