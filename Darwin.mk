@@ -8,7 +8,7 @@ PATH := /opt/homebrew/bin:$(PATH)
 # Default target
 ###############################################################################
 
-core-tools: tools fish git gpg git vim bash
+core-tools: tools fish git gpg git vim yq
 
 ###############################################################################
 # Fish: The Friendly Interactive Shell
@@ -129,6 +129,50 @@ zed: $(zed_bin)
 	/bin/ln -fs $(PWD)/Darwin/zed/keymap.json $(zed_dir)/keymap.json
 
 ###############################################################################
+# npm: Node Package Manager
+###############################################################################
+
+node_bin := /opt/homebrew/bin/node
+
+$(node_bin):
+	$(call header,npm - Install)
+	brew install node && npm -g upgrade
+
+node: $(node_bin)
+
+###############################################################################
+# ripgrep-all: rga is a line-oriented search tool that recursively searches
+# your current directory for a regex pattern while respecting gitignore rules
+###############################################################################
+
+rg_bin := /opt/homebrew/bin/rg
+
+$(rg_bin):
+	$(call header,ripgrep - Install)
+	brew install ripgrep
+
+ripgrep: $(rg_bin)
+
+###############################################################################
+# Claude Code: AI-powered coding assistant CLI
+###############################################################################
+
+claude_bin := $(HOME)/.local/bin/claude
+claude_dir := $(HOME)/.claude
+
+$(claude_dir):
+	mkdir -p $(@)
+
+$(claude_bin):
+	$(call header,Claude Code - Install)
+	npm install -g @anthropic-ai/claude-code
+
+claude: $(node_bin) $(claude_dir) $(claude_bin) $(rg_bin)
+	$(call header,Claude Code - Configure)
+	/bin/ln -fs $(PWD)/claude/settings.json $(claude_dir)/settings.json
+	/bin/ln -fs $(PWD)/claude/commands $(claude_dir)/
+
+###############################################################################
 # bat: A cat(1) clone with wings https://github.com/sharkdp/bat
 ###############################################################################
 
@@ -192,34 +236,6 @@ $(yq_bin):
 yq: $(yq_bin)
 
 ###############################################################################
-# Mods: AI for the command line, built for pipelines.
-# https://github.com/charmbracelet/mods
-###############################################################################
-
-mods_bin := /opt/homebrew/bin/mods
-mods_dir := $(HOME)/Library/Application\ Support/mods
-mods_config := $(HOME)/Library/Application\ Support/mods/mods.yml
-
-$(mods_dir):
-	$(call header,Mods - Create directories)
-	mkdir -p $(@)
-
-$(mods_bin):
-	$(call header,Mods - Install)
-	brew install charmbracelet/tap/mods
-
-mods: $(yq_bin) $(mods_dir) $(mods_bin)
-	$(call header,Mods - Configure)
-	$(eval ANTHROPIC_API_KEY := $(shell pass anthropic/ANTHROPIC_API_KEY))
-	$(eval GEMINI_API_KEY := $(shell pass google/GEMINI_API_KEY))
-	$(eval OPENAI_API_KEY := $(shell pass openai/OPENAI_API_KEY))
-	set -e
-	cp .config/mods/mods.yml $(mods_config)
-	yq -i '.apis.anthropic.api-key = "$(ANTHROPIC_API_KEY)"' $(mods_config)
-	yq -i '.apis.google.api-key = "$(GEMINI_API_KEY)"' $(mods_config)
-	yq -i '.apis.openai.api-key = "$(OPENAI_API_KEY)"' $(mods_config)
-
-###############################################################################
 # Google Cloud SDK
 ###############################################################################
 
@@ -227,7 +243,7 @@ gcloud_bin := /opt/homebrew/bin/gcloud
 
 $(gcloud_bin):
 	$(call header,Google Cloud SDK - Install)
-	brew install --cask google-cloud-sdk
+	brew install --cask gcloud-cli
 
 gcloud: $(gcloud_bin)
 
