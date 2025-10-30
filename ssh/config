@@ -1,0 +1,19 @@
+Host colliers-network-dev1
+    HostName colliers-network-dev1
+    User ubuntu
+    IdentityFile ~/.ssh/colliers_id_ed25519
+
+Host colliers-network-prd1
+    HostName colliers-network-prd1
+    User ubuntu
+    IdentityFile ~/.ssh/colliers_id_ed25519
+
+Host colliers-org-dev1
+    HostName colliers-org-dev1
+    User ubuntu
+    IdentityFile ~/.ssh/colliers_id_ed25519
+
+Host colliers-org-prd1
+    HostName colliers-org-prd1
+    User ubuntu
+    IdentityFile ~/.ssh/colliers_id_ed25519
